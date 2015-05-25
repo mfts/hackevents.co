@@ -1,0 +1,29 @@
+<h1>Profile Page</h1>
+
+<p>
+  <strong>First name:</strong>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Twitter name:</strong>
+  <%= @user.twitter_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<% @user.hackathons.each do |h| %>
+<p>This is a hackaton <%= h.title %> <%= link_to "Remove", unfollow_hackathon_path(h), :method => :post %></p>
+<% end %>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+<%= link_to 'Delete', @user , method: :delete, data: { confirm: 'Are you sure?' } %>

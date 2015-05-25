@@ -1,0 +1,1 @@
+json.extract! @hackathon, :id, :title, :description, :country, :city, :url, :date_start, :date_end, :venue, :address, :challenge, :sponsors, :awards, :schedule, :application, :application_deadline, :created_at, :updated_at
