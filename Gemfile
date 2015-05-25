@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.1'
-gem 'sqlite3'
+gem 'pg'
 gem 'simple_form'
 gem 'sass-rails', '~> 5.0'
 gem 'materialize-sass'
@@ -42,4 +42,10 @@ group :test do
   gem 'capybara', '~> 2.1.0'
   gem 'shoulda-matchers', '~> 2.8.0'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
+
+ruby '2.2.1'
 
