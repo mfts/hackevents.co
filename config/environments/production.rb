@@ -80,7 +80,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => 'healthhack.de' }
+  config.action_mailer.default_url_options = { :host => 'secret-caverns-4753.herokuapp.com' }
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
@@ -91,10 +91,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.mailgun.org",
     port: 587,
-    domain: ENV['MAILGUN_DOMAIN'],
+    domain: ENV['MAILGUN_DOMAIN_T'],
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV['MAILGUN_SMTP_LOGIN'],
-    password: ENV['MAILGUN_SMTP_PASSWORD']
+    user_name: ENV['MAILGUN_SMTP_LOGIN_T'],
+    password: ENV['MAILGUN_SMTP_PASSWORD_T']
   }
 end
