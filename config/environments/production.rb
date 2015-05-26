@@ -91,10 +91,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: "smtp.mailgun.org",
     port: 587,
-    domain: ENV['MAILGUN_DOMAIN_T'],
+    domain: ENV['MAILGUN_DOMAIN'],
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: ENV['MAILGUN_SMTP_LOGIN_T'],
-    password: ENV['MAILGUN_SMTP_PASSWORD_T']
+    user_name: ENV['MAILGUN_SMTP_LOGIN'],
+    password: ENV['MAILGUN_SMTP_PASSWORD']
   }
 end
