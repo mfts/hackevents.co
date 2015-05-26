@@ -1,4 +1,5 @@
 class Notifier < ApplicationMailer
+  default from: "Hackevents <" +ENV["MAILGUN_SMTP_LOGIN"] +">"
 
   def password_reset(user)
     @user = user
