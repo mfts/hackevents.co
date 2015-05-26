@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.1'
+gem 'mailgun-ruby', '~>1.0.3', require: 'mailgun'
 gem 'pg'
 gem 'simple_form'
 gem 'sass-rails', '~> 5.0'
