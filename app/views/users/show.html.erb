@@ -1,29 +1,41 @@
 <h1>Profile Page</h1>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+<% if logged_in? && current_user == @user %>
+  <p>
+    <strong>First name:</strong>
+    <%= @user.first_name %>
+  </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+  <p>
+    <strong>Last name:</strong>
+    <%= @user.last_name %>
+  </p>
 
-<p>
-  <strong>Twitter name:</strong>
-  <%= @user.twitter_name %>
-</p>
+  <p>
+    <strong>Twitter name:</strong>
+    <%= @user.twitter_name %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
 
-<% @user.hackathons.each do |h| %>
-<p>This is a hackaton <%= h.title %> <%= link_to "Remove", unfollow_hackathon_path(h), :method => :post %></p>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Back', hackathons_path %>
+  <%= link_to 'Delete', @user , method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<% else %>
+
+  <p>
+  <strong>This is <%= @user.first_name %>'s page.</strong>
+  </p>
+  <p>Follow on Twitter: <%= link_to @user.twitter_name, "http://twitter.com/#{@user.twitter_name}" %></p>
+
+  <p>His upcoming hackathons:</p>
+
+  <% @user.hackathons.each do |h| %>
+  <p><%= link_to h.title, hackaton_path(h) %></p>
+  <% end %>
+
 <% end %>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-<%= link_to 'Delete', @user , method: :delete, data: { confirm: 'Are you sure?' } %>
