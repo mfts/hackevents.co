@@ -6,8 +6,7 @@
           <a href="#">Find all Hackathons in Europe</a>
         </div>
 
-<%= search_form_for @q do |f| %>
-
+        <%= search_form_for @q do |f| %>
         <div class="field">
           <%= f.text_field :title_or_country_or_city_cont, :placeholder => "Country or City or Title" %>
         </div>
@@ -25,11 +24,14 @@
 <br>
 <div class="field center">
   <% if@hackathons.total_count == 0 %>
-  Sorry no Hackathons found.
-  <br>
-  <iframe src="//giphy.com/embed/8dTuHJeEMjxW8" width="480" height="270" frameBorder="0" style="max-width: 100%" class="giphy-embed" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    <p>
+      Sorry no Hackathons found.
+    </p>
+    <iframe src="//giphy.com/embed/8dTuHJeEMjxW8" width="480" height="270" frameBorder="0" style="max-width: 100%" class="giphy-embed" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
   <% else %>
-  <%= @hackathons.total_count %> found.
+  <p>
+    <%= @hackathons.total_count %> found.
+  </p>
   <div class="white">
   <table id="hackathons" class="hoverable">
     <thead>
