@@ -11,7 +11,6 @@
  * file per style scope.
  *
  *= require hackathons
- *= require users
  *= require_self
  */
 
@@ -29,7 +28,11 @@ div.flash.notice  { border: 2px solid blue;  color: blue;  }
 .clear { clear: both; }
 
 .body-padding {
-	padding-top: 20px;
+  padding-top: 20px;
+}
+
+body {
+  background-color: #fafafa;
 }
 
 nav {
@@ -57,6 +60,10 @@ nav {
   }
 }
 
+.page-footer {
+  margin: 0;
+  padding: 0;
+}
 
 h1 a {
   font-family: 'Roboto';
