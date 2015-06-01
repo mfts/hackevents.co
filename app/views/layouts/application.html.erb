@@ -27,9 +27,9 @@
 <!-- Navbar --> 
     <nav class="white navbar-fixed">
       <ul>
-        <li>
+        <li class="navbar-brand">
           <%= link_to hackathons_path do %>
-          <img class="navbar-brand" src="<%= image_path("he_logo.png") %>">
+            Hackevents
           <% end %>
         </li>
         <% if logged_in? %>
@@ -38,15 +38,15 @@
               <div class="btn-floating orange darken-2"><i class="mdi-content-add"></i></div>
             <% end %>
           </li>
-          <li class="navbar-brand right hide-on-med-and-down"><%= link_to "Log Out", logout_path, method: :delete %></li>
-          <li class="navbar-brand right"><%= link_to "Profile", user_path(current_user) %></li>
+          <li class="right hide-on-med-and-down"><%= link_to "Log Out", logout_path, method: :delete %></li>
+          <li class="right"><%= link_to "Profile", user_path(current_user) %></li>
         <% else %>
           <li class="navbar-brand-plus right hide-on-med-and-down">
             <%= link_to new_user_session_path, data: { confirm: "Log in to add a new hackathon!" } do %>
               <div class="btn-floating orange darken-2"><i class="mdi-content-add"></i></div>
             <% end %>
           </li>
-          <li class="navbar-brand right hide-on-med-and-down"><%= link_to "Sign Up", new_user_path %></li>
+          <li class="right hide-on-med-and-down"><%= link_to "Sign Up", new_user_path %></li>
         <% end %>
       </ul>  
      </nav>

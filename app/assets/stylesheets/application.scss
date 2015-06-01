@@ -10,7 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require hackathons
+ *= require users
  *= require_self
  */
 
@@ -32,7 +33,17 @@ div.flash.notice  { border: 2px solid blue;  color: blue;  }
 }
 
 
-
+.navbar-brand {
+  width: 220px;
+  a {
+    margin: 0 20px;
+    text-indent: -9999px;
+    background-image: image-url("he_logo.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+  }
+}
 
 
 
