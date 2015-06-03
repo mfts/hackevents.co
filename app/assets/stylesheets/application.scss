@@ -10,7 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require hackathons
  *= require_self
  */
 
@@ -28,13 +28,42 @@ div.flash.notice  { border: 2px solid blue;  color: blue;  }
 .clear { clear: both; }
 
 .body-padding {
-	padding-top: 20px;
+  padding-top: 20px;
 }
 
+body {
+  background-color: #fafafa;
+}
 
+nav {
+  .navbar-brand {
+    width: 220px;
+    a {
+      margin: 0 20px;
+      text-indent: -9999px;
+      background-image: image-url("he_logo.png");
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: contain;
+    }
+  }
+  li {
+    a {
+      color: #f57c00;
+      &:visited {
+        color: #f57c00;
+      }
+      &:hover {
+        color: #f57c00;
+      }
+    }
+  }
+}
 
-
-
+.page-footer {
+  margin: 0;
+  padding: 0;
+}
 
 h1 a {
   font-family: 'Roboto';
@@ -46,7 +75,6 @@ p, h1, h2, h3, h4, h5, h6, a {
 
 a {
   color: #f57c00;
-  
   &:visited {
     color: #f57c00;
   }
