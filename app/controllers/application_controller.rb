@@ -29,5 +29,13 @@ class ApplicationController < ActionController::Base
       redirect_to new_user_session_path, notice: "You must be logged in to access that page."
     end
   end 
+
+  def require_admin
+    if admin_user
+      true
+    else
+      redirect_to new_user_session_path, notice: "You must log in as admin user."
+    end
+  end
 end
 

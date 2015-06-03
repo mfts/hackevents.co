@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 class HackathonsController < ApplicationController
-  before_action :require_user, only: [:upload]
+  before_action :require_admin, only: [:new, :upload, :edit, :destroy]
   before_action :set_hackathon, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
  
   def index
