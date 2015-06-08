@@ -60,7 +60,7 @@ class UsersController < ApplicationController
       if user
         user.email_activate
         session[:user_id] = user.id
-        format.html { redirect_to login_url, success: "Welcome to the Sample App! Your email has been confirmed.
+        format.html { redirect_to login_url, success: "Welcome to the Hackevents! Your email has been confirmed.
                                                       Please sign in to continue." }
         format.json { render :show, status: :created, location: @user }
       else

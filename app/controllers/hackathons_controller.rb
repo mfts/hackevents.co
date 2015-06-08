@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 class HackathonsController < ApplicationController
-  before_action :require_admin, only: [:new, :upload, :edit, :destroy]
+  before_action :require_admin, only: [:new, :create, :upload, :edit, :destroy]
   before_action :set_hackathon, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
  
   def index
@@ -61,7 +61,7 @@ class HackathonsController < ApplicationController
         )
       ques.save
     end
-  redirect_to hackathons_path, notice: "Que added"
+  redirect_to hackathons_path, notice: "Hackathons added"
   end
 
 
