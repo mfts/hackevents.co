@@ -25,50 +25,37 @@ body {
   padding-top: 60px;
 }
 
-.hackathon ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+
+.navbar-brand {
+  span {
+    width: 220px;
+    text-indent: -9999px;
+    background-image: image-url("he_logo.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+    display: block;
+  }
 }
 
-.upvote {
+#hackathons {
+  .date {
+    .date-day-number {
+      font-weight: bold;
+    }
+    .day-month {
+      
+    }
+  }
+}
+
+
+.date {
   background: #edeceb;
   border-radius: 3px;
   box-shadow: 0 1px 0 0 rgba(83,69,64,0.3),0 1px 1px 0 rgba(0,0,0,0.2);
-  float: left;
-  height: 44px;
-  margin: 0 11px 0 0;
   position: relative;
   text-align: center;
-  width: 44px;
-}
-
-.upvote--arrow {
-  border-bottom: 9px solid #534540;
-  border-left: 7px solid transparent;
-  border-right: 7px solid transparent;
-  border-top: 9px solid transparent;
-  left: 10px;
-  position: absolute;
-  top: 0px;
-}
-
-.upvote--count {
-  color: #534540;
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 16px;
-  margin: 23px 0 0;
-}
-
-.pagination {
-  background-color: #fff;
-  color: #000;
-}
-
-.pagination a {
-  color: #f57c00;
 }
 
 
