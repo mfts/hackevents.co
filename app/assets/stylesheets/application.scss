@@ -10,12 +10,76 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require hackathons
  *= require_self
  */
 
-@import "materialize";
+$body-bg:                       #FFFFFF;
+$brand-primary:                 #F57C00;
+$text-color:                    #333333;
+$link-color:                    #F57C00;
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  padding-top: 60px;
+}
+
+.hackathon ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.upvote {
+  background: #edeceb;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 0 rgba(83,69,64,0.3),0 1px 1px 0 rgba(0,0,0,0.2);
+  float: left;
+  height: 44px;
+  margin: 0 11px 0 0;
+  position: relative;
+  text-align: center;
+  width: 44px;
+}
+
+.upvote--arrow {
+  border-bottom: 9px solid #534540;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 9px solid transparent;
+  left: 10px;
+  position: absolute;
+  top: 0px;
+}
+
+.upvote--count {
+  color: #534540;
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 16px;
+  margin: 23px 0 0;
+}
+
+.pagination {
+  background-color: #fff;
+  color: #000;
+}
+
+.pagination a {
+  color: #f57c00;
+}
+
+
+
+
+
+
+
+
+
+/*
 div.alert {
   border: 2px solid #aaa;
   padding: 10px;
@@ -65,14 +129,6 @@ nav {
   padding: 0;
 }
 
-h1 a {
-  font-family: 'Roboto';
-}
-
-p, h1, h2, h3, h4, h5, h6, a {
-  font-family: 'Roboto';
-}
-
 a {
   color: #f57c00;
   &:visited {
@@ -86,5 +142,5 @@ a {
 .seemore a {
 	color: #000;
 }
-
+*/
 

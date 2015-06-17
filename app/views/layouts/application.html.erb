@@ -1,80 +1,100 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <%= analytics_init if Rails.env.production? %>
-  <%= favicon_link_tag 'favicon.ico' %>
-  <title>Hackevents - Find all Hackathons in Europe</title>
-  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script>
-    $( document ).ready(function() {
-        $(".button-collapse").sideNav();
-    });
- 
-    $( window ).load(function() {
-        console.log( "window loaded" );
-    });
-  </script>
+    <%= favicon_link_tag 'favicon.ico' %>
+    
+    <title>Hackevents - Find all Hackathons in Europe</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    
+    
+    
+    <div class="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <%= link_to "Hackevents".html_safe, root_path, class: "navbar-brand" %>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <% unless current_user %>
+                <li>
+                  <div class="navbar-btn" style="padding-left: 10px;">
+                    <%= link_to "Sign Up", new_user_path, class: "btn btn-link" %>
+                  </div>
+                </li>
+                <li>
+                  <div class="navbar-btn">
+                    <%= link_to "Log In", new_user_session_path, class: "btn btn-primary", data: { confirm: "Log in to add a new hackathon!" } %>
+                  </div>
+                </li>
+              <% else %>
+                <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+                <li><%= link_to "Profile", user_path(current_user) %></li>
+                <li>
+                  <div class="navbar-btn">
+                    <%= link_to "https://hackevents.typeform.com/to/WGEBKK", class: "btn btn-primary", data: { confirm: "Found a hackathon we have not listed yet? Submit it through out Typeform! Thank you :)" }, :target => "_blank" do %>
+                      Add
+                    <% end %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
-  <%= csrf_meta_tags %>
-  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-</head>
-<body>
-  <header>
-
-<!-- Navbar --> 
-    <nav class="white navbar-fixed">
-      <ul>
-        <li class="navbar-brand">
-          <%= link_to hackathons_path do %>
-            Hackevents
-          <% end %>
-        </li>
-        <% if logged_in? %>
-          <li class="navbar-brand-plus right">
-            <%= link_to "https://hackevents.typeform.com/to/WGEBKK", data: { confirm: "Found a hackathon we have not listed yet? Submit it through out Typeform! Thank you :)" }, :target => "_blank" do %>
-              <div class="btn-floating orange darken-2"><i class="mdi-content-add"></i></div>
-            <% end %>
-          </li>
-          <li class="right"><%= link_to "Log Out", logout_path, method: :delete %></li>
-          <li class="right"><%= link_to "Profile", user_path(current_user) %></li>
-        <% else %>
-          <li class="navbar-brand-plus right">
-            <%= link_to new_user_session_path, data: { confirm: "Log in to add a new hackathon!" } do %>
-              <div class="btn-floating orange darken-2"><i class="mdi-content-add"></i></div>
-            <% end %>
-          </li>
-          <li class="right"><%= link_to "Sign Up", new_user_path %></li>
-        <% end %>
-      </ul>  
-     </nav>
-  </header>
-
-
-<!-- Body -->
-  <% flash.each do |type, message| %>
-  <div class="alert flash <%= type %>">
-    <%= message %>
-  </div>
-  <% end %>
-
-  <div class="grey lighten-5 large">
-    <div class="container">
-      <%= yield %>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-
-
-<!-- Footer -->
-  <footer class="page-footer grey lighten-5">
-    <div class="footer-copyright orange darken-2">
-      <div class="container">
-              © 2015 Hackevents - All Rights Reserved
-        <a class="grey-text text-lighten-5 right" href="#!">Imprint & Data Privacy</a>  
-      </div> 
-    </div>        
-  </footer>
-</body>
+    
+    
+    
+    
+    
+    
+    
+    <div class="container">
+      <div class="row">
+        <% if flash.notice %>
+          <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <%= flash.notice %>
+          </div>
+        <% end %>
+        <div class="col-md-12">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    
+    
+    <footer class="page-footer">
+      <div class="footer-copyright">
+        <div class="container">
+          © 2015 Hackevents - All Rights Reserved
+          <a href="#!">Imprint & Data Privacy</a>
+        </div>
+      </div>
+    </footer>
+    
+    
+    
+  </body>
 </html>
