@@ -25,7 +25,6 @@ body {
   padding-top: 60px;
 }
 
-
 .navbar-brand {
   span {
     width:                220px;
@@ -45,15 +44,18 @@ body {
     box-shadow:     0 1px 0 0 rgba(83,69,64,0.3),0 1px 1px 0 rgba(0,0,0,0.2);
     position:       relative;
     text-align:     center;
-    
     .date-day-number {
       font-weight: bold;
     }
     .day-month {
-      
     }
   }
   .title {
     font-weight: bold;
   }
 }
+
+#map {
+  margin: 0 0 1.5em 0;
+}
+
