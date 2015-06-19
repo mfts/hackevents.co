@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150520121312) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "hackathons", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -40,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150520121312) do
     t.string   "twitter"
   end
 
-  add_index "hackathons", ["slug"], name: "index_hackathons_on_slug", using: :btree
+  add_index "hackathons", ["slug"], name: "index_hackathons_on_slug"
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
@@ -62,7 +59,7 @@ ActiveRecord::Schema.define(version: 20150520121312) do
     t.string   "confirm_token"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
-  add_index "users", ["password_reset_token"], name: "index_users_on_password_reset_token", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email"
+  add_index "users", ["password_reset_token"], name: "index_users_on_password_reset_token"
 
 end
