@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.1'
 gem 'mailgun-ruby', '~>1.0.3', require: 'mailgun'
-gem 'sqlite3'
+gem 'pg'
 gem 'simple_form'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
