@@ -23,7 +23,7 @@
       </p>
       <iframe src="//giphy.com/embed/8dTuHJeEMjxW8" width="480" height="270" frameBorder="0" style="max-width: 100%" class="giphy-embed" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     <% else %>
-      <%= paginate @hackathons %>
+      <%= paginate @hackathons, :theme => 'twitter-bootstrap-3' %>
       
       <table id="hackathons" class="table table-striped">
         <thead>

@@ -18,6 +18,8 @@ gem 'friendly_id'
 gem 'jquery-turbolinks'
 
 gem "kaminari"
+gem 'bootstrap-kaminari-views'
+
 gem 'ransack'
 
 gem 'bcrypt-ruby', '~> 3.1.2'
