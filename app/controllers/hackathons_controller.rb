@@ -66,21 +66,23 @@ class HackathonsController < ApplicationController
   
   def export
     @hackathons = [
-      "title",
-      "description",
-      "country",
-      "city",
-      "url",
-      "date_start",
-      "date_end",
-      "venue",
-      "address",
-      "challenge",
-      "sponsors",
-      "awards",
-      "schedule",
-      "application",
-      "application_deadline"
+      [
+        "title",
+        "description",
+        "country",
+        "city",
+        "url",
+        "date_start",
+        "date_end",
+        "venue",
+        "address",
+        "challenge",
+        "sponsors",
+        "awards",
+        "schedule",
+        "application",
+        "application_deadline"
+      ]
     ]
     Hackathon.all.each do |hackathon|
       @hackathons << [
