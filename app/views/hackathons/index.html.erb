@@ -31,8 +31,8 @@
             <th><%= sort_link @q, :date_start, "Date", default_order: :desc   %></th>
             <th><%= sort_link @q, :title, "Hackathon" %></th>
             <th><%= "Weekday" %></th>
-            <th><%= sort_link @q, :city, "City" %></th>
-            <th><%= sort_link @q, :country, "Country" %></th>
+            <th class="hidden-xs"><%= sort_link @q, :city, "City" %></th>
+            <th class="hidden-xs"><%= sort_link @q, :country, "Country" %></th>
           </tr>
         </thead>
 
@@ -58,8 +58,8 @@
                 <%= hackathon.date_start.strftime("%a") %>
                 <% end %>
               </td>
-              <td><%= hackathon.city %></td>
-              <td><%= hackathon.country %></td>
+              <td class="hidden-xs"><%= hackathon.city %></td>
+              <td class="hidden-xs"><%= hackathon.country %></td>
             </tr>
           <% end %>
         </tbody>
