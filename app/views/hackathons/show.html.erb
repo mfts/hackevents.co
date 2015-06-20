@@ -27,9 +27,10 @@
 
 <p>
   <%= link_to "Visit Website", @hackathon.url, class: "btn btn-primary", target: "_blank" %>
-  <a class="btn" href="https://twitter.com/home?status=HACKATHON%20%7C%C2%A0<%= @hackathon.country %>%20%7C%C2%A0<%= @hackathon.city %>%20%7C%C2%A0<%= @hackathon.title %>%20<%= @hackathon.date_start.strftime("%d/%m/%Y") %>%20<%= request.url %>%20<%= @hackathon.twitter %>%20@hackeventsde" target="_blank">
-    Share on Twitter
-  </a>
+  <%= link_to "Share on Twitter", "https://twitter.com/home?status=HACKATHON%20%7C%C2%A0#{ @hackathon.country }%20%7C%C2%A0#{ @hackathon.city }%20%7C%C2%A0#{ @hackathon.title }%20#{ @hackathon.date_start.strftime("%d/%m/%Y") }%20#{ request.url }%20#{ @hackathon.twitter }%20@hackeventsde", class: "btn", target: "_blank" %>
+</p>
+<p>
+  <%= link_to "Get Directions", "https://maps.google.com?daddr=#{ @hackathon.address }", class: "btn", target: "_blank" %>
 </p>
 
 <% if logged_in? %>
