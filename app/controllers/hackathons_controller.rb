@@ -65,8 +65,8 @@ class HackathonsController < ApplicationController
   end
   
   def export
-    @hackathons = [
-      [
+    csv_data = CSV.generate do |csv|
+      csv << [
         "title",
         "description",
         "country",
@@ -83,28 +83,28 @@ class HackathonsController < ApplicationController
         "application",
         "application_deadline"
       ]
-    ]
-    Hackathon.all.each do |hackathon|
-      @hackathons << [
-        hackathon.title,
-        hackathon.description,
-        hackathon.country,
-        hackathon.city,
-        hackathon.url,
-        hackathon.date_start,
-        hackathon.date_end,
-        hackathon.venue,
-        hackathon.address,
-        hackathon.challenge,
-        hackathon.sponsors,
-        hackathon.awards,
-        hackathon.schedule,
-        hackathon.application,
-        hackathon.application_deadline
-      ]
+      Hackathon.all.each do |hackathon|
+        csv << [
+          hackathon.title,
+          hackathon.description,
+          hackathon.country,
+          hackathon.city,
+          hackathon.url,
+          hackathon.date_start,
+          hackathon.date_end,
+          hackathon.venue,
+          hackathon.address,
+          hackathon.challenge,
+          hackathon.sponsors,
+          hackathon.awards,
+          hackathon.schedule,
+          hackathon.application,
+          hackathon.application_deadline
+        ]
+      end
     end
     
-    send_data @hackathons.to_csv, filename: "export.csv", type: ' text/csv', disposition: 'attachment'
+    send_data csv_data, filename: "export.csv", type: ' text/csv', disposition: 'attachment'
   end
 
   # PATCH/PUT /hackathons/1
