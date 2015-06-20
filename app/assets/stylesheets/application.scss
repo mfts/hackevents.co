@@ -59,3 +59,17 @@ body {
   margin: 0 0 1.5em 0;
 }
 
+.table-calendar {
+  td { min-height: 40px; width: 14%; vertical-align: top; }
+  td.today { background-color: #F1F1F1; }
+  tr, td, th { border: 1px solid #EEEEEE; }
+  td, th {}
+  p { margin: 0; padding: 0; }
+  p.day {  }
+  p.event {
+    a {
+      color: #FFFFFF;
+    }
+    background-color: orange; color: #FFFFFF; font-size: 12px; margin: 0 -6px 2px -5px; padding: 2px 4px; border-radius: 2px; line-height: 1.2em;
+    }
+}

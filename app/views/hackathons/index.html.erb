@@ -17,54 +17,103 @@
     
     <hr />
     
-    <% if @hackathons.total_count == 0 %>
-      <p>
-        Sorry no Hackathons found.
-      </p>
-      <iframe src="//giphy.com/embed/8dTuHJeEMjxW8" width="480" height="270" frameBorder="0" style="max-width: 100%" class="giphy-embed" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-    <% else %>
-      <%= paginate @hackathons, :theme => 'twitter-bootstrap-3' %>
-      
-      <table id="hackathons" class="table table-striped">
-        <thead>
-          <tr>
-            <th><%= sort_link @q, :date_start, "Date", default_order: :desc   %></th>
-            <th><%= sort_link @q, :title, "Hackathon" %></th>
-            <th><%= "Weekday" %></th>
-            <th class="hidden-xs"><%= sort_link @q, :city, "City" %></th>
-            <th class="hidden-xs"><%= sort_link @q, :country, "Country" %></th>
-          </tr>
-        </thead>
+    <ul class="nav nav-tabs nav-justified" style="margin-bottom: 1.5em;">
+      <li class="<%= params[:style] != "calendar" ? "active" : "normal" %>"><a href="?style=list">List</a></li>
+      <li class="<%= params[:style] == "calendar" ? "active" : "normal" %>"><a href="?style=calendar">Calendar</a></li>
+    </ul>
+    
+    <% if params[:style] == "calendar" %>
+      <table class="table table-calendar">
+        <% calendar_begins_at = Time.zone.now.beginning_of_week.to_date %>
+        <% calendar_ends_at   = (Time.zone.now + 2.months).end_of_week.to_date %>
+        <% today              = Time.zone.now.to_date %>
+        <% grouped_data       = @hackathons.group_by { |e| e.date_start.to_date } %>
+        <% months = %w(Jan Feb Mär Apr Mai Jun Jul Aug Sep Okt Nov Dez) %>
 
-        <tbody>
-          <% @hackathons.each do |hackathon| %>
+        <% calendar_begins_at.upto(calendar_ends_at) do |date| %>
+          <% if date.wday == 1 %>
             <tr>
-              <td>
-                <div class="date">
-                  <div class="date-day-number"><%= hackathon.date_start.strftime("%e") %></div>
-                  <div class="date-month"><%= hackathon.date_start.strftime("%B").first(3) %></div>
-                </div>
-              </td>
-              <td>
-                <%= link_to hackathon.title, hackathon, 'data-no-turbolink' => false, class: "title" %>
-                <br />
-                <%= hackathon.city %>, <%= hackathon.country %>
-              </td>
+          <% end %>
 
-              <td>
-                <% if hackathon.date_start != hackathon.date_end  %>
-                <%= hackathon.date_start.strftime("%a") %> - <%=hackathon.date_end.strftime("%a")%>
-                <% else %>
-                <%= hackathon.date_start.strftime("%a") %>
-                <% end %>
-              </td>
-              <td class="hidden-xs"><%= hackathon.city %></td>
-              <td class="hidden-xs"><%= hackathon.country %></td>
+          <% if date == today %>
+            <td class='today'>
+          <% else %>
+            <td>
+          <% end %>
+
+          <p class='day'>
+          <%= "#{date.day}" %>
+          <% if date.day == 1 %>
+             – <strong><%= "#{months[date.month]}" %></strong>
+          <% end %>
+          </p>
+
+          <% if grouped_data[date] %>
+            <% grouped_data[date].each do |event| %>
+              <p class='event'>
+                <%= link_to "#{event.title} (#{event.country})", event %>
+              </p>
+            <% end %>
+          <% end %>
+
+          </td>
+
+          <% if date.wday == 0 %>
             </tr>
           <% end %>
-        </tbody>
+        <% end %>
       </table>
-      <%= paginate @hackathons, :theme => 'twitter-bootstrap-3' %>
+    <% else %>
+      
+      <% if @hackathons.total_count == 0 %>
+        <p>
+          Sorry no Hackathons found.
+        </p>
+        <iframe src="//giphy.com/embed/8dTuHJeEMjxW8" width="480" height="270" frameBorder="0" style="max-width: 100%" class="giphy-embed" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+      <% else %>
+        <%= paginate @hackathons, :theme => 'twitter-bootstrap-3' %>
+        <table id="hackathons" class="table table-striped">
+          <thead>
+            <tr>
+              <th><%= sort_link @q, :date_start, "Date", default_order: :desc   %></th>
+              <th><%= sort_link @q, :title, "Hackathon" %></th>
+              <th><%= "Weekday" %></th>
+              <th class="hidden-xs"><%= sort_link @q, :city, "City" %></th>
+              <th class="hidden-xs"><%= sort_link @q, :country, "Country" %></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @hackathons.each do |hackathon| %>
+              <tr>
+                <td>
+                  <div class="date">
+                    <div class="date-day-number"><%= hackathon.date_start.strftime("%e") %></div>
+                    <div class="date-month"><%= hackathon.date_start.strftime("%B").first(3) %></div>
+                  </div>
+                </td>
+                <td>
+                  <%= link_to hackathon.title, hackathon, 'data-no-turbolink' => false, class: "title" %>
+                  <br />
+                  <%= hackathon.city %>, <%= hackathon.country %>
+                </td>
+
+                <td>
+                  <% if hackathon.date_start != hackathon.date_end  %>
+                  <%= hackathon.date_start.strftime("%a") %> - <%=hackathon.date_end.strftime("%a")%>
+                  <% else %>
+                  <%= hackathon.date_start.strftime("%a") %>
+                  <% end %>
+                </td>
+                <td class="hidden-xs"><%= hackathon.city %></td>
+                <td class="hidden-xs"><%= hackathon.country %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= paginate @hackathons, :theme => 'twitter-bootstrap-3' %>
+
+      <% end %>
       
     <% end %>
     
