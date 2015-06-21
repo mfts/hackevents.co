@@ -63,13 +63,36 @@ body {
   td { min-height: 40px; width: 14%; vertical-align: top; }
   td.today { background-color: #F1F1F1; }
   tr, td, th { border: 1px solid #EEEEEE; }
-  td, th {}
+  td, th {
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   p { margin: 0; padding: 0; }
   p.day {  }
+  p.event.highlighted {
+    background-color: $brand-primary;
+  }
+  p.event.inactive {
+    background-color: lighten($brand-primary, 30%);
+  }
   p.event {
     a {
       color: #FFFFFF;
     }
-    background-color: orange; color: #FFFFFF; font-size: 12px; margin: 0 -6px 2px -5px; padding: 2px 4px; border-radius: 2px; line-height: 1.2em;
-    }
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    transition:       background-color 0.2s ease;
+    background-color: lighten($brand-primary, 10%);
+    color:            #FFFFFF;
+    font-size:        12px;
+    margin:           0 -6px 2px -5px;
+    padding:          2px 4px;
+    border-radius:    2px;
+    line-height:      1.2em;
+  }
 }
