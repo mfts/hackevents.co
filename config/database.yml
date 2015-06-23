@@ -53,7 +53,7 @@ development:
   encoding: unicode
   database: hackbook_dev
   pool: 5
-  username: Michael
+  username: mfts
   password:
 
 test:
@@ -61,6 +61,6 @@ test:
   encoding: unicode
   database: hackbook_test
   pool: 5
-  username: Michael
+  username: mfts
   password:
 

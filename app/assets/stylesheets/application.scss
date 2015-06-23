@@ -10,81 +10,113 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require hackathons
  *= require_self
  */
 
-@import "materialize";
+$body-bg:                       #FFFFFF;
+$brand-primary:                 #F57C00;
+$text-color:                    #333333;
+$link-color:                    #F57C00;
 
-div.alert {
-  border: 2px solid #aaa;
-  padding: 10px;
-}
-
-div.flash.success { border: 2px solid green; color: green; }
-div.flash.error   { border: 2px solid red;   color: red;   }
-div.flash.notice  { border: 2px solid blue;  color: blue;  }
-
-.clear { clear: both; }
-
-.body-padding {
-  padding-top: 20px;
-}
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 body {
-  background-color: #fafafa;
+  padding-top: 60px;
 }
 
-nav {
-  .navbar-brand {
-    width: 220px;
-    a {
-      margin: 0 20px;
-      text-indent: -9999px;
-      background-image: image-url("he_logo.png");
-      background-repeat: no-repeat;
-      background-position: left center;
-      background-size: contain;
+.navbar-brand {
+  span {
+    width:                220px;
+    text-indent:          -9999px;
+    background-image:     image-url("he_logo.png");
+    background-repeat:    no-repeat;
+    background-position:  left center;
+    background-size:      contain;
+    display:              block;
+  }
+}
+
+#hackathons {
+  .date {
+    background:     #edeceb;
+    border-radius:  3px;
+    box-shadow:     0 1px 0 0 rgba(83,69,64,0.3),0 1px 1px 0 rgba(0,0,0,0.2);
+    position:       relative;
+    text-align:     center;
+    .date-day-number {
+      font-weight: bold;
+    }
+    .day-month {
     }
   }
-  li {
+  .title {
+    font-weight: bold;
+  }
+}
+
+#map {
+  margin: 0 0 1.5em 0;
+}
+
+.table-calendar {
+  td { min-height: 40px; width: 14%; vertical-align: top; }
+  td.today { background-color: #F1F1F1; }
+  tr, td, th { border: 1px solid #EEEEEE; }
+  td, th {
+    max-width:      0;
+    overflow:       hidden;
+    text-overflow:  ellipsis;
+    white-space:    nowrap;
+  }
+  p { 
+    margin: 0; 
+    padding: 0;
+  }
+  p.day {
+    
+  }
+  p.event.highlighted {
     a {
-      color: #f57c00;
-      &:visited {
-        color: #f57c00;
-      }
-      &:hover {
-        color: #f57c00;
-      }
+      background-color: lighten($brand-primary, 10%);
     }
   }
-}
-
-.page-footer {
-  margin: 0;
-  padding: 0;
-}
-
-h1 a {
-  font-family: 'Roboto';
-}
-
-p, h1, h2, h3, h4, h5, h6, a {
-  font-family: 'Roboto';
-}
-
-a {
-  color: #f57c00;
-  &:visited {
-    color: #f57c00;
+  p.event.inactive {
+    a {
+      background-color: lighten($brand-primary, 60%);
+    }
   }
-  &:hover {
-    color: #f57c00;
+  p.event {
+    a {
+      display:          block;
+      overflow:         hidden;
+      text-overflow:    ellipsis;
+      white-space:      nowrap;
+      text-decoration:  none;
+      
+      color:            #000000;
+      font-size:        12px;
+      margin:           0;
+      padding:          8px 6px;
+      line-height:      1.2em;
+      border-bottom:    1px solid #FFFFFF;
+      
+      transition:       background-color 0.2s ease;
+      background-color: lighten($brand-primary, 40%);
+    }
+    margin-left:      -5px;
+    margin-right:     -6px;
   }
 }
 
-.seemore a {
-	color: #000;
+.form-area
+{
+  background-color: #FAFAFA;
+  padding: 10px 40px 60px;
+  margin: 10px 0px 60px;
+  border: 1px solid GREY;
+  }
+
+.form-group {
+  color: $brand-primary;
 }
-
-

@@ -6,11 +6,10 @@ class HackathonsController < ApplicationController
   before_action :set_hackathon, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
  
   def index
-    q_param = params[:q]
-    page = params[:page]
-    per_page = params[:per_page]
- 
-    @q = Hackathon.ransack q_param
+    q_param     = params[:q]
+    page        = params[:page]
+    per_page    = params[:per_page]
+    @q          = Hackathon.ransack q_param
     @hackathons = @q.result.where('date_start >= ?', Time.zone.now).order(date_start: :asc).page(page).per(per_page)
   end
 
