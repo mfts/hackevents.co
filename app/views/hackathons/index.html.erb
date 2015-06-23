@@ -67,7 +67,7 @@
             <p class='day'>
             <%= "#{date.day}" %>
             <% if date.day == 1 %>
-               – <strong><%= "#{months[date.month+1]}" %></strong>
+               – <strong><%= "#{months[date.month-1]}" %></strong>
             <% end %>
             </p>
 
