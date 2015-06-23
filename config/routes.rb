@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get "/login" => "user_sessions#new", as: :login
   delete "/logout" => "user_sessions#destroy", as: :logout
 
+  get 'imprint', to: 'pages#imprint', as: 'imprint'
+
   resources :users do
     member { get :confirm_email }
   end

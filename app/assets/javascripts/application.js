@@ -11,14 +11,22 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sprockets
 //= require jquery.turbolinks
-//= require materialize-sprockets
 //= require jquery_ujs
-
-//= require_tree .
-
 //= require underscore
 //= require gmaps/google
 //= require turbolinks
 
-$(".dropdown-button").dropdown();
+$(function() {
+  $(".table-calendar p.event").hover(
+    function() {
+      $(".table-calendar p.event").addClass("inactive")
+      $(".table-calendar p.event[data-event-id="+$(this).data("event-id")+"]").removeClass("inactive").addClass("highlighted")
+    },
+    function() {
+      $(".table-calendar p.event").removeClass("inactive")
+      $(".table-calendar p.event").removeClass("highlighted")
+    }
+  );
+})
