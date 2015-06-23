@@ -3,8 +3,8 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user && user.authenticate(params[:password]) && user.email_confirmed
+    user = User.find_by(email: params[:session][:email])
+    if user && user.authenticate(params[:session][:password]) && user.email_confirmed
       session[:user_id] = user.id
       if user[:email].end_with?("hackevents.co")
         session[:admin_status] = true
