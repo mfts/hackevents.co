@@ -99,6 +99,7 @@
         <table id="hackathons" class="table table-striped">
           <thead>
             <tr>
+              <th></th>
               <th><%= sort_link @q, :date_start, "Date", default_order: :desc   %></th>
               <th><%= sort_link @q, :title, "Hackathon" %></th>
               <th><%= "Weekday" %></th>
@@ -109,7 +110,23 @@
 
           <tbody>
             <% @hackathons.each do |hackathon| %>
-              <tr>
+              <% if current_user && current_user.following?(hackathon) %>
+                <% following = true %>
+              <% else %>
+                <% following = false %>
+              <% end %>
+              <tr class="<%= following ? "success" : "" %>">
+                <td>
+                  <% if following %>
+                    <%= link_to unfollow_hackathon_path(hackathon), class: "btn btn-link", method: "post" do %>
+                      <span style="font-size: 1.4em;" class="glyphicon glyphicon-star glyphicon-star" aria-hidden="true"></span>
+                    <% end %>
+                  <% else %>
+                    <%= link_to follow_hackathon_path(hackathon), class: "btn btn-link", method: "post" do %>
+                      <span style="font-size: 1.4em;" class="glyphicon glyphicon-star glyphicon-star-empty" aria-hidden="true"></span>
+                    <% end %>
+                  <% end %>
+                </td>
                 <td>
                   <div class="date">
                     <div class="date-day-number"><%= hackathon.date_start.strftime("%e") %></div>
