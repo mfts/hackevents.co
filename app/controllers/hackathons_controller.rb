@@ -1,10 +1,8 @@
-
-# encoding: utf-8
-
 class HackathonsController < ApplicationController
   before_action :require_admin, only: [:new, :create, :upload, :export, :edit, :destroy]
+  before_action :require_user,  only: [:follow, :unfollow]
   before_action :set_hackathon, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
- 
+  
   def index
     q_param     = params[:q]
     page        = params[:page]
