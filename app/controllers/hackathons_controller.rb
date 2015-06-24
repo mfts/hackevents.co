@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 class HackathonsController < ApplicationController
-  before_action :require_admin, only: [:new, :create, :upload, :edit, :destroy]
+  before_action :require_admin, only: [:new, :create, :upload, :export, :edit, :destroy]
   before_action :set_hackathon, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
  
   def index
@@ -62,7 +62,49 @@ class HackathonsController < ApplicationController
     end
   redirect_to hackathons_path, notice: "Hackathons added"
   end
-
+  
+  def export
+    csv_data = CSV.generate do |csv|
+      csv << [
+        "title",
+        "description",
+        "country",
+        "city",
+        "url",
+        "date_start",
+        "date_end",
+        "venue",
+        "address",
+        "challenge",
+        "sponsors",
+        "awards",
+        "schedule",
+        "application",
+        "application_deadline"
+      ]
+      Hackathon.all.each do |hackathon|
+        csv << [
+          hackathon.title,
+          hackathon.description,
+          hackathon.country,
+          hackathon.city,
+          hackathon.url,
+          hackathon.date_start,
+          hackathon.date_end,
+          hackathon.venue,
+          hackathon.address,
+          hackathon.challenge,
+          hackathon.sponsors,
+          hackathon.awards,
+          hackathon.schedule,
+          hackathon.application,
+          hackathon.application_deadline
+        ]
+      end
+    end
+    
+    send_data csv_data, filename: "export.csv", type: ' text/csv', disposition: 'attachment'
+  end
 
   # PATCH/PUT /hackathons/1
   # PATCH/PUT /hackathons/1.json
