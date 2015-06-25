@@ -14,7 +14,7 @@ class UserSessionsController < ApplicationController
       flash[:success] = "Thanks for logging in!"
       redirect_to hackathons_path
     else
-      flash.now[:error] = 'Please activate your account by following the 
+      flash.now[:alert] = 'Please activate your account by following the 
       instructions in the account confirmation email you received to proceed'
       render action: 'new'
     end
