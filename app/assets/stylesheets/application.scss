@@ -40,8 +40,10 @@ body {
   
   li {
     a.add-button {
-      background-color: $brand-primary;
-      color: #FFFFFF;
+      &:link, &:visited, &:hover, &:active {
+        background-color: $brand-primary;
+        color: #FFFFFF;
+      }
     }
   }
 }
