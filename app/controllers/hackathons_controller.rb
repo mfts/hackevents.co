@@ -160,8 +160,11 @@ class HackathonsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_hackathon
-      # @hackathon = Hackathon.friendly.find(params[:id])
-      @hackathon = Hackathon.find(params[:id] || params[:name].to_i)
+      if params[:id].present?
+        @hackathon = Hackathon.friendly.find(params[:id])
+      else
+        @hackathon = Hackathon.find(params[:id] || params[:name].to_i)
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

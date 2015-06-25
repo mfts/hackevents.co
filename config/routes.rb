@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   delete "/logout" => "user_sessions#destroy", as: :logout
 
   get 'imprint', to: 'pages#imprint', as: 'imprint'
-  get 'hackathons/:country/:city/:name', to: 'hackathons#show', as: :hackathon_by_id
-  get 'hackathons/:country', to: 'hackathons#index', as: :hackathons_by_country
-  get 'hackathons/:country/:city', to: 'hackathons#index', as: :hackathons_by_city
+  get 'hackathon/:country/:city/:name', to: 'hackathons#show', as: :hackathon_by_id
+  get 'hackathon/:country', to: 'hackathons#index', as: :hackathons_by_country
+  get 'hackathon/:country/:city', to: 'hackathons#index', as: :hackathons_by_city
   
   resources :users do
     member { get :confirm_email }
