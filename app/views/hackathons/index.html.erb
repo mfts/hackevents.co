@@ -107,10 +107,9 @@
               <th class="hidden-xs"><%= sort_link @q, :country, "Country" %></th>
             </tr>
           </thead>
-
           <tbody>
             <% @hackathons.each do |hackathon| %>
-              <% if current_user && current_user.following?(hackathon) %>
+              <% if current_user && @membership_hackathon_ids.include?(hackathon.id) %>
                 <% following = true %>
               <% else %>
                 <% following = false %>

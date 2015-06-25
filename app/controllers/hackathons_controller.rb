@@ -9,6 +9,10 @@ class HackathonsController < ApplicationController
     per_page    = params[:per_page]
     @q          = Hackathon.ransack q_param
     @hackathons = @q.result.where('date_start >= ?', Time.zone.now).order(date_start: :asc).page(page).per(per_page)
+    
+    if current_user
+      @membership_hackathon_ids = Membership.where(user_id: current_user.id, hackathon_id: @hackathons.map{ |h| h.id }).map{ |m| m.hackathon_id }
+    end
   end
 
   # GET /hackathons/1
