@@ -4,7 +4,20 @@ class HackathonsController < ApplicationController
   before_action :set_hackathon, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
   
   def index
-    q_param     = params[:q]
+    q_param = nil
+    
+    if params[:q].present? && params[:q][:title_or_country_or_city_cont].present?
+      q_param     = { title_or_country_or_city_cont: params[:q][:title_or_country_or_city_cont].titleize }
+    end
+    
+    if q_param.blank? && params[:country].present? && params[:city].blank?
+      q_param = { country_cont: params[:country].titleize }
+    end
+    
+    if q_param.blank? && params[:country].present? && params[:city].present?
+      q_param = { city_cont: "#{params[:city]}".titleize }
+    end
+    
     page        = params[:page]
     per_page    = params[:per_page]
     @q          = Hackathon.ransack q_param
@@ -17,8 +30,9 @@ class HackathonsController < ApplicationController
 
   # GET /hackathons/1
   # GET /hackathons/1.json
-  # def show
-  # end
+  def show
+    
+  end
 
   # GET /hackathons/new
   def new
@@ -143,11 +157,11 @@ class HackathonsController < ApplicationController
   end
 
 
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_hackathon
-      @hackathon = Hackathon.friendly.find(params[:id])
+      # @hackathon = Hackathon.friendly.find(params[:id])
+      @hackathon = Hackathon.find(params[:id] || params[:name].to_i)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

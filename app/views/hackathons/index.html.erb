@@ -133,7 +133,7 @@
                   </div>
                 </td>
                 <td>
-                  <%= link_to hackathon.title, hackathon, 'data-no-turbolink' => false, class: "title" %>
+                  <%= link_to hackathon.title, hackathon_by_id_path(name: "#{hackathon.id}-#{hackathon.title}".parameterize.downcase, country: hackathon.country.parameterize.downcase, city: hackathon.city.parameterize.downcase), 'data-no-turbolink' => false, class: "title" %>
                   <br />
                   <%= hackathon.city %>, <%= hackathon.country %>
                 </td>
