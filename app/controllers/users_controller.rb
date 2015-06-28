@@ -9,16 +9,21 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    if auth_hash
+      @user = TwitterAccount.find_or_create_from_auth_hash(auth_hash)
+      redirect_to root_url
+    else
+      @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        UserMailer.registration_confirmation(@user).deliver
-        format.html { redirect_to root_url, notice: 'Please confirm your email to continue.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @user.save
+          UserMailer.registration_confirmation(@user).deliver
+          format.html { redirect_to root_url, notice: 'Please confirm your email to continue.' }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :new }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -49,5 +54,11 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :twitter_name, :email, :password, :password_confirmation)
+    end
+
+  protected
+
+    def auth_hash
+      request.env['omniauth.auth']
     end
 end

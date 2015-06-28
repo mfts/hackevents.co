@@ -28,4 +28,13 @@ Rails.application.routes.draw do
     end
   end
   root to: 'hackathons#index'
+
+  resources :twitter_sessions
+  # Twitter routes
+  get '/auth/twitter/callback', to: 'twitter_sessions#create', as: 'callback'
+  get '/auth/failure', to: 'twitter_sessions#error', as: 'failure'
+  get '/twitterprofile', to: 'twitter_sessions#show', as: 'show'
+  delete '/signout', to: 'twitter_sessions#destroy', as: 'signout'
+
+
 end
