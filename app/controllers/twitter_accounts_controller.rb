@@ -6,21 +6,22 @@ class TwitterAccountsController < ApplicationController
     # session[:access_token] = credentials['token']
     # session[:access_token_secret] = credentials['secret']
     # redirect_to show_path, notice: 'Signed in'
-    @user = TwitterAccount.find_or_create_from_auth_hash(auth_hash)
+    twitter_account = TwitterAccount.find_or_create_from_auth_hash(auth_hash)
+    @user = 
     session[:user_id] = @user.id
     redirect_to twitter_account_path(@user)
   end
 
   def show
-    @user = TwitterAccount.find_by(id: session[:user_id])
+    @user = current_user
   end
 
   def edit
-    @user = TwitterAccount.find_by(id: session[:user_id])
+    @user = current_user
   end
 
   def update
-    @user = TwitterAccount.find_by(id: session[:user_id])
+    @user = current_user
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to twitter_account_path(@user), notice: 'User was successfully updated.' }

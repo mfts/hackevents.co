@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   resources :twitter_accounts
   # Twitter routes
-  get '/auth/twitter/callback', to: 'users#create', as: 'callback'
+  get '/auth/twitter/callback', to: 'twitter_accounts#create', as: 'callback'
   get '/auth/failure', to: 'twitter_accounts#error', as: 'failure'
   get '/twitterprofile', to: 'twitter_accounts#show', as: 'show'
   delete '/signout', to: 'twitter_accounts#destroy', as: 'signout'

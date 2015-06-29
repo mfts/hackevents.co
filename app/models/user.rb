@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :hackathons, :through => :memberships
 
+  has_one :twitter_account
+
   def downcase_email
     self.email = email.downcase
   end
