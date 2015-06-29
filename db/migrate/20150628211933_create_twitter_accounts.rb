@@ -4,6 +4,7 @@ class CreateTwitterAccounts < ActiveRecord::Migration
       t.string :provider
       t.string :uid
       t.string :name
+      t.string :description
       t.string :token
       t.string :secret
       t.string :profile_image

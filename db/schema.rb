@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20150628211933) do
     t.string "provider"
     t.string "uid"
     t.string "name"
+    t.string "description"
     t.string "token"
     t.string "secret"
     t.string "profile_image"

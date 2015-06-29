@@ -6,12 +6,16 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    @users = User.all
+  end
+
   # POST /users
   # POST /users.json
   def create
     if auth_hash
       @user = TwitterAccount.find_or_create_from_auth_hash(auth_hash)
-      redirect_to root_url
+      redirect_to root_path
     else
       @user = User.new(user_params)
 
@@ -48,7 +52,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find(params[:id]) || TwitterAccount.find(params[:name])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
