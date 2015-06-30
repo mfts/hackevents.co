@@ -1,5 +1,5 @@
 class HackathonsController < ApplicationController
-  before_action :require_admin, only: [:new, :create, :upload, :export, :edit, :destroy]
+  before_action :require_admin, only: [:new, :create, :upload, :export, :display, :edit, :destroy]
   before_action :require_user,  only: [:follow, :unfollow]
   before_action :set_hackathon, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
   
@@ -154,6 +154,10 @@ class HackathonsController < ApplicationController
   def unfollow
     current_user.unfollow_hackathon(@hackathon)
     redirect_to :back
+  end
+
+  def display
+    @hackathons = Hackathon.all
   end
 
 
