@@ -12,15 +12,10 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find(cookies.signed[:user_id]) if cookies.signed[:user_id]
     # rescue ActiveRecord::RecordNotFound
   end
   helper_method :current_user
-
-  def admin_user
-    @admin_user ||= User.find(session[:user_id]) if session[:user_id] && session[:admin_status]
-  end
-  helper_method :admin_user
 
   def require_user
     if current_user
@@ -31,7 +26,7 @@ class ApplicationController < ActionController::Base
   end 
 
   def require_admin
-    if admin_user
+    if current_user && current_user.admin?
       true
     else
       redirect_to new_user_session_path, notice: "You must log in as admin user."

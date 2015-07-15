@@ -1,4 +1,12 @@
-FactoryGirl.define do  
+FactoryGirl.define do  factory :identity do
+    user nil
+provider "MyString"
+uid "MyString"
+  end
+  factory :twitter_user do
+    
+  end
+  
 
   factory :membership do
     user_id 1

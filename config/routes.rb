@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :users do
     member { get :confirm_email }
   end
+
+  get '/hackathons/display', to: 'hackathons#display'
   
   resource :profile
   
@@ -30,4 +32,13 @@ Rails.application.routes.draw do
     end
   end
   root to: 'hackathons#index'
+
+  resources :twitter_accounts
+  # Twitter routes
+  get '/auth/twitter/callback', to: 'twitter_accounts#create', as: 'callback'
+  get '/auth/failure', to: 'twitter_accounts#error', as: 'failure'
+  get '/twitterprofile', to: 'twitter_accounts#show', as: 'show'
+  delete '/signout', to: 'twitter_accounts#destroy', as: 'signout'
+
+
 end

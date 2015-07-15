@@ -31,6 +31,10 @@ class ProfilesController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :twitter_name, :email, :password, :password_confirmation)
+    if params[:name]
+      params.require(:twitter_account).permit(:name, :description, :profile_image)
+    else
+      params.require(:user).permit(:first_name, :last_name, :twitter_name, :email, :password, :password_confirmation)
+    end
   end
 end
