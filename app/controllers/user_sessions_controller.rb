@@ -5,7 +5,7 @@ class UserSessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email])
     if user && user.authenticate(params[:session][:password]) && user.email_confirmed
-      cookies[:user_id] = user.id
+      cookies.signed[:user_id] = { value: user.id, expires: 1.year.from_now }
       flash[:success] = "Thanks for logging in!"
       redirect_to hackathons_path
     else

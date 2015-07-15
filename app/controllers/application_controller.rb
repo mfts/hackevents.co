@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
 
   def current_user
-    @current_user ||= User.find(cookies[:user_id]) if cookies[:user_id]
+    @current_user ||= User.find(cookies.signed[:user_id]) if cookies.signed[:user_id]
     # rescue ActiveRecord::RecordNotFound
   end
   helper_method :current_user

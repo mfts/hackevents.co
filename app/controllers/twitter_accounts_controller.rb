@@ -16,7 +16,7 @@ class TwitterAccountsController < ApplicationController
       @user.twitter_account = twitter_account
       @user.save
       
-      cookies[:user_id] = @user.id
+      cookies.signed[:user_id] = { value: @user.id, expires: 1.year.from_now }
       redirect_to root_path
     end
   end
