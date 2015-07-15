@@ -9,8 +9,8 @@ class TwitterAccountsController < ApplicationController
     else
       twitter_account = TwitterAccount.find_or_create_from_auth_hash(auth_hash)
       names        = twitter_account.name.split(" ")
-      first_name   = names.first || ""
-      last_name    = names.last  || ""
+      first_name   = names.first
+      last_name    = names.size > 1 ? names.last : ""
       
       @user = User.new(first_name: first_name, last_name: last_name)
       @user.twitter_account = twitter_account
