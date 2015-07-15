@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   end
 
   def unfollow_hackathon(hackathon)
-    self.memberships.find_by(hackathon_id: hackathon.id).destroy
+    self.memberships.where(hackathon_id: hackathon.id).destroy_all
   end
 
   def following?(hackathon)

@@ -5,7 +5,8 @@
 <h1>
   <%= @hackathon.title %>
   <small>
-    <%= @hackathon.city %>, <%= @hackathon.country %>
+    <%= link_to @hackathon.city, hackathons_by_city_path(country: @hackathon.country.parameterize, city: @hackathon.city.parameterize) %>, 
+    <%= link_to @hackathon.country, hackathons_by_country_path(country: @hackathon.country.parameterize) %>
   </small>
 </h1>
 
@@ -19,19 +20,20 @@
   </strong>
 </p>
 
-<address>
-  <strong><%= @hackathon.venue %></strong><br />
-  <%= @hackathon.address %><br />
-  <%= @hackathon.city %>, <%= @hackathon.country %><br />
-  <%= link_to "<i class='glyphicon glyphicon-map-marker'></i>&nbsp; Get Directions" .html_safe, "https://maps.google.com?daddr=#{ @hackathon.address }", class: "btn", target: "_blank" %>
-</address>
-
-
 <p>
   <%= link_to "Visit Website", @hackathon.url, class: "btn btn-primary", target: "_blank" %>
-  <%= link_to "Share on Twitter", "https://twitter.com/home?status=HACKATHON%20%7C%C2%A0#{ @hackathon.country }%20%7C%C2%A0#{ @hackathon.city }%20%7C%C2%A0#{ @hackathon.title }%20#{ @hackathon.date_start.strftime("%d/%m/%Y") }%20#{ request.url }%20#{ @hackathon.twitter }%20@hackevents", class: "btn", target: "_blank" %>
+  <%= link_to "Share on Twitter", "https://twitter.com/home?status=HACKATHON%20%7C%C2%A0#{ @hackathon.country }%20%7C%C2%A0#{ @hackathon.city }%20%7C%C2%A0#{ @hackathon.title }%20#{ @hackathon.date_start.strftime("%d/%m/%Y") }%20#{ request.url }%20#{ @hackathon.twitter }%20@hackevents", class: "btn btn-default", target: "_blank" %>
 </p>
 
+<hr />
+
+<address>
+  <strong><%= @hackathon.venue %></strong><br />
+  <%= @hackathon.address %>
+</address>
+<p>
+  <%= link_to "<i class='glyphicon glyphicon-map-marker'></i>&nbsp; Get Directions" .html_safe, "https://maps.google.com?daddr=#{ @hackathon.address }", class: "btn btn-default", target: "_blank" %>
+</p>
 
 <% if logged_in? %>
   <hr />

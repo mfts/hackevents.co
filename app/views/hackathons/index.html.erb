@@ -100,6 +100,7 @@
         <table id="hackathons" class="table table-striped">
           <thead>
             <tr>
+              <th></th>
               <th><%= sort_link @q, :date_start, "Date", default_order: :desc   %></th>
               <th><%= sort_link @q, :title, "Hackathon" %></th>
               <th><%= "Weekday" %></th>
@@ -107,10 +108,25 @@
               <th class="hidden-xs"><%= sort_link @q, :country, "Country" %></th>
             </tr>
           </thead>
-
           <tbody>
             <% @hackathons.each do |hackathon| %>
-              <tr>
+              <% if current_user && @membership_hackathon_ids.include?(hackathon.id) %>
+                <% following = true %>
+              <% else %>
+                <% following = false %>
+              <% end %>
+              <tr class="<%= following ? "success" : "" %>">
+                <td>
+                  <% if following %>
+                    <%= link_to unfollow_hackathon_path(hackathon), class: "btn btn-link", method: "post" do %>
+                      <span style="font-size: 1.4em;" class="glyphicon glyphicon-star glyphicon-star" aria-hidden="true"></span>
+                    <% end %>
+                  <% else %>
+                    <%= link_to follow_hackathon_path(hackathon), class: "btn btn-link", method: "post" do %>
+                      <span style="font-size: 1.4em;" class="glyphicon glyphicon-star glyphicon-star-empty" aria-hidden="true"></span>
+                    <% end %>
+                  <% end %>
+                </td>
                 <td>
                   <div class="date">
                     <div class="date-day-number"><%= hackathon.date_start.strftime("%e") %></div>
@@ -118,7 +134,7 @@
                   </div>
                 </td>
                 <td>
-                  <%= link_to hackathon.title, hackathon, 'data-no-turbolink' => false, class: "title" %>
+                  <%= link_to hackathon.title, hackathon_by_id_path(name: "#{hackathon.id}-#{hackathon.title}".parameterize.downcase, country: hackathon.country.parameterize.downcase, city: hackathon.city.parameterize.downcase), 'data-no-turbolink' => false, class: "title" %>
                   <br />
                   <%= hackathon.city %>, <%= hackathon.country %>
                 </td>

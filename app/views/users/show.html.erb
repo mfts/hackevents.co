@@ -1,41 +1,13 @@
 <h1>Profile Page</h1>
 
-<% if logged_in? && current_user == @user %>
-  <p>
-    <strong>First name:</strong>
-    <%= @user.first_name %>
-  </p>
-
-  <p>
-    <strong>Last name:</strong>
-    <%= @user.last_name %>
-  </p>
-
-  <p>
-    <strong>Twitter name:</strong>
-    <%= @user.twitter_name %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= @user.email %>
-  </p>
-
-  <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Back', hackathons_path %>
-  <%= link_to 'Delete', @user , method: :delete, data: { confirm: 'Are you sure?' } %>
-
-<% else %>
-
-  <p>
+<p>
   <strong>This is <%= @user.first_name %>'s page.</strong>
-  </p>
-  <p>Follow on Twitter: <%= link_to @user.twitter_name, "http://twitter.com/#{@user.twitter_name}" %></p>
+</p>
 
-  <p>His upcoming hackathons:</p>
+<p>Follow on Twitter: <%= link_to @user.twitter_name, "http://twitter.com/#{@user.twitter_name}" %></p>
 
-  <% @user.hackathons.each do |h| %>
-  <p><%= link_to h.title, hackaton_path(h) %></p>
-  <% end %>
+<p>His upcoming hackathons:</p>
 
+<% @user.hackathons.each do |h| %>
+  <p><%= link_to h.title, hackathon_path(h) %></p>
 <% end %>

@@ -25,15 +25,26 @@ body {
   padding-top: 60px;
 }
 
-.navbar-brand {
-  span {
-    width:                220px;
-    text-indent:          -9999px;
-    background-image:     image-url("he_logo.png");
-    background-repeat:    no-repeat;
-    background-position:  left center;
-    background-size:      contain;
-    display:              block;
+.navbar {
+  .navbar-brand {
+    span {
+      width:                220px;
+      text-indent:          -9999px;
+      background-image:     image-url("he_logo.png");
+      background-repeat:    no-repeat;
+      background-position:  left center;
+      background-size:      contain;
+      display:              block;
+    }
+  }
+  
+  li {
+    a.add-button {
+      &:link, &:visited, &:hover, &:active {
+        background-color: $brand-primary;
+        color: #FFFFFF;
+      }
+    }
   }
 }
 
