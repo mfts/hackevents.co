@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :users do
     member { get :confirm_email }
   end
+
+  get '/hackathons/display', to: 'hackathons#display'
   
   resource :profile
   

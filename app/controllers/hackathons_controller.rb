@@ -156,6 +156,10 @@ class HackathonsController < ApplicationController
     redirect_to :back
   end
 
+  def display
+    @hackathons = Hackathon.all
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
