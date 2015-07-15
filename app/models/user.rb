@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
     self.twitter_account.present?
   end
   
+  def admin?
+    self[:email].end_with?("hackevents.co")
+  end
+  
   def downcase_email
     if self.email.present?
       self.email = email.downcase

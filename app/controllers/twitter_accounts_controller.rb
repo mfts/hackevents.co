@@ -16,7 +16,7 @@ class TwitterAccountsController < ApplicationController
       @user.twitter_account = twitter_account
       @user.save
       
-      session[:user_id] = @user.id
+      cookies.signed[:user_id] = { value: @user.id, expires: 1.year.from_now }
       redirect_to root_path
     end
   end
@@ -49,6 +49,7 @@ class TwitterAccountsController < ApplicationController
 
   def destroy
     reset_session
+    cookies.delete :user_id
     redirect_to root_path, notice: 'Signed out'
   end
 
