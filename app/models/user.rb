@@ -1,19 +1,31 @@
 class User < ActiveRecord::Base
   before_create :generate_registration_confirmation_token
-  has_secure_password
+  
+  has_secure_password validations: false
+  
+  validates_confirmation_of :password, unless: :twitter_user?
+  validates_presence_of     :password, on: :create, unless: :twitter_user?
+  validates_presence_of     :password_confirmation, unless: :twitter_user?
+  
   validates :email, presence: true,
                     uniqueness: true,
-                    format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9\.-]+\.[A-Za-z]+\Z/ }
-
+                    format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9\.-]+\.[A-Za-z]+\Z/ },
+                    unless: :twitter_user?
   before_save :downcase_email
 
   has_many :memberships
   has_many :hackathons, :through => :memberships
 
   has_one :twitter_account
-
+  
+  def twitter_user?
+    self.twitter_account.present?
+  end
+  
   def downcase_email
-    self.email = email.downcase
+    if self.email.present?
+      self.email = email.downcase
+    end
   end
 
   def generate_password_reset_token!

@@ -2,26 +2,22 @@ class TwitterAccountsController < ApplicationController
   before_action :require_user,  only: [:edit, :follow, :unfollow]
 
   def create
-    # credentials = request.env['omniauth.auth']['credentials']
-    # session[:access_token] = credentials['token']
-    # session[:access_token_secret] = credentials['secret']
-    # redirect_to show_path, notice: 'Signed in'
-    # twitter_account = TwitterAccount.find_or_create_from_auth_hash(auth_hash)
-    # if twitter_account
-    #   flash[:notice] = "Signed in successfully"
-    #   session[:user_id] = twitter_account.user_id
-    #   redirect_to root_path
-    # elsif current_user
     if current_user
       current_user.twitter_account.find_or_create_from_auth_hash(auth_hash)
       flash[:notice] = "Authentication successful."
       redirect_to twitter_account_url
     else
-      @user = TwitterAccount.find_or_create_from_auth_hash(auth_hash)
-      session[:user_id] = @user.user_id
-      puts @user.user_id.to_s
-      puts @user
-      redirect_to twitter_account_path(@user)
+      twitter_account = TwitterAccount.find_or_create_from_auth_hash(auth_hash)
+      names        = twitter_account.name.split(" ")
+      first_name   = names.first || ""
+      last_name    = names.last  || ""
+      
+      @user = User.new(first_name: first_name, last_name: last_name)
+      @user.twitter_account = twitter_account
+      @user.save
+      
+      session[:user_id] = @user.id
+      redirect_to root_path
     end
   end
 
