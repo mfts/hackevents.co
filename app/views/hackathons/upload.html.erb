@@ -1,6 +1,6 @@
 <h1>Upload New Hackathons</h1>
 
-<% if logged_in? && admin_user %>
+<% if logged_in? && current_user.admin? %>
 <%= form_tag import_hackathons_path, multipart: true do %>
   <%= file_field_tag :file %>
   <br />
