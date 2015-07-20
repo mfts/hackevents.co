@@ -55,7 +55,6 @@
     <br />
     Send us an email at <%= mail_to 'michael@hackevents.co', 'Report Hackathon', subject: "Error with #{@hackathon.title}" %> if there is wrong information about this hackathon.
   </p>
-  <p><%= link_to 'Edit', edit_hackathon_path(@hackathon) %></p> 
 <% else %>
   <p>
     Please <%= link_to "log in", login_path %> to report an error in the hackathon.
