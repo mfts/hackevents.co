@@ -55,30 +55,6 @@ class User < ActiveRecord::Base
   end
 
 
-  # # Twitter
-  # def self.find_or_create_from_auth_hash(auth_hash)
-  #   twitter_account = where(provider: auth_hash.provider, uid: auth_hash.uid).first_or_create
-  #   twitter_account.update(
-  #     name: auth_hash.info.nickname,
-  #     profile_image: auth_hash.info.image,
-  #     email: auth_hash.info.email,
-  #     token: auth_hash.credentials.token,
-  #     secret: auth_hash.credentials.secret
-  #   )
-  #   twitter_account
-  # end
-
-  # def client
-  #   @client ||= Twitter::REST::Client.new do |config|
-  #     config.consumer_key = Rails.application.secrets.twitter_api_key
-  #     config.consumer_secret = Rails.application.secrets.twitter_api_secret
-  #     config.access_token = token
-  #     config.access_token_secret = secret
-  #   end
-  # end
-
-  # ######
-
 
 
 

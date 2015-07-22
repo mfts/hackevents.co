@@ -23,4 +23,13 @@ class TwitterAccount < ActiveRecord::Base
       config.access_token_secret = secret
     end
   end
+
+  def getFriends
+    # begin
+      friendsList = client.friends
+    # rescue Twitter::Error::TooManyRequests => error
+    #   sleep error.rate_limit.reset_in + 1
+    #   retry
+    # end
+  end
 end

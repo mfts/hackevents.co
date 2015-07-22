@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
   
   def show
     @user = current_user
+    @friendsList = @user.twitter_account.getFriends
   end
   
   def edit
@@ -27,6 +28,7 @@ class ProfilesController < ApplicationController
     current_user.destroy
     redirect_to root_path, notice: 'User was successfully destroyed.'
   end
+
   
   private
   
