@@ -1,4 +1,14 @@
-FactoryGirl.define do  factory :categorization do
+FactoryGirl.define do  factory :sponsorship do
+    sponsor_id 1
+hackathon_id 1
+  end
+  factory :sponsor do
+    twitter_handle "MyString"
+twitter_image_url "MyString"
+twitter_name "MyString"
+alt_name "MyString"
+  end
+  factory :categorization do
     category_id 1
 hackathon_id 1
   end

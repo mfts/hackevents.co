@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150724103838) do
+ActiveRecord::Schema.define(version: 20150724135956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,22 @@ ActiveRecord::Schema.define(version: 20150724103838) do
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
+    t.integer  "hackathon_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "sponsors", force: :cascade do |t|
+    t.string   "twitter_handle"
+    t.string   "twitter_image_url"
+    t.string   "twitter_name"
+    t.string   "alt_name"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  create_table "sponsorships", force: :cascade do |t|
+    t.integer  "sponsor_id"
     t.integer  "hackathon_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

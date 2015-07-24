@@ -14,6 +14,9 @@ class Hackathon < ActiveRecord::Base
   has_many :categorizations
   has_many :categories, :through => :categorizations, dependent: :destroy
 
+  has_many :sponsorships
+  has_many :sponsors, :through => :sponsorships, dependent: :destroy
+
   def uniqueslug
     "#{country} #{city} #{title}"
   end
