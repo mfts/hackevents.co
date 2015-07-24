@@ -15,7 +15,10 @@
 
 <div>
   <% @friendsList.each do |f| %>
-  <%= f.id %>
+  <p><%= f.id %></p>
+  <% if @user.isUser?(f.id) %>
+  <p> check </p>
+  <% end %>
   <br />
   <% end %>
 </div>

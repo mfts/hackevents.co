@@ -9,6 +9,7 @@ class TwitterAccount < ActiveRecord::Base
       name: auth_hash.info.name,
       profile_image: auth_hash.info.image.gsub('_normal',''),
       description: auth_hash.info.description,
+      location: auth_hash.info.location,
       token: auth_hash.credentials.token,
       secret: auth_hash.credentials.secret
     )
@@ -32,4 +33,5 @@ class TwitterAccount < ActiveRecord::Base
     #   retry
     # end
   end
+
 end

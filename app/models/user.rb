@@ -55,6 +55,9 @@ class User < ActiveRecord::Base
   end
 
 
+  def isUser?(id)
+    TwitterAccount.exists?(uid: id)
+  end
 
 
 
