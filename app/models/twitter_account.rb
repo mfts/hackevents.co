@@ -27,7 +27,7 @@ class TwitterAccount < ActiveRecord::Base
 
   def getFriends
     # begin
-      friendsList = client.friends
+      friendsList = client.follower_ids
     # rescue Twitter::Error::TooManyRequests => error
     #   sleep error.rate_limit.reset_in + 1
     #   retry

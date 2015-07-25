@@ -3,7 +3,8 @@ class ProfilesController < ApplicationController
   
   def show
     @user = current_user
-    @friendsList = @user.twitter_account.getFriends
+    friendsList = @user.twitter_account.getFriends.to_a
+    @newArray = TwitterAccount.pluck(:uid) & friendsList
   end
   
   def edit

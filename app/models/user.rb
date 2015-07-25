@@ -61,6 +61,8 @@ class User < ActiveRecord::Base
 
 
 
+
+
   private
   def generate_registration_confirmation_token
     if self.confirm_token.blank?
