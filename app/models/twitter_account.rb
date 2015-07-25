@@ -26,12 +26,11 @@ class TwitterAccount < ActiveRecord::Base
   end
 
   def getFriends
-    # begin
-      friendsList = client.follower_ids
-    # rescue Twitter::Error::TooManyRequests => error
-    #   sleep error.rate_limit.reset_in + 1
-    #   retry
-    # end
+    client.friend_ids
+  end
+
+  def getFollowers
+    client.follower_ids
   end
 
 end
