@@ -1,0 +1,10 @@
+<div>
+  <% Category.all.each do |category| %>
+    <li>
+      <span style="background-color: #<%= category.primary_hex_color %>">
+        O
+      </span>
+      <%= category.name %>
+    </li>
+  <% end %>
+</div>

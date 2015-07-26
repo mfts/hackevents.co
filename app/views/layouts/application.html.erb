@@ -19,87 +19,56 @@
   </head>
   <body>
     
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <span>
+        Hackevents
+      </span>
+    <% end %>
     
     
-    <div class="navigation">
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <%= link_to root_path, class: "navbar-brand" do %>
-              <span>
-                Hackevents
-              </span>
-            <% end %>
-          </div>
-          
-          <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <% if current_user %>
-                <li><%= link_to "Log Out", logout_path, method: :delete %></li>
-                <li><%= link_to "Profile", profile_path %></li>
-                <li>
-                  <%= link_to "Add", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { confirm: "Found a hackathon we have not listed yet? Submit it through out Typeform! Thank you :)" }, :target => "_blank" %>
-                </li>
-              <% else %>
-                <li>
-                  <%= link_to "Log In", new_user_session_path %>
-                </li>
-                <li>
-                  <%= link_to "Sign Up", new_user_path %>
-                </li>
-                <li>
-                  <%= link_to "Sign Up with Twitter", '/auth/twitter', method: 'get', html: {class: 'form-horizontal'} %>
-                </li>
-              <% end %>
-            </ul>
-
-          </div>
-        </div>
-      </div>
-    </div>
+    <% if current_user %>
+      <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+      <li><%= link_to "Profile", profile_path %></li>
+      <li>
+        <%= link_to "Add", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { confirm: "Found a hackathon we have not listed yet? Submit it through out Typeform! Thank you :)" }, :target => "_blank" %>
+      </li>
+    <% else %>
+      <li>
+        <%= link_to "Log In", new_user_session_path %>
+      </li>
+      <li>
+        <%= link_to "Sign Up", new_user_path %>
+      </li>
+      <li>
+        <%= link_to "Sign Up with Twitter", '/auth/twitter', method: 'get', html: {class: 'form-horizontal'} %>
+      </li>
+    <% end %>
     
-    <div>
-      safdasdf
-    </div>
-    <div>
-      <%= cookies[:user_id].to_json %>
-    </div>
-    <div>
-      dfasdf
-    </div>
-    
-    
-    
-    <div class="container">
+    <%= search_form_for @q do |f| %>
       <div class="row">
-        <% message_types = { success: "success", notice: "info", warning: "warning", alert: "danger" } %>
-        <% flash.each do |key, message| %>
-          <div class="alert alert-<%= message_types[key.to_sym] || "info" %> alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <%= message %>
-          </div>
-        <% end %>
-        <div class="col-md-12">
-          <%= yield %>
+        <div class="col-sm-9 col-xs-12">
+          <%= f.text_field :title_or_country_or_city_cont, :placeholder => "Country or City or Title", :class => "form-control" %>
+        </div>
+        <div class="col-sm-3 hidden-xs">
+          <%= f.submit "Search", class: "form-control btn btn-primary" %>
         </div>
       </div>
-    </div>
+    <% end %>
     
+    
+    <% message_types = { success: "success", notice: "info", warning: "warning", alert: "danger" } %>
+    <% flash.each do |key, message| %>
+      <div class="alert alert-<%= message_types[key.to_sym] || "info" %> alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= message %>
+      </div>
+    <% end %>
+    
+    <%= yield %>
     
     <footer>
-      <hr />
-      <div class="container">
-        <p>
-          © 2015 Hackevents - All Rights Reserved
-          <%= link_to "Imprint & Data Privacy", imprint_path %>
-        </p>
-      </div>
+      © 2015 Hackevents - All Rights Reserved
+      <%= link_to "Imprint & Data Privacy", imprint_path %>
     </footer>
     
     

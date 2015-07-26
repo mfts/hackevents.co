@@ -1,161 +1,19 @@
-<div class="row">
-  <div class="col-md-12">
-    
-    <h1>
-      Find Hackathons in Europe
-    </h1>
-    <%= search_form_for @q do |f| %>
-      <div class="row">
-        <div class="col-sm-9 col-xs-12">
-          <%= f.text_field :title_or_country_or_city_cont, :placeholder => "Country or City or Title", :class => "form-control" %>
-        </div>
-        <div class="col-sm-3 hidden-xs">
-          <%= f.submit "Search", class: "form-control btn btn-primary" %>
-        </div>
-      </div>
-    <% end %>
-    
-    <hr />
-    
-    <ul class="nav nav-tabs hidden-xs" style="margin-bottom: 1.5em;">
-      <li class="<%= params[:style] != "calendar" ? "active" : "normal" %>"><a href="?style=list">List</a></li>
-      <li class="<%= params[:style] == "calendar" ? "active" : "normal" %>"><a href="?style=calendar">Calendar</a></li>
-    </ul>
-    
-    <% if params[:style] == "calendar" %>
-      <table class="table table-calendar">
-        <% calendar_begins_at = Time.zone.now.beginning_of_week.to_date %>
-        <% calendar_ends_at   = (Time.zone.now + 2.months).end_of_week.to_date %>
-        <% today              = Time.zone.now.to_date %>
-        <%
-          grouped_data = {}
-          @hackathons.each do |hackathon|
-            dates = ((hackathon.date_start.to_date)..(hackathon.date_end.to_date)).to_a
-            dates.each do |date|
-              if grouped_data[date]
-                grouped_data[date] << hackathon
-              else
-                grouped_data[date] = [hackathon]
-              end
-            end
-          end
-        %>
-        <% months = %w(Jan Feb Mär Apr Mai Jun Jul Aug Sep Okt Nov Dez) %>
-        <thead>
-          <tr>
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
-            <th>Sun</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% calendar_begins_at.upto(calendar_ends_at) do |date| %>
-            <% if date.wday == 1 %>
-              <tr>
-            <% end %>
+<ul style="margin-bottom: 1.5em;">
+  <li class="<%= params[:style] != "calendar" ? "active" : "normal" %>"><a href="?style=list">List</a></li>
+  <li class="<%= params[:style] == "map"      ? "active" : "normal" %>"><a href="?style=map">Map</a></li>
+  <li class="<%= params[:style] == "calendar" ? "active" : "normal" %>"><a href="?style=calendar">Cal</a></li>
+</ul>
 
-            <% if date == today %>
-              <td class='today'>
-            <% else %>
-              <td>
-            <% end %>
 
-            <p class='day'>
-            <%= "#{date.day}" %>
-            <% if date.day == 1 %>
-               – <strong><%= "#{months[date.month-1]}" %></strong>
-            <% end %>
-            </p>
 
-            <% if grouped_data[date] %>
-              <% grouped_data[date].each do |event| %>
-                <p class='event' data-event-id="hackathon-<%= event.id %>">
-                  <%= link_to "#{event.title} (#{event.country})", event %>
-                </p>
-              <% end %>
-            <% end %>
+<h1>
+  Find Hackathons in Europe
+</h1>
 
-            </td>
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
 
-            <% if date.wday == 0 %>
-              </tr>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    <% else %>
-      
-      <% if @hackathons.total_count == 0 %>
-        <p>
-          Sorry no Hackathons found.
-        </p>
-        <iframe src="//giphy.com/embed/8dTuHJeEMjxW8" width="480" height="270" frameBorder="0" style="max-width: 100%" class="giphy-embed" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-      <% else %>
-        <%= paginate @hackathons, :theme => 'twitter-bootstrap-3' %>
-        <table id="hackathons" class="table table-striped">
-          <thead>
-            <tr>
-              <th></th>
-              <th><%= sort_link @q, :date_start, "Date", default_order: :desc   %></th>
-              <th><%= sort_link @q, :title, "Hackathon" %></th>
-              <th><%= "Weekday" %></th>
-              <th class="hidden-xs"><%= sort_link @q, :city, "City" %></th>
-              <th class="hidden-xs"><%= sort_link @q, :country, "Country" %></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @hackathons.each do |hackathon| %>
-              <% if current_user && @membership_hackathon_ids.include?(hackathon.id) %>
-                <% following = true %>
-              <% else %>
-                <% following = false %>
-              <% end %>
-              <tr class="<%= following ? "success" : "" %>">
-                <td>
-                  <% if following %>
-                    <%= link_to unfollow_hackathon_path(hackathon), class: "btn btn-link", method: "post" do %>
-                      <span style="font-size: 1.4em;" class="glyphicon glyphicon-star glyphicon-star" aria-hidden="true"></span>
-                    <% end %>
-                  <% else %>
-                    <%= link_to follow_hackathon_path(hackathon), class: "btn btn-link", method: "post" do %>
-                      <span style="font-size: 1.4em;" class="glyphicon glyphicon-star glyphicon-star-empty" aria-hidden="true"></span>
-                    <% end %>
-                  <% end %>
-                </td>
-                <td>
-                  <div class="date">
-                    <div class="date-day-number"><%= hackathon.date_start.strftime("%e") %></div>
-                    <div class="date-month"><%= hackathon.date_start.strftime("%B").first(3) %></div>
-                  </div>
-                </td>
-                <td>
-                  <%= link_to hackathon.title, hackathon_by_id_path(name: "#{hackathon.id}-#{hackathon.title}".parameterize.downcase, country: hackathon.country.parameterize.downcase, city: hackathon.city.parameterize.downcase), 'data-no-turbolink' => false, class: "title" %>
-                  <br />
-                  <%= hackathon.city %>, <%= hackathon.country %>
-                </td>
+<hr />
 
-                <td>
-                  <% if hackathon.date_start != hackathon.date_end  %>
-                  <%= hackathon.date_start.strftime("%a") %> - <%=hackathon.date_end.strftime("%a")%>
-                  <% else %>
-                  <%= hackathon.date_start.strftime("%a") %>
-                  <% end %>
-                </td>
-                <td class="hidden-xs"><%= hackathon.city %></td>
-                <td class="hidden-xs"><%= hackathon.country %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <%= paginate @hackathons, :theme => 'twitter-bootstrap-3' %>
-
-      <% end %>
-      
-    <% end %>
-    
-  </div>
-</div>
+<%= render :partial => "list" %>
