@@ -59,6 +59,10 @@ class User < ActiveRecord::Base
     TwitterAccount.exists?(uid: id)
   end
 
+  def getUser(uid)
+    TwitterAccount.find_by(uid: uid)
+  end
+
 
 
 
