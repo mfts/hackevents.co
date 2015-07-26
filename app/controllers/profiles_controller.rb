@@ -3,10 +3,10 @@ class ProfilesController < ApplicationController
   
   def show
     @user = current_user
-    friendsList = @user.twitter_account.getFriends.to_a
-    followersList = @user.twitter_account.getFollowers.to_a
-    @followers = TwitterAccount.pluck(:uid) & followersList
-    @friends = TwitterAccount.pluck(:uid) & friendsList
+    friends_list = @user.twitter_account.get_friends.to_a
+    followers_list = @user.twitter_account.get_followers.to_a
+    @followers = TwitterAccount.pluck(:uid) & followers_list
+    @friends = TwitterAccount.pluck(:uid) & friends_list
   end
   
   def edit

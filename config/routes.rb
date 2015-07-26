@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   get 'hackathon/:country/:city', to: 'hackathons#index', as: :hackathons_by_city
   
   resources :users do
-    member { get :confirm_email }
+    member do
+      get :confirm_email
+      get :following, :followers
+    end
   end
-
-  get '/hackathons/display', to: 'hackathons#display'
   
   resource :profile
   
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
       post :import
       get :export
       get :upload
+      get :display
     end
     member do
       post :follow

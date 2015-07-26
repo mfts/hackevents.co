@@ -16,6 +16,15 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :hackathons, :through => :memberships
 
+  has_many :active_relationships, class_name:  "Relationship",
+                                  foreign_key: "follower_id",
+                                  dependent:   :destroy
+  has_many :passive_relationships, class_name:  "Relationship",
+                                   foreign_key: "followed_id",
+                                   dependent:   :destroy                                
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+
   has_one :twitter_account
   
   def twitter_user?
@@ -42,16 +51,34 @@ class User < ActiveRecord::Base
     save!(:validate => false)
   end
 
+
+  # Follow a hackathon
   def follow_hackathon(hackathon)
     self.memberships.create(hackathon_id: hackathon.id)
   end
-
+  # Unfollow a hackathon
   def unfollow_hackathon(hackathon)
     self.memberships.where(hackathon_id: hackathon.id).destroy_all
   end
 
-  def following?(hackathon)
+  # Returns true if the current user is following the hackathon.
+  def following_hackathon?(hackathon)
     Membership.exists?(['user_id = ? AND hackathon_id = ?', self.id, hackathon.id])
+  end
+
+  # Follows a user.
+  def follow_user(other_user)
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+  # Unfollows a user.
+  def unfollow_user(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # Returns true if the current user is following the other user.
+  def following_user?(other_user)
+    following.include?(other_user)
   end
 
 

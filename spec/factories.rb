@@ -1,4 +1,8 @@
-FactoryGirl.define do  factory :sponsorship do
+FactoryGirl.define do  factory :relationship do
+    follower_id 1
+followed_id 1
+  end
+  factory :sponsorship do
     sponsor_id 1
 hackathon_id 1
   end
