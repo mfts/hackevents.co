@@ -28,6 +28,7 @@ $link-color:                    #F57C00;
   padding:          0 70px;
   overflow:         hidden;
   border-bottom:    1px solid #D8D8D8;
+  margin-bottom:    30px;
   #logo {
     height: 80px;
     a {
@@ -155,106 +156,172 @@ $link-color:                    #F57C00;
   overflow: hidden;
   margin-left: 230px;
   padding: 0 70px 0 70px;
+  h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    color: #4A4A4A;
+    line-height: 29px;
+  }
+  p {
+    color: #4A4A4A;
+  }
 }
 
-.hackathon {
-  overflow: hidden;
-  margin-bottom: 1.5em;
-  .date {
-    width:      60px;
-    text-align: right;
-    float:      left;
-    margin-right: 20px;
-    .date-month {
-      font-size:    18px;
-      color:        #000000;
-      line-height:  18px;
-      font-weight:  300;
-    }
-    .date-day-number {
-      font-size:    30px;
-      color:        #000000;
-      line-height:  30px;
-      font-weight:  800;
-    }
-    .date-week-days {
-      font-size:    12px;
-      color:        #9B9B9B;
-      line-height:  15px;
-    }
-  }
-  .category {
-    width:      4px;
-    float:      left;
-    margin-right: 20px;
-    .category-bar {
-      display:          block;
-      width:            4px;
-      height:           120px;
-      background-color: #4CD964;
-      border-radius:    2px;
-      overflow:         hidden;
-    }
-  }
-  .favorite {
-    width:    140px;
-    float:    left;
-    margin-right: 20px;
-    .favorite-action {
-      a {
-        display: block;
-        line-height: 36px;
-      }
-      border-bottom: 1px solid #D8D8D8;
-    }
-    .favorite-by-people {
-      padding-top: 8px;
-      span {
-        &:nth-child(5n) {
-          margin-right: 0;
-        }
-        background-size: 24px 24px;
-        margin-right: 5px;
-        margin-bottom: 5px;
-        display: block;
-        float: left;
-        width: 24px;
-        height: 24px;
-        overflow: hidden;
-        text-indent: -9999px;
-        border-radius: 12px;
-        border: 1px solid #CCCCCC;
-      }
-    }
-  }
-  .image {
-    background-color: #F1F1F1;
-    width:            160px;
-    float:            left;
-    img {
-      width: 100%;
-    }
-  }
-  .info {
-    margin: 0 0 0 444px;
+.hackathons {
+  
+  .hackathon {
     overflow: hidden;
-    h2 {
-      font-weight: 700;
-      font-size: 18px;
-      color: #4A4A4A;
-      line-height: 23px;
-      margin: 0;
-      padding: 0;
-    }
-    p {
-      .city {
-        font-weight: 500;
+    margin-bottom: 1.5em;
+    .date {
+      width:      60px;
+      text-align: right;
+      float:      left;
+      margin-right: 20px;
+      .date-month {
+        font-size:    18px;
+        color:        #000000;
+        line-height:  18px;
+        font-weight:  300;
       }
-      .country {
+      .date-day-number {
+        font-size:    30px;
+        color:        #000000;
+        line-height:  30px;
+        font-weight:  800;
+      }
+      .date-week-days {
+        font-size:    12px;
+        color:        #9B9B9B;
+        line-height:  15px;
+      }
+    }
+    .category {
+      width:      4px;
+      float:      left;
+      margin-right: 20px;
+      .category-bar {
+        display:          block;
+        width:            4px;
+        height:           120px;
+        background-color: #4CD964;
+        border-radius:    2px;
+        overflow:         hidden;
+      }
+    }
+    .favorite {
+      width:    140px;
+      float:    left;
+      margin-right: 20px;
+      .favorite-action {
+        a {
+          display: block;
+          line-height: 36px;
+        }
+        border-bottom: 1px solid #D8D8D8;
+      }
+      .favorite-by-people {
+        padding-top: 8px;
+        span {
+          &:nth-child(5n) {
+            margin-right: 0;
+          }
+          background-size: 24px 24px;
+          margin-right: 5px;
+          margin-bottom: 5px;
+          display: block;
+          float: left;
+          width: 24px;
+          height: 24px;
+          overflow: hidden;
+          text-indent: -9999px;
+          border-radius: 12px;
+          border: 1px solid #CCCCCC;
+        }
+      }
+    }
+    .image {
+      background-color: #F1F1F1;
+      width:            160px;
+      float:            left;
+      img {
+        width: 100%;
+      }
+    }
+    .info {
+      margin: 0 0 0 444px;
+      overflow: hidden;
+      h2 {
+        font-weight: 700;
+        font-size: 18px;
+        color: #4A4A4A;
+        line-height: 23px;
+        margin: 0;
+        padding: 0;
+      }
+      p {
+        .city {
+          font-weight: 500;
+        }
+        .country {
+        }
       }
     }
   }
 }
+
+.table-calendar {
+  td { min-height: 40px; width: 14%; vertical-align: top; }
+  td.today { background-color: #F1F1F1; }
+  tr, td, th { border: 1px solid #EEEEEE; }
+  td, th {
+    max-width:      0;
+    overflow:       hidden;
+    text-overflow:  ellipsis;
+    white-space:    nowrap;
+  }
+  p { 
+    margin: 0; 
+    padding: 0;
+  }
+  p.day {
+    
+  }
+  p.event.highlighted {
+    a {
+      background-color: lighten($brand-primary, 10%);
+    }
+  }
+  p.event.inactive {
+    a {
+      background-color: lighten($brand-primary, 60%);
+    }
+  }
+  p.event {
+    a {
+      display:          block;
+      overflow:         hidden;
+      text-overflow:    ellipsis;
+      white-space:      nowrap;
+      text-decoration:  none;
+      
+      color:            #000000;
+      font-size:        12px;
+      margin:           0;
+      padding:          8px 6px;
+      line-height:      1.2em;
+      border-bottom:    1px solid #FFFFFF;
+      
+      transition:       background-color 0.2s ease;
+      background-color: lighten($brand-primary, 40%);
+    }
+    margin-left:      -5px;
+    margin-right:     -6px;
+  }
+}
+
+
+
 
 // body {
 //   padding-top: 60px;
@@ -305,55 +372,6 @@ $link-color:                    #F57C00;
 //   margin: 0 0 1.5em 0;
 // }
 // 
-// .table-calendar {
-//   td { min-height: 40px; width: 14%; vertical-align: top; }
-//   td.today { background-color: #F1F1F1; }
-//   tr, td, th { border: 1px solid #EEEEEE; }
-//   td, th {
-//     max-width:      0;
-//     overflow:       hidden;
-//     text-overflow:  ellipsis;
-//     white-space:    nowrap;
-//   }
-//   p { 
-//     margin: 0; 
-//     padding: 0;
-//   }
-//   p.day {
-//     
-//   }
-//   p.event.highlighted {
-//     a {
-//       background-color: lighten($brand-primary, 10%);
-//     }
-//   }
-//   p.event.inactive {
-//     a {
-//       background-color: lighten($brand-primary, 60%);
-//     }
-//   }
-//   p.event {
-//     a {
-//       display:          block;
-//       overflow:         hidden;
-//       text-overflow:    ellipsis;
-//       white-space:      nowrap;
-//       text-decoration:  none;
-//       
-//       color:            #000000;
-//       font-size:        12px;
-//       margin:           0;
-//       padding:          8px 6px;
-//       line-height:      1.2em;
-//       border-bottom:    1px solid #FFFFFF;
-//       
-//       transition:       background-color 0.2s ease;
-//       background-color: lighten($brand-primary, 40%);
-//     }
-//     margin-left:      -5px;
-//     margin-right:     -6px;
-//   }
-// }
 // 
 // .form-area
 // {
