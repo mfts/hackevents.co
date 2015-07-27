@@ -1,6 +1,4 @@
 <% if @hackathons.total_count > 1 %>
-  <%= paginate @hackathons, :theme => 'twitter-bootstrap-3' %>
-  
   <p>
     Sort:
     <%= sort_link @q, :date_start, "Date", default_order: :desc   %>,
@@ -9,6 +7,7 @@
     <%= sort_link @q, :country, "Country" %>
   </p>
   
+  <hr />
   
   <div class="hackathons">
     <% @hackathons.each do |hackathon| %>
@@ -62,7 +61,9 @@
         </div>
 
         <div class="image">
-          <%= image_tag "angel.png" %>
+          <%= link_to hackathon do %>
+            <%= image_tag "angel.png" %>
+          <% end %>
         </div>
 
         <div class="info">
