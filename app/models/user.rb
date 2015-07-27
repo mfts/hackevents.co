@@ -81,6 +81,12 @@ class User < ActiveRecord::Base
     following.include?(other_user)
   end
 
+  # Returns true if the current user is followed by the other user.
+  def followed_by_user?(other_user)
+    followers.include?(other_user)
+  end
+
+
 
   def isUser?(id)
     TwitterAccount.exists?(uid: id)

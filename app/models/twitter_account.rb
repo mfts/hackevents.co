@@ -31,29 +31,21 @@ class TwitterAccount < ActiveRecord::Base
   def get_twitter_following
     following_id_array = TwitterAccount.pluck(:uid) & client.friend_ids.to_a
     user_id_array = TwitterAccount.where(uid: following_id_array).pluck(:user_id)
-    puts "------------------"
     user_id_array.each do |id|
-      puts id
-      self.user.active_relationships.create(followed_id: id)
+      unless self.user.following_user?(User.find_by(id: id))
+        self.user.active_relationships.create(followed_id: id)
+      end
     end
   end
 
   def get_twitter_followers
     follower_id_array = TwitterAccount.pluck(:uid) & client.follower_ids.to_a
     user_id_array = TwitterAccount.where(uid: follower_id_array).pluck(:user_id)
-    puts "------------------"
     user_id_array.each do |id|
-      puts id
-      self.user.passive_relationships.create(follower_id: id)
+      unless self.user.followed_by_user?(User.find_by(id: id))
+        self.user.passive_relationships.create(follower_id: id)
+      end
     end
-  end
-
-  def get_friends
-    client.friend_ids
-  end
-
-  def get_followers
-    client.follower_ids
   end
 
 end
