@@ -1,36 +1,4 @@
-<div class="col-md-7 col-md-offset-5">
-<%= image_tag @user.twitter_account.profile_image, class: "img-circle", size: "150x150" %>
-</div>
-
-<div class="col-md-7 col-md-offset-5">
-  <h1>
-    <%= @user.first_name %>
-    <%= @user.last_name %>
-  </h1>
-</div>
-
-<div class="col-md-6 text-right">
-  <h3>Following</h3>
-  <% @user.following.each do |f| %>
-      <p><%= link_to "#{f.first_name} #{f.last_name}", user_path(f) %></p>
-    <% end %>
-</div>
-
-<div class="col-md-6 text-left">
-  <h3>Followers</h3>
-    <% @user.followers.each do |f| %>
-      <p><%= link_to "#{f.first_name} #{f.last_name}", user_path(f) %></p>
-    <% end %>
-</div>
-
-<div class="col-md-7 col-md-offset-5">
-  <h3>Hackathons</h3>
-  <ul>
-    <% @user.hackathons.each do |h| %>
-      <li><%= link_to h.title, hackathon_path(h) %></li>
-    <% end %>
-  </ul>
-</div>
+<%= render partial: "users/page" %>
 
 <hr />
 
