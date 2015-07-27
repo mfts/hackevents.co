@@ -29,4 +29,14 @@ $(function() {
       $(".table-calendar p.event").removeClass("highlighted")
     }
   );
-})
+});
+
+$(function() {
+  $("#menu").on("click", function(){
+    if($("#main").css("marginLeft") == "230px") {
+      $("#main").animate({ marginLeft: "0px" }, { duration: 250 });
+    } else {
+      $("#main").animate({ marginLeft: "230px" }, { duration: 250 });
+    }
+  });
+});

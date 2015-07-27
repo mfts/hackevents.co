@@ -1,10 +1,24 @@
-<div>
-  <% Category.all.each do |category| %>
-    <li>
-      <span style="background-color: #<%= category.primary_hex_color %>">
-        O
-      </span>
-      <%= category.name %>
+<div id="categories-menu">
+  <ul>
+    <li id="categories-menu-all">
+      <a href="#">
+        <span class="icon" style="background-color: #000000">
+        </span>
+        <span class="text">
+          All
+        </span>
+      </a>
     </li>
-  <% end %>
+    <% Category.all.each do |category| %>
+      <li>
+        <a href="#">
+          <span class="icon" style="background-color: #<%= category.primary_hex_color %>">
+          </span>
+          <span class="text">
+            <%= category.name %>
+          </span>
+        </a>
+      </li>
+    <% end %>
+  </ul>
 </div>

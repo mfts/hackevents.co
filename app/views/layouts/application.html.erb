@@ -19,52 +19,76 @@
   </head>
   <body>
     
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <span>
-        Hackevents
-      </span>
-    <% end %>
+    <div id="menu-button">
+      <a href="#" id="menu">Menu</a>
+    </div>
     
-    
-    <% if current_user %>
-      <li><%= link_to "Log Out", logout_path, method: :delete %></li>
-      <li><%= link_to "Profile", profile_path %></li>
-      <li>
-        <%= link_to "Add", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { confirm: "Found a hackathon we have not listed yet? Submit it through out Typeform! Thank you :)" }, :target => "_blank" %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "Log In", new_user_session_path %>
-      </li>
-      <li>
-        <%= link_to "Sign Up", new_user_path %>
-      </li>
-      <li>
-        <%= link_to "Sign Up with Twitter", '/auth/twitter', method: 'get', html: {class: 'form-horizontal'} %>
-      </li>
-    <% end %>
-    
-    <%= search_form_for @q do |f| %>
-      <div class="row">
-        <div class="col-sm-9 col-xs-12">
-          <%= f.text_field :title_or_country_or_city_cont, :placeholder => "Country or City or Title", :class => "form-control" %>
-        </div>
-        <div class="col-sm-3 hidden-xs">
-          <%= f.submit "Search", class: "form-control btn btn-primary" %>
-        </div>
+    <div id="sidebar">
+      <div id="style-menu" class="btn-group btn-group-justified" role="group">
+        <a class="btn btn-default <%= params[:style] != "calendar" ? "active" : "normal" %>" href="?style=list">List</a>
+        <a class="btn btn-default <%= params[:style] == "map"      ? "active" : "normal" %>" href="?style=map">Map</a>
+        <a class="btn btn-default <%= params[:style] == "calendar" ? "active" : "normal" %>" href="?style=calendar">Cal</a>
       </div>
-    <% end %>
+      
+      <%= render partial: "categories/menu" %>
+      <%= render partial: "hackathons/days" %>
+    </div>
     
-    
-    <% message_types = { success: "success", notice: "info", warning: "warning", alert: "danger" } %>
-    <% flash.each do |key, message| %>
-      <div class="alert alert-<%= message_types[key.to_sym] || "info" %> alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= message %>
+    <div id="main">
+      
+      <div id="head">
+        
+        <div id="logo">
+          <%= link_to root_path do %>
+            <span>
+              Hackevents
+            </span>
+          <% end %>
+        </div>
+        
+        <%= search_form_for @q do |f| %>
+          <div class="input-group">
+            <%= f.text_field :title_or_country_or_city_cont, :placeholder => "Country or City or Title", :class => "form-control" %>
+            <span class="input-group-btn">
+              <%= f.submit "Search", class: "btn btn-primary" %>
+            </span>
+          </div>
+        <% end %>
+        
+        <ul style="display: none;">
+          <% if current_user %>
+            <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+            <li><%= link_to "Profile", profile_path %></li>
+            <li>
+              <%= link_to "Add", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { confirm: "Found a hackathon we have not listed yet? Submit it through out Typeform! Thank you :)" }, :target => "_blank" %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Log In", new_user_session_path %>
+            </li>
+            <li>
+              <%= link_to "Sign Up", new_user_path %>
+            </li>
+            <li>
+              <%= link_to "Sign Up with Twitter", '/auth/twitter', method: 'get', html: {class: 'form-horizontal'} %>
+            </li>
+          <% end %>
+        </ul>
+        
       </div>
-    <% end %>
+      
+      <% message_types = { success: "success", notice: "info", warning: "warning", alert: "danger" } %>
+      <% flash.each do |key, message| %>
+        <div class="alert alert-<%= message_types[key.to_sym] || "info" %> alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= message %>
+        </div>
+      <% end %>
+
+      <%= yield %>
+      
+    </div>
     
-    <%= yield %>
     
     <footer>
       © 2015 Hackevents - All Rights Reserved

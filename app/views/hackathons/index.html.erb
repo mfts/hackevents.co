@@ -1,19 +1,18 @@
-<ul style="margin-bottom: 1.5em;">
-  <li class="<%= params[:style] != "calendar" ? "active" : "normal" %>"><a href="?style=list">List</a></li>
-  <li class="<%= params[:style] == "map"      ? "active" : "normal" %>"><a href="?style=map">Map</a></li>
-  <li class="<%= params[:style] == "calendar" ? "active" : "normal" %>"><a href="?style=calendar">Cal</a></li>
-</ul>
+<% case params[:style] %>
+<% when "map" %>
+  <%= render :partial => "list" %>
+<% when "calendar" %>
+  <%= render :partial => "calendar" %>
+<% else %>
+  <h1>
+    Find Hackathons in Europe
+  </h1>
 
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </p>
 
-
-<h1>
-  Find Hackathons in Europe
-</h1>
-
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</p>
-
-<hr />
-
-<%= render :partial => "list" %>
+  <hr />
+  
+  <%= render :partial => "list" %>
+<% end %>
