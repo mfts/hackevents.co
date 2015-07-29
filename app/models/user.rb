@@ -8,9 +8,10 @@ class User < ActiveRecord::Base
   validates_presence_of     :password_confirmation, unless: :twitter_user?
   
   validates :email, presence: true,
-                    uniqueness: true,
-                    format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9\.-]+\.[A-Za-z]+\Z/ },
                     unless: :twitter_user?
+  validates :email, uniqueness: true,
+                    format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9\.-]+\.[A-Za-z]+\Z/ }
+                                        
   before_save :downcase_email
 
   has_many :memberships

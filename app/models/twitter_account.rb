@@ -1,7 +1,7 @@
 class TwitterAccount < ActiveRecord::Base
   belongs_to :user
 
-  after_save :get_twitter_following, :get_twitter_followers
+  #after_save :get_twitter_following, :get_twitter_followers
   
   # Twitter Integration
   def self.find_or_create_from_auth_hash(auth_hash)

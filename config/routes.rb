@@ -14,7 +14,11 @@ Rails.application.routes.draw do
     end
   end
   
-  resource :profile
+  resource :profile do
+    member do
+      get :after_signup
+    end
+  end
   
   resources :user_sessions, only: [:new, :create]
   resources :password_resets, only: [:new, :create, :edit, :update]
