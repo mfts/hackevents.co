@@ -1,5 +1,7 @@
 class TwitterAccount < ActiveRecord::Base
   belongs_to :user
+
+  #after_save :get_twitter_following, :get_twitter_followers
   
   # Twitter Integration
   def self.find_or_create_from_auth_hash(auth_hash)
@@ -25,12 +27,25 @@ class TwitterAccount < ActiveRecord::Base
     end
   end
 
-  def getFriends
-    client.friend_ids
+
+  def get_twitter_following
+    following_id_array = TwitterAccount.pluck(:uid) & client.friend_ids.to_a
+    user_id_array = TwitterAccount.where(uid: following_id_array).pluck(:user_id)
+    user_id_array.each do |id|
+      unless self.user.following_user?(User.find_by(id: id))
+        self.user.active_relationships.create(followed_id: id)
+      end
+    end
   end
 
-  def getFollowers
-    client.follower_ids
+  def get_twitter_followers
+    follower_id_array = TwitterAccount.pluck(:uid) & client.follower_ids.to_a
+    user_id_array = TwitterAccount.where(uid: follower_id_array).pluck(:user_id)
+    user_id_array.each do |id|
+      unless self.user.followed_by_user?(User.find_by(id: id))
+        self.user.passive_relationships.create(follower_id: id)
+      end
+    end
   end
 
 end

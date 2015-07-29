@@ -38,7 +38,7 @@
 <% if logged_in? %>
   <hr />
   <p>
-    <% if current_user.following?(@hackathon)  %>
+    <% if current_user.following_hackathon?(@hackathon)  %>
       <%= link_to "Remove Hackathon", unfollow_hackathon_path(@hackathon), class: "btn", :method => :post %>
     <% else %>
       <%= link_to "Add Hackathon", follow_hackathon_path(@hackathon), class: "btn", :method => :post %>

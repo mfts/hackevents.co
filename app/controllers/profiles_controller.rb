@@ -3,25 +3,37 @@ class ProfilesController < ApplicationController
   
   def show
     @user = current_user
-    friendsList = @user.twitter_account.getFriends.to_a
-    followersList = @user.twitter_account.getFollowers.to_a
-    @followers = TwitterAccount.pluck(:uid) & followersList
-    @friends = TwitterAccount.pluck(:uid) & friendsList
   end
   
   def edit
     @user = current_user
   end
-  
+
+  def after_signup
+    @user = current_user
+    render '_after_signup_form'
+  end
+
   def update
     @user = current_user
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to profile_path, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+      if @user.email_confirmed?
+        if @user.update(user_params)
+          format.html { redirect_to profile_path, notice: 'User was successfully updated.' }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        if @user.update(user_params)
+          UserMailer.registration_confirmation(@user).deliver
+          format.html { redirect_to root_path, notice: 'User was successfully updated.' }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :after_signup }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -32,14 +44,13 @@ class ProfilesController < ApplicationController
     redirect_to root_path, notice: 'User was successfully destroyed.'
   end
 
+  def login
+  end
+
   
   private
   
   def user_params
-    if params[:name]
-      params.require(:twitter_account).permit(:name, :description, :profile_image)
-    else
-      params.require(:user).permit(:first_name, :last_name, :twitter_name, :email, :password, :password_confirmation)
-    end
+    params.require(:user).permit(:first_name, :last_name, :twitter_name, :email, :password, :password_confirmation)
   end
 end

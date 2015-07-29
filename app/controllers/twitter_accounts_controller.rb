@@ -12,12 +12,25 @@ class TwitterAccountsController < ApplicationController
       first_name   = names.first
       last_name    = names.size > 1 ? names.last : ""
       
-      @user = User.new(first_name: first_name, last_name: last_name)
-      @user.twitter_account = twitter_account
-      @user.save
-      
-      cookies.signed[:user_id] = { value: @user.id, expires: 1.year.from_now }
-      redirect_to root_path
+      if twitter_account.user_id?
+        @user = User.find_by(id: twitter_account.user_id)
+        if @user.email.present?
+          @user.save
+          cookies.signed[:user_id] = { value: @user.id, expires: 1.year.from_now }
+          redirect_to root_path
+        else
+          @user.save
+          cookies.signed[:user_id] = { value: @user.id, expires: 1.year.from_now }
+          redirect_to after_signup_profile_path
+        end
+      else
+        @user = User.new(first_name: first_name, last_name: last_name)
+        @user.twitter_account = twitter_account
+        @user.save
+        cookies.signed[:user_id] = { value: @user.id, expires: 1.year.from_now }
+        redirect_to after_signup_profile_path
+      end
+    
     end
   end
 

@@ -1,0 +1,21 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @users.any? %>
+      <ul class="users follow">
+        <% @users.each do |u| %>
+          <div>
+            <% unless current_user == u %>
+              <%= link_to image_tag( u.twitter_account.profile_image, class: "img-circle", size: "40x40"), user_path(u) %>
+              <%= link_to "#{u.first_name} #{u.last_name}", user_path(u) %>
+            <% else %>
+              <%= link_to image_tag( u.twitter_account.profile_image, class: "img-circle", size: "40x40"), profile_path %>
+              <%= link_to "#{u.first_name} #{u.last_name}", profile_path %>
+            <% end %>
+          </div>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

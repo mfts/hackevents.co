@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "/login" => "user_sessions#new", as: :login
+  get "/login" => "user_sessions#new", as: :login_email
   delete "/logout" => "user_sessions#destroy", as: :logout
 
   get 'imprint', to: 'pages#imprint', as: 'imprint'
@@ -8,21 +8,31 @@ Rails.application.routes.draw do
   get 'hackathon/:country/:city', to: 'hackathons#index', as: :hackathons_by_city
   
   resources :users do
-    member { get :confirm_email }
+    member do
+      get :confirm_email, :resend_email_confirmation
+      get :following, :followers, :hackathons
+    end
+  end
+  
+  resource :profile do
+    member do
+      get :after_signup
+    end
   end
 
-  get '/hackathons/display', to: 'hackathons#display'
-  
-  resource :profile
+  get "/login_twitter" => "profiles#login", as: :login_twitter
   
   resources :user_sessions, only: [:new, :create]
   resources :password_resets, only: [:new, :create, :edit, :update]
+
+  resources :relationships, only: [:create, :destroy]
   
   resources :hackathons do
     collection do
       post :import
       get :export
       get :upload
+      get :display
     end
     member do
       post :follow

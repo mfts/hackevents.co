@@ -17,7 +17,7 @@ gem 'gmaps4rails'
 gem 'friendly_id'
 gem 'jquery-turbolinks'
 
-gem "kaminari"
+gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
 gem 'ransack'

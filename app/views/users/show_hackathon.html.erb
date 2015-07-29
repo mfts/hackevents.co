@@ -1,0 +1,15 @@
+<% provide(:title, @title) %>
+<div class="row">
+  <div class="col-md-8">
+    <h3><%= @title %></h3>
+    <% if @hackathons.any? %>
+      <ul class="hackathons follow">
+        <% @hackathons.each do |h| %>
+          <div>
+            <%= link_to h.title, hackathon_path(h) %>
+          </div>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
