@@ -14,7 +14,7 @@ class TwitterAccountsController < ApplicationController
       
       if twitter_account.user_id?
         @user = User.find_by(id: twitter_account.user_id)
-        if @user.email_confirmed?
+        if @user.email.present?
           @user.save
           cookies.signed[:user_id] = { value: @user.id, expires: 1.year.from_now }
           redirect_to root_path

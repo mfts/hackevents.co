@@ -85,6 +85,11 @@
             <%= message %>
           </div>
         <% end %>
+        <% if logged_in? && !current_user.email_confirmed? %>
+          <div class="alert alert-danger">Please confirm your email address! 
+              <%= link_to "Resend Email Confirmation", {:method => UserMailer.registration_confirmation(current_user).deliver} ,class: "btn btn-primary" %>
+          </div>
+        <% end %>
         <div class="col-md-12">
           <%= yield %>
         </div>

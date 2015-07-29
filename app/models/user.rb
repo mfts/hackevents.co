@@ -10,9 +10,11 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     unless: :twitter_user?
   validates :email, uniqueness: true,
-                    format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9\.-]+\.[A-Za-z]+\Z/ }
+                    format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9\.-]+\.[A-Za-z]+\Z/ },
+                    unless: :twitter_user?
                                         
   before_save :downcase_email
+  after_create :get_twitter_followers, :get_twitter_following
 
   has_many :memberships
   has_many :hackathons, :through => :memberships
@@ -97,6 +99,26 @@ class User < ActiveRecord::Base
     TwitterAccount.find_by(uid: uid)
   end
 
+
+  def get_twitter_following
+    following_id_array = TwitterAccount.pluck(:uid) & self.twitter_account.client.friend_ids.to_a
+    user_id_array = TwitterAccount.where(uid: following_id_array).pluck(:user_id)
+    user_id_array.each do |id|
+      unless self.following_user?(User.find_by(id: id))
+        self.active_relationships.create(followed_id: id)
+      end
+    end
+  end
+
+  def get_twitter_followers
+    follower_id_array = TwitterAccount.pluck(:uid) & self.twitter_account.client.follower_ids.to_a
+    user_id_array = TwitterAccount.where(uid: follower_id_array).pluck(:user_id)
+    user_id_array.each do |id|
+      unless self.followed_by_user?(User.find_by(id: id))
+        self.passive_relationships.create(follower_id: id)
+      end
+    end
+  end
 
 
 

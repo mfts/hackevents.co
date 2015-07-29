@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :require_user,  only: [:follow, :unfollow, :after_signup]
+  before_action :require_user,  only: [:follow, :unfollow]
   
   def show
     @user = current_user
