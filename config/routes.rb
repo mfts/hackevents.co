@@ -30,7 +30,10 @@ Rails.application.routes.draw do
     end
   end
   root to: 'hackathons#index'
-
+  
+  namespace :admin do
+  end
+  
   resources :twitter_accounts
   # Twitter routes
   get '/auth/twitter/callback', to: 'twitter_accounts#create', as: 'callback'
