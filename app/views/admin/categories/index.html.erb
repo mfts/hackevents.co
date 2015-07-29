@@ -7,7 +7,7 @@
 <% @categories.in_groups_of(3, false).each do |grouped_categories| %>
   <div class="row">
     <% grouped_categories.each do |category| %>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="thumbnail">
           <div style="height: 50px; background-color: #<%= category.primary_hex_color %>;">
             

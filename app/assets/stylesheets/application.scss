@@ -26,7 +26,7 @@ $link-color:                    #F57C00;
   margin-left:      -70px;
   margin-right:     -70px;
   padding:          0 70px;
-  overflow:         hidden;
+  height:           80px;
   border-bottom:    1px solid #D8D8D8;
   margin-bottom:    30px;
   #logo {
@@ -43,10 +43,15 @@ $link-color:                    #F57C00;
     }
     float: left;
   }
-  
-  form {
+  #head-actions {
     margin-top: 22px;
     margin-left: 230px;
+    margin-right: 100px;
+    position: absolute;
+  }
+  form {
+  }
+  #profile-button {
   }
 }
 
