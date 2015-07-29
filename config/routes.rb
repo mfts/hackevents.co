@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   root to: 'hackathons#index'
   
   namespace :admin do
+    resources :categories
   end
   
   resources :twitter_accounts
