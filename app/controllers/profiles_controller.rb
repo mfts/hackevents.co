@@ -44,6 +44,9 @@ class ProfilesController < ApplicationController
     redirect_to root_path, notice: 'User was successfully destroyed.'
   end
 
+  def login
+  end
+
   
   private
   
