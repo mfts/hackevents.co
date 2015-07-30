@@ -199,9 +199,12 @@ $link-color:                    #F57C00;
         display:          block;
         width:            4px;
         height:           120px;
-        background-color: #4CD964;
         border-radius:    2px;
         overflow:         hidden;
+        .category-bar-item {
+          display:          block;
+          width:            4px;
+        }
       }
     }
     .favorite {

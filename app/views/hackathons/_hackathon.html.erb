@@ -17,7 +17,17 @@
   </div>
 
   <div class="category">
-    <span class="category-bar" style="background-color: #<%= hackathon.categories.map { |c| c.primary_hex_color }.first || "000000" %>">
+    <span class="category-bar">
+      <% hackathon_categories = hackathon.categories.to_a %>
+      <% if hackathon_categories.count > 0 %>
+        <% hackathon_categories.each do |c| %>
+          <span class="category-bar-item" style="background-color: #<%= c.primary_hex_color %>; height: <%= (120 / hackathon_categories.count).to_i %>px;">
+          </span>
+        <% end %>
+      <% else %>
+        <span class="category-bar-item" style="background-color: #000000; height: 120px">
+        </span>
+      <% end %>
     </span>
   </div>
 
