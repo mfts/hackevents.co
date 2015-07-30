@@ -21,7 +21,7 @@
       <% hackathon_categories = hackathon.categories.to_a %>
       <% if hackathon_categories.count > 0 %>
         <% hackathon_categories.each do |c| %>
-          <span class="category-bar-item" style="background-color: #<%= c.primary_hex_color %>; height: <%= (120 / hackathon_categories.count).to_i %>px;">
+          <span class="category-bar-item" style="background-color: #<%= c.primary_hex_color %>; height: <%= (120 / hackathon_categories.count).to_i %>px;" data-toggle="tooltip" data-placement="left" title="<%= c.name %>">
           </span>
         <% end %>
       <% else %>
