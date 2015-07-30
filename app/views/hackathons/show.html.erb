@@ -35,12 +35,24 @@
 </p>
 
 <p>
+  <% if logged_in? %>
+    <% if current_user.following_hackathon?(@hackathon) %>
+      <%= link_to unfollow_hackathon_path(@hackathon), class: "btn btn-primary", method: "post" do %>
+        <span class="glyphicon glyphicon-heart glyphicon-heart" aria-hidden="true"></span>
+      <% end %>
+    <% else %>
+      <%= link_to follow_hackathon_path(@hackathon), class: "btn btn-default", method: "post" do %>
+        <span class="glyphicon glyphicon-heart glyphicon-heart-empty" aria-hidden="true"></span>
+      <% end %>
+    <% end %>
+  <% end %>
   <%= link_to "Visit Website", @hackathon.url, class: "btn btn-primary", target: "_blank" %>
   <%= link_to "Share on Twitter", "https://twitter.com/home?status=HACKATHON%20%7C%C2%A0#{ @hackathon.country }%20%7C%C2%A0#{ @hackathon.city }%20%7C%C2%A0#{ @hackathon.title }%20#{ @hackathon.date_start.strftime("%d/%m/%Y") }%20#{ request.url }%20#{ @hackathon.twitter }%20@hackevents", class: "btn btn-default", target: "_blank" %>
 </p>
 
 <hr />
 
+<h3>Location</h3>
 <address>
   <strong><%= @hackathon.venue %></strong><br />
   <%= @hackathon.address %>
@@ -51,18 +63,8 @@
 
 <hr />
 
-<% if logged_in? %>
-  <p>
-    <% if current_user.following_hackathon?(@hackathon)  %>
-      <%= link_to "Remove from favorites", unfollow_hackathon_path(@hackathon), class: "btn", :method => :post %>
-    <% else %>
-      <%= link_to "Add to favorites", follow_hackathon_path(@hackathon), class: "btn", :method => :post %>
-    <% end %>
-  </p>
-  <hr />
-<% end %>
-
 <% if @hackathon.users.present? %>
+<h3>Participants</h3>
   <ul class="users follow">
     <% @hackathon.users.each do |u| %>
       <div>
@@ -80,11 +82,12 @@
 <% end %>
 
 <% if @hackathon.sponsors.present? %>
+<h3>Partners</h3>
   <ul class="users follow">
     <% @hackathon.sponsors.each do |s| %>
       <span>
-        <%= link_to image_tag( s.twitter_image_url, class: "img-thumbnail", size: "50x50"), "http://twitter.com/#{s.twitter_handle}?ref=hackevents" %>
-        <%= link_to s.twitter_name, "http://twitter.com/#{s.twitter_handle}?ref=hackevents" %>
+        <%= link_to image_tag( s.twitter_image_url, class: "img-thumbnail", size: "50x50"), "http://twitter.com/#{s.twitter_handle}?ref=hackevents", :target => "_blank" %>
+        <%= link_to s.twitter_name, "http://twitter.com/#{s.twitter_handle}?ref=hackevents", :target => "_blank" %>
       </span>
     <% end %>
   </ul>
