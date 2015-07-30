@@ -90,9 +90,7 @@
     </p>
 
     <p>
-      <%= link_to "Mastercard", "#" %>,
-      <%= link_to "Mastercard", "#" %>,
-      <%= link_to "Mastercard", "#" %>
+      <%= hackathon.sponsors.map { |sponsor| sponsor.name }.join(", ") %>
     </p>
   </div>
 
