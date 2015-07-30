@@ -104,7 +104,7 @@ module Admin
     end
 
     def hackathon_params
-      params.require(:hackathon).permit(:title, :description, :country, :city, :url, :date_start, :date_end, :venue, :address, :challenge, :sponsors, :awards, :schedule, :application, :application_deadline, :twitter, :longitude, :latitude)
+      params.require(:hackathon).permit(:title, :description, :country, :city, :url, :date_start, :date_end, :venue, :address, :challenge, :sponsors, :awards, :schedule, :application, :application_deadline, :twitter, :longitude, :latitude, { category_ids: [] })
     end
   end
 end

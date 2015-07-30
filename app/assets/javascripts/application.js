@@ -32,6 +32,10 @@ $(function() {
 });
 
 $(function() {
+  $('span.category-bar-item[data-toggle="tooltip"]').tooltip()
+});
+
+$(function() {
   $("#menu").on("click", function(){
     if($("#main").css("marginLeft") == "230px") {
       $("#main").animate({ marginLeft: "0px" }, { duration: 250 });
