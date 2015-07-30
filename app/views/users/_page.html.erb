@@ -72,17 +72,12 @@
           </div>
         <% end %>
       <% else %>
-        <% @user.hackathons.each do |h| %>
-          <div class="posts">
-            <ul class="posts-group">
-              <li>
-                <div class="post-item">
-                  <%= link_to h.title, hackathon_path(h) %>
-                </div>
-              </li>
-            </ul>
-          </div>
-        <% end %>
+        <div class="hackathons">
+          <% @membership_hackathon_ids = Membership.where(user_id: @user.id, hackathon_id: @user.hackathons.map{ |h| h.id }).map{ |m| m.hackathon_id } %>
+         <% @user.hackathons.each do |h| %>
+            <%= render partial: "hackathons/hackathon", locals: { hackathon: h, membership_hackathon_ids: @membership_hackathon_ids } %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </main>

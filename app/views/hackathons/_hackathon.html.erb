@@ -1,0 +1,78 @@
+<div class="hackathon">
+
+  <div class="date">
+    <div class="date-month">
+      <%= hackathon.date_start.strftime("%B").first(3) %>
+    </div>
+    <div class="date-day-number">
+      <%= hackathon.date_start.strftime("%e") %>
+    </div>
+    <div class="date-week-days">
+      <% if hackathon.date_start != hackathon.date_end %>
+        <%= hackathon.date_start.strftime("%a") %>-<%=hackathon.date_end.strftime("%a")%>
+      <% else %>
+        <%= hackathon.date_start.strftime("%a") %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="category">
+    <span class="category-bar" style="background-color: #<%= Category.all.shuffle.first.primary_hex_color %>">
+    </span>
+  </div>
+
+  <div class="favorite">
+    <% following = current_user && membership_hackathon_ids.include?(hackathon.id) %>
+    <div class="favorite-action">
+      <% if following %>
+        <%= link_to unfollow_hackathon_path(hackathon), method: "post" do %>
+          <span class="glyphicon glyphicon-star glyphicon-star" aria-hidden="true"></span>
+          Favorite
+        <% end %>
+      <% else %>
+        <%= link_to follow_hackathon_path(hackathon), method: "post" do %>
+          <span class="glyphicon glyphicon-star glyphicon-star-empty" aria-hidden="true"></span>
+          Add to Favorites
+        <% end %>
+      <% end %>
+    </div>
+    <div class="favorite-by-people">
+      <% (hackathon.users * rand(18)).each do |user| %>
+        <span style="background-image: url('https://pbs.twimg.com/profile_images/3609132047/a663b3129c58a7ecd4059e63115461f3.png')">
+          <%= user.first_name %>
+          <%= user.last_name %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="image">
+    <%= link_to hackathon do %>
+      <%= image_tag "angel.png" %>
+    <% end %>
+  </div>
+
+  <div class="info">
+    <h2>
+      <%= link_to hackathon.title, hackathon_by_id_path(name: "#{hackathon.id}-#{hackathon.title}".parameterize.downcase, country: hackathon.country.parameterize.downcase, city: hackathon.city.parameterize.downcase), 'data-no-turbolink' => false, class: "title" %>
+    </h2>
+
+    <p class="location-and-date">
+      <span class="city"><%= hackathon.city %></span>, <span class="country"><%= hackathon.country %></span>
+      <br />
+      <span>
+        
+        <%= hackathon.date_start.strftime("%e") %>
+        -
+        <%=hackathon.date_end.strftime("%e %B")%>
+      </span>
+    </p>
+
+    <p>
+      <%= link_to "Mastercard", "#" %>,
+      <%= link_to "Mastercard", "#" %>,
+      <%= link_to "Mastercard", "#" %>
+    </p>
+  </div>
+
+</div>

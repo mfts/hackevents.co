@@ -81,7 +81,6 @@ class UsersController < ApplicationController
   def resend_email_confirmation
     UserMailer.registration_confirmation(current_user).deliver
     redirect_to :back, success: 'Your email confirmation has been sent out again.'
-
   end
 
 
