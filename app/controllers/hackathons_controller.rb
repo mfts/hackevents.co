@@ -28,8 +28,9 @@ class HackathonsController < ApplicationController
   end
 
   def show
-    
+
   end
+
 
   def follow
     current_user.follow_hackathon(@hackathon)
