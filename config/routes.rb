@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   root to: 'hackathons#index'
   
   namespace :admin do
+    root to: 'welcome#index'
     resources :categories
   end
   
