@@ -17,7 +17,7 @@
   </div>
 
   <div class="category">
-    <span class="category-bar" style="background-color: #<%= Category.all.shuffle.first.primary_hex_color %>">
+    <span class="category-bar" style="background-color: #<%= hackathon.categories.map { |c| c.primary_hex_color }.first || "000000" %>">
     </span>
   </div>
 
