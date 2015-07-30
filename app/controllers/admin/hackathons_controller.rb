@@ -14,7 +14,7 @@ module Admin
       @hackathon = Hackathon.new(hackathon_params)
 
       if @hackathon.save
-        redirect_to @hackathon, notice: 'Hackathon was successfully created.'
+        redirect_to edit_admin_hackathon_path(@hackathon), notice: 'Hackathon was successfully created.'
       else
         render :new
       end
@@ -25,7 +25,7 @@ module Admin
 
     def update
       if @hackathon.update(hackathon_params)
-        redirect_to @hackathon, notice: 'Hackathon was successfully updated.'
+        redirect_to edit_admin_hackathon_path(@hackathon), notice: 'Hackathon was successfully updated.'
       else
         render :edit
       end
@@ -33,7 +33,7 @@ module Admin
 
     def destroy
       @hackathon.destroy
-      redirect_to hackathons_url, notice: 'Hackathon was successfully destroyed.'
+      redirect_to admin_hackathons_url, notice: 'Hackathon was successfully destroyed.'
     end
 
     def import
@@ -51,7 +51,7 @@ module Admin
           )
         ques.save
       end
-    redirect_to hackathons_path, notice: "Hackathons added"
+    redirect_to admin_hackathons_path, notice: "Hackathons added"
     end
 
     def export
@@ -104,7 +104,7 @@ module Admin
     end
 
     def hackathon_params
-      params.require(:hackathon).permit(:title, :description, :country, :city, :url, :date_start, :date_end, :venue, :address, :challenge, :sponsors, :awards, :schedule, :application, :application_deadline, :twitter, :longitude, :latitude, { category_ids: [] })
+      params.require(:hackathon).permit(:title, :description, :country, :city, :url, :date_start, :date_end, :venue, :address, :challenge, :sponsors, :awards, :schedule, :application, :application_deadline, :twitter, :longitude, :latitude, { category_ids: [] }, { sponsor_ids: [] })
     end
   end
 end
