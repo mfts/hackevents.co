@@ -1,23 +1,23 @@
 <div id="categories-menu">
   <ul>
-    <li id="categories-menu-all">
-      <a href="#">
+    <li id="categories-menu-all" class="<%= params[:category].present? ? "inactive" : "" %>">
+      <%= link_to root_path do %>
         <span class="icon" style="background-color: #000000">
         </span>
         <span class="text">
           All
         </span>
-      </a>
+      <% end %>
     </li>
     <% Category.all.each do |category| %>
-      <li>
-        <a href="#">
+      <li class="<%= params[:category].present? && params[:category] != category.id.to_s ? "inactive" : "" %>">
+        <%= link_to root_path(category: category.id) do %>
           <span class="icon" style="background-color: #<%= category.primary_hex_color %>">
           </span>
           <span class="text">
             <%= category.name %>
           </span>
-        </a>
+        <% end %>
       </li>
     <% end %>
   </ul>

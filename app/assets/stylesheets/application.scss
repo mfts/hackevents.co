@@ -99,9 +99,12 @@ $link-color:                    #F57C00;
       }
       li {
         line-height: 20px;
+        &.inactive {
+          opacity: 0.4;
+        }
         a {
           text-decoration: none;
-          color: #7F7F7F;
+          color: #3F3F3F;
           &:hover {
             color: #262626;
           }

@@ -19,7 +19,13 @@ class HackathonsController < ApplicationController
     
     page        = params[:page]
     per_page    = params[:per_page]
-    @q          = Hackathon.ransack q_param
+    
+    if params[:category]
+      @q          = Category.find(params[:category]).hackathons.ransack q_param
+    else
+      @q          = Hackathon.ransack q_param
+    end
+    
     @hackathons = @q.result.where('date_start >= ?', Time.zone.now).order(date_start: :asc).page(page).per(per_page)
     
     if current_user
