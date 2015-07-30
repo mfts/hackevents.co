@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     root to: 'welcome#index'
     resources :categories
     resources :sponsors
+    resources :hackathons
   end
   
   resources :twitter_accounts
