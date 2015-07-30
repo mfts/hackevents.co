@@ -36,7 +36,8 @@ class User < ActiveRecord::Base
   end
   
   def admin?
-    self[:email].end_with?("hackevents.co")
+    # self[:email].end_with?("hackevents.co")
+    self.admin
   end
   
   def downcase_email
