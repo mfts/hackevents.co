@@ -1,0 +1,39 @@
+<h1>
+  Sponsors
+</h1>
+
+<hr />
+
+<p>
+  <%= link_to "New", new_admin_sponsor_path, class: "btn btn-default" %>
+</p>
+
+<hr />
+
+<% @sponsors.in_groups_of(4, false).each do |grouped_sponsors| %>
+  <div class="row">
+    <% grouped_sponsors.each do |sponsor| %>
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <div style="background-color: #F1F1F1; overflow: hidden;">
+            <div style="margin: 20px; height: 140px; background-image: url('<%= sponsor.twitter_image_url %>'); background-position: center; background-size: contain; background-repeat: no-repeat;">
+            </div>
+          </div>
+          <div class="caption">
+            <p>
+              <strong>
+                <%= sponsor.name %>
+              </strong>
+              <br />
+              @<%= sponsor.twitter_handle %>
+            </p>
+            <p style="margin-bottom: 0;">
+              <%= link_to "edit", edit_admin_sponsor_path(sponsor), class: "btn btn-default btn-xs" %>
+              <%= link_to "delete", admin_sponsor_path(sponsor), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
