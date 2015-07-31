@@ -3,7 +3,7 @@
 
 <div class="page-header" style="position:relative;background-image: url('<%= @hackathon.image_url %>');width:100%;
   min-height:200px;background-size:cover;">
-  <div style="position:absolute;bottom: 0;left: 0;background-color:rgba(255,255,255,0.6);">
+  <div style="position:absolute;bottom: 0;left: 0;background-color:rgba(255,255,255,0.8);">
   <h1>
   <%= @hackathon.title %>
   <small>
@@ -83,11 +83,10 @@
 
 <% if @hackathon.sponsors.present? %>
 <h3>Partners</h3>
-  <ul class="users follow">
+  <ul class="sponsors">
     <% @hackathon.sponsors.each do |s| %>
       <span>
-        <%= link_to image_tag( s.twitter_image_url, class: "img-thumbnail", size: "50x50"), "http://twitter.com/#{s.twitter_handle}?ref=hackevents", :target => "_blank" %>
-        <%= link_to s.twitter_name, "http://twitter.com/#{s.twitter_handle}?ref=hackevents", :target => "_blank" %>
+        <%= link_to image_tag( s.twitter_image_url, class: "img-rounded", size: "150x150", :data => {:toggle => "tooltip", :placement => "top"}, :title => "#{s.twitter_name}"), "http://www.twitter.com/#{s.twitter_handle}", :target => "_blank" %>
       </span>
     <% end %>
   </ul>
