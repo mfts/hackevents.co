@@ -1,10 +1,8 @@
 <header class="page-header">
-      <div class="col-xs-5 line"><hr></div>
-      <div class="col-xs-2">
-      <%= image_tag @user.twitter_account.profile_image, class: "img-circle center-block", :style => "border: 3px solid #F57C00;", size: "150x150" %>
-      </div>
-      <div class="col-xs-5 line"><hr></div>
   
+  <div class="avatar-image-line">
+    <div class="avatar-image-line-image-wrapper">
+      <%= image_tag @user.twitter_account.profile_image, class: "avatar-image-line-image img-circle center-block", :style => "border: 3px solid #F57C00;", size: "150x150" %>
     </div>
   </div>
   

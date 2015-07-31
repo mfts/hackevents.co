@@ -160,6 +160,21 @@ $link-color:                    #F57C00;
   }
 }
 
+
+.avatar-image-line {
+  background-image: image-url("line.png");
+  background-repeat: repeat-x;
+  background-position: center;
+  .avatar-image-line-image-wrapper {
+    background-color: white;
+    width: 200px;
+    margin: 0 auto;
+    .avatar-image-line-image {
+      
+    }
+  }
+}
+
 #main {
   background-color: white;
   position: relative;
