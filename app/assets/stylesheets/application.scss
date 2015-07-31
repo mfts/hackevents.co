@@ -435,14 +435,14 @@ ul.page-header-other-info-links {
     display: block;
     padding: 6px 0px;
     font-size: 18px;
-    color: rgba($brand-primary,0.8);
+    color: #FFFFFF;
 }
 .page-header-navigation-tab a:hover {
-    background: rgba(255, 255, 255, 0.1)
+    text-decoration: none;
+    color: #BFBFBF;
 }
 .page-header-navigation-tab strong {
     display: block;
-    color: white;
     font-size: 18px
 }
 
