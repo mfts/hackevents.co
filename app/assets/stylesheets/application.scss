@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_self
+ *= require font-awesome
  */
 
 $body-bg:                       #FFFFFF;
@@ -430,3 +431,24 @@ $link-color:                    #F57C00;
 .post-item:hover {
     background: #f7f7fa
 }
+
+.line {
+  padding-top:50px;
+  white-space:no-wrap;
+  overflow:hidden;
+  text-align:center;
+  background-color:#fff;
+}
+
+ul.profile-info {
+  list-style-type: none;
+  text-align: center;
+  padding: 0px;
+  zoom:1;
+  overflow: hidden;
+  }
+  ul.profile-info li {
+    padding: 2px;
+    max-width: 200px;
+    display:inline-block;
+  }

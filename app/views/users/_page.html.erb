@@ -1,20 +1,39 @@
 <header class="page-header">
   <div class="container">
 
-    <div class="col-md-7 col-md-offset-5">
-    <%= image_tag @user.twitter_account.profile_image, class: "img-circle", size: "150x150" %>
+    <div class="col-xs-5 line"><hr></div>
+    <div class="col-xs-2">
+    <%= image_tag @user.twitter_account.profile_image, class: "img-circle", :style => "border: 3px solid #F57C00;", size: "150x150" %>
     </div>
+    <div class="col-xs-5 line"><hr></div>
 
-    <div class="col-md-7 col-md-offset-5">
+    <div class="col-xs-12" style="text-align:center;">
       <h1 style="display:inline-block;">
         <%= @user.first_name %>
         <%= @user.last_name %>
       </h1>
       <% unless @user == current_user %>
-        <%= render 'follow_form' if logged_in? %>
+        <span style="display:inline-block; padding-left:10px; vertical-align:10px;"><%= render 'follow_form' if logged_in? %></span>
       <% else %>
-        <span style="margin-left:10px;">This is you.</span>
+        <span style="display:inline-block; padding-left:10px;">This is you.</span>
       <% end %>
+      <p style="max-width:500px; margin:0 auto;">
+        <%= @user.twitter_account.description %>
+      </p>
+      <ul class="profile-info">
+        <li>
+          <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+          <%= @user.twitter_account.location %>
+        </li>
+        <li>
+          <%= link_to "http://www.twitter.com/#{ @user.twitter_account.username }", :target => "_blank", :style => "color:#000;" do %> 
+            <span class="fa fa-twitter" aria-hidden="true"></span>
+            @<%= @user.twitter_account.username %>
+          <% end %>
+          <br/>
+        </li>
+      </ul>
+      
     </div>
 
     <nav class="page-header-navigation">
