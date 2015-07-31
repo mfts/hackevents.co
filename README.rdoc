@@ -1,24 +1,25 @@
 == README
 
-√ Kategorien zu Hackathons hinzufügen
-√ Sponsoren zu Hackathons hinzufügen
-c Titelbilder zu Hackathons hinzufügen
-√ Kategorien auf Hackathon Show Page darstellen
-√ Sponsoren auf Hackathon Show Page darstellen
-√ Gefaved User auf Hackathon Show Page darstellen
-√ city image to hackathon show page
-m gefaved user stylen
-√ Gefaved User auf Hackathon index darstellen
-d Filter
-m Email signup raus
-√ Route design mit twitter @handle
-d Profilleiste (eigenes Bild)
-√ upload/import hackathon controller and view
-m highlighted hackathon
-√ twitter_handle, location, description to profile
-√ larger sponsor with hover on hackathon_show
-m after twitter login before email address -> signup flow with location, categories, sponsors
-- responsive machen
-d cookie um sidebar zu setten
-d search bar on every site
 - profile settings page (wie die admin, dass man direkt im edit ist)
+- responsive machen
+c Titelbilder zu Hackathons hinzufügen
+d cookie um sidebar zu setten
+d Filter
+d Profilleiste (eigenes Bild)
+d search bar on every site
+m after twitter login before email address -> signup flow with location, categories, sponsors
+m Email signup raus
+m gefaved user stylen
+m highlighted hackathon
+
+√ city image to hackathon show page
+√ Gefaved User auf Hackathon index darstellen
+√ Gefaved User auf Hackathon Show Page darstellen
+√ Kategorien auf Hackathon Show Page darstellen
+√ Kategorien zu Hackathons hinzufügen
+√ larger sponsor with hover on hackathon_show
+√ Route design mit twitter @handle
+√ Sponsoren auf Hackathon Show Page darstellen
+√ Sponsoren zu Hackathons hinzufügen
+√ twitter_handle, location, description to profile
+√ upload/import hackathon controller and view
