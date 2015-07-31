@@ -1,28 +1,24 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+√ Kategorien zu Hackathons hinzufügen
+√ Sponsoren zu Hackathons hinzufügen
+c Titelbilder zu Hackathons hinzufügen
+√ Kategorien auf Hackathon Show Page darstellen
+√ Sponsoren auf Hackathon Show Page darstellen
+√ Gefaved User auf Hackathon Show Page darstellen
+√ city image to hackathon show page
+m gefaved user stylen
+√ Gefaved User auf Hackathon index darstellen
+d Filter
+m Email signup raus
+- Route design mit twitter @handle
+d Profilleiste (eigenes Bild)
+√ upload/import hackathon controller and view
+m highlighted hackathon
+√ twitter_handle, location, description to profile
+√ larger sponsor with hover on hackathon_show
+m after twitter login before email address -> signup flow with location, categories, sponsors
+- responsive machen
+d cookie um sidebar zu setten
+d search bar on every site
+- profile settings page (wie die admin, dass man direkt im edit ist)
