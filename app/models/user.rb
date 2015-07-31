@@ -121,10 +121,13 @@ class User < ActiveRecord::Base
       end
     end
   end
-
-
-
-
+  
+  
+  def to_param
+    "#{self.twitter_account.username}"
+  end
+  
+  
   private
   def generate_registration_confirmation_token
     if self.confirm_token.blank?

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'hackathon/:country', to: 'hackathons#index', as: :hackathons_by_country
   get 'hackathon/:country/:city', to: 'hackathons#index', as: :hackathons_by_city
   
+  get '@:username', to: 'users#show', as: :user
+  
   resources :users do
     member do
       get :confirm_email, :resend_email_confirmation

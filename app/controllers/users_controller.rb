@@ -93,7 +93,8 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id]) #|| TwitterAccount.find(params[:name])
+      #@user = User.find(params[:id]) #|| TwitterAccount.find(params[:name])
+      @user = TwitterAccount.find_by_username(params[:username]).user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
