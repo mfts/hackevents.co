@@ -339,9 +339,49 @@ $link-color:                    #F57C00;
 }
 
 // profile header
+.page-header {
+  padding-bottom: 0;
+}
+
+.page-header-info {
+    text-align:center;
+}
+.page-header-other-info {
+  text-align:center;
+  max-width:500px; 
+  margin:0 auto 30px;
+}
+.page-header-buttons {
+    float: right;
+    margin-top: 25px;
+    text-align: right;
+}
+@media (max-width: 768px) {
+    .page-header-buttons {
+        float: none;
+        text-align: center
+    }
+}
+.page-header-buttons-text {
+  padding-right: 10px;
+  font-size: 0.8em;
+}
+ul.page-header-other-info-links {
+  list-style-type: none;
+  text-align: center;
+  padding: 0px;
+  zoom:1;
+  overflow: hidden;
+  }
+  ul.page-header-other-info-links li {
+    padding: 2px;
+    max-width: 200px;
+    display:inline-block;
+  }
+
 .page-header-navigation {
     clear: both;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.5);
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
     overflow: hidden;
@@ -361,16 +401,55 @@ $link-color:                    #F57C00;
     margin: 0px;
     display: table-row
 }
+@media (max-width: 768px) {
+    .page-header-navigation {
+        border-radius: 3px;
+        margin-bottom: 10px
+    }
+    .page-header-navigation ul {
+        display: block
+    }
+}
 
 .page-header-navigation-tab {
     text-align: center;
-    display: table-cell
+    display: table-cell;
 }
 .page-header-navigation-tab a {
     display: block;
     padding: 6px 0px;
+    font-size: 18px;
+    color: rgba($brand-primary,0.8);
+}
+.page-header-navigation-tab a:hover {
+    background: rgba(255, 255, 255, 0.1)
+}
+.page-header-navigation-tab strong {
+    display: block;
+    color: white;
+    font-size: 18px
 }
 
+@media (max-width: 768px) {
+    .page-header-navigation-tab {
+        display: block;
+        line-height: 30px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+    }
+    .page-header-navigation-tab:last-child {
+        border-bottom: none
+    }
+}
+
+.page-header-navigation-tab.active a,
+.page-header-navigation-tab a:active {
+    background: white;
+    color: rgba($brand-primary,1.0);
+}
+.page-header-navigation-tab.active a strong,
+.page-header-navigation-tab a:active strong {
+    color: black;
+}
 @media (max-width: 768px) {
     .page-header-navigation-tab {
         display: block;
@@ -381,6 +460,7 @@ $link-color:                    #F57C00;
         border-bottom: none
     }
 }
+
 
 .posts-group {
     list-style: none;
@@ -440,20 +520,106 @@ $link-color:                    #F57C00;
   background-color:#fff;
 }
 
-ul.profile-info {
-  list-style-type: none;
-  text-align: center;
-  padding: 0px;
-  zoom:1;
-  overflow: hidden;
-  }
-  ul.profile-info li {
-    padding: 2px;
-    max-width: 200px;
-    display:inline-block;
-  }
+
 
 .hackathon-highlighted {
-  background-color: rgba(0,0,0, 0.5);
+  background-color: #f2f2f2;
   padding: 25px 0px;
 }
+
+.people {
+    list-style: none;
+    padding: 20px 10px;
+    padding-top: 30px;
+    margin: 0px
+}
+.people:after {
+    content: "";
+    display: table;
+    clear: both
+}
+.people-person {
+    margin-bottom: 20px
+}
+.people-person:after {
+    content: "";
+    display: table;
+    clear: both
+}
+.people-person:last-child {
+    margin-bottom: 0
+}
+.people-person-link {
+    display: block;
+    border-radius: 3px;
+    width: 100%;
+    padding: 10px;
+    margin: -10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+.people-person-link:after {
+    content: "";
+    display: table;
+    clear: both
+}
+.people-person-link:hover {
+    background: #fcf5e2
+}
+.people-person-avatar {
+    float: left;
+    margin-right: 15px;
+    position: relative;
+    width: 50px;
+    overflow: hidden;
+}
+.people-person-avatar img {
+    width: 100%;
+    //height: auto;
+    background-size:50px 50px;
+}
+.people-person-info {
+    float: left;
+    margin-top: 0px
+}
+.people-person-username {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 20px;
+    color: #AAA3A0;
+    margin: 0px
+}
+.people-person-bio {
+    font-size: 16px;
+    color: #AAA3A0;
+    line-height: 22px;
+    color: black;
+    margin: 0px;
+    margin-top: 6px;
+    margin-bottom: 0px
+}
+
+.people-person-title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    color: black;
+    margin: 0;
+    margin-bottom: 3px
+}
+
+
+
+
+.btn.btn-twitter {
+  background: #00aced;
+  border-color: #00aced;
+  color: #fff;
+}
+
+.btn.btn-resend {
+  float: right;
+  margin-top:-7.5px;
+}
+

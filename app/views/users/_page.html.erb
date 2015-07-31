@@ -1,26 +1,39 @@
 <header class="page-header">
   <div class="container">
-
-    <div class="col-xs-5 line"><hr></div>
-    <div class="col-xs-2">
-    <%= image_tag @user.twitter_account.profile_image, class: "img-circle", :style => "border: 3px solid #F57C00;", size: "150x150" %>
+    <div class="row">
+      <div class="col-xs-5 line"><hr></div>
+      <div class="col-xs-2">
+      <%= image_tag @user.twitter_account.profile_image, class: "img-circle center-block", :style => "border: 3px solid #F57C00;", size: "150x150" %>
+      </div>
+      <div class="col-xs-5 line"><hr></div>
     </div>
-    <div class="col-xs-5 line"><hr></div>
-
-    <div class="col-xs-12" style="text-align:center;">
-      <h1 style="display:inline-block;">
-        <%= @user.first_name %>
-        <%= @user.last_name %>
-      </h1>
-      <% unless @user == current_user %>
-        <span style="display:inline-block; padding-left:10px; vertical-align:10px;"><%= render 'follow_form' if logged_in? %></span>
-      <% else %>
-        <span style="display:inline-block; padding-left:10px;">This is you.</span>
-      <% end %>
-      <p style="max-width:500px; margin:0 auto;">
+    <div class="row">
+      <div class="col-xs-3"></div>
+      <div class="col-xs-6 page-header-info">
+        <h1>
+          <%= @user.first_name %>
+          <%= @user.last_name %>
+        </h1>
+      </div>
+      <div class="col-xs-3 page-header-buttons">
+        <% unless @user == current_user %>
+          <span><%= render 'follow_form' if logged_in? %></span>
+          <% if @user.following_user?(current_user) %>
+            <!-- <span class="page-header-buttons-text">FOLLOWS YOU</span> -->
+          <% end %>
+        <% else %>
+          <span class="page-header-buttons-text">THIS IS YOU</span>
+          <span>
+            <%= link_to "Share on Twitter", "https://twitter.com/intent/tweet?text=ILOVEYOU@hackevents" .html_safe, class: "btn btn-twitter", target: "_blank" %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="page-header-other-info">
+      <p>
         <%= @user.twitter_account.description %>
       </p>
-      <ul class="profile-info">
+      <ul class="page-header-other-info-links">
         <li>
           <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
           <%= @user.twitter_account.location %>
@@ -33,21 +46,26 @@
           <br/>
         </li>
       </ul>
-      
     </div>
 
     <nav class="page-header-navigation">
       <ul>
         <li class="page-header-navigation-tab <%= params[:style] == 'hackathons' ? 'active' : 'normal' %>">
-          <h3><a href="?style=hackathons"><%= @user.hackathons.count %> Hackathons</a></h3>
+          <a href="?style=hackathons">
+            <strong><%= @user.hackathons.count %></strong>
+            Hackathons</a>
         </li>
 
         <li class="page-header-navigation-tab <%= params[:style] == 'following' ? 'active' : 'normal' %>">
-          <h3><a href="?style=following"><%= @user.following.count %> Following</a></h3>
+          <a href="?style=following">
+            <strong><%= @user.following.count %></strong>
+            Following</a>
         </li>
 
         <li class="page-header-navigation-tab <%= params[:style] == 'followers' ? 'active' : 'normal' %>">
-          <h3><a href="?style=followers"><%= @user.followers.count %> Followers</a></h3>
+          <a href="?style=followers">
+            <strong><%= @user.followers.count %></strong>
+            Followers</a>
         </li>
       </ul>
     </nav>
@@ -59,34 +77,26 @@
   <main class="profile-main">
     <div class="container">
       <% if params[:style] == 'followers' %>
-        <% @user.followers.each do |f| %>
+        <% @user.followers.in_groups_of(3,false) do |follower_group| %>
           <div class="posts">
-            <ul class="posts-group">
-              <li>
-                <div class="post-item">
-                  <% if f == current_user %>
-                    <%= link_to "#{f.first_name} #{f.last_name}", profile_path %>
-                  <% else %>
-                    <%= link_to "#{f.first_name} #{f.last_name}", user_path(f) %>
-                  <% end %>
-                </div>
-              </li>
+            <ul class="people">
+              <% follower_group.each do |f| %>
+                <li class="people-person col-md-4">
+                  <%= render partial: "users/user", locals: { u: f } %>
+                </li>
+              <% end %>
             </ul>
           </div>
         <% end %>
       <% elsif params[:style] == 'following' %>
-        <% @user.following.each do |f| %>
+        <% @user.following.in_groups_of(3,false) do |following_group| %>
           <div class="posts">
-            <ul class="posts-group">
-              <li>
-                <div class="post-item">
-                  <% if f == current_user %>
-                    <%= link_to "#{f.first_name} #{f.last_name}", profile_path %>
-                  <% else %>
-                    <%= link_to "#{f.first_name} #{f.last_name}", user_path(f) %>
-                  <% end %>
-                </div>
-              </li>
+            <ul class="people">
+              <% following_group.each do |f| %>
+                <li class="people-person col-md-4">
+                  <%= render partial: "users/user", locals: { u: f } %>
+                </li>
+              <% end %>
             </ul>
           </div>
         <% end %>
