@@ -89,9 +89,18 @@
       </span>
     </p>
 
-    <p>
-      <%= hackathon.sponsors.map { |sponsor| sponsor.name }.join(", ") %>
-    </p>
+
+
+    <% if hackathon.sponsors.present? %>
+      <p class="sponsors">
+        <% hackathon.sponsors.each do |s| %>
+          <span>
+            <%= link_to image_tag( s.twitter_image_url, class: "img-rounded", size: "40x40", :data => {:toggle => "tooltip", :placement => "top"}, :title => "#{s.twitter_name}"), "http://www.twitter.com/#{s.twitter_handle}", :target => "_blank" %>
+          </span>
+        <% end %>
+      </p>
+    <% end %>
+
   </div>
 
 </div>
