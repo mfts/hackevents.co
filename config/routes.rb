@@ -28,12 +28,6 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   
   resources :hackathons do
-    collection do
-      post :import
-      get :export
-      get :upload
-      get :display
-    end
     member do
       post :follow
       post :unfollow
@@ -45,7 +39,13 @@ Rails.application.routes.draw do
     root to: 'welcome#index'
     resources :categories
     resources :sponsors
-    resources :hackathons
+    resources :hackathons do
+      collection do
+        post :import
+        get :export
+        get :upload
+      end
+    end
   end
   
   resources :twitter_accounts
