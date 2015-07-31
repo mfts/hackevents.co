@@ -11,7 +11,7 @@ m gefaved user stylen
 √ Gefaved User auf Hackathon index darstellen
 d Filter
 m Email signup raus
-- Route design mit twitter @handle
+√ Route design mit twitter @handle
 d Profilleiste (eigenes Bild)
 √ upload/import hackathon controller and view
 m highlighted hackathon
