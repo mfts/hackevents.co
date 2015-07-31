@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730150528) do
+ActiveRecord::Schema.define(version: 20150731134832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,13 +46,14 @@ ActiveRecord::Schema.define(version: 20150730150528) do
     t.text     "schedule"
     t.boolean  "application"
     t.datetime "application_deadline"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "slug"
     t.float    "longitude"
     t.float    "latitude"
     t.string   "twitter"
     t.string   "image_url"
+    t.boolean  "highlighted",          default: false
   end
 
   add_index "hackathons", ["slug"], name: "index_hackathons_on_slug", using: :btree
