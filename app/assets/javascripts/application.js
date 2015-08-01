@@ -36,7 +36,7 @@ $(function() {
 });
 
 $(function() {
-  $("#menu").on("click", function(){
+  $("#menu").on("click", function(event){
     if($("body").hasClass("sidebar-visible")) {
       $("body").removeClass("sidebar-visible");
       $("body").addClass("sidebar-hidden");
@@ -46,5 +46,6 @@ $(function() {
       $("body").addClass("sidebar-visible");
       $.post( "/show_sidebar", function( data ) {});
     }
+    event.preventDefault();
   });
 });
