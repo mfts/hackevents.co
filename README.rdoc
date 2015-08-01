@@ -1,12 +1,12 @@
 == README
 
-- responsive machen
 - 404 page für alle error pages
 d Filter
 m Email signup raus
 m style signup flow
-m Titelbilder zu Hackathons hinzufügen
+m Titelbilder zu Hackathons hinzufügen < sind das die categories?
 
+ø responsive machen
 
 √ city image to hackathon show page
 √ Gefaved User auf Hackathon index darstellen
