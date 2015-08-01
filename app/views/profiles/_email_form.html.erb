@@ -1,18 +1,19 @@
 <div>
-  <h3>Welcome to Hackevents</h3>
-  <p>Find all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathonsFind all hackathons</p>
+  <h2 style="font-weight:200;">Welcome to Hackevents</h3>
+  <p class="lead">Hackevents helps you find and plan your next hackathon.</p><br/>
 </div>
 
 <div>
   <%= simple_form_for(@user, url: profile_path, method: :patch) do |f| %>
     <%= f.error_notification %>
 
-    <div class="form-inputs">
+    <div class="form-inputs profile-settings-form">
+      <h4 class="lead">Email Address</h4>
       <%= f.input :email, placeholder: "Please enter your email address", label: false %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Submit", :class => "btn btn-primary" %>
+    <div class="form-actions profile-settings-form">
+      <%= f.button :submit, "Explore", :class => "btn btn-primary" %>
       <%= link_to "Back", affiliation_profile_path, method: :get, :class => "btn btn-link" %>
     </div>
   <% end %>
