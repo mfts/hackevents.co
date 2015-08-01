@@ -2,7 +2,6 @@
 
 - 404 page für alle error pages
 d Filter
-m Email signup raus
 m style signup flow
 
 ø responsive machen
@@ -26,3 +25,4 @@ m style signup flow
 √ Profilleiste (eigenes Bild)
 √ cookie um sidebar zu setten
 √ Titelbilder zu Hackathons hinzufügen < sind das die categories? < genau
+√ Email signup raus
