@@ -9,13 +9,13 @@
     <div class="form-inputs">
       <%= hidden_field_tag "user[sponsor_ids][]", nil %>
       <% Sponsor.order(:twitter_handle).each do |sponsor| %>
-      <div class="checkbox">
-        <label>
-          <%= check_box_tag "user[sponsor_ids][]", sponsor.id, @user.sponsor_ids.include?(sponsor.id) %>
-          <%= sponsor.name %>
-        </label>
-      </div>
-    <% end %>
+        <div class="checkbox">
+          <label>
+            <%= check_box_tag "user[sponsor_ids][]", sponsor.id, @user.sponsor_ids.include?(sponsor.id) %>
+            <%= sponsor.name %>
+          </label>
+        </div>
+      <% end %>
     </div>
 
     <div class="form-actions">

@@ -99,8 +99,8 @@
       <% end %>
       
       <% if logged_in? && !current_user.email_confirmed? %>
-        <div class="alert alert-danger">Please confirm your email address! 
-            <%= link_to "Resend Email Confirmation", resend_email_confirmation_user_path(current_user) ,class: "btn btn-primary btn-resend" %>
+        <div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please confirm your email address! 
+            <%= link_to "Resend Email Confirmation", resend_email_confirmation_user_path(current_user) ,class: "btn btn-danger btn-resend" %>
         </div>
       <% end %>
       
