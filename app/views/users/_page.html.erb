@@ -14,19 +14,21 @@
         <%= @user.last_name %>
       </h1>
     </div>
-    <div class="col-xs-3 page-header-buttons">
-      <% unless @user == current_user %>
-        <span><%= render 'follow_form' if logged_in? %></span>
+    <% unless @user == current_user %>
+      <div class="col-xs-3 page-header-buttons">
         <% if @user.following_user?(current_user) %>
-          <!-- <span class="page-header-buttons-text">FOLLOWS YOU</span> -->
+          <span class="page-header-buttons-text-follow">FOLLOWS YOU</span>
         <% end %>
-      <% else %>
+        <span><%= render 'follow_form' if logged_in? %></span>
+      </div>
+    <% else %>
+      <div class="col-xs-3 page-header-buttons">
         <span class="page-header-buttons-text">THIS IS YOU</span>
         <span>
           <%= link_to "Share on Twitter", "https://twitter.com/intent/tweet?text=ILOVEYOU@hackevents" .html_safe, class: "btn btn-twitter", target: "_blank" %>
         </span>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
   <div class="page-header-other-info">
     <p>
@@ -35,10 +37,10 @@
     <ul class="page-header-other-info-links">
       <li>
         <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-        <%= @user.twitter_account.location %>
+        <%= @user.location || @user.twitter_account.location %>
       </li>
       <li>
-        <%= link_to "http://www.twitter.com/#{ @user.twitter_account.username }", :target => "_blank", :style => "color:#000;" do %> 
+        <%= link_to "http://www.twitter.com/#{ @user.twitter_account.username }", :target => "_blank", title: "twitter.com/#{@user.twitter_account.username}" do %> 
           <span class="fa fa-twitter" aria-hidden="true"></span>
           @<%= @user.twitter_account.username %>
         <% end %>
@@ -49,7 +51,7 @@
 
   <nav class="page-header-navigation">
     <ul>
-      <li class="page-header-navigation-tab <%= params[:style] == 'hackathons' ? 'active' : 'normal' %>">
+      <li class="page-header-navigation-tab <%= params[:style] == 'hackathons' || params[:style].blank? ? 'active' : 'normal' %>">
         <a href="?style=hackathons">
           <strong><%= @user.hackathons.count %></strong>
           Hackathons</a>

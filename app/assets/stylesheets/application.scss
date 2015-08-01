@@ -196,6 +196,9 @@ $link-color:                    #F57C00;
         border: 1px solid #7F7F7F;
       }
     }
+    a:hover {
+      text-decoration:none;
+    }
   }
 }
 
@@ -463,6 +466,7 @@ $link-color:                    #F57C00;
 // profile header
 .page-header {
   padding-bottom: 0;
+  border-bottom: none;
 }
 
 .page-header-info {
@@ -486,7 +490,13 @@ $link-color:                    #F57C00;
 }
 .page-header-buttons-text {
   padding-right: 10px;
+  font-size: 0.8em; 
+}
+.page-header-buttons-text-follow {
   font-size: 0.8em;
+  float:left;
+  padding-left:120px;
+  padding-top:10px;
 }
 ul.page-header-other-info-links {
   list-style-type: none;
@@ -499,7 +509,14 @@ ul.page-header-other-info-links {
     padding: 2px;
     max-width: 200px;
     display:inline-block;
-  }
+  } 
+  ul.page-header-other-info-links li a {
+    color: #000;
+  } 
+  ul.page-header-other-info-links li a:hover {
+      text-decoration:none;
+      color: #BFBFBF;
+    }
 
 .page-header-navigation {
     clear: both;
@@ -567,6 +584,8 @@ ul.page-header-other-info-links {
 .page-header-navigation-tab a:active {
     background: white;
     color: rgba($brand-primary,1.0);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 .page-header-navigation-tab.active a strong,
 .page-header-navigation-tab a:active strong {
