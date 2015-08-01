@@ -14,14 +14,14 @@ Rails.application.routes.draw do
   
   resources :users do
     member do
-      get :confirm_email, :resend_email_confirmation
+      get :confirm_email
       get :following, :followers, :hackathons
     end
   end
   
   resource :profile do
     member do
-      get :email, :interest, :affiliation, :location
+      get :email, :interest, :affiliation, :location, :resend_email_confirmation
       patch :email, :interest, :affiliation, :location
       post :email, :interest, :affiliation, :location
     end

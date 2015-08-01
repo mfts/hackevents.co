@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :following, :followers, :hackathons, :resend_email_confirmation]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :following, :followers, :hackathons]
 
   # GET /users/new
   def new
@@ -70,15 +70,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @hackathons = @user.hackathons
     render 'show_hackathon'
-  end
-
-  def resend_email_confirmation
-    if current_user.email.present?
-      UserMailer.registration_confirmation(current_user).deliver
-      redirect_to :back, success: 'Your email confirmation has been sent out again.'
-    else
-      redirect_to email_profile_path, error: "Please enter a valid email."
-    end
   end
 
 
