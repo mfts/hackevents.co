@@ -398,11 +398,40 @@ ul.page-header-other-info-links {
   }
 }
 
+.profile-settings-form-categories-checkbox {
+  input[type="checkbox"]{
+    position: relative;
+    margin-left:0px;
+  }
+}
+
 .s-h1 {
-  font-size: 28px;
-  font-weight: 400;
-  line-height: 39px;
-  margin: 41px 0 48px 0;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 39px;
+    margin: 41px 0 48px 0
+}
+.s-h2 {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 26px;
+    margin: 0 0 44px 0
+}
+.s-h3 {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
+    margin: 0 0 14px 0
+}
+.s-h4 {
+    font-size: 18px;
+    font-weight: 400
+}
+.s-h1,
+.s-h2,
+.s-h3,
+.s-h4 {
+    color: black
 }
 
 .btn {
