@@ -369,6 +369,7 @@ ul.page-header-other-info-links {
     &[type=submit] {
       width: 150px;
       height: 35px;
+      color: white
     }
   }
   label {
@@ -380,6 +381,14 @@ ul.page-header-other-info-links {
     margin-right: 10px;
     margin-top: 3px;
   }
+  .special {
+    display: inline-block;
+    label {
+      font-weight: 200;
+      margin: 5px;
+    }
+  }
+
 }
 
 .profile-settings-form-categories, .profile-settings-form-other-settings {
@@ -407,3 +416,6 @@ ul.page-header-other-info-links {
     margin-top: -7.5px;
   }
 }
+
+
+
