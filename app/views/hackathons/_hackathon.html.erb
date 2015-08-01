@@ -49,15 +49,15 @@
     <div class="favorite-by-people">
       <% if hackathon.users.present? %>
         <% (hackathon.users.last(8)).each do |user| %>
-          <% unless user.id == current_user.id %>
-            <%= link_to user_path(user) do %>
+          <% if current_user && user.id == current_user.id %>
+            <%= link_to profile_path do %>
               <span style="background-image: url('<%= user.twitter_account.profile_image %>');">
                 <%= user.first_name %>
                 <%= user.last_name %>
               </span>
             <% end %>
           <% else %>
-            <%= link_to profile_path do %>
+            <%= link_to user_path(user) do %>
               <span style="background-image: url('<%= user.twitter_account.profile_image %>');">
                 <%= user.first_name %>
                 <%= user.last_name %>
