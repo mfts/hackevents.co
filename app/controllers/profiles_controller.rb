@@ -11,11 +11,13 @@ class ProfilesController < ApplicationController
 
   def location
     @user = current_user
+    @hide_email_resend_box = true
     render '_location_form'
   end
 
   def interest
     @user = current_user
+    @hide_email_resend_box = true
     if request.patch?
       respond_to do |format|
         if @user.update(user_params)
@@ -33,6 +35,7 @@ class ProfilesController < ApplicationController
 
   def affiliation
     @user = current_user
+    @hide_email_resend_box = true
     if request.patch?
       respond_to do |format|
         if @user.update(user_params)
@@ -50,10 +53,11 @@ class ProfilesController < ApplicationController
 
   def email
     @user = current_user
+    @hide_email_resend_box = true
     if request.patch?
       respond_to do |format|
         if @user.update(user_params)
-          format.html { render '_after_signup_form', notice: 'User was successfully updated.' }
+          format.html { render '_email_form', notice: 'User was successfully updated.' }
           format.json { render :show, status: :ok, location: @user }
         else
           format.html { render :edit, error: 'Something is wrong.' }
@@ -61,7 +65,7 @@ class ProfilesController < ApplicationController
         end
       end
     else
-      render '_after_signup_form'
+      render '_email_form'
     end
   end
 
