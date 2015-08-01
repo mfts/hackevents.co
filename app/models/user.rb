@@ -7,11 +7,9 @@ class User < ActiveRecord::Base
   validates_presence_of     :password, on: :create, unless: :twitter_user?
   validates_presence_of     :password_confirmation, unless: :twitter_user?
   
-  validates :email, presence: true,
-                    unless: :twitter_user?
   validates :email, uniqueness: true,
                     format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9\.-]+\.[A-Za-z]+\Z/ },
-                    unless: :twitter_user?
+                    if: Proc.new { |u| u.email.present? }
                                         
   before_save :downcase_email
   after_create :get_twitter_followers, :get_twitter_following
