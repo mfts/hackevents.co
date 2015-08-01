@@ -27,10 +27,12 @@ class ApplicationController < ActionController::Base
     @per_page    = params[:per_page]
     
     if params[:category]
-      @q          = Category.find(params[:category]).hackathons.ransack q_param
+      @q          = Category.find(params[:category]).hackathons.includes(:sponsors, :categories, { users: [:twitter_account] }).ransack q_param
     else
-      @q          = Hackathon.ransack q_param
+      @q          = Hackathon.includes(:sponsors, :categories, :users).ransack q_param
     end
+    
+    @q
   end
   
   def logged_in?

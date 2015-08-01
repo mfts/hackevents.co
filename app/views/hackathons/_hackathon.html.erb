@@ -32,7 +32,7 @@
   </div>
 
   <div class="favorite">
-    <% following = current_user && membership_hackathon_ids.include?(hackathon.id) %>
+    <% following = current_user && hackathon.users.map { |u| u.id }.include?(current_user.id)  %>
     <div class="favorite-action">
       <% if following %>
         <%= link_to unfollow_hackathon_path(hackathon), method: "post" do %>
@@ -49,7 +49,7 @@
     <div class="favorite-by-people">
       <% if hackathon.users.present? %>
         <% (hackathon.users.last(8)).each do |user| %>
-          <% unless user == current_user %>
+          <% unless user.id == current_user.id %>
             <%= link_to user_path(user) do %>
               <span style="background-image: url('<%= user.twitter_account.profile_image %>');">
                 <%= user.first_name %>
