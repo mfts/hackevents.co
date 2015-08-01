@@ -1,0 +1,27 @@
+@media (min-width: 768px) {
+  body {
+    &.sidebar-visible {
+      #main {
+        margin-left: 230px;
+      }
+    }
+    &.sidebar-hidden {
+      #main {
+        margin-left: 0;
+      }
+    }
+  }
+  #main {
+    position: relative;
+    margin-left: 230px;
+  }
+}
+
+#main {
+  background-color: white;
+  overflow: hidden;
+  padding: 0 70px 0 70px;
+  
+  -webkit-transition: margin-left 0.25s;
+  transition: margin-left 0.25s;
+}
