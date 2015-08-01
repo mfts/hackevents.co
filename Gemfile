@@ -40,6 +40,8 @@ gem 'omniauth-twitter'
 gem 'twitter'
 gem 'twitter-text'
 
+gem 'metamagic'
+
 gem 'font-awesome-rails'
 
 
