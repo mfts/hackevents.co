@@ -47,7 +47,7 @@
     <% end %>
   <% end %>
   <%= link_to "Visit Website", @hackathon.url, class: "btn btn-primary", target: "_blank" %>
-  <%= link_to "Share on Twitter", "https://twitter.com/home?status=HACKATHON%20%7C%C2%A0#{ @hackathon.country }%20%7C%C2%A0#{ @hackathon.city }%20%7C%C2%A0#{ @hackathon.title }%20#{ @hackathon.date_start.strftime("%d/%m/%Y") }%20#{ request.url }%20#{ @hackathon.twitter }%20@hackevents", class: "btn btn-default", target: "_blank" %>
+  <%= link_to "Share on Twitter", "https://twitter.com/home?status=HACKATHON%20%7C%C2%A0#{ @hackathon.country }%20%7C%C2%A0#{ @hackathon.city }%20%7C%C2%A0#{ @hackathon.title }%20#{ @hackathon.date_start.strftime("%d/%m/%Y") }%20#{ request.url }%20#{ @hackathon.twitter }%20@hackevents", class: "btn btn-twitter", target: "_blank" %>
 </p>
 
 <hr />
@@ -65,19 +65,15 @@
 
 <% if @hackathon.users.present? %>
 <h3>Participants</h3>
-  <ul class="users follow">
-    <% @hackathon.users.each do |u| %>
-      <div>
-        <% unless current_user == u %>
-          <%= link_to image_tag( u.twitter_account.profile_image, class: "img-circle", size: "40x40"), user_path(u) %>
-          <%= link_to "#{u.first_name} #{u.last_name}", user_path(u) %>
-        <% else %>
-          <%= link_to image_tag( u.twitter_account.profile_image, class: "img-circle", size: "40x40"), profile_path %>
-          <%= link_to "#{u.first_name} #{u.last_name}", profile_path %>
+  <div class="posts">
+      <ul class="people">
+        <% @hackathon.users.each do |u| %>
+          <li class="people-person col-md-4">
+            <%= render partial: "users/user", locals: { u: u } %>
+          </li>
         <% end %>
-      </div>
-    <% end %>
-  </ul>
+      </ul>
+    </div>
   <hr />
 <% end %>
 
@@ -86,7 +82,7 @@
   <ul class="sponsors">
     <% @hackathon.sponsors.each do |s| %>
       <span>
-        <%= link_to image_tag( s.twitter_image_url, class: "img-rounded", size: "150x150", :data => {:toggle => "tooltip", :placement => "top"}, :title => "#{s.twitter_name}"), "http://www.twitter.com/#{s.twitter_handle}", :target => "_blank" %>
+        <%= link_to image_tag( s.twitter_image_url, class: "img-rounded", size: "120x120", :data => {:toggle => "tooltip", :placement => "top"}, :title => "#{s.twitter_name}"), "http://www.twitter.com/#{s.twitter_handle}", :target => "_blank" %>
       </span>
     <% end %>
   </ul>
