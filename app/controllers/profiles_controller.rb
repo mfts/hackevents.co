@@ -111,9 +111,6 @@ class ProfilesController < ApplicationController
     redirect_to root_path, notice: 'Signed out'
   end
 
-  def login
-  end
-
   def resend_email_confirmation
     title = "Oops!"
     if current_user.email.present?

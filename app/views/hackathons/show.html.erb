@@ -100,7 +100,7 @@
   </p>
 <% else %>
   <p>
-    Please <%= link_to "log in", login_path %> to report an error in the hackathon.
+    Please <%= link_to "log in", root_path, notice: "Please continue to login with Twitter." %> to report an error in the hackathon.
   </p>
 <% end %>
 

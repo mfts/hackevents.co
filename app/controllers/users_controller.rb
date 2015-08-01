@@ -38,8 +38,8 @@ class UsersController < ApplicationController
       if user
         user.email_activate
         cookies[:user_id] = user.id
-        format.html { redirect_to login_url, success: "Welcome to the Hackevents Twitter! Your email has been confirmed.
-                                                        Please sign in to continue." }
+        format.html { redirect_to root_url, success: "Welcome to Hackevents! Your email has been confirmed.
+                                                        Please log in to continue." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { redirect_to root_url , error: "Sorry. User does not exist." }

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get "/login" => "profiles#login", as: :login
+  #get "/login" => "profiles#login", as: :login
   get "/profile/settings" => "profiles#edit", as: :profile_settings
   
   #resources :user_sessions, only: [:new, :create]
