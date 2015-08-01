@@ -390,8 +390,8 @@ ul.page-header-other-info-links {
   }
 }.xxx {
   max-width: 700px;
-  .shrink {
-    max-width: 500px;
+  .shrink input {
+    min-width: 300px;
   }
 }
 
