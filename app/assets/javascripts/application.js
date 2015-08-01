@@ -37,12 +37,19 @@ $(function() {
 
 $(function() {
   $("#menu").on("click", function(){
-    if($("#main").css("marginLeft") == "230px") {
-      $("#main").animate({ marginLeft: "0px" }, { duration: 250 });
-      $("#sidebar").animate({ marginLeft: "-230px" }, { duration: 250 });
+    if($("body").hasClass("sidebar-visible")) {
+      $("body").removeClass("sidebar-visible");
+      $("body").addClass("sidebar-hidden");
     } else {
-      $("#main").animate({ marginLeft: "230px" }, { duration: 250 });
-      $("#sidebar").animate({ marginLeft: "0" }, { duration: 250 });
+      $("body").removeClass("sidebar-hidden");
+      $("body").addClass("sidebar-visible");
     }
+    // if($("#main").css("marginLeft") == "230px") {
+    //   $("#main").animate({ marginLeft: "0px" }, { duration: 250 });
+    //   $("#sidebar").animate({ marginLeft: "-230px" }, { duration: 250 });
+    // } else {
+    //   $("#main").animate({ marginLeft: "230px" }, { duration: 250 });
+    //   $("#sidebar").animate({ marginLeft: "0" }, { duration: 250 });
+    // }
   });
 });

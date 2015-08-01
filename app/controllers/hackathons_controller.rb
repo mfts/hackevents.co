@@ -7,9 +7,7 @@ class HackathonsController < ApplicationController
   end
 
   def show
-
   end
-
 
   def follow
     current_user.follow_hackathon(@hackathon)
@@ -19,6 +17,14 @@ class HackathonsController < ApplicationController
   def unfollow
     current_user.unfollow_hackathon(@hackathon)
     redirect_to :back
+  end
+  
+  def show_sidebar
+    cookies.signed[:sidebar_visible] = { value: true, expires: 1.year.from_now }
+  end
+  
+  def hide_sidebar
+    cookies.signed[:sidebar_visible] = { value: false, expires: 1.year.from_now }
   end
   
   private

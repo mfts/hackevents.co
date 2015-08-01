@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   
   get '@:username', to: 'users#show', as: :user
   
+  post 'show_sidebar', to: 'hackathons#show_sidebar', as: :show_sidebar
+  post 'hide_sidebar', to: 'hackathons#hide_sidebar', as: :hide_sidebar
+  
   resources :users do
     member do
       get :confirm_email, :resend_email_confirmation

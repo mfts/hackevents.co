@@ -35,6 +35,11 @@ class ApplicationController < ActionController::Base
     @q
   end
   
+  def sidebar_visible?
+    cookies.signed[:sidebar_visible].nil? ? true : cookies.signed[:sidebar_visible]
+  end
+  helper_method :sidebar_visible?
+  
   def logged_in?
     current_user
   end
