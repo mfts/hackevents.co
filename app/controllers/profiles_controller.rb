@@ -9,10 +9,65 @@ class ProfilesController < ApplicationController
     @user = current_user
   end
 
-  def after_signup
+  def location
     @user = current_user
-    render '_after_signup_form'
+    render '_location_form'
   end
+
+  def interest
+    @user = current_user
+    if request.patch?
+      respond_to do |format|
+        if @user.update(user_params)
+          format.html { render '_interest_form', notice: 'User was successfully updated.' }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit, error: 'Something is wrong.' }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      render '_interest_form'
+    end
+  end
+
+  def affiliation
+    @user = current_user
+    if request.patch?
+      respond_to do |format|
+        if @user.update(user_params)
+          format.html { render '_affiliation_form', notice: 'User was successfully updated.' }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit, error: 'Something is wrong.' }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      render '_affiliation_form'
+    end
+  end
+
+  def email
+    @user = current_user
+    if request.patch?
+      respond_to do |format|
+        if @user.update(user_params)
+          format.html { render '_after_signup_form', notice: 'User was successfully updated.' }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { render :edit, error: 'Something is wrong.' }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      render '_after_signup_form'
+    end
+  end
+
+
+
+
 
   def update
     @user = current_user
@@ -22,7 +77,7 @@ class ProfilesController < ApplicationController
           format.html { redirect_to profile_path, notice: 'User was successfully updated.' }
           format.json { render :show, status: :ok, location: @user }
         else
-          format.html { render :edit }
+          format.html { render :edit, error: 'Something is wrong.' }
           format.json { render json: @user.errors, status: :unprocessable_entity }
         end
       else
@@ -31,7 +86,7 @@ class ProfilesController < ApplicationController
           format.html { redirect_to root_path, notice: 'User was successfully updated.' }
           format.json { render :show, status: :ok, location: @user }
         else
-          format.html { render :after_signup }
+          format.html { render :edit, error: 'Something is wrong.' }
           format.json { render json: @user.errors, status: :unprocessable_entity }
         end
       end
@@ -41,7 +96,9 @@ class ProfilesController < ApplicationController
   
   def destroy
     current_user.destroy
-    redirect_to root_path, notice: 'User was successfully destroyed.'
+    reset_session
+    cookies.delete :user_id
+    redirect_to root_path, notice: 'Signed out'
   end
 
   def login
@@ -49,8 +106,8 @@ class ProfilesController < ApplicationController
 
   
   private
-  
+
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :twitter_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :twitter_name, :email, :password, :password_confirmation, :location, :radius, { category_ids: [] }, { sponsor_ids: [] })
   end
 end

@@ -1,4 +1,10 @@
-FactoryGirl.define do  factory :relationship do
+FactoryGirl.define do  factory :affiliation do
+    
+  end
+  factory :interest do
+    
+  end
+  factory :relationship do
     follower_id 1
 followed_id 1
   end

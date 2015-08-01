@@ -29,6 +29,12 @@ class User < ActiveRecord::Base
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :affiliations
+  has_many :sponsors, :through => :affiliations, dependent: :destroy
+
+  has_many :interests
+  has_many :categories, :through => :interests, dependent: :destroy
+
   has_one :twitter_account
   
   def twitter_user?
@@ -57,6 +63,9 @@ class User < ActiveRecord::Base
   end
 
 
+  ###########################################
+  ## Follow Hackathon
+  ###########################################
   # Follow a hackathon
   def follow_hackathon(hackathon)
     self.memberships.create(hackathon_id: hackathon.id)
@@ -71,6 +80,9 @@ class User < ActiveRecord::Base
     Membership.exists?(['user_id = ? AND hackathon_id = ?', self.id, hackathon.id])
   end
 
+  ###########################################
+  ## Follow User
+  ###########################################
   # Follows a user.
   def follow_user(other_user)
     active_relationships.create(followed_id: other_user.id)
@@ -91,14 +103,34 @@ class User < ActiveRecord::Base
     followers.include?(other_user)
   end
 
-
-
-  def isUser?(id)
-    TwitterAccount.exists?(uid: id)
+  ###########################################
+  ## Add Category
+  ###########################################
+  def become_interested(category)
+    self.interests.create(category_id: category.id)
   end
 
-  def getUser(uid)
-    TwitterAccount.find_by(uid: uid)
+  def become_disinterested(category)
+    self.interests.where(category_id: category.id).destroy_all
+  end
+
+  def interested?(category)
+    Interest.exists?(['user_id = ? AND category_id = ?', self.id, category.id])
+  end
+
+  ###########################################
+  ## Add Sponsor
+  ###########################################
+  def become_affiliated(sponsor)
+    self.affiliations.create(sponsor_id: sponsor.id)
+  end
+
+  def become_unaffiliated(sponsor)
+    self.affiliations.where(sponsor_id: sponsor.id).destroy_all
+  end
+
+  def affiliated?(sponsor)
+    Affiliation.exists?(['user_id = ? AND sponsor_id = ?', self.id, sponsor.id])
   end
 
 

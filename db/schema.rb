@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731134832) do
+ActiveRecord::Schema.define(version: 20150731230936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "affiliations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "sponsor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -57,6 +64,13 @@ ActiveRecord::Schema.define(version: 20150731134832) do
   end
 
   add_index "hackathons", ["slug"], name: "index_hackathons_on_slug", using: :btree
+
+  create_table "interests", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "memberships", force: :cascade do |t|
     t.integer  "user_id"
@@ -117,6 +131,8 @@ ActiveRecord::Schema.define(version: 20150731134832) do
     t.boolean  "email_confirmed",      default: false
     t.string   "confirm_token"
     t.boolean  "admin",                default: false
+    t.float    "radius",               default: 150.0
+    t.string   "location"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

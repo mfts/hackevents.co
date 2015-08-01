@@ -83,10 +83,9 @@ class UsersController < ApplicationController
       UserMailer.registration_confirmation(current_user).deliver
       redirect_to :back, success: 'Your email confirmation has been sent out again.'
     else
-      redirect_to after_signup_profile_path, error: "Please enter a valid email."
+      redirect_to email_profile_path, error: "Please enter a valid email."
     end
   end
-
 
 
 

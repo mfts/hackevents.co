@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   
   resource :profile do
     member do
-      get :after_signup
+      get :email, :interest, :affiliation, :location
+      patch :email, :interest, :affiliation, :location
+      post :email, :interest, :affiliation, :location
     end
   end
 

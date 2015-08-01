@@ -4,16 +4,23 @@
 </div>
 
 <div>
-  <%= simple_form_for(@user, url: profile_path, method: :patch) do |f| %>
-    <%= f.error_notification %>
+  <%= form_for(@user, url: email_profile_path, method: :patch) do |f| %>
 
     <div class="form-inputs">
-      <%= f.input :email, placeholder: "Please enter your email address", label: false %>
+      <%= hidden_field_tag "user[sponsor_ids][]", nil %>
+      <% Sponsor.order(:twitter_handle).each do |sponsor| %>
+      <div class="checkbox">
+        <label>
+          <%= check_box_tag "user[sponsor_ids][]", sponsor.id, @user.sponsor_ids.include?(sponsor.id) %>
+          <%= sponsor.name %>
+        </label>
+      </div>
+    <% end %>
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Submit", :class => "btn btn-primary" %>
-      <%= link_to "Back", affiliation_profile_path, method: :get, :class => "btn btn-link" %>
+      <%= f.submit "Continue", :class => "btn btn-primary" %>
+      <%= link_to "Back", interest_profile_path, method: :get, :class => "btn btn-link" %>
     </div>
   <% end %>
 </div>
