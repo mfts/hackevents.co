@@ -1,16 +1,14 @@
 == README
 
-- profile settings page (wie die admin, dass man direkt im edit ist)
 - responsive machen
-c Titelbilder zu Hackathons hinzufügen
 d cookie um sidebar zu setten
 d Filter
 d Profilleiste (eigenes Bild)
 d search bar on every site
-m after twitter login before email address -> signup flow with location, categories, sponsors
 m Email signup raus
-m gefaved user stylen
-m highlighted hackathon
+m style signup flow
+m Titelbilder zu Hackathons hinzufügen
+
 
 √ city image to hackathon show page
 √ Gefaved User auf Hackathon index darstellen
@@ -23,3 +21,7 @@ m highlighted hackathon
 √ Sponsoren zu Hackathons hinzufügen
 √ twitter_handle, location, description to profile
 √ upload/import hackathon controller and view
+√ highlighted hackathon
+√ gefaved user stylen
+√ after twitter login before email address -> signup flow with location, categories, sponsors
+√ profile settings page (wie die admin, dass man direkt im edit ist)
