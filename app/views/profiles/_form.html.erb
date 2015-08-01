@@ -1,19 +1,19 @@
 <%= form_for(@user, url: profile_path, :class => "form-horizontal") do |f| %>
 
-  <div class="container form-inputs profile-settings-form" style="margin-left:0px; margin-bottom:20px;">
+  <div class="form-inputs profile-settings-form" style="margin-left:0px; margin-bottom:20px;">
     <%= f.text_field :first_name %>
     <%= f.text_field :last_name %><br/>
     <%= f.text_field :email, placeholder: "Email address", style: "width:355px;" %><br/>
 
   </div>
 
-  <div class="container form-inputs profile-settings-form" style="margin-left:0px; margin-bottom:20px;">
+  <div class="form-inputs profile-settings-form" style="margin-left:0px; margin-bottom:20px;">
     <h4>Location</h4>
     <%= f.text_field :location %>
     <%= f.number_field :radius %>
   </div>
 
-  <div class="container form-inputs profile-settings-form-categories">
+  <div class="form-inputs profile-settings-form-categories">
     <h4>Categories</h4>
     <%= hidden_field_tag "user[category_ids][]", nil %>
     <% Category.order(:name).in_groups_of(3, false).each do |grouped_categories| %>
@@ -32,7 +32,7 @@
     <% end %>
   </div>
 
-  <div class="container form-inputs profile-settings-form-categories">
+  <div class="form-inputs profile-settings-form-categories">
     <h4>Companies</h4>
     <%= hidden_field_tag "user[sponsor_ids][]", nil %>
     <% Sponsor.order(:twitter_handle).each do |sponsor| %>
