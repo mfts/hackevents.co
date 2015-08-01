@@ -53,11 +53,14 @@ class ProfilesController < ApplicationController
 
   def email
     @user = current_user
+    title = "Well done! =)"
+    subtitle = "We will only notify you with hackathons that you are interested in."
+    resend = false
     @hide_email_resend_box = true
     if request.patch?
       respond_to do |format|
         if @user.update(user_params)
-          format.html { render '_email_form', notice: 'User was successfully updated.' }
+          format.html { render '_email_form', locals: { title: title, subtitle: subtitle, resend: resend }, notice: 'User was successfully updated.' }
           format.json { render :show, status: :ok, location: @user }
         else
           format.html { render :edit, error: 'Something is wrong.' }
@@ -65,7 +68,10 @@ class ProfilesController < ApplicationController
         end
       end
     else
-      render '_email_form'
+      title = "Oops!"
+      subtitle = "Please enter a valid email address, so that you never miss a hackathon."
+      resend = true
+      render '_email_form', locals: { title: title, subtitle: subtitle, resend: resend }
     end
   end
 
@@ -109,8 +115,10 @@ class ProfilesController < ApplicationController
   end
 
   def resend_email_confirmation
+    title = "Oops!"
     if current_user.email.present?
       UserMailer.registration_confirmation(current_user).deliver
+      @hide_email_resend_box = true
       redirect_to :back, success: 'Your email confirmation has been sent out again.'
     else
       redirect_to email_profile_path, error: "Please enter a valid email."

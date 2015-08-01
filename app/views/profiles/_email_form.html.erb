@@ -1,5 +1,5 @@
 <div>
-  <h2 style="font-weight:200;">Well done =)</h3>
+  <h2 style="font-weight:200;"><%= title %></h3>
 </div>
 
 <div>
@@ -7,13 +7,15 @@
     <%= f.error_notification %>
 
     <div class="form-inputs profile-settings-form xxx">
-      <h4 class="lead">We will only notify you with hackathons that you are interested in.</h4>
+      <h4 class="lead"><%= subtitle %></h4>
       <div class="shrink"><%= f.input :email, placeholder: "Please enter your email address", label: false %></div>
     </div>
 
     <div class="form-actions profile-settings-form">
       <%= f.button :submit, "Explore", :class => "btn btn-primary" %>
-      <%= link_to "Back", affiliation_profile_path, method: :get, :class => "btn btn-link" %>
+      <% unless resend %>
+        <%= link_to "Back", affiliation_profile_path, method: :get, :class => "btn btn-link" %>
+      <% end %>
     </div>
   <% end %>
 </div>
