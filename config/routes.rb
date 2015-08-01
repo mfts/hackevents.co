@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   #get "/login" => "user_sessions#new", as: :login_email
-  delete "/logout" => "user_sessions#destroy", as: :logout
+  delete "/logout" => "twitter_accounts#destroy", as: :logout
 
   get 'imprint', to: 'pages#imprint', as: 'imprint'
   get 'hackathon/:country/:city/:name', to: 'hackathons#show', as: :hackathon_by_id
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get "/login" => "profiles#login", as: :login
   get "/profile/settings" => "profiles#edit", as: :profile_settings
   
-  resources :user_sessions, only: [:new, :create]
+  #resources :user_sessions, only: [:new, :create]
   resources :password_resets, only: [:new, :create, :edit, :update]
 
   resources :relationships, only: [:create, :destroy]
@@ -60,8 +60,7 @@ Rails.application.routes.draw do
   # Twitter routes
   get '/auth/twitter/callback', to: 'twitter_accounts#create', as: 'callback'
   get '/auth/failure', to: 'twitter_accounts#error', as: 'failure'
-  get '/twitterprofile', to: 'twitter_accounts#show', as: 'show'
-  delete '/signout', to: 'twitter_accounts#destroy', as: 'signout'
+  #delete '/signout', to: 'twitter_accounts#destroy', as: 'signout'
 
 
 end

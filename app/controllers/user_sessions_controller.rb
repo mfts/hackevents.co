@@ -18,7 +18,7 @@ class UserSessionsController < ApplicationController
   def destroy
     reset_session
     cookies.delete :user_id
-    redirect_to root_path, notice: "You have been logged out."
+    redirect_to root_path, notice: "Signed out."
   end
 
 end

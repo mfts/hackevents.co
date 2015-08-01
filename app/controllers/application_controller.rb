@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
     if current_user
       true
     else
-      redirect_to new_user_session_path, notice: "You must be logged in to access that page."
+      redirect_to login_path, notice: "You must be logged in to access that page."
     end
   end 
 
@@ -63,7 +63,7 @@ class ApplicationController < ActionController::Base
     if current_user && current_user.admin?
       true
     else
-      redirect_to new_user_session_path, notice: "You must log in as admin user."
+      redirect_to root_path, notice: "You must log in as admin user."
     end
   end
 
