@@ -17,6 +17,7 @@
     <h4>Categories</h4>
     <%= hidden_field_tag "user[category_ids][]", nil %>
     <% Category.order(:name).in_groups_of(3, false).each do |grouped_categories| %>
+      <div class="row">
         <% grouped_categories.each do |category| %>
           <div class="col-md-4">
             <div class="checkbox">
@@ -29,20 +30,21 @@
             </div>
           </div>
         <% end %>
+      </div>
     <% end %>
   </div>
-
+  
   <div class="form-inputs profile-settings-form-categories">
     <h4>Companies</h4>
     <%= hidden_field_tag "user[sponsor_ids][]", nil %>
     <% Sponsor.order(:twitter_handle).each do |sponsor| %>
-    <div class="col-md-3">
-      <div class="checkbox">
-        <label>
-          <%= check_box_tag "user[sponsor_ids][]", sponsor.id, @user.sponsor_ids.include?(sponsor.id) %>
-          <%= sponsor.name %>
-        </label>
-      </div>
+      <div class="col-md-3">
+        <div class="checkbox">
+          <label>
+            <%= check_box_tag "user[sponsor_ids][]", sponsor.id, @user.sponsor_ids.include?(sponsor.id) %>
+            <%= sponsor.name %>
+          </label>
+        </div>
       </div>
     <% end %>
   </div>
