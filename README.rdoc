@@ -1,6 +1,7 @@
 == README
 
 - responsive machen
+- 404 page für alle error pages
 d cookie um sidebar zu setten
 d Filter
 d Profilleiste (eigenes Bild)
