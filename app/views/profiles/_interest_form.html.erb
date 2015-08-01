@@ -1,20 +1,19 @@
 <div>
   <h2 style="font-weight:200;">Welcome to Hackevents</h3>
-  <p class="lead">Hackevents helps you find and plan your next hackathon.</p><br/>
+  <p class="lead">Find your next hackathon in <b>three</b> simple steps.</p><br/>
 </div>
 
 <div>
   <%= form_for(@user, url: affiliation_profile_path, method: :patch) do |f| %>
 
     <div class="form-inputs profile-settings-form-categories">
-      <h4 class="lead">Categories</h4>
+      <h4 class="lead">Select all <b>categories</b> you would like to hack.</h4>
       <%= hidden_field_tag "user[category_ids][]", nil %>
       <% Category.order(:name).in_groups_of(3, false).each do |grouped_categories| %>
         <div class="row">
           <% grouped_categories.each do |category| %>
             <div class="col-md-4">
               <div class="checkbox">
-                
                 <label class="profile-settings-form-categories-checkbox" style="padding-left:5px;">
                   <%= image_tag "categories/#{category.name.parameterize}.png" %>
                   <%= check_box_tag "user[category_ids][]", category.id, @user.category_ids.include?(category.id) %>

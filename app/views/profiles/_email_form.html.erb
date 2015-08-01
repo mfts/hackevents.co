@@ -1,15 +1,15 @@
 <div>
   <h2 style="font-weight:200;">Welcome to Hackevents</h3>
-  <p class="lead">Hackevents helps you find and plan your next hackathon.</p><br/>
+  <p class="lead">Find your next hackathon in <b>three</b> simple steps.</p><br/>
 </div>
 
 <div>
   <%= simple_form_for(@user, url: profile_path, method: :patch) do |f| %>
     <%= f.error_notification %>
 
-    <div class="form-inputs profile-settings-form">
-      <h4 class="lead">Email Address</h4>
-      <%= f.input :email, placeholder: "Please enter your email address", label: false %>
+    <div class="form-inputs profile-settings-form xxx">
+      <h4 class="lead">We will only notify you with hackathons that you are interested in.</h4>
+      <div class="shrink"><%= f.input :email, placeholder: "Please enter your email address", label: false %></div>
     </div>
 
     <div class="form-actions profile-settings-form">

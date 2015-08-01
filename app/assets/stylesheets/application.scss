@@ -354,7 +354,7 @@ ul.page-header-other-info-links {
 }
 
 .profile-settings-form {
-  width: 500px;
+  max-width: 500px;
   input {
     margin: 5px;
     border: 0;
@@ -388,7 +388,11 @@ ul.page-header-other-info-links {
       margin: 5px;
     }
   }
-
+}.xxx {
+  max-width: 700px;
+  .shrink {
+    max-width: 500px;
+  }
 }
 
 .profile-settings-form-categories, .profile-settings-form-other-settings {
