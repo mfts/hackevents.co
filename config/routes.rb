@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "/login" => "user_sessions#new", as: :login_email
+  #get "/login" => "user_sessions#new", as: :login_email
   delete "/logout" => "user_sessions#destroy", as: :logout
 
   get 'imprint', to: 'pages#imprint', as: 'imprint'
@@ -24,7 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get "/login_twitter" => "profiles#login", as: :login_twitter
+  get "/login" => "profiles#login", as: :login_twitter
+  get "/profile/settings" => "profiles#edit", as: :profile_settings
   
   resources :user_sessions, only: [:new, :create]
   resources :password_resets, only: [:new, :create, :edit, :update]

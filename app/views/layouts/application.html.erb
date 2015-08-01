@@ -66,11 +66,12 @@
               </button>
               <ul class="dropdown-menu dropdown-menu-right">
                 <% if current_user %>
-                  <li><%= link_to "Log Out", logout_path, method: :delete %></li>
                   <li><%= link_to "Profile", profile_path %></li>
+                  <li><%= link_to "Settings", profile_settings_path %></li>
                   <li>
                     <%= link_to "Add", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { confirm: "Found a hackathon we have not listed yet? Submit it through out Typeform! Thank you :)" }, :target => "_blank" %>
                   </li>
+                  <li><%= link_to "Log Out", logout_path, method: :delete %></li>
                 <% else %>
                   <li>
                     <%= link_to "Log In", new_user_session_path %>
