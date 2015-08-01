@@ -66,12 +66,26 @@ body {
   #head-actions {
     margin-top: 22px;
     margin-left: 230px;
-    margin-right: 100px;
+    margin-right: 60px;
     position: absolute;
   }
   form {
   }
   #profile-button {
+    .profile-button-inner {
+      border: 1px solid #CCCCCC;
+      width: 34px;
+      height: 34px;
+      text-indent: 100%;
+      white-space: nowrap;
+      background-size: contain;
+      overflow: hidden;
+      cursor: pointer;
+      display: block;
+      &:hover {
+        border: 1px solid #7F7F7F;
+      }
+    }
   }
 }
 

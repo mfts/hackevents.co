@@ -2,9 +2,7 @@
 
 - responsive machen
 - 404 page für alle error pages
-√ cookie um sidebar zu setten
 d Filter
-d Profilleiste (eigenes Bild)
 m Email signup raus
 m style signup flow
 m Titelbilder zu Hackathons hinzufügen
@@ -26,3 +24,5 @@ m Titelbilder zu Hackathons hinzufügen
 √ after twitter login before email address -> signup flow with location, categories, sponsors
 √ profile settings page (wie die admin, dass man direkt im edit ist)
 √ search bar on every site
+√ Profilleiste (eigenes Bild)
+√ cookie um sidebar zu setten
