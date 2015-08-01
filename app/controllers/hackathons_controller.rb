@@ -3,30 +3,7 @@ class HackathonsController < ApplicationController
   before_action :require_user,  only: [:follow, :unfollow]
   
   def index
-    q_param = nil
-    
-    if params[:q].present? && params[:q][:title_or_country_or_city_cont].present?
-      q_param     = { title_or_country_or_city_cont: params[:q][:title_or_country_or_city_cont].titleize }
-    end
-    
-    if q_param.blank? && params[:country].present? && params[:city].blank?
-      q_param = { country_cont: params[:country].titleize }
-    end
-    
-    if q_param.blank? && params[:country].present? && params[:city].present?
-      q_param = { city_cont: "#{params[:city]}".titleize }
-    end
-    
-    page        = params[:page]
-    per_page    = params[:per_page]
-    
-    if params[:category]
-      @q          = Category.find(params[:category]).hackathons.ransack q_param
-    else
-      @q          = Hackathon.ransack q_param
-    end
-    
-    @hackathons = @q.result.where('date_start >= ?', Time.zone.now).order(date_start: :asc).page(page).per(per_page)
+    @hackathons = @q.result.where('date_start >= ?', Time.zone.now).order(date_start: :asc).page(@page).per(@per_page)
     
     if current_user
       @membership_hackathon_ids = Membership.where(user_id: current_user.id, hackathon_id: @hackathons.map{ |h| h.id }).map{ |m| m.hackathon_id }
