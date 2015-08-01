@@ -4,7 +4,6 @@
 d Filter
 m Email signup raus
 m style signup flow
-m Titelbilder zu Hackathons hinzufügen < sind das die categories?
 
 ø responsive machen
 
@@ -26,3 +25,4 @@ m Titelbilder zu Hackathons hinzufügen < sind das die categories?
 √ search bar on every site
 √ Profilleiste (eigenes Bild)
 √ cookie um sidebar zu setten
+√ Titelbilder zu Hackathons hinzufügen < sind das die categories? < genau
