@@ -21,10 +21,12 @@ class HackathonsController < ApplicationController
   
   def show_sidebar
     cookies.signed[:sidebar_visible] = { value: true, expires: 1.year.from_now }
+    render nothing: true
   end
   
   def hide_sidebar
     cookies.signed[:sidebar_visible] = { value: false, expires: 1.year.from_now }
+    render nothing: true
   end
   
   private

@@ -40,16 +40,11 @@ $(function() {
     if($("body").hasClass("sidebar-visible")) {
       $("body").removeClass("sidebar-visible");
       $("body").addClass("sidebar-hidden");
+      $.post( "/hide_sidebar", function( data ) {});
     } else {
       $("body").removeClass("sidebar-hidden");
       $("body").addClass("sidebar-visible");
+      $.post( "/show_sidebar", function( data ) {});
     }
-    // if($("#main").css("marginLeft") == "230px") {
-    //   $("#main").animate({ marginLeft: "0px" }, { duration: 250 });
-    //   $("#sidebar").animate({ marginLeft: "-230px" }, { duration: 250 });
-    // } else {
-    //   $("#main").animate({ marginLeft: "230px" }, { duration: 250 });
-    //   $("#sidebar").animate({ marginLeft: "0" }, { duration: 250 });
-    // }
   });
 });
