@@ -1,5 +1,5 @@
 <% if @hackathons.present? %>
-  <p class="hidden-xs hidden-sm hidden-lg">
+  <p style="display: none;">
     Sort:
     <%= sort_link @q, :date_start, "Date", default_order: :desc   %>,
     <%= sort_link @q, :title, "Name" %>,
