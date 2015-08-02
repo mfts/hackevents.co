@@ -1,19 +1,15 @@
 <head>
 <%= stylesheet_link_tag    'frontpage', media: 'all', 'data-turbolinks-track' => true %>
-<% cookies.signed[:visited] = { value: true, expires: 1.year.from_now } %>
+<% cookies.signed[:visited_start_page] = { value: true, expires: 1.year.from_now } %>
 </head>
-<body class="index ">
+<body class="index">
 <header class='layer layer-1'>
 <div class="layer--liner">
 <div class="container">
-<h1 class='logo'>XOXO</h1>
+<h1 class='logo' id="mobile-shrink">Find all hackathons in one place.</h1>
 <div class="intro">
 <p class='intro--description'>
-An experimental festival celebrating independently produced art and technology.
-</p>
-<p class='intro--details'>
-September 10–13, 2015 <br/>
-<a target="_blank" href="https://www.google.com/maps/place/Revolution+Hall/@45.518962,-122.652093,15z/data=!4m2!3m1!1s0x0:0x3cb055df21a4d485">Revolution Hall</a>, Portland, Oregon
+It was never easier to pick your next hackathon.
 </p>
 </div>
 </div>
@@ -23,170 +19,43 @@ September 10–13, 2015 <br/>
 <div class="layer--liner">
 <div class="container">
 <div class="layer--header">
-<h2>Conference</h2>
-<h5>Saturday &ndash; Sunday</h5>
+<h2 style="color:#F57C00;">A search engine for hackathons</h2>
 </div>
 <div class="layer--overview">
-Two days of stories from artists and technologists using the Internet to maintain their independence, and the challenges that come&nbsp;with&nbsp;it.
+You can find hackathons by city, country, keyword, and even sponsor. <em>All hackathons &ndash; <strong>worldwide</strong>.</em>
 </div>
 <div class="layer--list">
-<ul class="layer--sublist three-columns">
-<li class="layer--list--item">
-<h4 class="layer--list--title">
-<a target="_blank" href="https://twitter.com/abexlumberg">Alex Blumberg</a>
-</h4>
-<div class="layer--list--details">   <a target="_blank" href="http://gimletmedia.com/">Gimlet Media</a>  </div>
-</li>
-<li class="layer--list--item">
-<h4 class="layer--list--title">
-<a target="_blank" href="https://twitter.com/superamit">Amit Gupta</a>
-</h4>
-<div class="layer--list--details">   <a target="_blank" href="https://photojojo.com/">Photojojo</a>  </div>
-</li>
-<li class="layer--list--item">
-<h4 class="layer--list--title">
-<a target="_blank" href="https://twitter.com/bryce">Bryce Roberts</a>
-</h4>
-<div class="layer--list--details">   <a target="_blank" href="http://indie.vc/">Indie.vc</a>  </div>
-</li>
-<li class="layer--list--item">
-<h4 class="layer--list--title">
-<a target="_blank" href="https://twitter.com/iron_spike">C. Spike Trotman</a>
-</h4>
-<div class="layer--list--details">   <a target="_blank" href="http://ironcircus.com/">Iron Circus Comics</a>  </div>
-</li>
-<li class="layer--list--item">
-<h4 class="layer--list--title">
-<a target="_blank" href="https://twitter.com/meyerweb">Eric Meyer</a>
-</h4>
-<div class="layer--list--details">   <a target="_blank" href="http://meyerweb.com/">Meyerweb</a>  </div>
-</li>
-<li class="layer--list--item">
-<h4 class="layer--list--title">
-<a target="_blank" href="https://twitter.com/dooce">Heather Armstrong</a>
-</h4>
-<div class="layer--list--details">   <a target="_blank" href="http://dooce.com/">Dooce</a>  </div>
-</li>
-<li class="layer--list--item">
-<h4 class="layer--list--title">
-Joey Anuff
-</h4>
-and
-<h4 class="layer--list--title">
-Carl Steadman
-</h4>
-<div class="layer--list--details">   <a target="_blank" href="https://web.archive.org/web/20010814101424/http://www.suck.com/daily/2001/06/08/">Suck.com</a>  </div>
-</li>
-<li class="layer--list--item">
-<h4 class="layer--list--title">
-<a target="_blank" href="http://seriouspony.com/about/">Kathy Sierra</a>
-</h4>
-<div class="layer--list--details">   <a target="_blank" href="http://seriouspony.com/">Serious Pony</a>  </div>
-</li>
-<li class="layer--list--item">
-<h4 class="layer--list--title">
-<a target="_blank" href="https://twitter.com/lisadraws">Lisa Hanawalt</a>
-</h4>
-<div class="layer--list--details">   <a target="_blank" href="http://lisahanawalt.com/">Artist/Illustrator</a>  </div>
-</li>
-<li class="layer--list--item">
-<h4 class="layer--list--title">
-<a target="_blank" href="https://twitter.com/mallelis">Mallory Ortberg</a>
-</h4>
-<div class="layer--list--details">   <a target="_blank" href="http://the-toast.net/">The Toast</a>  </div>
-</li>
-<li class="layer--list--item">
-<h4 class="layer--list--title">
-<a target="_blank" href="https://twitter.com/tha_rami">Rami Ismail</a>
-</h4>
-<div class="layer--list--details">   <a target="_blank" href="http://www.vlambeer.com/">Vlambeer</a>  </div>
-</li>
-<li class="layer--list--item">
-<h4 class="layer--list--title">
-<a target="_blank" href="https://twitter.com/talibkweli">Talib Kweli</a>
-</h4>
-<div class="layer--list--details">   <a target="_blank" href="http://www.talibkweli.com/">Musician/Writer</a>  </div>
-</li>
-<li class="layer--list--item">
-<h4 class="layer--list--title">
-<a target="_blank" href="https://twitter.com/thequinnspiracy">Zoe Quinn</a>
-</h4>
-<div class="layer--list--details">   <a target="_blank" href="http://www.quinnspiracy.com/">Quinnspiracy</a>  /<br/> <a target="_blank" href="http://www.crashoverridenetwork.com/">Crash Override</a>  </div>
-</li>
-<li><em>And more to come&hellip;</em></li>
-</ul>
-</div>
-</div>
-</div>
-</section>
-<section class="layer layer-3 events">
-<div class="layer--liner">
-<div class="container">
-<div class="layer--header">
-<h2>Festival</h2>
-<h5>Thursday &ndash; Sunday</h5>
-</div>
-<div class="layer--overview">
-We&rsquo;ve invited the people behind our favorite projects for four days of play, performances, and parties around&nbsp;Portland.
-</div>
-<div class="layer--list">
-<ul class="layer--sublist grid grid__one-half">
-<li class='layer--list--item'>
-<h4 class="layer--list--title">
-Arcade
+<ul class="passes--options layer--list">
+<li class="grid grid__one-half grid__centered passes--option">
+<h4 class="layer--list--title-bold" style="color:#F57C00;">
+<%= Hackathon.count %>
 </h4>
 <div class="layer--list--details">
-Play unreleased and experimental indie games with their designers in our pop-up arcade, including <a href="http://donutcounty.com/">Donut County</a>, <a href="http://www.whatliesbelow.com/">BELOW</a>, and <a href="http://www.heart-machine.com/">Hyper Light Drifter</a>.
+Hackathons
 </div>
 </li>
-<li class='layer--list--item'>
-<h4 class="layer--list--title">
-Story
+<li class="grid grid__one-half grid__centered passes--option">
+<h4 class="layer--list--title-bold" style="color:#F57C00;">
+<%= Sponsor.count %>
 </h4>
 <div class="layer--list--details">
-A night of storytelling and comedy, including <a href="http://replyall.fail/">Reply All</a>, <a href="http://youlooknicetoday.com/">You Look Nice Today</a>, and a live Suck.com reunion for their 20th anniversary.
+Sponsors
 </div>
 </li>
-<li class='layer--list--item'>
-<h4 class="layer--list--title">
-Film & Animation
+<li class="grid grid__one-half grid__centered passes--option">
+<h4 class="layer--list--title-bold" style="color:#F57C00;">
+105
 </h4>
 <div class="layer--list--details">
-Screenings of new and upcoming film and animation projects with creator Q&As, including <a href="http://www.adultswim.com/videos/rick-and-morty/">Rick and Morty</a>’s Justin Roiland and <a href="http://everyframeapainting.tumblr.com/">Every Frame A Painting</a>’s Tony Zhou.
+Cities
 </div>
 </li>
-</ul>
-<ul class="layer--sublist grid grid__one-half">
-<li class='layer--list--item'>
-<h4 class="layer--list--title">
-Tabletop
+<li class="grid grid__one-half grid__centered passes--option">
+<h4 class="layer--list--title-bold" style="color:#F57C00;">
+26
 </h4>
 <div class="layer--list--details">
-Gather with fellow attendees to play some of the best of the indie card, board, and RPG game scene with their designers.
-</div>
-</li>
-<li class='layer--list--item'>
-<h4 class="layer--list--title">
-Music
-</h4>
-<div class="layer--list--details">
-A genre-bending lineup of live music from artists working at the intersection of art and technology.
-</div>
-</li>
-<li class='layer--list--item'>
-<h4 class="layer--list--title">
-Food & Drink
-</h4>
-<div class="layer--list--details">
-The best of Portland’s food cart scene, brought together in one temporary cart pod on site.
-</div>
-</li>
-<li class='layer--list--item'>
-<h4 class="layer--list--title">
-Social
-</h4>
-<div class="layer--list--details">
-A day of parties and meetups at venues around the city.
+Countries
 </div>
 </li>
 </ul>
@@ -198,84 +67,67 @@ A day of parties and meetups at venues around the city.
 <div class="layer--liner">
 <div id="passes" class="container">
 <div class="layer--header">
-<h2>Passes</h2>
+<h2 style="color:#F57C00;">Just for the weekend</h2>
 </div>
 <div class="layer--overview">
-XOXO passes will be randomly selected from approved surveys submitted before Thursday, June 18 at 12pm PT/3pm ET. <a href="http://blog.xoxofest.com/post/121117969690/2015-registration">Learn more</a> about how registration&nbsp;works.
+Discover new and inspiring hacker cities.
 </div>
 <ul class="passes--options layer--list">
-<li class="grid grid__one-half passes--full-option passes--option">
-<h4 class="layer--list--title">
-Conference + Festival: $500
+<li class="grid grid__one-third grid__centered passes--option">
+<h4 class="layer--list--title-bold">
+London
 </h4>
 <div class="layer--list--details">
-Access to everything
+It ain't all about finance. <em>Have you heard of "Citymapper"?</em>
 </div>
 </li>
-<li class="grid grid__one-half passes--events-option passes--option">
-<h4 class="layer--list--title">
-Festival Only: $150
+<li class="grid grid__one-third grid__centered passes--option">
+<h4 class="layer--list--title-bold">
+Berlin
 </h4>
 <div class="layer--list--details">
-Everything but the talks
+It ain't all about Rocket Internet. <em>Have you heard of "Soundcloud"?</em>
 </div>
 </li>
-<li class="grid grid__one-half grid__centered passes--option">
-<h4 class="layer--list--title">
-<a target="_blank" href="http://blog.xoxofest.com/post/121224460200/diversity-and-subsidized-passes">Subsidized Conference + Festival</a>: $50
+<li class="grid grid__one-third grid__centered passes--option">
+<h4 class="layer--list--title-bold">
+San Francisco
 </h4>
 <div class="layer--list--details">
-Access to everything at a reduced&nbsp;rate
+It ain't all about Twitter. <em>Have you heard of "AngelList"?</em>
+</div>
+</li>
+<li class="grid grid__one-third grid__centered passes--option">
+<h4 class="layer--list--title-bold">
+Tallinn
+</h4>
+<div class="layer--list--details">
+It ain't all about Skype. <em>Have you heard of "Transferwise"?</em>
+</div>
+</li>
+<li class="grid grid__one-third grid__centered passes--option">
+<h4 class="layer--list--title-bold">
+Hong Kong
+</h4>
+<div class="layer--list--details">
+It ain't all about finance. <em>Have you heard of "9GAG"?</em>
+</div>
+</li>
+<li class="grid grid__one-third grid__centered passes--option">
+<h4 class="layer--list--title-bold">
+Reykjavik
+</h4>
+<div class="layer--list--details">
+It ain't all about vulcanos. <em>Have you heard of "QuizUp"?</em>
 </div>
 </li>
 </ul>
 <div class="passes--register">
-<a class="btn btn__huge passes--register-btn" href="https://attend.xoxofest.com/">Register Now</a>
+<%= link_to '/auth/twitter', method: 'get', class: "btn btn-primary btn-cover btn__huge passes--register-btn" do %>
+  <span class="fa fa-twitter" aria-hidden="true"></span>
+  Login Now
+<% end %>
 </div>
 </div>
 </div>
 </section>
-<footer class='layer layer-5'>
-<div class="footer--under-layer"></div>
-<div class="layer--liner">
-<div class="container">
-<div class="grid grid__two-thirds footer--thanks">
-<h4>Patrons</h4>
-<p>
-Special thanks to
-<a target="_blank" href="http://www.blurb.com/">Blurb</a>,
-<a target="_blank" href="https://www.hover.com/">Hover</a>,
-<a target="_blank" href="http://knightfoundation.org/">Knight Foundation</a>,
-<a target="_blank" href="http://mailchimp.com/">MailChimp</a>,
-<a target="_blank" href="https://medium.com/">Medium</a>,
-<a target="_blank" href="https://slack.com/">Slack</a>,
-<a target="_blank" href="https://stripe.com/">Stripe</a>,
-<a target="_blank" href="http://www.wk.com/">Wieden+Kennedy</a>, and
-<a target="_blank" href="https://wordpress.com/">WordPress.com</a>
-for their support. XOXO would not be possible without&nbsp;them.
-</p>
-</div>
-<div class="clear-both grid grid__one-third footer--links">
-<h4>Elsewhere</h4>
-<p>
-<a href="/cdn-cgi/l/email-protection#a4cccde4dccbdccbc2c1d7d08ac7cbc9"><span class="__cf_email__" data-cfemail="c1a9a881b9aeb9aea7a4b2b5efa2aeac">[email&#160;protected]</span><script cf-hash='f9e31' type="text/javascript">
-/* <![CDATA[ */!function(){try{var t="currentScript"in document?document.currentScript:function(){for(var t=document.getElementsByTagName("script"),e=t.length;e--;)if(t[e].getAttribute("cf-hash"))return t[e]}();if(t&&t.previousSibling){var e,r,n,i,c=t.previousSibling,a=c.getAttribute("data-cfemail");if(a){for(e="",r=parseInt(a.substr(0,2),16),n=2;a.length-n;n+=2)i=parseInt(a.substr(n,2),16)^r,e+=String.fromCharCode(i);e=document.createTextNode(e),c.parentNode.replaceChild(e,c)}}}catch(u){}}();/* ]]> */</script></a> <br>
-<a target="_blank" href="https://twitter.com/xoxo">@xoxo</a> on Twitter<br>
-Read <a target="_blank" href="http://blog.xoxofest.com/">Our Blog</a>
-</p>
-<p>
-<a target="_blank" href="http://2014.xoxofest.com">2014</a> &bull;
-<a target="_blank" href="http://2013.xoxofest.com">2013</a> &bull;
-<a target="_blank" href="http://2012.xoxofest.com">2012</a>
-</p>
-<p><a target="_blank" href="http://blog.xoxofest.com/conduct">Code of Conduct</a></p>
-</div>
-</div>
-</div>
-</footer>
-<script type="text/javascript">
-/* <![CDATA[ */
-(function(){try{var s,a,i,j,r,c,l=document.getElementsByTagName("a"),t=document.createElement("textarea");for(i=0;l.length-i;i++){try{a=l[i].getAttribute("href");if(a&&a.indexOf("/cdn-cgi/l/email-protection") > -1  && (a.length > 28)){s='';j=27+ 1 + a.indexOf("/cdn-cgi/l/email-protection");if (a.length > j) {r=parseInt(a.substr(j,2),16);for(j+=2;a.length>j&&a.substr(j,1)!='X';j+=2){c=parseInt(a.substr(j,2),16)^r;s+=String.fromCharCode(c);}j+=1;s+=a.substr(j,a.length-j);}t.innerHTML=s.replace(/</g,"&lt;").replace(/>/g,"&gt;");l[i].setAttribute("href","mailto:"+t.value);}}catch(e){}}}catch(e){}})();
-/* ]]> */
-</script>
-</body>

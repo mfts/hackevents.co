@@ -48,3 +48,13 @@
     }
   }
 }
+
+#head.head-cover {
+  margin-left:0;
+}
+
+@media (max-width: 580px) {
+  #head.head-cover {
+  padding: 0 10px;
+}
+}

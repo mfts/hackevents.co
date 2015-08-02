@@ -22,7 +22,7 @@
   
   <body class="<%= sidebar_visible? ? "sidebar-visible" : "sidebar-hidden" %>">
     
-    <% if cookies.signed[:visited] == true %>
+    <% if cookies.signed[:visited_start_page] == true %>
     <div id="menu-button">
       <a href="#" id="menu">Menu</a>
     </div>
@@ -38,12 +38,14 @@
       <%= render partial: "hackathons/menu" %>
       <%#= render partial: "hackathons/days" %>
     </div>
-    <% end %>
+    
     
     <div id="main">
-      
       <div id="head">
-        
+    <% else %>
+    <div id="main main-cover" style="padding:0;">
+      <div id="head" class="head-cover" style="margin-bottom:0;">
+    <% end %>   
         <div id="logo">
           <%= link_to root_path do %>
             <span>
@@ -69,13 +71,13 @@
             <div class="col-sm-12 col-md-3" style="text-align: right;">
               <% if current_user %>
                 <div id="profile-button" class="btn-group">
-                  <%= link_to "Settings", profile_settings_path, class: "btn btn-link" %>
+                  <%= link_to "Settings", profile_settings_path, class: "btn btn-link hidden-sm hidden-xs" %>
                   <a class="profile-button-inner img-circle" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-image: url('<%= current_user.twitter_account.profile_image %>')">
                     Profile
                   </a>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <li><%= link_to "Profile", profile_path %></li>
-                    <li class="hidden-sm hidden-md"><%= link_to "Settings", profile_settings_path %></li>
+                    <li class="hidden-md hidden-lg"><%= link_to "Settings", profile_settings_path %></li>
                     <% if current_user.admin? %>
                       <li><%= link_to "Admin", admin_root_path %></li>
                     <% else %>
@@ -115,7 +117,7 @@
         </div>
       <% end %>
       
-      <% if cookies.signed[:visited] == true %>
+      <% if cookies.signed[:visited_start_page] == true %>
         <%= yield %>
       <% else %>
         <%= render 'pages/frontpage' %>
@@ -123,7 +125,7 @@
       
       <hr />
       
-      <footer>
+      <footer style="font-size:14px;">
         <p>
           © 2015 Hackevents – All Rights Reserved – <%= link_to "Imprint & Data Privacy", imprint_path %>
         </p>
