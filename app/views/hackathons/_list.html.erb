@@ -1,5 +1,5 @@
 <% if @hackathons.present? %>
-  <p>
+  <p class="hidden-xs hidden-sm hidden-lg">
     Sort:
     <%= sort_link @q, :date_start, "Date", default_order: :desc   %>,
     <%= sort_link @q, :title, "Name" %>,
@@ -7,7 +7,7 @@
     <%= sort_link @q, :country, "Country" %>
   </p>
   
-  <hr />
+  <hr class="hidden-xs hidden-sm hidden-lg" />
   
   <div class="hackathons">
     <% @hackathons.each do |hackathon| %>
