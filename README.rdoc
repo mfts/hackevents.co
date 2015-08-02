@@ -3,8 +3,6 @@
 - 404 page für alle error pages
 d Filter
 
-ø responsive machen
-
 √ city image to hackathon show page
 √ Gefaved User auf Hackathon index darstellen
 √ Gefaved User auf Hackathon Show Page darstellen
@@ -28,3 +26,4 @@ d Filter
 √ style signup flow
 √ twitter metatags
 √ coverpage but not in use
+√ responsive machen
