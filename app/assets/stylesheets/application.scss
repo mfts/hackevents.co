@@ -68,6 +68,11 @@ $link-color:                    #F57C00;
 .page-header-info {
   text-align: center;
 }
+@media (max-width: 768px) {
+  .page-header-info h1 {
+    font-size: 30px;
+  }
+}
 
 .page-header-other-info {
   text-align: center;
@@ -85,7 +90,12 @@ $link-color:                    #F57C00;
   .page-header-buttons {
     float: none;
     text-align: center;
-  }
+    margin: 15px auto;
+    padding: 0;
+    .page-header-buttons-text {
+      display:none;
+    }
+  } 
 }
 
 .page-header-buttons-text {
@@ -261,7 +271,7 @@ ul.page-header-other-info-links {
 }
 
 .hackathon-highlighted {
-  background-color: #f2f2f2;
+  background-color: #fcf5e2;
   padding: 25px 0px;
 }
 

@@ -22,6 +22,34 @@
   overflow: hidden;
   padding: 0 70px 0 70px;
   
+  #map {
+    margin-bottom:10px;
+  }
   -webkit-transition: margin-left 0.25s;
   transition: margin-left 0.25s;
+}
+
+@media (max-width: 768px) {
+  body {
+    #main {
+      padding: 0;
+      h1,h2,h3,p,address {
+        padding: 0 10px 0 10px;
+      }
+      #logo {
+        margin-left: 10px;
+      }
+      #profile-button {
+        a.btn-link {
+          display:none;
+        }
+        a.btn-link.btn-unhidden {
+          display:initial;
+        }
+      }
+      form.edit_user {
+        padding:10px;
+      }
+    }
+  }
 }

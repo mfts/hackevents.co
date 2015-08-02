@@ -25,7 +25,7 @@
       <a href="#" id="menu">Menu</a>
     </div>
     
-    <div id="sidebar">
+    <div id="sidebar" class="hidden-xs hidden-sm">
       <div id="style-menu" class="btn-group btn-group-justified" role="group">
         <%= link_to "List", root_path(style: "list"),     class: "btn btn-default #{params[:style] == "list" || params[:style].blank? ? "active" : "normal"}" %>
         <%#= link_to "Map",  root_path(style: "map"),      class: "btn btn-default #{params[:style] == "map"      ? "active" : "normal"}" %>
@@ -71,6 +71,7 @@
                   </a>
                   <ul class="dropdown-menu dropdown-menu-right">
                     <li><%= link_to "Profile", profile_path %></li>
+                    <li class="hidden-sm hidden-md"><%= link_to "Settings", profile_settings_path %></li>
                     <% if current_user.admin? %>
                       <li><%= link_to "Admin", admin_root_path %></li>
                     <% else %>
@@ -83,7 +84,7 @@
                 </div>
               <% else %>
                 <div id="profile-button" class="btn-group" style="text-decoration:none;">
-                  <%= link_to '/auth/twitter', method: 'get', class: "btn btn-link" do %>
+                  <%= link_to '/auth/twitter', method: 'get', class: "btn btn-link btn-unhidden" do %>
                     <span class="fa fa-twitter" aria-hidden="true"></span>
                     Login
                   <% end %>
