@@ -4,6 +4,8 @@ class PagesController < ApplicationController
   end
 
   def home
-    
+  end
+
+  def frontpage
   end
 end
