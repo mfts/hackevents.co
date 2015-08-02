@@ -1,4 +1,4 @@
-@media (min-width: 768px) {
+@media (min-width: 981px) {
   body {
     &.sidebar-visible {
       #main {
@@ -32,7 +32,7 @@
   transition: margin-left 0.25s;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   body {
     #main {
       padding: 0;
@@ -54,8 +54,8 @@
         padding:10px;
       }
     }
-  #main-cover {
-    margin-left:0;
-  }
+    #main-cover {
+      margin-left:0;
+    }
   }
 }

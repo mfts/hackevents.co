@@ -1,3 +1,11 @@
+@media (max-width: 767px) {
+  #head {
+    #head-search-bar {
+      display: none;
+    }
+  }
+}
+
 #head {
   background-color: #FFFFFF;
   margin-left:      -70px;
