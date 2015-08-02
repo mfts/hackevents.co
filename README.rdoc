@@ -1,6 +1,6 @@
 == README
 
-- 404 page für alle error pages
+
 d Filter
 
 √ city image to hackathon show page
@@ -27,3 +27,6 @@ d Filter
 √ twitter metatags
 √ coverpage but not in use
 √ responsive machen
+√ 404 page für alle error pages
+√ search box on mobile page visible
+√ startpage with cookie
