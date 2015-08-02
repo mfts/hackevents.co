@@ -84,15 +84,13 @@
     <p class="location-and-date">
       <span class="city"><%= hackathon.city %></span>, <span class="country"><%= hackathon.country %></span>
       <br />
-      <span>
+      <span class="info-date">
         
         <%= hackathon.date_start.strftime("%e") %>
         -
         <%=hackathon.date_end.strftime("%e %B")%>
       </span>
     </p>
-
-
 
     <% if hackathon.sponsors.present? %>
       <p class="sponsors">
