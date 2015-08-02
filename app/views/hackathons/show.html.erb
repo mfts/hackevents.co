@@ -11,9 +11,11 @@
 <% else %>
   <% twitter description: "Mark the date!#{l(@hackathon.date_start, format: "%e %b")} –#{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city}, #{@hackathon.country}" %>
 <% end %>
+<% if @hackathon.categories.present? %>
+  <% twitter image: image_url("categories/#{@hackathon.categories.first.name.parameterize}.png") %>
+<% end %>
 <%
 twitter card: 'summary_large_image',
-        image: image_url("categories/#{@hackathon.categories.first.name.parameterize}.png"),
         title: @hackathon.title
 %>
 
