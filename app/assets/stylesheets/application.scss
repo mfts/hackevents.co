@@ -53,6 +53,14 @@ $link-color:                    #F57C00;
 }
 
 
+@media (min-width: 768px) {
+  body {
+    #page-search-bar {
+      display: none;
+    }
+  }
+}
+
 
 .form-group {
   color: $brand-primary;

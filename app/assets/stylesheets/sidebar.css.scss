@@ -1,4 +1,4 @@
-@media (max-width: 767px) {
+@media (max-width: 980px) {
   #menu-button {
     display: none;
   }
@@ -11,7 +11,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   body {
     &.sidebar-visible {
       #sidebar {
