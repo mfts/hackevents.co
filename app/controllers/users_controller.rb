@@ -1,14 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :following, :followers, :hackathons]
 
-  # GET /users/new
-  def new
-    @user = User.new
-  end
-
-  def index
-    @users = User.all
-  end
 
   # POST /users
   # POST /users.json
