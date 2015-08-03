@@ -1,13 +1,3 @@
-<h1>Profile Page</h1>
+<%= render partial: "page" %>
 
-<p>
-  <strong>This is <%= @user.first_name %>'s page.</strong>
-</p>
 
-<p>Follow on Twitter: <%= link_to @user.twitter_name, "http://twitter.com/#{@user.twitter_name}" %></p>
-
-<p>His upcoming hackathons:</p>
-
-<% @user.hackathons.each do |h| %>
-  <p><%= link_to h.title, hackathon_path(h) %></p>
-<% end %>

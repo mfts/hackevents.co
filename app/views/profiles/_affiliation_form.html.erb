@@ -1,0 +1,33 @@
+<div>
+  <h2 style="font-weight:200;">Welcome to Hackevents</h3>
+  <p class="lead">Never miss a hackathon – in <b>3</b> simple steps.</p><br/>
+</div>
+
+<div>
+  <%= form_for(@user, url: email_profile_path, method: :patch) do |f| %>
+
+  <div class="form-inputs profile-settings-form-categories">
+    <h4 class="lead">Select all <b>companies</b> you are interested to hack alongside.</h4>
+    <div class="row">
+    <%= hidden_field_tag "user[sponsor_ids][]", nil %>
+    <% Sponsor.order(:twitter_handle).each do |sponsor| %>
+      <div class="col-md-4">
+        <div class="checkbox">
+          <label class="profile-settings-form-categories-checkbox" style="padding-left:5px;">
+            <span>
+            <%= image_tag( sponsor.twitter_image_url, class: "img-rounded", size: "50x50") %>
+            </span>
+            <%= check_box_tag "user[sponsor_ids][]", sponsor.id, @user.sponsor_ids.include?(sponsor.id) %>
+            <%= sponsor.name %>
+          </label>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  </div>
+    <div class="form-actions profile-settings-form">
+      <%= f.submit "Continue", :class => "btn btn-primary" %>
+      <%= link_to "Back", interest_profile_path, method: :get, :class => "btn btn-link" %>
+    </div>
+  <% end %>
+</div>

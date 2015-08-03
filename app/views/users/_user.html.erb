@@ -1,0 +1,17 @@
+<% unless current_user == u %>
+  <span class="people-person-link">
+    <div class="people-person-avatar"><%= link_to image_tag( u.twitter_account.profile_image, class: "img-circle", size: "50x50"), user_path(u) %></div>
+    <div class="people-person-info">
+      <h2 class="people-person-title title"><%= link_to "#{u.first_name} #{u.last_name}", user_path(u) %></h2>
+      <h3 class="people-person-username"><%= link_to "@#{u.twitter_account.username}", user_path(u) %></h3>
+    </div>
+  </span>
+<% else %>
+  <span class="people-person-link">
+    <div class="people-person-avatar"><%= link_to image_tag( u.twitter_account.profile_image, class: "img-circle", size: "50x50"), profile_path %></div>
+    <div class="people-person-info">
+      <h2 class="people-person-title"><%= link_to "#{u.first_name} #{u.last_name}", profile_path %></h2>
+      <h3 class="people-person-username"><%= link_to "@#{u.twitter_account.username}", profile_path %></h3>
+    </div>
+  </span>
+<% end %>

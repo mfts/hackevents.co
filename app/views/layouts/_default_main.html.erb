@@ -1,0 +1,23 @@
+<div id="menu-button">
+  <a href="#" id="menu">Menu</a>
+</div>
+<%= render :partial => "layouts/sidebar" %>
+
+<div id="main">
+  <div id="head">
+    <%= render :partial => "layouts/head" %>
+  </div>
+  <%= render :partial => "layouts/flash_messages" %>
+  
+  <% if logged_in? && !current_user.email_confirmed? && !@hide_email_resend_box %>
+    <div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please confirm your email address! 
+        <%= link_to "Resend Email Confirmation", resend_email_confirmation_profile_path ,class: "btn btn-danger btn-resend" %>
+    </div>
+  <% end %>
+  
+  <%= yield %>
+  
+  <hr />
+
+  <%= render :partial => "layouts/footer" %>
+</div>

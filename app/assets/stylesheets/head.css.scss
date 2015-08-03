@@ -1,0 +1,68 @@
+@media (max-width: 767px) {
+  #head {
+    #head-search-bar {
+      display: none;
+    }
+  }
+}
+
+#head {
+  background-color: #FFFFFF;
+  margin-left:      -70px;
+  margin-right:     -70px;
+  padding:          0 70px;
+  height:           80px;
+  border-bottom:    1px solid #D8D8D8;
+  margin-bottom:    30px;
+  #logo {
+    height: 80px;
+    a {
+      width:                220px;
+      height: 80px;
+      text-indent:          -9999px;
+      background-image:     image-url("he_logo.png");
+      background-repeat:    no-repeat;
+      background-position:  left center;
+      background-size:      162px auto;
+      display:              block;
+    }
+    float: left;
+  }
+  #head-actions {
+    margin-top: 22px;
+    margin-left: 230px;
+    margin-right: 60px;
+    position: absolute;
+  }
+  form {
+  }
+  #profile-button {
+    .profile-button-inner {
+      border: 1px solid #CCCCCC;
+      width: 34px;
+      height: 34px;
+      text-indent: 100%;
+      white-space: nowrap;
+      background-size: contain;
+      overflow: hidden;
+      cursor: pointer;
+      display: block;
+      &:hover {
+        border: 1px solid #7F7F7F;
+      }
+    }
+    a:hover {
+      text-decoration:none;
+    }
+  }
+}
+
+#head.head-cover {
+  margin-left:0;
+}
+
+@media (max-width: 580px) {
+  #head.head-cover {
+  padding: 0 10px;
+}
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <%= analytics_init if Rails.env.production? %>
+    <%= favicon_link_tag 'favicon.ico' %>
+    
+    <title>Hackevents - Find all Hackathons</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    
+    <div id="menu-button">
+      <a href="#" id="menu">Menu</a>
+    </div>
+    
+    <div id="sidebar">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <%= link_to "Hackathons", admin_hackathons_path %>
+        </li>
+        <li class="list-group-item">
+          <%= link_to "Sponsors", admin_sponsors_path %>
+        </li>
+        <li class="list-group-item">
+          <%= link_to "Categories", admin_categories_path %>
+        </li>
+      </ul>
+    </div>
+    
+    <div id="main">
+      
+      <div id="head">
+        
+        <div id="logo">
+          <%= link_to root_path do %>
+            <span>
+              Hackevents
+            </span>
+          <% end %>
+        </div>
+        
+        <div class="row">
+          <div id="head-actions">
+            <div class="hidden-sm hidden-xs col-md-9">
+              <% if @q.present? %>
+                <%= search_form_for @q do |f| %>
+                  <div class="input-group">
+                    <%= f.text_field :title_or_country_or_city_cont, :placeholder => "Search for hackathons, cities, and countries", :class => "form-control" %>
+                    <span class="input-group-btn">
+                      <%= f.submit "Search", class: "btn btn-primary" %>
+                    </span>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+            <div class="col-sm-12 col-md-3" style="text-align: right;">
+              <div id="profile-button" class="btn-group">
+                <%= link_to "Settings", profile_settings_path, class: "btn btn-link" %>
+                <a class="profile-button-inner" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-image: url('<%= current_user.twitter_account.profile_image %>')">
+                  Profile
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <% if current_user %>
+                    <li><%= link_to "Profile", profile_path %></li>
+                    <% if current_user.admin? %>
+                      <li><%= link_to "Admin", admin_root_path %></li>
+                    <% else %>
+                      <li>
+                        <%= link_to "Add", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { confirm: "Found a hackathon we have not listed yet? Submit it through out Typeform! Thank you :)" }, :target => "_blank" %>
+                      </li>
+                    <% end %>
+                    <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+                  <% else %>
+                    <li>
+                      <%= link_to "Login with Twitter", '/auth/twitter', method: 'get' %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+      
+      <% message_types = { success: "success", notice: "info", warning: "warning", alert: "danger" } %>
+      <% flash.each do |key, message| %>
+        <div class="alert alert-<%= message_types[key.to_sym] || "info" %> alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= message %>
+        </div>
+      <% end %>
+      
+      <% if logged_in? && !current_user.email_confirmed? %>
+        <div class="alert alert-danger alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Please confirm your email address! 
+            <%= link_to "Resend Email Confirmation", resend_email_confirmation_user_path(current_user) ,class: "btn btn-danger btn-resend" %>
+        </div>
+      <% end %>
+      
+      <%= yield %>
+      
+      <hr />
+      
+      <footer>
+        <p>
+          © 2015 Hackevents – All Rights Reserved – <%= link_to "Imprint & Data Privacy", imprint_path %>
+        </p>
+      </footer>
+      
+    </div>
+    
+  </body>
+</html>
