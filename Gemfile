@@ -44,8 +44,7 @@ gem 'metamagic'
 
 gem 'font-awesome-rails'
 
-gem 'rails_serve_static_assets'
-gem 'rails_stdout_logging'
+gem 'rails_12factor', group: :production
 
 gem "non-stupid-digest-assets"
 
