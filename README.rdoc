@@ -6,6 +6,7 @@
 - Search query
 - News about hackathons on special page
 - Admin overview over users, just like sponsors.
+- Submit hackathons from users with new field in hackathon table and admin overview
 
 -√ city image to hackathon show page
 -√ Gefaved User auf Hackathon index darstellen
