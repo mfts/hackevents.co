@@ -11,6 +11,8 @@
 - image upload! gem ... webseite emoticons als logo passt seiner meinung nach nicht
 - webseite team hackevents und die story fehlt, hätte er gerne: wer steckt dahinter - warum
 
+------------------------------------------------------------
+
 - √ city image to hackathon show page
 - √ Gefaved User auf Hackathon index darstellen
 - √ Gefaved User auf Hackathon Show Page darstellen
