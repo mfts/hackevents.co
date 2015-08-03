@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-7394d5bbc4e4f8100ae6d24d81477552.ico" />
+
+  <title>Hackevents - Aaaaaah!</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+
+  <style media="screen" type="text/css">
+  .fit-vid {
+    opacity: 1;
+  }
+  .fit-vid iframe {
+    width: 100%
+  }
+  .vid {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    margin-bottom: 1.5em
+  }
+  .vid iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+  }
+  .header {
+    margin-bottom: 50px;
+  }
+  .title {
+    text-align: center;
+    font-weight: 200;
+  }
+  .subtitle {
+    text-align: center;
+    font-weight: 300;
+  }
+  .header--large .title {
+    line-height: 1.2;
+    font-size: 48px;
+  }
+  @media only screen and (min-width: 768px) {
+    .header--large .title {
+      font-size: 41.6px;
+      font-size: 2.6rem
+    }
+  }
+  @media only screen and (min-width: 1100px) {
+    .header--large .title {
+      font-size: 48px;
+    }
+  }
+  .header--large .subtitle {
+    font-size: 22.4px;
+  }
+  @media only screen and (min-width: 768px) {
+    .header--large .subtitle {
+      font-size: 27.2px;
+    }
+  }
+  @media only screen and (min-width: 1100px) {
+    .header--large .subtitle {
+      font-size: 30.4px;
+    }
+  }
+
+  </style>
+</head>
+  
+<body class="sidebar-hidden">
+  <div id="main">
+    <div id="head">
+      <div id="logo">
+        <a href="/">
+          <span>
+            Hackevents
+          </span>
+        </a>        
+      </div>
+        
+      <div class="row">
+        <div id="head-actions">
+          <div class="hidden-sm hidden-xs col-md-9">
+            <form class="hackathon_search" id="hackathon_search" action="/hackathons" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+              <div class="input-group">
+                <input placeholder="Search for hackathons, cities, and countries" class="form-control" type="text" name="q[title_or_country_or_city_cont]" id="q_title_or_country_or_city_cont" />
+                <span class="input-group-btn">
+                  <input type="submit" name="commit" value="Search" class="btn btn-primary" />
+                </span>
+              </div>
+            </form>            
+          </div>
+          <div class="col-sm-12 col-md-3" style="text-align: right;">
+            <div id="profile-button" class="btn-group" style="text-decoration:none;">
+              <a class="btn btn-link btn-unhidden" data-method="get" href="/auth/twitter">
+                <span class="fa fa-twitter" aria-hidden="true"></span>
+                Login
+              </a>                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="main clearfix" id="main" itemscope itemprop="mainContentOfPage">
+      <section class="section section--main" id="main-section">
+       <div class="wrapper">
+         <header class="header  header--large">
+           <h1 class="title">Ahhhhhhhhhhh! We cannot find this page</h1>
+           <h1 class="subtitle">Let's try starting at <a href="/">Home</a>.
+            <br/><a href="#1" name "1" onclick="return show();">or not...</a></h1>
+          </header>
+          <div id="goat" style="display:none;" class="content  fit-vid  vid" style="padding-top:20px;">
+           <iframe id="goatvid" src="http://www.youtube.com/embed/SIaFtAKnqBU?vq=hd720&rel=0&showinfo=0&controls=0&iv_load_policy=3&loop=1&playlist=SIaFtAKnqBU&modestbranding=1" width="560" height="315" frameborder="0" webkitAllowFullScreen allowFullScreen></iframe>
+         </div>
+       </div><!-- .wrapper -->
+     </section>
+    </main>
+
+    <hr />
+
+    <footer style="font-size:14px;">
+      <p>
+        © 2015 Hackevents – All Rights Reserved – <a href="/imprint">Imprint &amp; Data Privacy</a>
+      </p>
+    </footer>
+  </div>
+</body>
+<script> 
+  function show() { 
+    if(document.getElementById('goat').style.display=='none') { 
+      document.getElementById('goatvid').src += "&autoplay=1";
+      document.getElementById('goat').style.display='block'; 
+    } 
+    return false;
+  } 
+</script> 
+</html>
