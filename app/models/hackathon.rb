@@ -1,9 +1,3 @@
-def self.import(file)
-  CSV.foreach(file.path, headers: true) do |row|
-    Hackathon.create! row.to_hash
-  end
-end
-
 class Hackathon < ActiveRecord::Base
   extend FriendlyId
   friendly_id :uniqueslug, use: :slugged
@@ -11,8 +5,21 @@ class Hackathon < ActiveRecord::Base
   has_many :memberships
   has_many :users, :through => :memberships, dependent: :destroy
 
+  has_many :categorizations
+  has_many :categories, :through => :categorizations, dependent: :destroy
+
+  has_many :sponsorships
+  has_many :sponsors, :through => :sponsorships, dependent: :destroy
+
   def uniqueslug
     "#{country} #{city} #{title}"
+  end
+  
+  # FIXME: check if needed
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      Hackathon.create! row.to_hash
+    end
   end
 
   # It returns the articles whose titles contain one or more words that form the query

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :following, :followers, :hackathons]
 
   # GET /users/new
   def new
@@ -38,8 +38,8 @@ class UsersController < ApplicationController
       if user
         user.email_activate
         cookies[:user_id] = user.id
-        format.html { redirect_to login_url, success: "Welcome to the Hackevents! Your email has been confirmed.
-                                                      Please sign in to continue." }
+        format.html { redirect_to root_url, success: "Welcome to Hackevents! Your email has been confirmed.
+                                                        Please log in to continue." }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { redirect_to root_url , error: "Sorry. User does not exist." }
@@ -48,11 +48,37 @@ class UsersController < ApplicationController
     end
   end
 
+  def following
+    @active = "following"
+    @title = "Following"
+    @user  = User.find(params[:id])
+    @users = @user.following
+    render 'show_follow'
+  end
+
+  def followers
+    @active = "followers"
+    @title = "Followers"
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follow'
+  end
+
+  def hackathons
+    @active = "hackathons"
+    @title = "Favorite Hackathons"
+    @user = User.find(params[:id])
+    @hackathons = @user.hackathons
+    render 'show_hackathon'
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id]) || TwitterAccount.find(params[:name])
+      #@user = User.find(params[:id]) #|| TwitterAccount.find(params[:name])
+      @user = TwitterAccount.find_by_username(params[:username]).user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

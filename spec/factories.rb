@@ -1,4 +1,30 @@
-FactoryGirl.define do  factory :identity do
+FactoryGirl.define do  factory :affiliation do
+    
+  end
+  factory :interest do
+    
+  end
+  factory :relationship do
+    follower_id 1
+followed_id 1
+  end
+  factory :sponsorship do
+    sponsor_id 1
+hackathon_id 1
+  end
+  factory :sponsor do
+    twitter_handle "MyString"
+twitter_image_url "MyString"
+twitter_name "MyString"
+alt_name "MyString"
+  end
+  factory :categorization do
+    category_id 1
+hackathon_id 1
+  end
+  
+  
+  factory :identity do
     user nil
 provider "MyString"
 uid "MyString"

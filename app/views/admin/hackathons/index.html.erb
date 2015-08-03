@@ -1,0 +1,21 @@
+<h1>
+  Hackathons
+</h1>
+
+<hr />
+
+<p>
+  <%= link_to "New", new_admin_hackathon_path, class: "btn btn-default" %>
+</p>
+
+<hr />
+
+<% @hackathons.each do |hackathon| %>
+  <div>
+    <p>
+      <%= hackathon.city %>
+      <%= l(hackathon.date_start, format: "%e %b") %>
+      <%= link_to hackathon.title, edit_admin_hackathon_path(hackathon) %>
+    </p>
+  </div>
+<% end %>

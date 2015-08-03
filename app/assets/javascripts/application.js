@@ -29,4 +29,23 @@ $(function() {
       $(".table-calendar p.event").removeClass("highlighted")
     }
   );
-})
+});
+
+$(function() {
+  $('span.category-bar-item[data-toggle="tooltip"]').tooltip()
+});
+
+$(function() {
+  $("#menu").on("click", function(event){
+    if($("body").hasClass("sidebar-visible")) {
+      $("body").removeClass("sidebar-visible");
+      $("body").addClass("sidebar-hidden");
+      $.post( "/hide_sidebar", function( data ) {});
+    } else {
+      $("body").removeClass("sidebar-hidden");
+      $("body").addClass("sidebar-visible");
+      $.post( "/show_sidebar", function( data ) {});
+    }
+    event.preventDefault();
+  });
+});

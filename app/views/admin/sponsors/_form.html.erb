@@ -1,0 +1,24 @@
+<div class="form-group input-group-lg">
+  <%= f.label :twitter_handle %>
+  <div class="input-group">
+    <span class="input-group-addon">@</span>
+    <%= f.text_field :twitter_handle, class: "form-control" %>
+  </div>
+</div>
+
+<div class="form-group">
+  <%= f.label :twitter_image_url %>
+  <%= f.text_field :twitter_image_url, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :twitter_name %>
+  <%= f.text_field :twitter_name, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :alt_name %>
+  <%= f.text_field :alt_name, class: "form-control" %>
+</div>
+
+<%= f.submit nil, class: "btn btn-default" %>

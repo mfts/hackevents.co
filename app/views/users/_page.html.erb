@@ -1,0 +1,110 @@
+<header class="page-header">
+  
+  <div class="avatar-image-line">
+    <div class="avatar-image-line-image-wrapper">
+      <%= image_tag @user.twitter_account.profile_image, class: "avatar-image-line-image img-circle center-block", :style => "border: 3px solid #F57C00;", size: "150x150" %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-3"></div>
+    <div class="col-xs-6 page-header-info">
+      <h1>
+        <%= @user.first_name %>
+        <%= @user.last_name %>
+      </h1>
+    </div>
+    <% unless @user == current_user %>
+      <div class="col-xs-3 page-header-buttons">
+        <% if @user.following_user?(current_user) %>
+          <span class="page-header-buttons-text-follow">FOLLOWS YOU</span>
+        <% end %>
+        <span><%= render 'follow_form' if logged_in? %></span>
+      </div>
+    <% else %>
+      <div class="col-xs-3 page-header-buttons">
+        <span class="page-header-buttons-text">THIS IS YOU</span>
+        <span>
+          <%= link_to "Share on Twitter", "https://twitter.com/intent/tweet?text=ILOVEYOU@hackevents" .html_safe, class: "btn btn-twitter", target: "_blank" %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+  <div class="page-header-other-info">
+    <p>
+      <%= @user.twitter_account.description %>
+    </p>
+    <ul class="page-header-other-info-links">
+      <li>
+        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+        <%= @user.location || @user.twitter_account.location %>
+      </li>
+      <li>
+        <%= link_to "http://www.twitter.com/#{ @user.twitter_account.username }", :target => "_blank", title: "twitter.com/#{@user.twitter_account.username}" do %> 
+          <span class="fa fa-twitter" aria-hidden="true"></span>
+          @<%= @user.twitter_account.username %>
+        <% end %>
+        <br/>
+      </li>
+    </ul>
+  </div>
+
+  <nav class="page-header-navigation">
+    <ul>
+      <li class="page-header-navigation-tab <%= params[:style] == 'hackathons' || params[:style].blank? ? 'active' : 'normal' %>">
+        <a href="?style=hackathons">
+          <strong><%= @user.hackathons.count %></strong>
+          Hackathons</a>
+      </li>
+
+      <li class="page-header-navigation-tab <%= params[:style] == 'following' ? 'active' : 'normal' %>">
+        <a href="?style=following">
+          <strong><%= @user.following.count %></strong>
+          Following</a>
+      </li>
+
+      <li class="page-header-navigation-tab <%= params[:style] == 'followers' ? 'active' : 'normal' %>">
+        <a href="?style=followers">
+          <strong><%= @user.followers.count %></strong>
+          Followers</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<div class="main-content">
+  <main class="profile-main">
+    <% if params[:style] == 'followers' %>
+      <% @user.followers.in_groups_of(3,false) do |follower_group| %>
+        <div class="posts">
+          <ul class="people">
+            <% follower_group.each do |f| %>
+              <li class="people-person col-md-4">
+                <%= render partial: "users/user", locals: { u: f } %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% elsif params[:style] == 'following' %>
+      <% @user.following.in_groups_of(3,false) do |following_group| %>
+        <div class="posts">
+          <ul class="people">
+            <% following_group.each do |f| %>
+              <li class="people-person col-md-4">
+                <%= render partial: "users/user", locals: { u: f } %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="hackathons">
+        <% @membership_hackathon_ids = Membership.where(user_id: @user.id, hackathon_id: @user.hackathons.map{ |h| h.id }).map{ |m| m.hackathon_id } %>
+       <% @user.hackathons.each do |h| %>
+          <%= render partial: "hackathons/hackathon", locals: { hackathon: h, membership_hackathon_ids: @membership_hackathon_ids } %>
+        <% end %>
+      </div>
+    <% end %>
+  </main>
+</div>

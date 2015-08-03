@@ -1,0 +1,20 @@
+<div>
+  <h2 style="font-weight:200;"><%= title %></h3>
+</div>
+
+<div>
+  <%= form_for(@user, url: profile_path, method: :patch) do |f| %>
+
+    <div class="form-inputs profile-settings-form xxx">
+      <h4 class="lead"><%= subtitle %></h4>
+      <div class="shrink"><%= f.text_field :email, placeholder: "Please enter your email address", label: false %></div>
+    </div>
+
+    <div class="form-actions profile-settings-form">
+      <%= f.submit "Explore", :class => "btn btn-primary" %>
+      <% unless resend %>
+        <%= link_to "Back", affiliation_profile_path, method: :get, :class => "btn btn-link" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

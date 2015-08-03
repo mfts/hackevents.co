@@ -17,7 +17,7 @@ gem 'gmaps4rails'
 gem 'friendly_id'
 gem 'jquery-turbolinks'
 
-gem "kaminari"
+gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
 gem 'ransack'
@@ -39,6 +39,10 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'twitter'
 gem 'twitter-text'
+
+gem 'metamagic'
+
+gem 'font-awesome-rails'
 
 
 group :development, :test do

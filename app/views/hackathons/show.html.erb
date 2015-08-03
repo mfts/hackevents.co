@@ -1,14 +1,46 @@
 <script src="//maps.google.com/maps/api/js?v=3.13&amp;sensor=false&amp;libraries=geometry" type="text/javascript"></script>
 <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 
+<% if @hackathon.users.present? %>
+  <% @names = [] %>
+  <% @hackathon.users.first(10).each do |u| %>
+    <% name = "#{u.first_name} (@#{u.twitter_account.username})" %>
+    <% @names << name %>
+  <% end %>
+  <% twitter description: "Join #{@names.join(", ")} on#{l(@hackathon.date_start, format: "%e %b")} –#{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city}, #{@hackathon.country}.".html_safe %>
+<% else %>
+  <% twitter description: "Mark the date!#{l(@hackathon.date_start, format: "%e %b")} –#{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city}, #{@hackathon.country}" %>
+<% end %>
+<% if @hackathon.categories.present? %>
+  <% twitter image: image_url("categories/#{@hackathon.categories.first.name.parameterize}.png") %>
+<% end %>
+<%
+twitter card: 'summary_large_image',
+        title: @hackathon.title
+%>
 
-<h1>
+
+<div class="page-header">
+  <div>
+  <h1>
   <%= @hackathon.title %>
   <small>
     <%= link_to @hackathon.city, hackathons_by_city_path(country: @hackathon.country.parameterize, city: @hackathon.city.parameterize) %>, 
     <%= link_to @hackathon.country, hackathons_by_country_path(country: @hackathon.country.parameterize) %>
   </small>
+
 </h1>
+<p class="categories-list">
+  <% @hackathon.categories.each do |c| %>
+    <span class="categories-list-item" style="background-color: #<%= c.primary_hex_color %>;">
+      <%= c.name %>
+    </span>
+  <% end %>
+</p>
+</div>
+
+</div>
+
 
 <p class="lead">
   <strong>
@@ -21,12 +53,24 @@
 </p>
 
 <p>
+  <% if logged_in? %>
+    <% if current_user.following_hackathon?(@hackathon) %>
+      <%= link_to unfollow_hackathon_path(@hackathon), class: "btn btn-primary", method: "post" do %>
+        <span class="glyphicon glyphicon-heart glyphicon-heart" aria-hidden="true"></span>
+      <% end %>
+    <% else %>
+      <%= link_to follow_hackathon_path(@hackathon), class: "btn btn-default", method: "post" do %>
+        <span class="glyphicon glyphicon-heart glyphicon-heart-empty" aria-hidden="true"></span>
+      <% end %>
+    <% end %>
+  <% end %>
   <%= link_to "Visit Website", @hackathon.url, class: "btn btn-primary", target: "_blank" %>
-  <%= link_to "Share on Twitter", "https://twitter.com/home?status=HACKATHON%20%7C%C2%A0#{ @hackathon.country }%20%7C%C2%A0#{ @hackathon.city }%20%7C%C2%A0#{ @hackathon.title }%20#{ @hackathon.date_start.strftime("%d/%m/%Y") }%20#{ request.url }%20#{ @hackathon.twitter }%20@hackevents", class: "btn btn-default", target: "_blank" %>
+  <%= link_to "Share on Twitter", "https://twitter.com/intent/tweet?text=HACKATHON%20%7C%C2%A0#{ @hackathon.country }%20%7C%C2%A0#{ @hackathon.city }%20%7C%C2%A0#{ @hackathon.title }%20#{ @hackathon.date_start.strftime("%d/%m/%Y") }%20#{ request.url }%20#{ @hackathon.twitter }%20@Hackevents", class: "btn btn-twitter", target: "_blank" %>
 </p>
 
 <hr />
 
+<h3>Location</h3>
 <address>
   <strong><%= @hackathon.venue %></strong><br />
   <%= @hackathon.address %>
@@ -35,17 +79,34 @@
   <%= link_to "<i class='glyphicon glyphicon-map-marker'></i>&nbsp; Get Directions" .html_safe, "https://maps.google.com?daddr=#{ @hackathon.address }", class: "btn btn-default", target: "_blank" %>
 </p>
 
-<% if logged_in? %>
-  <hr />
-  <p>
-    <% if current_user.following?(@hackathon)  %>
-      <%= link_to "Remove Hackathon", unfollow_hackathon_path(@hackathon), class: "btn", :method => :post %>
-    <% else %>
-      <%= link_to "Add Hackathon", follow_hackathon_path(@hackathon), class: "btn", :method => :post %>
-    <% end %>
-  </p>
-<% end %>
 <hr />
+
+<% if @hackathon.users.present? %>
+<h3>Participants</h3>
+  <div class="posts">
+      <ul class="people">
+        <% @hackathon.users.each do |u| %>
+          <li class="people-person col-md-4">
+            <%= render partial: "users/user", locals: { u: u } %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <hr />
+<% end %>
+
+<% if @hackathon.sponsors.present? %>
+<h3>Partners</h3>
+  <ul class="sponsors">
+    <% @hackathon.sponsors.each do |s| %>
+      <span>
+        <%= link_to image_tag( s.twitter_image_url, class: "img-rounded", size: "120x120", :data => {:toggle => "tooltip", :placement => "top"}, :title => "#{s.twitter_name}"), "http://www.twitter.com/#{s.twitter_handle}", :target => "_blank" %>
+      </span>
+    <% end %>
+  </ul>
+  <hr />
+<% end %>
+
 
 <div id="map" style='width: 100%; height: 300px;'></div>
 
@@ -57,9 +118,10 @@
   </p>
 <% else %>
   <p>
-    Please <%= link_to "log in", login_path %> to report an error in the hackathon.
+    Please <%= link_to "log in", root_path, notice: "Please continue to login with Twitter." %> to report an error in the hackathon.
   </p>
 <% end %>
+
 
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3.exp&sensor=false"></script>

@@ -1,0 +1,22 @@
+<div>
+  <h2 style="font-weight:200;">Welcome to Hackevents</h3>
+  <p class="lead">Never miss a hackathon – in <b>3</b> simple steps.</p><br/>
+</div>
+
+<div>
+  <%= form_for(@user, url: interest_profile_path, method: :patch) do |f| %>
+
+    <div class="form-inputs profile-settings-form xxx">
+      <h4 class="lead">Enter your <b>location</b> and how far you are willing to travel.</h4>
+      <div class="special"><%= f.label :location, "City, Country" %><br/>
+      <%= f.text_field :location,  placeholder: "City, Country" %></div>
+      <div class="special"><%= f.label :radius, "Radius (in km)" %><br/>
+      <%= f.number_field :radius%></div>
+    </div>
+    <br />
+
+    <div class="form-actions profile-settings-form">
+      <%= f.submit  "Continue", :class => "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

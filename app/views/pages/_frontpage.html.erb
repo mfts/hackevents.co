@@ -1,0 +1,133 @@
+<head>
+<%= stylesheet_link_tag    'frontpage', media: 'all', 'data-turbolinks-track' => true %>
+<% cookies.signed[:visited_start_page] = { value: true, expires: 1.year.from_now } %>
+</head>
+<body class="index">
+<header class='layer layer-1'>
+<div class="layer--liner">
+<div class="container">
+<h1 class='logo' id="mobile-shrink">Find all hackathons in one place.</h1>
+<div class="intro">
+<p class='intro--description'>
+It was never easier to pick your next hackathon.
+</p>
+</div>
+</div>
+</div>
+</header>
+<section class="layer layer-2 talks">
+<div class="layer--liner">
+<div class="container">
+<div class="layer--header">
+<h2 style="color:#F57C00;">A search engine for hackathons</h2>
+</div>
+<div class="layer--overview">
+You can find hackathons by city, country, keyword, and even sponsor. <em>All hackathons &ndash; <strong>worldwide</strong>.</em>
+</div>
+<div class="layer--list">
+<ul class="passes--options layer--list">
+<li class="grid grid__one-half grid__centered passes--option">
+<h4 class="layer--list--title-bold" style="color:#F57C00;">
+<%= Hackathon.count %>
+</h4>
+<div class="layer--list--details">
+Hackathons
+</div>
+</li>
+<li class="grid grid__one-half grid__centered passes--option">
+<h4 class="layer--list--title-bold" style="color:#F57C00;">
+<%= Sponsor.count %>
+</h4>
+<div class="layer--list--details">
+Sponsors
+</div>
+</li>
+<li class="grid grid__one-half grid__centered passes--option">
+<h4 class="layer--list--title-bold" style="color:#F57C00;">
+105
+</h4>
+<div class="layer--list--details">
+Cities
+</div>
+</li>
+<li class="grid grid__one-half grid__centered passes--option">
+<h4 class="layer--list--title-bold" style="color:#F57C00;">
+26
+</h4>
+<div class="layer--list--details">
+Countries
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="layer  layer-4 passes">
+<div class="layer--liner">
+<div id="passes" class="container">
+<div class="layer--header">
+<h2 style="color:#F57C00;">Just for the weekend</h2>
+</div>
+<div class="layer--overview">
+Discover new and inspiring hacker cities.
+</div>
+<ul class="passes--options layer--list">
+<li class="grid grid__one-third grid__centered passes--option">
+<h4 class="layer--list--title-bold">
+London
+</h4>
+<div class="layer--list--details">
+It ain't all about finance. <em>Have you heard of "Citymapper"?</em>
+</div>
+</li>
+<li class="grid grid__one-third grid__centered passes--option">
+<h4 class="layer--list--title-bold">
+Berlin
+</h4>
+<div class="layer--list--details">
+It ain't all about Rocket Internet. <em>Have you heard of "Soundcloud"?</em>
+</div>
+</li>
+<li class="grid grid__one-third grid__centered passes--option">
+<h4 class="layer--list--title-bold">
+San Francisco
+</h4>
+<div class="layer--list--details">
+It ain't all about Twitter. <em>Have you heard of "AngelList"?</em>
+</div>
+</li>
+<li class="grid grid__one-third grid__centered passes--option">
+<h4 class="layer--list--title-bold">
+Tallinn
+</h4>
+<div class="layer--list--details">
+It ain't all about Skype. <em>Have you heard of "Transferwise"?</em>
+</div>
+</li>
+<li class="grid grid__one-third grid__centered passes--option">
+<h4 class="layer--list--title-bold">
+Hong Kong
+</h4>
+<div class="layer--list--details">
+It ain't all about finance. <em>Have you heard of "9GAG"?</em>
+</div>
+</li>
+<li class="grid grid__one-third grid__centered passes--option">
+<h4 class="layer--list--title-bold">
+Reykjavik
+</h4>
+<div class="layer--list--details">
+It ain't all about vulcanos. <em>Have you heard of "QuizUp"?</em>
+</div>
+</li>
+</ul>
+<div class="passes--register">
+<%= link_to '/auth/twitter', method: 'get', class: "btn btn-primary btn-cover btn__huge passes--register-btn" do %>
+  <span class="fa fa-twitter" aria-hidden="true"></span>
+  Login Now
+<% end %>
+</div>
+</div>
+</div>
+</section>

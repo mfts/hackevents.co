@@ -1,0 +1,256 @@
+@media (min-width: 768px) {
+  .hackathons {
+    .hackathon {
+      .date {
+        width:      60px;
+        text-align: right;
+        float:      left;
+        margin-right: 20px;
+        .date-month {
+        }
+        .date-day-number {
+        }
+        .date-week-days {
+        }
+      }
+      .category {
+        width:      4px;
+        float:      left;
+        margin-right: 20px;
+        .category-bar {
+          display:          block;
+          width:            4px;
+          height:           120px;
+          border-radius:    2px;
+          overflow:         hidden;
+          .category-bar-item {
+            display:          block;
+            width:            4px;
+          }
+        }
+      }
+      .favorite {
+        width:    140px;
+        float:    left;
+        margin-right: 20px;
+        .favorite-action {
+          a {
+            display: block;
+            line-height: 36px;
+          }
+          border-bottom: 1px solid #D8D8D8;
+        }
+        .favorite-by-people {
+          padding-top: 8px;
+          span {
+            &:nth-child(5n) {
+              margin-right: 0;
+            }
+            background-size: 30px 30px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            display: block;
+            float: left;
+            width: 30px;
+            height: 30px;
+            overflow: hidden;
+            text-indent: -9999px;
+            border-radius: 15px;
+            border: 1px solid #CCCCCC;
+          }
+        }
+      }
+      .image {
+        width:            160px;
+        float:            left;
+      }
+      .info {
+        margin: 0 0 0 444px;
+        overflow: hidden;
+        h2 {
+        }
+        p {
+          .city {
+            font-weight: 500;
+          }
+          .country {
+          }
+        }
+      }
+      &:hover {
+        background: #f7f7fa;
+      }
+    }
+
+  }
+}
+
+.hackathons {
+  .hackathon {
+    overflow: hidden;
+    margin-bottom: 1.5em;
+    .date {
+      .date-month {
+        font-size:    18px;
+        color:        #000000;
+        line-height:  18px;
+        font-weight:  300;
+      }
+      .date-day-number {
+        font-size:    30px;
+        color:        #000000;
+        line-height:  30px;
+        font-weight:  800;
+      }
+      .date-week-days {
+        font-size:    12px;
+        color:        #9B9B9B;
+        line-height:  15px;
+      }
+    }
+    .category {
+      .category-bar {
+        .category-bar-item {
+        }
+      }
+    }
+    .favorite {
+      .favorite-action {
+        a {
+        }
+      }
+      .favorite-by-people {
+        span {
+          &:nth-child(5n) {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+    .image {
+      background-color: #F1F1F1;
+      img {
+        width: 100%;
+      }
+    }
+    .info {
+      h2 {
+        font-weight: 700;
+        font-size: 18px;
+        color: #4A4A4A;
+        line-height: 23px;
+        margin: 0;
+        padding: 0;
+      }
+      p {
+        .city {
+          font-weight: 500;
+        }
+        .country {
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .hackathons {
+    .hackathon {
+      padding: 15px 10px 0 10px;
+      position:relative;
+      min-height:100px;
+      margin-bottom:0;
+      .image {
+        display:none;
+      }
+      .date {
+        text-align: right;
+        float:      left;
+        margin-right: 20px;
+        margin-top: 5px;
+        margin-left:20px;
+        width: 50px;
+        .date-month {
+          font-size:    18px;
+          color:        #000000;
+          line-height:  18px;
+          font-weight:  300;
+        }
+        .date-day-number {
+          font-size:    30px;
+          color:        #000000;
+          line-height:  30px;
+          font-weight:  800;
+        }
+        .date-week-days {
+          font-size:    12px;
+          color:        #9B9B9B;
+          line-height:  15px;
+        }
+      }
+      .favorite {
+        position:absolute;
+        margin-top:20px;
+        //margin-left:10px;
+        .favorite-action {
+          a {
+            visibility: hidden;
+            span {
+              visibility: visible;
+              font-size: 20px;
+            }
+          }
+        }
+        .favorite-by-people {
+          display:none;
+          span {
+            &:nth-child(5n) {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+      .info {
+        h2 {
+          font-weight: 500;
+          font-size: 16px;
+          color: #4A4A4A;
+          line-height: 23px;
+          margin: 0;
+          padding: 0;
+        }
+        .location-and-date {
+          margin-left: 58px;
+        }
+        p {
+          .info-date {
+            display: none;
+          }
+          .city {
+            font-weight: 500;
+          }
+          .country {
+          }
+        }
+      }
+      .sponsors {
+        margin-left: 58px;
+        float: right;
+        display:none;
+        span {
+          a {
+            color:black;
+            img {
+              display: none;
+            }
+          }:hover {
+            text-decoration:none;
+            color: #BFBFBF;
+          }
+        }
+      }&:hover {
+        background: #f7f7fa;
+      }
+    }
+  }
+}

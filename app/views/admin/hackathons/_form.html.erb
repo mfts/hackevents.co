@@ -1,0 +1,152 @@
+<% if @hackathon.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@hackathon.errors.count, "error") %> prohibited this hackathon from being saved:</h2>
+
+    <ul>
+    <% @hackathon.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= f.submit nil, class: "btn btn-default" %>
+
+<hr />
+
+<div class="form-group">
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "form-control" %>
+</div>
+
+<div class="row">
+  <div class="col-md-9">
+    
+    <%= hidden_field_tag "hackathon[category_ids][]", nil %>
+    <% Category.order(:name).in_groups_of(3, false).each do |grouped_categories| %>
+      <div class="row">
+        <% grouped_categories.each do |category| %>
+          <div class="col-md-4">
+            <div class="checkbox">
+              <span style="background-color: #<%= category.primary_hex_color %>; width: 30px; height: 10px; border-radius: 3px; display: inline-block;">
+              </span>
+              <label>
+                <%= check_box_tag "hackathon[category_ids][]", category.id, @hackathon.category_ids.include?(category.id) %>
+                <%= category.name %>
+              </label>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :country %>
+      <%= f.text_field :country, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :city %>
+      <%= f.text_field :city, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :url %>
+      <%= f.text_field :url, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :date_start %>
+      <%= f.datetime_select :date_start, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :date_start %>
+      <%= f.datetime_select :date_end, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :venue %>
+      <%= f.text_field :venue, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address %>
+      <%= f.text_field :address, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :challenge %>
+      <%= f.text_area :challenge, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :awards %>
+      <%= f.text_area :awards, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :schedule %>
+      <%= f.text_area :schedule, class: "form-control" %>
+    </div>
+
+    <div class="checkbox">
+      <%= f.label :application do %>
+        <%= f.check_box :application %> Application?
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :application_deadline %>
+      <%= f.datetime_select :application_deadline, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :twitter %>
+      <%= f.text_field :twitter, class: "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :image_url %>
+      <%= f.text_field :image_url, class: "form-control" %>
+    </div>
+
+    <div class="checkbox">
+      <%= f.label :highlighted do %>
+        <%= f.check_box :highlighted %> Highlighted?
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :longitude %>
+      <%= f.number_field :longitude, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :latitude %>
+      <%= f.number_field :latitude, class: "form-control" %>
+    </div>
+    
+    <hr />
+    
+    <%= f.submit nil, class: "btn btn-default" %>
+    
+  </div>
+  
+  <div class="col-md-3">
+    <%= hidden_field_tag "hackathon[sponsor_ids][]", nil %>
+    <% Sponsor.order(:twitter_handle).each do |sponsor| %>
+      <div class="checkbox">
+        <label>
+          <%= check_box_tag "hackathon[sponsor_ids][]", sponsor.id, @hackathon.sponsor_ids.include?(sponsor.id) %>
+          <%= sponsor.name %>
+        </label>
+      </div>
+    <% end %>
+  </div>
+</div>
