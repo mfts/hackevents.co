@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     if params[:category]
       @q          = Category.find(params[:category]).hackathons.includes(:sponsors, :categories, { users: [:twitter_account] }).ransack q_param
     else
-      @q          = Hackathon.includes(:sponsors, :categories, :users).ransack q_param
+      @q          = Hackathon.includes(:sponsors, :categories, { users: [:twitter_account] }).ransack q_param
     end
     
     @q

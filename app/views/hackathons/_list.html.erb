@@ -1,5 +1,5 @@
 <% if @hackathons.present? %>
-  <p class="hidden-xs hidden-sm hidden-lg">
+  <p style="display: none;">
     Sort:
     <%= sort_link @q, :date_start, "Date", default_order: :desc   %>,
     <%= sort_link @q, :title, "Name" %>,
@@ -27,6 +27,6 @@
   <p>
     Sorry no Hackathons found.
   </p>
-  <iframe src="//giphy.com/embed/8dTuHJeEMjxW8" width="480" height="270" frameBorder="0" style="max-width: 100%" class="giphy-embed" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+  <%= link_to image_tag('nyancat.png', style: "max-width:100%;"), "http://www.oktoberhackfest.com/?ref=hackevents" %>
 
 <% end %>
