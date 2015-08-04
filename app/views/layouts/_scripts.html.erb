@@ -33,5 +33,16 @@ analytics.track('Logged In');
     hackathon_favs: '<%= @hackathon.users.count %>'
   });
 </script>
+
+<script type="text/javascript">
+  var link = document.getElementById('view-website');
+  analytics.trackLink(link, 'Clicked on Website Link', {
+    hackathon_name: '<%= @hackathon.title %>',
+    hackathon_id: '<%= @hackathon.id %>',
+    hackathon_country: '<%= @hackathon.country %>',
+    hackathon_city: '<%= @hackathon.city %>',
+    hackathon_favs: '<%= @hackathon.users.count %>'
+  });
+</script>
 <% end %>
 
