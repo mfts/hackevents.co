@@ -1,0 +1,37 @@
+<script type="text/javascript">
+!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.0.1";
+analytics.load("OoQKinvSv6pnJyLTZZsuBQEXWpdyz5s9");
+analytics.page()
+}}();
+</script>
+
+<% if logged_in? %>
+<script type="text/javascript">
+analytics.identify('<%= current_user.id %>', {
+  location: '<%= current_user.location %>',
+  hackathon_count: '<%= current_user.hackathons.count %>',
+  name: '<%= current_user.first_name %> <%= current_user.last_name %> (@<%= current_user.twitter_account.username %>)',
+  username: '@<%= current_user.twitter_account.username %>',
+  following_count: '<%= current_user.hackathons.count %>',
+  follower_count: '<%= current_user.hackathons.count %>',
+  email: '<%= current_user.email %>',
+  email_confirmed: '<%= current_user.email_confirmed %>',
+  user_id: '<%= current_user.id %>'
+});
+analytics.track('Logged In');
+</script>
+<% end %>
+
+<% if @hackathon.present? %>
+<script type="text/javascript">
+  var link = document.getElementById('twitter-share');
+  analytics.trackLink(link, 'Shared on Twitter', {
+    hackathon_name: '<%= @hackathon.title %>',
+    hackathon_id: '<%= @hackathon.id %>',
+    hackathon_country: '<%= @hackathon.country %>',
+    hackathon_city: '<%= @hackathon.city %>',
+    hackathon_favs: '<%= @hackathon.users.count %>'
+  });
+</script>
+<% end %>
+

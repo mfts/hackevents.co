@@ -1,36 +1,42 @@
 == README
 
 
--d Filter
+- d Filter
 - Page for hackathons updated by day (with timestamp) (like producthunt or news site)
 - Search query
 - News about hackathons on special page
 - Admin overview over users, just like sponsors.
+- Submit hackathons from users with new field in hackathon table and admin overview
+- Analytics mixpanel or google anal
+- image upload! gem ... webseite emoticons als logo passt seiner meinung nach nicht
+- webseite team hackevents und die story fehlt, hätte er gerne: wer steckt dahinter - warum
 
--√ city image to hackathon show page
--√ Gefaved User auf Hackathon index darstellen
--√ Gefaved User auf Hackathon Show Page darstellen
--√ Kategorien auf Hackathon Show Page darstellen
--√ Kategorien zu Hackathons hinzufügen
--√ larger sponsor with hover on hackathon_show
--√ Route design mit twitter @handle
--√ Sponsoren auf Hackathon Show Page darstellen
--√ Sponsoren zu Hackathons hinzufügen
--√ twitter_handle, location, description to profile
--√ upload/import hackathon controller and view
--√ highlighted hackathon
--√ gefaved user stylen
--√ after twitter login before email address -> signup flow with location, categories, sponsors
--√ profile settings page (wie die admin, dass man direkt im edit ist)
--√ search bar on every site
--√ Profilleiste (eigenes Bild)
--√ cookie um sidebar zu setten
--√ Titelbilder zu Hackathons hinzufügen < sind das die categories? < genau
--√ Email signup raus
--√ style signup flow
--√ twitter metatags
--√ coverpage but not in use
--√ responsive machen
--√ 404 page für alle error pages
--√ search box on mobile page visible
--√ startpage with cookie
+------------------------------------------------------------
+
+- √ city image to hackathon show page
+- √ Gefaved User auf Hackathon index darstellen
+- √ Gefaved User auf Hackathon Show Page darstellen
+- √ Kategorien auf Hackathon Show Page darstellen
+- √ Kategorien zu Hackathons hinzufügen
+- √ larger sponsor with hover on hackathon_show
+- √ Route design mit twitter @handle
+- √ Sponsoren auf Hackathon Show Page darstellen
+- √ Sponsoren zu Hackathons hinzufügen
+- √ twitter_handle, location, description to profile
+- √ upload/import hackathon controller and view
+- √ highlighted hackathon
+- √ gefaved user stylen
+- √ after twitter login before email address -> signup flow with location, categories, sponsors
+- √ profile settings page (wie die admin, dass man direkt im edit ist)
+- √ search bar on every site
+- √ Profilleiste (eigenes Bild)
+- √ cookie um sidebar zu setten
+- √ Titelbilder zu Hackathons hinzufügen < sind das die categories? < genau
+- √ Email signup raus
+- √ style signup flow
+- √ twitter metatags
+- √ coverpage but not in use
+- √ responsive machen
+- √ 404 page für alle error pages
+- √ search box on mobile page visible
+- √ startpage with cookie
