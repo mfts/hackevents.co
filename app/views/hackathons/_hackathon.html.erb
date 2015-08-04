@@ -71,7 +71,7 @@
 
   <div class="image">
     <%= link_to hackathon do %>
-      <% category_name = hackathon.categories.first ? hackathon.categories.first.name : "Unknown"  %>
+      <% category_name = hackathon.categories.first ? hackathon.categories.sample.name : "Unknown"  %>
       <%= image_tag "categories/#{category_name.parameterize}.png" %>
     <% end %>
   </div>
