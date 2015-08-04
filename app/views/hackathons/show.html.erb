@@ -64,7 +64,7 @@ twitter card: 'summary_large_image',
       <% end %>
     <% end %>
   <% end %>
-  <%= link_to "Visit Website", @hackathon.url, class: "btn btn-primary", target: "_blank" %>
+  <%= link_to "Visit Website", "#{@hackathon.url}?ref=hackevents", class: "btn btn-primary", :id => "view-website", target: "_blank" %>
   <%= link_to "Share on Twitter", "https://twitter.com/intent/tweet?text=HACKATHON%20%7C%C2%A0#{ @hackathon.country }%20%7C%C2%A0#{ @hackathon.city }%20%7C%C2%A0#{ @hackathon.title }%20#{ @hackathon.date_start.strftime("%d/%m/%Y") }%20#{ request.url }%20#{ @hackathon.twitter }%20@Hackevents", class: "btn btn-twitter", :id => "twitter-share", target: "_blank" %>
 </p>
 
