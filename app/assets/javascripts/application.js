@@ -32,7 +32,7 @@ $(function() {
 });
 
 $(function() {
-  $('span.category-bar-item[data-toggle="tooltip"]').tooltip()
+  $('span.category-bar-item[data-toggle="tooltip"], .sponsors a[data-toggle="tooltip"]').tooltip()
 });
 
 $(function() {
