@@ -49,7 +49,7 @@
       <% if grouped_data[date] %>
         <% grouped_data[date].each do |event| %>
           <p class='event' data-event-id="hackathon-<%= event.id %>">
-            <%= link_to "#{event.title} (#{event.country})", event %>
+            <%= link_to "#{event.title} (#{event.country})", nice_hackathon_path(event) %>
           </p>
         <% end %>
       <% end %>

@@ -70,7 +70,7 @@
   </div>
 
   <div class="image">
-    <%= link_to hackathon do %>
+    <%= link_to nice_hackathon_path(hackathon) do %>
       <% category_name = hackathon.categories.first ? hackathon.categories.sample.name : "Unknown"  %>
       <%= image_tag "categories/#{category_name.parameterize}.png" %>
     <% end %>
@@ -78,7 +78,7 @@
 
   <div class="info">
     <h2>
-      <%= link_to hackathon.title, hackathon_by_id_path(name: "#{hackathon.id}-#{hackathon.title}".parameterize.downcase, country: hackathon.country.parameterize.downcase, city: hackathon.city.parameterize.downcase), 'data-no-turbolink' => false, class: "title" %>
+      <%= link_to hackathon.title, nice_hackathon_path(hackathon), 'data-no-turbolink' => false, class: "title" %>
     </h2>
 
     <p class="location-and-date">
