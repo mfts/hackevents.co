@@ -7,7 +7,7 @@
     <%= analytics_init if Rails.env.production? %>
     <%= favicon_link_tag 'favicon.ico' %>
     
-    <title>Hackevents - All Hackathons in One Place</title>
+    <title><%= yield(:title).present? ? yield(:title) : "Hackevents – All Hackathons in One Place" %></title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -27,6 +27,8 @@
       <%= render partial: "layouts/first_time_main" %>
     <% end %>
     
+    <% if Rails.env.production? %>
     <%= render partial: "layouts/scripts" %>
+    <% end %>
   </body>
 </html>
