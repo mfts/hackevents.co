@@ -12,6 +12,8 @@
 - hackathon configurator; user can configure their favorite hackathon with sponsors, category, city, and additional information
 - add new tab for past hackathons
 - hackathon typeform umfrage in past hackathons
+- links unter categories eine liste mit den top städten / ländern anzeigen (+ count der hackathons)
+- automatische psql backups
 
 ------------------------------------------------------------
 
