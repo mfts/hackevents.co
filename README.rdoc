@@ -10,6 +10,8 @@
 - Analytics mixpanel or google anal
 - image upload! gem ... webseite emoticons als logo passt seiner meinung nach nicht
 - webseite team hackevents und die story fehlt, hätte er gerne: wer steckt dahinter - warum
+- links unter categories eine liste mit den top städten / ländern anzeigen (+ count der hackathons)
+- automatische psql backups
 
 ------------------------------------------------------------
 
