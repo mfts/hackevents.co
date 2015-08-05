@@ -14,6 +14,8 @@
 - hackathon typeform umfrage in past hackathons
 - links unter categories eine liste mit den top städten / ländern anzeigen (+ count der hackathons)
 - automatische psql backups
+- hackathon header picture
+- api table linked to sponsor table => more information for hackathon show page + biggest api search platform
 
 ------------------------------------------------------------
 
