@@ -3,7 +3,13 @@ class HackathonsController < ApplicationController
   before_action :require_user,  only: [:follow, :unfollow]
   
   def index
-    @hackathons = @q.result.where('date_start >= ?', Time.zone.now).order(date_start: :asc).page(@page).per(@per_page)
+    if params[:style] == "calendar"
+      starter = Time.zone.now.beginning_of_week.to_date
+      ender   = (Time.zone.now + 2.months).end_of_week.to_date
+      @hackathons = Hackathon.where('date_start >= ?', starter).where('date_end <= ?', ender).order(date_start: :asc)
+    else
+      @hackathons = @q.result.where('date_start >= ?', Time.zone.now).order(date_start: :asc).page(@page).per(@per_page)
+    end
   end
 
   def show
