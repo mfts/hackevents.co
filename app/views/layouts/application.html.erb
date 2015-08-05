@@ -27,6 +27,8 @@
       <%= render partial: "layouts/first_time_main" %>
     <% end %>
     
+    <% if Rails.env.production? %>
     <%= render partial: "layouts/scripts" %>
+    <% end %>
   </body>
 </html>
