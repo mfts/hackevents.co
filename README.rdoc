@@ -7,9 +7,11 @@
 - News about hackathons on special page
 - Admin overview over users, just like sponsors.
 - Submit hackathons from users with new field in hackathon table and admin overview
-- Analytics mixpanel or google anal
 - image upload! gem ... webseite emoticons als logo passt seiner meinung nach nicht
 - webseite team hackevents und die story fehlt, hätte er gerne: wer steckt dahinter - warum
+- hackathon configurator; user can configure their favorite hackathon with sponsors, category, city, and additional information
+- add new tab for past hackathons
+- hackathon typeform umfrage in past hackathons
 
 ------------------------------------------------------------
 
@@ -40,3 +42,4 @@
 - √ 404 page für alle error pages
 - √ search box on mobile page visible
 - √ startpage with cookie
+- √ Analytics mixpanel or google anal
