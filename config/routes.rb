@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   delete "/logout" => "twitter_accounts#destroy", as: :logout
 
   get 'imprint', to: 'pages#imprint', as: 'imprint'
+  get 'about', to: 'pages#aboutpage', as: 'about'
   get 'hackathon/:country/:city/:name', to: 'hackathons#show', as: :hackathon_by_id
   get 'hackathon/:country', to: 'hackathons#index', as: :hackathons_by_country
   get 'hackathon/:country/:city', to: 'hackathons#index', as: :hackathons_by_city

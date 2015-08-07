@@ -8,4 +8,7 @@ class PagesController < ApplicationController
 
   def frontpage
   end
+
+  def aboutpage
+  end
 end
