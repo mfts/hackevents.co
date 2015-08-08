@@ -1,4 +1,3 @@
 <%= form_for [:admin, @hackathon] do |f| %>
   <%= render partial: 'form', locals: { f: f } %>
 <% end %>
-<%= link_to "Destroy", admin_hackathon_path(@hackathon), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
