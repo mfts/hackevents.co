@@ -1,21 +1,14 @@
 <% if @hackathons.present? %>
-  <p style="display: none;">
-    Sort:
-    <%= sort_link @q, :date_start, "Date", default_order: :desc   %>,
-    <%= sort_link @q, :title, "Name" %>,
-    <%= sort_link @q, :city, "City" %>,
-    <%= sort_link @q, :country, "Country" %>
-  </p>
   
   <hr class="hidden-xs hidden-sm hidden-lg" />
   
   <div class="hackathons">
-    <% puts @hackathons.pluck(:created_at).to_json %>
+    <% @hackathons.sort_by(&:created_at).reverse.group_by(&:created_at).each do |day, hackathons| %>
+      <div><%= day.to_date %></div>
+      <% hackathons.each do |hackathon| %>
+        <%= render partial: 'hackathon', locals: { hackathon: hackathon, membership_hackathon_ids: @membership_hackathon_ids } %>
 
-    <% @hackathons.order(date_start: :DESC).each do |hackathon| %>
-
-      <%= render partial: 'hackathon', locals: { hackathon: hackathon, membership_hackathon_ids: @membership_hackathon_ids } %>
-
+      <% end %>
     <% end %>
   </div>
   
