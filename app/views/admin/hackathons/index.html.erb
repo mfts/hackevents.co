@@ -10,11 +10,14 @@
 
 <hr />
 
-<% @hackathons.each do |hackathon| %>
+<% @hackathons.sort_by(&:created_at).reverse.each do |hackathon| %>
   <div>
     <p>
       <%= l(hackathon.date_start, format: "%e %b") %>
       <%= link_to hackathon.title, edit_admin_hackathon_path(hackathon) %>
+      <% if hackathon.sponsors.exists? %>
+        <%= p "sponsor exists" %>
+      <% end %>
     </p>
   </div>
 <% end %>
