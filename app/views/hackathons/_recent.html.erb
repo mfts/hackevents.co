@@ -3,8 +3,8 @@
   <hr class="hidden-xs hidden-sm hidden-lg" />
   
   <div class="hackathons">
-    <% @hackathons.sort_by(&:created_at).reverse.group_by(&:created_at).each do |day, hackathons| %>
-      <div><%= day.to_date %></div>
+    <% @hackathons.sort_by(&:created_at).reverse.group_by { |h| h.created_at.to_date }.each do |day, hackathons| %>
+      <div style="text-align:center;"><h1><%= Date.today == day ? "Today" : (Date.yesterday == day ? "Yesterday" : day.to_date) %></h1></div>
       <% hackathons.each do |hackathon| %>
         <%= render partial: 'hackathon', locals: { hackathon: hackathon, membership_hackathon_ids: @membership_hackathon_ids } %>
 
