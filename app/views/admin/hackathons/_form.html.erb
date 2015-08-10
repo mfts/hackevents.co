@@ -11,7 +11,9 @@
 <% end %>
 
 <%= f.submit nil, class: "btn btn-default" %>
-<%= link_to "View Hackathon", hackathon_path(@hackathon), class: "btn btn-primary" %>
+<% unless @hackathon.new_record? %>
+  <%= link_to "View Hackathon", hackathon_path(@hackathon), class: "btn btn-primary" %>
+<% end %>
 
 <hr />
 
@@ -136,7 +138,9 @@
     <hr />
     
     <%= f.submit nil, class: "btn btn-default" %>
-    <%= link_to "Destroy", admin_hackathon_path(@hackathon), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    <% unless @hackathon.new_record? %>
+      <%= link_to "Destroy", admin_hackathon_path(@hackathon), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+    <% end %>
     
   </div>
   
