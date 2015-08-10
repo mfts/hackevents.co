@@ -1,0 +1,54 @@
+<div class="form-inputs profile-settings-form" style="margin-left:0px; margin-bottom:20px;">
+  <%= f.text_field :first_name %>
+  <%= f.text_field :last_name %><br/>
+  <%= f.text_field :email, placeholder: "Email address", style: "width:355px;" %><br/>
+
+</div>
+
+<div class="form-inputs profile-settings-form" style="margin-left:0px; margin-bottom:20px;">
+  <h4>Location</h4>
+  <%= f.text_field :location %>
+  <%= f.number_field :radius %>
+</div>
+
+<div class="form-inputs profile-settings-form-categories">
+  <h4>Categories</h4>
+  <%= hidden_field_tag "user[category_ids][]", nil %>
+  <% Category.order(:name).in_groups_of(3, false).each do |grouped_categories| %>
+    <div class="row">
+      <% grouped_categories.each do |category| %>
+        <div class="col-md-4">
+          <div class="checkbox">
+            <span style="background-color: #<%= category.primary_hex_color %>; width: 30px; height: 10px; border-radius: 3px; display: inline-block;">
+            </span>
+            <label>
+              <%= check_box_tag "user[category_ids][]", category.id, @user.category_ids.include?(category.id) %>
+              <%= category.name %>
+            </label>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<div class="form-inputs profile-settings-form-categories">
+  <h4>Companies</h4>
+  <%= hidden_field_tag "user[sponsor_ids][]", nil %>
+  <% Sponsor.order(:twitter_handle).each do |sponsor| %>
+    <div class="col-md-3">
+      <div class="checkbox">
+        <label>
+          <%= check_box_tag "user[sponsor_ids][]", sponsor.id, @user.sponsor_ids.include?(sponsor.id) %>
+          <%= sponsor.name %>
+        </label>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="form-actions profile-settings-form">
+  <%= f.submit "Save changes", :class => "btn btn-primary" %>
+  <%= link_to 'Back', profile_path, :class => "btn btn-link" %>
+</div>
+
