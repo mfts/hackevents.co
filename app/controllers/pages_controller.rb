@@ -10,5 +10,7 @@ class PagesController < ApplicationController
   end
 
   def aboutpage
+    @team = User.where(team: true)
+    @supporters = User.where(support: true)
   end
 end

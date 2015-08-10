@@ -488,7 +488,7 @@ ul.page-header-other-info-links {
 }
 
 
-
+/* recently added nav bar */
 
 @media (max-width: 768px) {
   .index-header {
@@ -535,4 +535,98 @@ ul.page-header-other-info-links {
 }
 
 
+/* about page */
 
+.p-about .s-h1 {
+    margin: 61px auto 14px auto;
+    max-width: 877px
+}
+.p-about .s-h4 {
+    margin: 0 0 66px 0
+}
+
+.p-about--team {
+    margin: 0 0 20px 0;
+    overflow: hidden
+}
+.p-about--team--list {
+    margin: 0;
+    padding: 0;
+    text-align: center
+}
+.p-about--team--item {
+    display: inline-block;
+    list-style: none;
+    margin: 0 0 60px 0;
+    overflow: hidden;
+    text-align: left;
+    width: 33.333%
+}
+@media (min-width: 769px) and (max-width: 1199px) {
+    .p-about--team--item {
+        width: 50%
+    }
+}
+@media (max-width: 768px) {
+    .p-about--team--item {
+        clear: both;
+        float: none;
+        margin: 0 auto 60px auto;
+        width: 100%
+    }
+}
+.p-about--team--member {
+    display: block;
+    margin: 0 auto;
+    width: 320px
+}
+.p-about--team--member--image {
+    float: left;
+    margin: 0 21px 0 0
+}
+.p-about--team--member--name {
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    margin: 0 0 6px 0
+}
+.p-about--team--member--title {
+    color: #bbbbbb;
+    font-size: 16px;
+    height: 38px;
+    line-height: 19px
+}
+.p-about--team--member--username {
+    font-size: 16px;
+} a:hover {
+    text-decoration: none;
+  }
+
+.image-list {
+    margin: 0 0 20px 0;
+    padding: 0;
+    text-align: center
+}
+.image-list.v-wide {
+    margin: 0 0 25px 0
+}
+.image-list ol,
+.image-list ul {
+    margin: 0;
+    padding: 0
+}
+.image-list--item {
+    display: inline-block;
+    list-style: none;
+    margin: 0 10px 60px 10px;
+    vertical-align: middle
+}
+
+.user-image {
+    display: inline-block;
+    position: relative
+}
+.user-image img {
+    border-radius: 50%
+}
