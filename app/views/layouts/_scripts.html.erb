@@ -46,3 +46,13 @@ analytics.track('Logged In');
 </script>
 <% end %>
 
+<script type="text/javascript">
+ var link = document.getElementById('about-page');
+  analytics.trackLink(link, 'Clicked on About Page', {
+    name: '<%= current_user.first_name %> <%= current_user.last_name %> (@<%= current_user.twitter_account.username %>)',
+    email: '<%= current_user.email %>',
+    user_id: '<%= current_user.id %>'
+    username: '@<%= current_user.twitter_account.username %>'
+  });
+</script>
+
