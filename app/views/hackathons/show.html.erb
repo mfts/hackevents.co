@@ -83,7 +83,7 @@ twitter card: 'summary_large_image',
 <hr />
 
 <% if @hackathon.users.present? %>
-<h3>Participants</h3>
+<h3>Favorites</h3>
   <div class="posts">
       <ul class="people">
         <% @hackathon.users.each do |u| %>
@@ -101,7 +101,7 @@ twitter card: 'summary_large_image',
   <ul class="sponsors">
     <% @hackathon.sponsors.each do |s| %>
       <span>
-        <%= link_to image_tag( s.twitter_image_url, class: "img-rounded", size: "120x120", :data => {:toggle => "tooltip", :placement => "top"}, :title => "#{s.twitter_name}"), "http://www.twitter.com/#{s.twitter_handle}", :target => "_blank" %>
+        <%= link_to image_tag( s.twitter_image_url, class: "img-rounded", size: "120x120"), "http://www.twitter.com/#{s.twitter_handle}", :target => "_blank", :data => { :toggle => "tooltip", :placement => "top" }, :title => s.twitter_name %>
       </span>
     <% end %>
   </ul>

@@ -26,7 +26,24 @@
     </div>
   </div>
 
+  <div class="index-header v-links"> 
+    <div class="container">
+      <a href="?style=all" class="index-header-link <%= params[:style] == 'all' || params[:style].blank? ? 'active' : 'normal' %>">
+        All Hackathons</a>
+      <a href="?style=recent" class="index-header-link <%= params[:style] == 'recent' ? 'active' : 'normal' %>">
+        Recently Added</a>
+    </div>
+  </div>
+
   <hr />
   
-  <%= render :partial => "list" %>
+  <% if params[:style] == 'recent' %>
+    <div class="hackathons">
+      <%= render partial: "recent" %>
+    </div>
+  <% else %>
+    <div class="hackathons">
+      <%= render partial: "list" %>
+    </div>
+  <% end %>
 <% end %>

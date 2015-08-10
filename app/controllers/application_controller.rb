@@ -32,6 +32,10 @@ class ApplicationController < ActionController::Base
       @q          = Hackathon.includes(:sponsors, :categories, { users: [:twitter_account] }).ransack q_param
     end
     
+    if params[:day]
+      @q          = Hackathon.includes(:sponsors, :categories, { users: [:twitter_account] }).with_days([params[:day]]).ransack q_param
+    end
+    
     @q
   end
   
