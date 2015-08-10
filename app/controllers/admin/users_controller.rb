@@ -7,11 +7,9 @@ module Admin
     end
     
     def edit
-      @user = User.find(params[:id])
     end
     
     def update
-      @user = User.find(params[:id])
       if @user.update(user_params)
         redirect_to admin_users_path
       else
@@ -23,7 +21,7 @@ module Admin
     private
 
     def set_user
-      @user = TwitterAccount.find_by_username(params[:username]).user
+      @user = TwitterAccount.find_by_username(params[:id]).user
     end
 
     def user_params
