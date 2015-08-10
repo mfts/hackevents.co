@@ -4,7 +4,12 @@
   
   <div class="hackathons">
     <% @hackathons.sort_by(&:created_at).reverse.group_by { |h| h.created_at.to_date }.each do |day, hackathons| %>
-      <div style="text-align:center;"><h1><%= Date.today == day ? "Today" : (Date.yesterday == day ? "Yesterday" : day.to_date) %></h1></div>
+      <div class="time-header">
+        <h4 class="title v-big">
+          <span><%= Date.today == day ? "Today" : (Date.yesterday == day ? "Yesterday" : day.strftime("%A")) %></span>
+          <span class="title-subtext"><%= day.strftime("%B %-d") %></span>
+        </h4>
+      </div>
       <% hackathons.each do |hackathon| %>
         <%= render partial: 'hackathon', locals: { hackathon: hackathon, membership_hackathon_ids: @membership_hackathon_ids } %>
 
