@@ -1,0 +1,41 @@
+<div class="p-about container">
+  <h1 class="s-h1" style="text-align:center;margin-bottom:100px;">Hackevents is a search engine for hackathons. It's a place for hackers and developers to discover and share the latest hackathons around the world.</h1>
+
+
+  <h2 class="s-h2" style="text-align:center;">Team</h2>
+
+  <section class="p-about--team">
+    <ol class="p-about--team--list" data-component="Shuffler">
+      <% @team.each do |user| %>
+      <li class="p-about--team--item" data-shuffle="element">
+        <div class="p-about--team--member">
+          <span class="user-image p-about--team--member--image">
+            <%= image_tag(user.twitter_account.profile_image, height:'88', width:'88') %>
+          </span>
+
+        <div class="p-about--team--member--name">
+          <%= user.first_name %> <%= user.last_name %>
+        </div>
+        <div class="p-about--team--member--username">
+          <%= link_to "@#{user.twitter_account.username}", user_path(user) %>
+        </div>
+      </li>
+      <% end %>
+    </ol>
+  </section>
+
+  <h2 class="s-h2" style="text-align:center;">Special Thanks</h2>
+  <section class="image-list">
+    <ol class="image-list" data-component="Shuffler">
+      <% @supporters.each do |user| %>
+      <li class="image-list--item" data-shuffle="element">
+        <%= link_to user_path(user) do %>
+          <span class="user-image">
+            <%= image_tag(user.twitter_account.profile_image, height:'88', width:'88') %>
+          </span>
+        <% end %>
+      </li>
+      <% end %>
+    </ol>
+  </section>
+</div>

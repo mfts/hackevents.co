@@ -456,6 +456,25 @@ ul.page-header-other-info-links {
     color: black
 }
 
+.title.v-big {
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 24px;
+    margin-bottom: 10px
+}
+.title-subtext {
+    color: #bbbbbb;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 13px;
+    margin-left: 8px
+}
+.time-header {
+  text-align:center;
+  margin:25px 0 15px 0;
+}
+
 .btn {
   &.btn-twitter {
     background: #00aced;
@@ -469,4 +488,146 @@ ul.page-header-other-info-links {
 }
 
 
+/* recently added nav bar */
 
+@media (max-width: 768px) {
+  .index-header {
+      margin-top: 15px;
+  }
+}
+.index-header {
+    background: #f7f7fa;
+    border-radius: 4px;
+    //border-bottom: 1px solid #e4e2e2
+}
+@media (max-width: 768px) {
+    .index-header {
+        text-align: center
+    }
+    .index-header .container {
+        padding: 0
+    }
+}
+
+.index-header-link {
+    color: #a8a8a8;
+    height: 63px;
+    line-height: 66px;
+    margin-bottom: -1px;
+    display: inline-block;
+    border-bottom: 3px solid transparent;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600
+}
+.index-header-link+.index-header-link {
+    margin-left: 25px
+}
+@media (max-width: 768px) {
+    .index-header-link+.index-header-link {
+        margin-left: 20px
+    }
+}
+.index-header-link.active,
+.index-header-link:hover {
+    color: $brand-primary;
+    border-color: $brand-primary;
+    text-decoration: none;
+}
+
+
+/* about page */
+
+.p-about .s-h1 {
+    margin: 61px auto 14px auto;
+    max-width: 877px
+}
+.p-about .s-h4 {
+    margin: 0 0 66px 0
+}
+
+.p-about--team {
+    margin: 0 0 20px 0;
+    overflow: hidden
+}
+.p-about--team--list {
+    margin: 0;
+    padding: 0;
+    text-align: center
+}
+.p-about--team--item {
+    display: inline-block;
+    list-style: none;
+    margin: 0 0 60px 0;
+    overflow: hidden;
+    text-align: left;
+    width: 33.333%
+}
+@media (min-width: 769px) and (max-width: 1199px) {
+    .p-about--team--item {
+        width: 50%
+    }
+}
+@media (max-width: 768px) {
+    .p-about--team--item {
+        clear: both;
+        float: none;
+        margin: 0 auto 60px auto;
+        width: 100%
+    }
+}
+.p-about--team--member {
+    display: block;
+    margin: 0 auto;
+    width: 320px
+}
+.p-about--team--member--image {
+    float: left;
+    margin: 0 21px 0 0
+}
+.p-about--team--member--name {
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    margin: 0 0 6px 0
+}
+.p-about--team--member--title {
+    color: #bbbbbb;
+    font-size: 16px;
+    height: 38px;
+    line-height: 19px
+}
+.p-about--team--member--username {
+    font-size: 16px;
+} a:hover {
+    text-decoration: none;
+  }
+
+.image-list {
+    margin: 0 0 20px 0;
+    padding: 0;
+    text-align: center
+}
+.image-list.v-wide {
+    margin: 0 0 25px 0
+}
+.image-list ol,
+.image-list ul {
+    margin: 0;
+    padding: 0
+}
+.image-list--item {
+    display: inline-block;
+    list-style: none;
+    margin: 0 10px 60px 10px;
+    vertical-align: middle
+}
+
+.user-image {
+    display: inline-block;
+    position: relative
+}
+.user-image img {
+    border-radius: 50%
+}

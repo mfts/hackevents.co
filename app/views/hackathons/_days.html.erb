@@ -1,23 +1,23 @@
 <div id="days-menu">
   <ul>
-    <li id="days-menu-every-day">
-      <a href="#">
+    <li id="days-menu-every-day" class="<%= params[:day].present? ? "inactive" : "" %>">
+      <%= link_to root_path do %>
         <span class="icon">
         </span>
         <span class="text">
           Every day
         </span>
-      </a>
+      <% end %>
     </li>
     <% ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].each do |day| %>
-      <li>
-        <a href="#">
+      <li class="<%= params[:day].present? && params[:day] != day ? "inactive" : "" %>">
+        <%= link_to root_path(day: day) do %>
           <span class="icon">
           </span>
           <span class="text">
             <%= day %>
           </span>
-        </a>
+        <% end %>
       </li>
     <% end %>
   </ul>

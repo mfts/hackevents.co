@@ -8,14 +8,16 @@
 - Admin overview over users, just like sponsors.
 - Submit hackathons from users with new field in hackathon table and admin overview
 - image upload! gem ... webseite emoticons als logo passt seiner meinung nach nicht
-- webseite team hackevents und die story fehlt, hätte er gerne: wer steckt dahinter - warum
+- m webseite team hackevents und die story fehlt, hätte er gerne: wer steckt dahinter - warum
 - hackathon configurator; user can configure their favorite hackathon with sponsors, category, city, and additional information
-- add new tab for past hackathons
+- m add new tab for past hackathons
 - hackathon typeform umfrage in past hackathons
 - links unter categories eine liste mit den top städten / ländern anzeigen (+ count der hackathons)
 - automatische psql backups
 - hackathon header picture
 - api table linked to sponsor table => more information for hackathon show page + biggest api search platform
+- Profil Bild background-size cover background-position
+- hackathons im nächsten Jahr mit Jahreszahl versehen
 
 ------------------------------------------------------------
 

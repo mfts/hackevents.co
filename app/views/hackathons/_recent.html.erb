@@ -1,0 +1,32 @@
+<% if @hackathons.present? %>
+  
+  <hr class="hidden-xs hidden-sm hidden-lg" />
+  
+  <div class="hackathons">
+    <% @hackathons.sort_by(&:created_at).reverse.group_by { |h| h.created_at.to_date }.each do |day, hackathons| %>
+      <div class="time-header">
+        <h4 class="title v-big">
+          <span><%= Date.today == day ? "Today" : (Date.yesterday == day ? "Yesterday" : day.strftime("%A")) %></span>
+          <span class="title-subtext"><%= day.strftime("%B %-d") %></span>
+        </h4>
+      </div>
+      <% hackathons.each do |hackathon| %>
+        <%= render partial: 'hackathon', locals: { hackathon: hackathon, membership_hackathon_ids: @membership_hackathon_ids } %>
+
+      <% end %>
+    <% end %>
+  </div>
+  
+  
+  
+  
+  <%= paginate @hackathons, :theme => 'twitter-bootstrap-3' %>
+
+<% else %>
+
+  <p>
+    Sorry no Hackathons found.
+  </p>
+  <%= link_to image_tag('nyancat.png', style: "max-width:100%;"), "http://www.oktoberhackfest.com/?ref=hackevents" %>
+
+<% end %>
