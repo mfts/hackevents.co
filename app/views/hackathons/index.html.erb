@@ -26,30 +26,19 @@
     </div>
   </div>
 
-  <nav class="navbar navbar-default"> 
+  <div class="index-header v-links"> 
     <div class="container">
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-              <li class="<%= params[:style] == 'all' || params[:style].blank? ? 'active' : 'normal' %>">
-                <a href="?style=all">
-                  All Hackathons</a>
-              </li>
-
-              <li class="<%= params[:style] == 'recent' ? 'active' : 'normal' %>">
-                <a href="?style=recent">
-                  Recently Added</a>
-              </li>
-          </ul>
-      </div>
-      <!-- /.navbar-collapse -->
+      <a href="?style=all" class="index-header-link <%= params[:style] == 'all' || params[:style].blank? ? 'active' : 'normal' %>">
+        All Hackathons</a>
+      <a href="?style=recent" class="index-header-link <%= params[:style] == 'recent' ? 'active' : 'normal' %>">
+        Recently Added</a>
     </div>
-  </nav>
+  </div>
 
   <hr />
   
   <% if params[:style] == 'recent' %>
-    <div class="posts">
+    <div class="hackathons">
       <%= render partial: "recent" %>
     </div>
   <% else %>

@@ -456,6 +456,21 @@ ul.page-header-other-info-links {
     color: black
 }
 
+.title.v-big {
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 24px;
+    margin-bottom: 10px
+}
+.title-subtext {
+    color: #bbbbbb;
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 13px;
+    margin-left: 8px
+}
+
 .btn {
   &.btn-twitter {
     background: #00aced;
@@ -466,6 +481,53 @@ ul.page-header-other-info-links {
     float: right;
     margin-top: -7.5px;
   }
+}
+
+
+
+
+@media (max-width: 768px) {
+  .index-header {
+      margin-top: 15px;
+  }
+}
+.index-header {
+    background: #f7f7fa;
+    //border-bottom: 1px solid #e4e2e2
+}
+@media (max-width: 768px) {
+    .index-header {
+        text-align: center
+    }
+    .index-header .container {
+        padding: 0
+    }
+}
+
+.index-header-link {
+    color: #a8a8a8;
+    height: 63px;
+    line-height: 66px;
+    margin-bottom: -1px;
+    display: inline-block;
+    border-bottom: 3px solid transparent;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600
+}
+.index-header-link+.index-header-link {
+    margin-left: 25px
+}
+@media (max-width: 768px) {
+    .index-header-link+.index-header-link {
+        margin-left: 20px
+    }
+}
+.index-header-link.active,
+.index-header-link:hover {
+    color: $brand-primary;
+    border-color: $brand-primary;
+    text-decoration: none;
 }
 
 
