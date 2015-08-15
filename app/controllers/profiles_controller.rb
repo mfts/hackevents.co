@@ -9,96 +9,82 @@ class ProfilesController < ApplicationController
     @user = current_user
   end
 
-  def location
-    @user = current_user
-    @hide_email_resend_box = true
-    render '_location_form'
-  end
+  # def location
+  #   @user = current_user
+  #   @hide_email_resend_box = true
+  #   render '_location_form'
+  # end
 
-  def interest
-    @user = current_user
-    @hide_email_resend_box = true
-    if request.patch?
-      respond_to do |format|
-        if @user.update(user_params)
-          format.html { render '_interest_form', notice: 'User was successfully updated.' }
-          format.json { render :show, status: :ok, location: @user }
-        else
-          format.html { render :edit, error: 'Something is wrong.' }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
-      end
-    else
-      render '_interest_form'
-    end
-  end
+  # def interest
+  #   @user = current_user
+  #   @hide_email_resend_box = true
+  #   if request.patch?
+  #     respond_to do |format|
+  #       if @user.update(user_params)
+  #         format.html { render '_interest_form', notice: 'User was successfully updated.' }
+  #         format.json { render :show, status: :ok, location: @user }
+  #       else
+  #         format.html { render :edit, error: 'Something is wrong.' }
+  #         format.json { render json: @user.errors, status: :unprocessable_entity }
+  #       end
+  #     end
+  #   else
+  #     render '_interest_form'
+  #   end
+  # end
 
-  def affiliation
-    @user = current_user
-    @hide_email_resend_box = true
-    if request.patch?
-      respond_to do |format|
-        if @user.update(user_params)
-          format.html { render '_affiliation_form', notice: 'User was successfully updated.' }
-          format.json { render :show, status: :ok, location: @user }
-        else
-          format.html { render :edit, error: 'Something is wrong.' }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
-      end
-    else
-      render '_affiliation_form'
-    end
-  end
+  # def affiliation
+  #   @user = current_user
+  #   @hide_email_resend_box = true
+  #   if request.patch?
+  #     respond_to do |format|
+  #       if @user.update(user_params)
+  #         format.html { render '_affiliation_form', notice: 'User was successfully updated.' }
+  #         format.json { render :show, status: :ok, location: @user }
+  #       else
+  #         format.html { render :edit, error: 'Something is wrong.' }
+  #         format.json { render json: @user.errors, status: :unprocessable_entity }
+  #       end
+  #     end
+  #   else
+  #     render '_affiliation_form'
+  #   end
+  # end
 
-  def email
-    @user = current_user
-    title = "Well done! =)"
-    subtitle = "We will only notify you with hackathons that you are interested in."
-    resend = false
-    @hide_email_resend_box = true
-    if request.patch?
-      respond_to do |format|
-        if @user.update(user_params)
-          format.html { render '_email_form', locals: { title: title, subtitle: subtitle, resend: resend }, notice: 'User was successfully updated.' }
-          format.json { render :show, status: :ok, location: @user }
-        else
-          format.html { render :edit, error: 'Something is wrong.' }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
-      end
-    else
-      title = "Oops!"
-      subtitle = "Please enter a valid email address, so that you never miss a hackathon."
-      resend = true
-      render '_email_form', locals: { title: title, subtitle: subtitle, resend: resend }
-    end
-  end
-
-
-
+  # def email
+  #   @user = current_user
+  #   title = "Well done! =)"
+  #   subtitle = "We will only notify you with hackathons that you are interested in."
+  #   resend = false
+  #   @hide_email_resend_box = true
+  #   if request.patch?
+  #     respond_to do |format|
+  #       if @user.update(user_params)
+  #         format.html { render '_email_form', locals: { title: title, subtitle: subtitle, resend: resend }, notice: 'User was successfully updated.' }
+  #         format.json { render :show, status: :ok, location: @user }
+  #       else
+  #         format.html { render :edit, error: 'Something is wrong.' }
+  #         format.json { render json: @user.errors, status: :unprocessable_entity }
+  #       end
+  #     end
+  #   else
+  #     title = "Oops!"
+  #     subtitle = "Please enter a valid email address, so that you never miss a hackathon."
+  #     resend = true
+  #     render '_email_form', locals: { title: title, subtitle: subtitle, resend: resend }
+  #   end
+  # end
 
 
   def update
     @user = current_user
     respond_to do |format|
-      if @user.email_confirmed?
-        if @user.update(user_params)
-          format.html { redirect_to profile_path, notice: 'User was successfully updated.' }
-          format.json { render :show, status: :ok, location: @user }
-        else
-          format.html { render :edit, error: 'Something is wrong.' }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
+      if @user.update(user_params)
+        format.html { redirect_to settings_profile_path, notice: 'Your profile has successfully been updated.' }
+        format.json { render :show, status: :ok, location: @user }
       else
-        if @user.update(user_params)
-          UserMailer.registration_confirmation(@user).deliver
-          format.html { redirect_to root_path, notice: 'User was successfully updated.' }
-          format.json { render :show, status: :ok, location: @user }
-        else
-          format.html { render :edit, error: 'Something is wrong.' }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-        end
+        format.html { render :edit, error: 'Something is wrong.' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -118,7 +104,7 @@ class ProfilesController < ApplicationController
       @hide_email_resend_box = true
       redirect_to :back, success: 'Your email confirmation has been sent out again.'
     else
-      redirect_to email_profile_path, error: "Please enter a valid email."
+      redirect_to settings_profile_path, error: "Please enter a valid email."
     end
   end
 

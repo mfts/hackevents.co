@@ -14,21 +14,15 @@ class TwitterAccountsController < ApplicationController
       
       if twitter_account.user_id?
         @user = User.find_by(id: twitter_account.user_id)
-        if @user.email.present?
-          @user.save
-          cookies.signed[:user_id] = { value: @user.id, expires: 1.year.from_now }
-          redirect_to root_path
-        else
-          @user.save
-          cookies.signed[:user_id] = { value: @user.id, expires: 1.year.from_now }
-          redirect_to email_profile_path
-        end
+        @user.save
+        cookies.signed[:user_id] = { value: @user.id, expires: 1.year.from_now }
+        redirect_to root_path
       else
         @user = User.new(first_name: first_name, last_name: last_name, location: twitter_account.location)
         @user.twitter_account = twitter_account
         @user.save
         cookies.signed[:user_id] = { value: @user.id, expires: 1.year.from_now }
-        redirect_to location_profile_path
+        redicted_to root_path
       end
     
     end
