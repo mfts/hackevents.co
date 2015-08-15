@@ -22,6 +22,12 @@ Rails.application.routes.draw do
   
   resource :profile do
     member do
+      get :send_email_confirmation, :resend_email_confirmation
+      patch :send_email_confirmation
+      post :send_email_confirmation
+      # get :email, :interest, :affiliation, :location
+      # patch :email, :interest, :affiliation, :location
+      # post :email, :interest, :affiliation, :location
     end
   end
 

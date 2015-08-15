@@ -97,6 +97,11 @@ class ProfilesController < ApplicationController
     redirect_to root_path, notice: 'Signed out'
   end
 
+  def send_email_confirmation
+    UserMailer.registration_confirmation(current_user).deliver
+    redirect_to settings_profile_path, success: 'Your email confirmation has successfully been sent out.'
+  end
+
   def resend_email_confirmation
     title = "Oops!"
     if current_user.email.present?
