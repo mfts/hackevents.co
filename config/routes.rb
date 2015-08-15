@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
 
   #get "/login" => "profiles#login", as: :login
-  get "/profile/settings" => "profiles#edit", as: :profile_settings
+  get "/profile/settings" => "profiles#edit", as: :settings_profile
   
   #resources :user_sessions, only: [:new, :create]
   resources :password_resets, only: [:new, :create, :edit, :update]
