@@ -1,12 +1,15 @@
 <div id="sidebar">
-  <div id="style-menu" class="btn-group btn-group-justified" role="group">
+<!--   <div id="style-menu" class="btn-group btn-group-justified" role="group">
     <%= link_to "List", root_path(style: "list"),     class: "btn btn-default #{params[:style] == "list" || params[:style].blank? ? "active" : "normal"}" %>
     <%#= link_to "Map",  root_path(style: "map"),      class: "btn btn-default #{params[:style] == "map"      ? "active" : "normal"}" %>
     <%= link_to "Calendar",  root_path(style: "calendar"), class: "btn btn-default #{params[:style] == "calendar" ? "active" : "normal"}" %>
-  </div>
+  </div> -->
   
+  <h4 style="text-align:center;font-weight:300;">Top Cities</h4>
+  <%= render partial: "hackathons/cities" %>
+
+  <h4 style="text-align:center;font-weight:300;">Categories</h4>
   <%= render partial: "hackathons/categories" %>
-  <%= render partial: "hackathons/days" %>
 
   <div id="about-page">
     <%= link_to "Meet the team", about_path, class: 'btn btn-default btn-group-justified' %>
