@@ -30,8 +30,8 @@
     <div class="container">
       <a href="?style=all" class="index-header-link <%= params[:style] == 'all' || params[:style].blank? ? 'active' : 'normal' %>">
         All Hackathons</a>
-      <a href="?style=recent" class="index-header-link <%= params[:style] == 'recent' ? 'active' : 'normal' %>">
-        Recently Added</a>
+      <!-- <a href="?style=recent" class="index-header-link <%= params[:style] == 'recent' ? 'active' : 'normal' %>">
+        Recently Added</a> -->
       <% if logged_in? %>
         <a href="?style=favorites" class="index-header-link <%= params[:style] == 'favorites' ? 'active' : 'normal' %>">
           My Favorites</a>
