@@ -19,9 +19,10 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="<%= sidebar_visible? ? "sidebar-visible" : "sidebar-hidden" %>">
+  <body class="sidebar-hidden<%#= sidebar_visible? ? "sidebar-visible" : "sidebar-hidden" %>">
     
-    <%= render partial: "layouts/default_main" %>
+    <%#= render partial: "layouts/default_main" %>
+    <%= render partial: "layouts/alternative_main" %>
     
     <% if Rails.env.production? %>
     <%= render partial: "layouts/scripts" %>
