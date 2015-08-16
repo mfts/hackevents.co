@@ -8,9 +8,9 @@
     <% name = "#{u.first_name} (@#{u.twitter_account.username})" %>
     <% @names << name %>
   <% end %>
-  <% twitter description: "Join #{@names.join(", ")} on#{l(@hackathon.date_start, format: "%e %b")} –#{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city}, #{@hackathon.country}.".html_safe %>
+  <% twitter description: "Join #{@names.join(", ")} on #{l(@hackathon.date_start, format: "%e %b")} – #{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city}, #{@hackathon.country}.".html_safe %>
 <% else %>
-  <% twitter description: "Mark the date!#{l(@hackathon.date_start, format: "%e %b")} –#{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city}, #{@hackathon.country}" %>
+  <% twitter description: "Mark the date! #{l(@hackathon.date_start, format: "%e %b")} – #{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city}, #{@hackathon.country}" %>
 <% end %>
 <% if @hackathon.categories.present? %>
   <% twitter image: image_url("categories/#{@hackathon.categories.first.name.parameterize}.png") %>
@@ -66,21 +66,11 @@ twitter card: 'summary_large_image',
     <% end %>
   <% end %>
   <%= link_to "Visit Website", "#{@hackathon.url}?ref=hackevents", class: "btn btn-primary", :id => "view-website", target: "_blank" %>
-  <%= link_to "Share on Twitter", "https://twitter.com/intent/tweet?text=HACKATHON%20%7C%C2%A0#{ @hackathon.country }%20%7C%C2%A0#{ @hackathon.city }%20%7C%C2%A0#{ @hackathon.title }%20#{ @hackathon.date_start.strftime("%d/%m/%Y") }%20#{ request.url }%20#{ @hackathon.twitter }%20@Hackevents", class: "btn btn-twitter", :id => "twitter-share", target: "_blank" %>
+  <%= link_to "Invite your friends", "https://twitter.com/intent/tweet?text=Join%20me%20at%20#{ @hackathon.title }%20%23hackathon%20in%20#{ @hackathon.city },%20#{ @hackathon.country}%20#{ request.url }%20on%20%40Hackevents", class: "btn btn-twitter", :id => "twitter-share", target: "_blank" %>
 </p>
 
 <hr />
 
-<h3>Location</h3>
-<address>
-  <strong><%= @hackathon.venue %></strong><br />
-  <%= @hackathon.address %>
-</address>
-<p>
-  <%= link_to "<i class='glyphicon glyphicon-map-marker'></i>&nbsp; Get Directions" .html_safe, "https://maps.google.com?daddr=#{ @hackathon.address }", class: "btn btn-default", target: "_blank" %>
-</p>
-
-<hr />
 
 <% if @hackathon.users.present? %>
 <h3>Favorites</h3>
@@ -109,7 +99,25 @@ twitter card: 'summary_large_image',
 <% end %>
 
 
-<div id="map" style='width: 100%; height: 300px;'></div>
+<!-- <div id="map" style='width: 100%; height: 300px;'></div> -->
+<div class="hackathon-location">
+  <div class="hackathon-location-address">
+    <h3>Location</h3>
+    <address>
+      <strong><%= @hackathon.venue %></strong><br />
+      <%= @hackathon.address %>
+    </address>
+    <p>
+      <%= link_to "<i class='glyphicon glyphicon-map-marker'></i>&nbsp; Get Directions" .html_safe, "https://maps.google.com?daddr=#{ @hackathon.address }", class: "btn btn-default", target: "_blank" %>
+    </p>
+  </div>
+  <div class="hackathon-location-map">
+    <%= image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{ @hackathon.address }&zoom=15&size=600x300&maptype=roadmap&markers=color:color=0xF57C00%7C#{ @hackathon.address }") %>
+  </div>
+</div>
+
+
+<hr />
 
 <% if logged_in? %>
   <p>
@@ -154,4 +162,5 @@ twitter card: 'summary_large_image',
   }
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 

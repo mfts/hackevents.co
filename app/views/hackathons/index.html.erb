@@ -30,8 +30,12 @@
     <div class="container">
       <a href="?style=all" class="index-header-link <%= params[:style] == 'all' || params[:style].blank? ? 'active' : 'normal' %>">
         All Hackathons</a>
-      <a href="?style=recent" class="index-header-link <%= params[:style] == 'recent' ? 'active' : 'normal' %>">
-        Recently Added</a>
+      <!-- <a href="?style=recent" class="index-header-link <%= params[:style] == 'recent' ? 'active' : 'normal' %>">
+        Recently Added</a> -->
+      <% if logged_in? %>
+        <a href="?style=favorites" class="index-header-link <%= params[:style] == 'favorites' ? 'active' : 'normal' %>">
+          My Favorites</a>
+      <% end %>
     </div>
   </div>
 
@@ -40,6 +44,10 @@
   <% if params[:style] == 'recent' %>
     <div class="hackathons">
       <%= render partial: "recent" %>
+    </div>
+  <% elsif params[:style] == 'favorites' %>
+    <div class="hackathons">
+      <%= render partial: "favorites" %>
     </div>
   <% else %>
     <div class="hackathons">

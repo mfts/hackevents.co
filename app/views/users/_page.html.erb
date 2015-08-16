@@ -25,7 +25,7 @@
       <div class="col-xs-3 page-header-buttons">
         <span class="page-header-buttons-text">THIS IS YOU</span>
         <span>
-          <%= link_to "Share on Twitter", "https://twitter.com/intent/tweet?text=Here%20are%20some%20hackathons%20I%20like%20on%20%40Hackevents:%0Ahttp://www.hackevents.co/#{ @user.twitter_account.username }" .html_safe, class: "btn btn-twitter", target: "_blank" %>
+          <%= link_to "Share on Twitter", "https://twitter.com/intent/tweet?text=Here%20are%20some%20hackathons%20I%20like%20on%20%40Hackevents:%0Ahttp://www.hackevents.co/%40#{ @user.twitter_account.username }" .html_safe, class: "btn btn-twitter", target: "_blank" %>
         </span>
       </div>
     <% end %>

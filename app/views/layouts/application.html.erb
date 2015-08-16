@@ -21,11 +21,7 @@
   </head>
   <body class="<%= sidebar_visible? ? "sidebar-visible" : "sidebar-hidden" %>">
     
-    <% if cookies.signed[:visited_start_page] %>
-      <%= render partial: "layouts/default_main" %>
-    <% else %>
-      <%= render partial: "layouts/first_time_main" %>
-    <% end %>
+    <%= render partial: "layouts/default_main" %>
     
     <% if Rails.env.production? %>
     <%= render partial: "layouts/scripts" %>
