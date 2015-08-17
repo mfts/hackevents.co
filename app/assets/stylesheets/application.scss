@@ -631,3 +631,22 @@ ul.page-header-other-info-links {
 .user-image img {
     border-radius: 50%
 }
+
+
+/* Hackathon Location/Map */
+
+.hackathon-location {
+  .hackathon-location-address {
+    display: inline-block;
+  }
+  .hackathon-location-map {
+    display: inline-block;
+    margin-left: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hackathon-location .hackathon-location-map {
+    margin-left: 10px;
+  }
+}

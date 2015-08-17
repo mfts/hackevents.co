@@ -9,14 +9,21 @@
   <div class="form-inputs profile-settings-form" style="margin-left:0px; margin-bottom:20px;">
     <%= f.text_field :first_name %>
     <%= f.text_field :last_name %><br/>
-    <%= f.text_field :email, placeholder: "Email address", style: "width:355px;" %><br/>
+    <% if @user.email_confirmed? %>
+    <span><%= f.text_field :email, placeholder: "Email address", style: "width:355px;" %> <strong style="color:#F57C00;">√</strong></span>
+    <% else %>
+    <%= f.text_field :email, placeholder: "Email address", style: "width:355px;" %>
+    <% end %>
+    <% if @user.email.present? && !@user.email_confirmed? %>
+    <span><%= link_to "Confirm Email Address", send_email_confirmation_profile_path, class: "btn btn-primary", style: "margin-left:5px;" %>&nbsp;&nbsp;&nbsp;<text style="color:red;">Unconfirmed!</text></span>
+    <% end %>
+    <br/>
 
   </div>
 
   <div class="form-inputs profile-settings-form" style="margin-left:0px; margin-bottom:20px;">
     <h4>Location</h4>
     <%= f.text_field :location %>
-    <%= f.number_field :radius %>
   </div>
 
   <div class="form-inputs profile-settings-form-categories">

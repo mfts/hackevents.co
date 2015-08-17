@@ -28,12 +28,12 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-right">
             <li><%= link_to "Profile", profile_path %></li>
-            <li><%= link_to "Settings", profile_settings_path %></li>
+            <li><%= link_to "Settings", settings_profile_path %></li>
             <% if current_user.admin? %>
               <li><%= link_to "Admin", admin_root_path %></li>
             <% else %>
               <li>
-                <%= link_to "Add", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { confirm: "Found a hackathon we have not listed yet? Submit it through out Typeform! Thank you :)" }, :target => "_blank" %>
+                <%= link_to "Add", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { confirm: "Found a hackathon we have not listed yet? Submit it through our Typeform! Thank you :)" }, :target => "_blank" %>
               </li>
             <% end %>
             <li><%= link_to "Log Out", logout_path, method: :delete %></li>
@@ -41,7 +41,7 @@
         </div>
       <% else %>
         <div id="profile-button" class="btn-group" style="text-decoration:none;">
-          <%= link_to '/auth/twitter', method: 'get', class: "btn btn-link btn-unhidden" do %>
+          <%= link_to '/auth/twitter', method: 'get', class: "btn btn-primary btn-unhidden" do %>
             <span class="fa fa-twitter" aria-hidden="true"></span>
             Login
           <% end %>

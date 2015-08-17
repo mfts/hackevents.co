@@ -1,0 +1,13 @@
+<% if current_user.hackathons.present? %>
+  <% @membership_hackathon_ids = Membership.where(user_id: current_user.id, hackathon_id: current_user.hackathons.map{ |h| h.id }).map{ |m| m.hackathon_id } %>
+  <% current_user.hackathons.each do |h| %>
+    <%= render partial: "hackathons/hackathon", locals: { hackathon: h, membership_hackathon_ids: @membership_hackathon_ids } %>
+  <% end %>
+
+<% else %>
+  <p>
+    You haven't favorited any hackathons :(
+  </p>
+  <%= link_to image_tag('oktoberhackfest.png', style: "max-width:100%;"), "http://www.oktoberhackfest.com/?ref=hackevents" %>
+
+<% end %>

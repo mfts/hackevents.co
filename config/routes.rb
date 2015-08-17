@@ -22,14 +22,17 @@ Rails.application.routes.draw do
   
   resource :profile do
     member do
-      get :email, :interest, :affiliation, :location, :resend_email_confirmation
-      patch :email, :interest, :affiliation, :location
-      post :email, :interest, :affiliation, :location
+      get :send_email_confirmation, :resend_email_confirmation
+      patch :send_email_confirmation
+      post :send_email_confirmation
+      # get :email, :interest, :affiliation, :location
+      # patch :email, :interest, :affiliation, :location
+      # post :email, :interest, :affiliation, :location
     end
   end
 
   #get "/login" => "profiles#login", as: :login
-  get "/profile/settings" => "profiles#edit", as: :profile_settings
+  get "/profile/settings" => "profiles#edit", as: :settings_profile
   
   #resources :user_sessions, only: [:new, :create]
   resources :password_resets, only: [:new, :create, :edit, :update]
