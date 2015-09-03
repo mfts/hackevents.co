@@ -1,0 +1,31 @@
+.header-image {
+  background-image: image-url("https://developers.teleport.org/assets/devheader.92068e90.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  max-height: 400px;
+}
+
+.berlin-image {
+  background-image: image-url("https://d13k13wj6adfdf.cloudfront.net/urban_areas/Berlin_u33db_web-42996a25@3x.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.munich-image {
+  background-image: image-url("https://d13k13wj6adfdf.cloudfront.net/urban_areas/Munich_u281z_web-2b4628b7@3x.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.london-image {
+  background-image: image-url("https://d13k13wj6adfdf.cloudfront.net/urban_areas/London_gcpvj_web-c76f8a09@3x.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.form-control {
+  border: 0;
+}

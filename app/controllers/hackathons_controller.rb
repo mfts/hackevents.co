@@ -10,6 +10,8 @@ class HackathonsController < ApplicationController
     else
       @hackathons = @q.result.where('date_start >= ?', Time.zone.now).order(date_start: :asc).page(@page).per(@per_page)
     end
+
+    @result = request.location
   end
 
   def show

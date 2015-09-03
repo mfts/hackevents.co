@@ -12,6 +12,9 @@ class Hackathon < ActiveRecord::Base
   has_many :sponsors, :through => :sponsorships, dependent: :destroy
   
   before_save :update_days_mask
+
+  geocoded_by :ip_address
+  after_validation :geocode
   
   scope :with_days, lambda { |days| where("(days_mask & ?) > 0", days.map { |d| 2**DAYS.index(d) }.sum) }
   
@@ -44,6 +47,10 @@ class Hackathon < ActiveRecord::Base
 
   def top_cities
     hackathons = Hackathon.where("date_start >= ?", Time.now).group_by { |h| h.city }
+  end
+
+  def location
+    Geokit::Geocoders::IpGeocoder.geocode(source_ip)
   end
   
   # It returns the articles whose titles contain one or more words that form the query
