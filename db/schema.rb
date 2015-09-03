@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810160832) do
+ActiveRecord::Schema.define(version: 20150903102705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20150810160832) do
     t.string   "image_url"
     t.boolean  "highlighted",          default: false
     t.integer  "days_mask"
+    t.string   "twitter_hashtag"
   end
 
   add_index "hackathons", ["slug"], name: "index_hackathons_on_slug", using: :btree
