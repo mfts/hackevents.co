@@ -10,6 +10,15 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 30px;
+  color: black;
+  span {
+    padding:5px;
+    background-color:white;
+  }
 }
 
 .munich-image {
@@ -17,6 +26,15 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 30px;
+  color: black;
+  span {
+    padding:5px;
+    background-color:white;
+  }
 }
 
 .london-image {
@@ -24,8 +42,13 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-}
 
-.form-control {
-  border: 0;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 30px;
+  color: black;
+  span {
+    padding:5px;
+    background-color:white;
+  }
 }
