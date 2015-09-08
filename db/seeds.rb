@@ -119,3 +119,94 @@ Sponsor.where(twitter_handle: "YouTube", twitter_image_url: "https://pbs.twimg.c
 Sponsor.where(twitter_handle: "Zalando", twitter_image_url: "https://pbs.twimg.com/profile_images/3112123462/ce7694ca8436ddea3980ac8e554b5eb9.png", twitter_name: "Zalando", alt_name: "").first_or_create
 
 
+City.where(name: "Amsterdam",   image_url: "images.hackevents.de/cities/amsterdam.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Ankara",      image_url: "images.hackevents.de/cities/ankara.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Athens",      image_url: "images.hackevents.de/cities/athens.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Atlanta",     image_url: "images.hackevents.de/cities/atlanta.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Auckland",    image_url: "images.hackevents.de/cities/auckalnd.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Austin",      image_url: "images.hackevents.de/cities/austin.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Baku",        image_url: "images.hackevents.de/cities/baku.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Bangalore",   image_url: "images.hackevents.de/cities/bangalore.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Bangkok",     image_url: "images.hackevents.de/cities/bangkok.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Barcelona",   image_url: "images.hackevents.de/cities/barcelona.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Belgrade",    image_url: "images.hackevents.de/cities/belgrade.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Berlin",      image_url: "images.hackevents.de/cities/berlin.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Bern",        image_url: "images.hackevents.de/cities/bern.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Boston",      image_url: "images.hackevents.de/cities/boston.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Boulder",     image_url: "images.hackevents.de/cities/boulder.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Bratislava",  image_url: "images.hackevents.de/cities/bratislava.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Brussels",    image_url: "images.hackevents.de/cities/brussels.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Bucharest",   image_url: "images.hackevents.de/cities/bucharest.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Budapest",    image_url: "images.hackevents.de/cities/budapest.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Buenos Aires",image_url: "images.hackevents.de/cities/buenos-aires.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Cape Town",   image_url: "images.hackevents.de/cities/cape-town.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Chicago",     image_url: "images.hackevents.de/cities/chicago.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Chisinau",    image_url: "images.hackevents.de/cities/chisinau.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Columbus",    image_url: "images.hackevents.de/cities/columbus.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Copenhagen",  image_url: "images.hackevents.de/cities/copenhagen.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Dallas",      image_url: "images.hackevents.de/cities/dallas.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Denver",      image_url: "images.hackevents.de/cities/amsterdam.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Detroit",     image_url: "images.hackevents.de/cities/denver.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Dubai",       image_url: "images.hackevents.de/cities/dubai.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Dublin",      image_url: "images.hackevents.de/cities/dublin.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Frankfurt",   image_url: "images.hackevents.de/cities/frankfurt.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Guatemala City", image_url: "images.hackevents.de/cities/guatemala.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Hamburg",     image_url: "images.hackevents.de/cities/hamburg.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Helsinki",    image_url: "images.hackevents.de/cities/helsinki.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Hong Kong",   image_url: "images.hackevents.de/cities/hong-kong.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Honolulu",    image_url: "images.hackevents.de/cities/honolulu.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Houston",     image_url: "images.hackevents.de/cities/houston.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Istanbul",    image_url: "images.hackevents.de/cities/istanbul.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Kiev",        image_url: "images.hackevents.de/cities/kiev.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Lisbon",      image_url: "images.hackevents.de/cities/lisbon.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Ljubljana", image_url: "images.hackevents.de/cities/ljubljana.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "London", image_url: "images.hackevents.de/cities/london.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Los Angeles", image_url: "images.hackevents.de/cities/los-angeles.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Luxembourg", image_url: "images.hackevents.de/cities/luxembourg.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Madrid", image_url: "images.hackevents.de/cities/madrid.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Melbourne", image_url: "images.hackevents.de/cities/melbourne.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Mexico City", image_url: "images.hackevents.de/cities/mexico-city.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Miami", image_url: "images.hackevents.de/cities/miami.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Milan", image_url: "images.hackevents.de/cities/milan.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Minneapolis-Saint Paul", image_url: "images.hackevents.de/cities/minneapolis.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Minsk", image_url: "images.hackevents.de/cities/minsk.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Monaco", image_url: "images.hackevents.de/cities/monaco.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Montreal", image_url: "images.hackevents.de/cities/montreal.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Moscow", image_url: "images.hackevents.de/cities/moscow.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Munich", image_url: "images.hackevents.de/cities/munich.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "New York", image_url: "images.hackevents.de/cities/new-york.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Nicosia", image_url: "images.hackevents.de/cities/nicosia.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Orlando", image_url: "images.hackevents.de/cities/orlando.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Oslo", image_url: "images.hackevents.de/cities/oslo.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Paris", image_url: "images.hackevents.de/cities/paris.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Philadelphia", image_url: "images.hackevents.de/cities/philadelphia.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Phoenix", image_url: "images.hackevents.de/cities/phoenix.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Prague", image_url: "images.hackevents.de/cities/prague.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Reykjavik", image_url: "images.hackevents.de/cities/reykjavik.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Riga", image_url: "images.hackevents.de/cities/riga.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Rio de Janeiro", image_url: "images.hackevents.de/cities/rio-de-janeiro.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Rome", image_url: "images.hackevents.de/cities/rome.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Saint Peterburg", image_url: "images.hackevents.de/cities/saint-peterburg.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "San Diego", image_url: "images.hackevents.de/cities/san-diego.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "San Francisco", image_url: "images.hackevents.de/cities/san-francisco.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Santiago", image_url: "images.hackevents.de/cities/santiago.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Seattle", image_url: "images.hackevents.de/cities/seattle.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Seoul", image_url: "images.hackevents.de/cities/seoul.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Shanghai", image_url: "images.hackevents.de/cities/shanghai.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Skopje", image_url: "images.hackevents.de/cities/skopje.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Sofia", image_url: "images.hackevents.de/cities/sofia.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Stockholm", image_url: "images.hackevents.de/cities/stockholm.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Sydney", image_url: "images.hackevents.de/cities/sydney.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Taipei", image_url: "images.hackevents.de/cities/taipei.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Tallinn", image_url: "images.hackevents.de/cities/tallinn.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Tbilisi", image_url: "images.hackevents.de/cities/tbilisi.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Tel Aviv", image_url: "images.hackevents.de/cities/tel-aviv.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Tokyo", image_url: "images.hackevents.de/cities/tokyo.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Toronto", image_url: "images.hackevents.de/cities/toronto.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Vancouver", image_url: "images.hackevents.de/cities/vancouver.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Vienna", image_url: "images.hackevents.de/cities/vienna.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Vilnius", image_url: "images.hackevents.de/cities/vilnius.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Warsaw", image_url: "images.hackevents.de/cities/warsaw.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Washington D.C.", image_url: "images.hackevents.de/cities/washington-dc.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Zagreb", image_url: "images.hackevents.de/cities/zagreb.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create
+City.where(name: "Zurich", image_url: "images.hackevents.de/cities/zurich.jpg", hackathon_count: nil, hackathon_total_count: nil, source_url: "", source_name: "").first_or_create

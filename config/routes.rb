@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :users
     resources :sponsors
+    resources :cities
     resources :hackathons do
       collection do
         post :import
@@ -62,6 +63,7 @@ Rails.application.routes.draw do
   end
   
   resources :twitter_accounts
+  resources :cities, only: [:show]
   # Twitter routes
   get '/auth/twitter/callback', to: 'twitter_accounts#create', as: 'callback'
   get '/auth/failure', to: 'twitter_accounts#error', as: 'failure'

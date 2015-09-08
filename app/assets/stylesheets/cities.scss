@@ -1,0 +1,20 @@
+// Place all the styles related to the Cities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.city-header-image {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 500;
+  font-size: 30px;
+  color: black;
+  span {
+    padding:5px;
+    background-color:white;
+  }
+}
