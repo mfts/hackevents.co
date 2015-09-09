@@ -1,3 +1,11 @@
 <header class="city-header-image" style="background-image:url('<%= @city.image_url %>');height:250px;line-height:250px;">
   <span><%= @city.name %></span>
 </header>
+
+<div class="container hackathons" style="margin-top:30px;">
+  <% @city.hackathon_in_city(@city.name).each do |hackathon| %>
+
+    <%= render partial: 'hackathons/hackathon', locals: { hackathon: hackathon, membership_hackathon_ids: @membership_hackathon_ids } %>
+
+  <% end %>
+</div>
