@@ -1,6 +1,8 @@
 class HackathonsController < ApplicationController
   before_action :set_hackathon, only: [:show, :follow, :unfollow]
   before_action :require_user,  only: [:follow, :unfollow]
+
+  layout "layouts/application"
   
   def index
     if params[:style] == "calendar"
