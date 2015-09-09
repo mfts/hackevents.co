@@ -45,7 +45,7 @@ Rails.application.routes.draw do
       post :unfollow
     end
   end
-  root to: 'hackathons#index'
+  root to: 'welcome#index'
   
   namespace :admin do
     root to: 'welcome#index'
