@@ -9,6 +9,9 @@ class PagesController < ApplicationController
   def frontpage
   end
 
+  def alternative_main
+  end
+
   def aboutpage
     @team = User.where(team: true)
     @supporters = User.where(support: true)
