@@ -42,7 +42,7 @@ module Admin
         ques = Hackathon.create(title: row[0].force_encoding(Encoding::UTF_8),
           description: row[1], 
           country: row[2].force_encoding(Encoding::UTF_8),
-          city: row[3].force_encoding(Encoding::UTF_8),
+          city_string: row[3].force_encoding(Encoding::UTF_8),
           url: row[4].force_encoding(Encoding::UTF_8), 
           date_start: row[5], 
           date_end: row[6],
@@ -60,7 +60,8 @@ module Admin
           "title",
           "description",
           "country",
-          "city",
+          "city_string",
+          "city_id",
           "url",
           "date_start",
           "date_end",
@@ -78,7 +79,8 @@ module Admin
             hackathon.title,
             hackathon.description,
             hackathon.country,
-            hackathon.city,
+            hackathon.city_string,
+            hackathon.city_id,
             hackathon.url,
             hackathon.date_start,
             hackathon.date_end,
@@ -104,7 +106,7 @@ module Admin
     end
 
     def hackathon_params
-      params.require(:hackathon).permit(:title, :description, :country, :city, :url, :date_start, :date_end, :venue, :address, :challenge, :sponsors, :awards, :schedule, :application, :application_deadline, :twitter, :longitude, :latitude, :image_url, :highlighted, :days_mask, { category_ids: [] }, { sponsor_ids: [] })
+      params.require(:hackathon).permit(:title, :description, :country, :city_string, :city_id, :url, :date_start, :date_end, :venue, :address, :challenge, :sponsors, :awards, :schedule, :application, :application_deadline, :twitter, :longitude, :latitude, :image_url, :highlighted, :days_mask, { category_ids: [] }, { sponsor_ids: [] })
     end
   end
 end

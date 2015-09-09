@@ -8,9 +8,9 @@
     <% name = "#{u.first_name} (@#{u.twitter_account.username})" %>
     <% @names << name %>
   <% end %>
-  <% twitter description: "Join #{@names.join(", ")} on #{l(@hackathon.date_start, format: "%e %b")} – #{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city}, #{@hackathon.country}.".html_safe %>
+  <% twitter description: "Join #{@names.join(", ")} on #{l(@hackathon.date_start, format: "%e %b")} – #{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city_string}, #{@hackathon.country}.".html_safe %>
 <% else %>
-  <% twitter description: "Mark the date! #{l(@hackathon.date_start, format: "%e %b")} – #{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city}, #{@hackathon.country}" %>
+  <% twitter description: "Mark the date! #{l(@hackathon.date_start, format: "%e %b")} – #{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city_string}, #{@hackathon.country}" %>
 <% end %>
 <% if @hackathon.categories.present? %>
   <% twitter image: image_url("categories/#{@hackathon.categories.first.name.parameterize}.png") %>
@@ -26,7 +26,11 @@ twitter card: 'summary_large_image',
   <h1>
   <%= @hackathon.title %>
   <small>
-    <%= link_to @hackathon.city, hackathons_by_city_path(country: @hackathon.country.parameterize, city: @hackathon.city.parameterize) %>, 
+    <% if @hackathon.city %>
+      <%= link_to @hackathon.city, city_path(@hackathon.city) %>,
+    <% else %>
+    <%= link_to @hackathon.city_string, hackathons_by_city_string_path(country: @hackathon.country.parameterize, city_string: @hackathon.city_string.parameterize) %>,
+    <% end %>
     <%= link_to @hackathon.country, hackathons_by_country_path(country: @hackathon.country.parameterize) %>
   </small>
 
@@ -66,7 +70,7 @@ twitter card: 'summary_large_image',
     <% end %>
   <% end %>
   <%= link_to "Visit Website", "#{@hackathon.url}?ref=hackevents", class: "btn btn-primary", :id => "view-website", target: "_blank" %>
-  <%= link_to "Invite your friends", "https://twitter.com/intent/tweet?text=Join%20me%20at%20#{ @hackathon.title }%20%23hackathon%20in%20#{ @hackathon.city },%20#{ @hackathon.country}%20#{ request.url }%20on%20%40Hackevents", class: "btn btn-twitter", :id => "twitter-share", target: "_blank" %>
+  <%= link_to "Invite your friends", "https://twitter.com/intent/tweet?text=Join%20me%20at%20#{ @hackathon.title }%20%23hackathon%20in%20#{ @hackathon.city_string },%20#{ @hackathon.country}%20#{ request.url }%20on%20%40Hackevents", class: "btn btn-twitter", :id => "twitter-share", target: "_blank" %>
 </p>
 
 <hr />
