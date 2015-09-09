@@ -3,7 +3,7 @@
 </header>
 
 <div class="container hackathons" style="margin-top:30px;">
-  <% @city.hackathon_in_city(@city.name).each do |hackathon| %>
+  <% @city.hackathon_in_city(@city).each do |hackathon| %>
 
     <%= render partial: 'hackathons/hackathon', locals: { hackathon: hackathon, membership_hackathon_ids: @membership_hackathon_ids } %>
 
