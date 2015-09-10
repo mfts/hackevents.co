@@ -4,9 +4,9 @@ Rails.application.routes.draw do
 
   get 'imprint', to: 'pages#imprint', as: 'imprint'
   get 'about', to: 'pages#aboutpage', as: 'about'
-  get 'hackathon/:country/:city/:name', to: 'hackathons#show', as: :hackathon_by_id
+  get 'hackathon/:country/:city_string/:name', to: 'hackathons#show', as: :hackathon_by_id
   get 'hackathon/:country', to: 'hackathons#index', as: :hackathons_by_country
-  get 'hackathon/:country/:city', to: 'hackathons#index', as: :hackathons_by_city
+  get 'hackathon/:country/:city_string', to: 'hackathons#index', as: :hackathons_by_city_string
   
   get '@:username', to: 'users#show', as: :user
   
@@ -45,13 +45,14 @@ Rails.application.routes.draw do
       post :unfollow
     end
   end
-  root to: 'hackathons#index'
+  root to: 'welcome#index'
   
   namespace :admin do
     root to: 'welcome#index'
     resources :categories
     resources :users
     resources :sponsors
+    resources :cities
     resources :hackathons do
       collection do
         post :import
@@ -62,6 +63,7 @@ Rails.application.routes.draw do
   end
   
   resources :twitter_accounts
+  resources :cities, only: [:show]
   # Twitter routes
   get '/auth/twitter/callback', to: 'twitter_accounts#create', as: 'callback'
   get '/auth/failure', to: 'twitter_accounts#error', as: 'failure'

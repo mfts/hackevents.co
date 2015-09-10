@@ -10,6 +10,8 @@ class Hackathon < ActiveRecord::Base
 
   has_many :sponsorships
   has_many :sponsors, :through => :sponsorships, dependent: :destroy
+
+  belongs_to :city
   
   before_save :update_days_mask
   
@@ -38,10 +40,6 @@ class Hackathon < ActiveRecord::Base
     end.uniq
   end
 
-  def hackathon_in_city(city)
-    Hackathon.where('city = ? AND date_start >= ?', city, Time.now).count
-  end
-
   def top_cities
     hackathons = Hackathon.where("date_start >= ?", Time.now).group_by { |h| h.city }
   end
@@ -50,6 +48,6 @@ class Hackathon < ActiveRecord::Base
   def self.search(query)
     # where(:title, query) -> This would return an exact match of the query
 
-    where("title like :q or country like :q or city like :q ", q: "%#{query}%")
+    where("title like :q or country like :q or city_string like :q ", q: "%#{query}%")
   end
 end

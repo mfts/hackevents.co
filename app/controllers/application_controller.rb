@@ -11,16 +11,16 @@ class ApplicationController < ActionController::Base
   def setup_search
     q_param = nil
     
-    if params[:q].present? && params[:q][:title_or_country_or_city_cont].present?
-      q_param     = { title_or_country_or_city_cont: params[:q][:title_or_country_or_city_cont].titleize }
+    if params[:q].present? && params[:q][:title_or_country_or_city_string_string_cont].present?
+      q_param     = { title_or_country_or_city_string_cont: params[:q][:title_or_country_or_city_string_string_cont].titleize }
     end
     
-    if q_param.blank? && params[:country].present? && params[:city].blank?
+    if q_param.blank? && params[:country].present? && params[:city_string].blank?
       q_param = { country_cont: params[:country].titleize }
     end
     
-    if q_param.blank? && params[:country].present? && params[:city].present?
-      q_param = { city_cont: "#{params[:city]}".titleize }
+    if q_param.blank? && params[:country].present? && params[:city_string].present?
+      q_param = { city_string_cont: "#{params[:city_string]}".titleize }
     end
     
     @page        = params[:page]
@@ -37,6 +37,9 @@ class ApplicationController < ActionController::Base
     end
     
     @q
+    if params[:q].present?
+      flash.now[:warning] = "WE ARE UPGRADING OUR SEARCH, PLEASE BEAR WITH US :) | Add a '_string' after 'city_string' in the URL to fix the search in the meantime."
+    end
   end
   
   def sidebar_visible?

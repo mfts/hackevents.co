@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150903102705) do
+ActiveRecord::Schema.define(version: 20150909144350) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,11 +38,22 @@ ActiveRecord::Schema.define(version: 20150903102705) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "hackathon_count"
+    t.integer  "hackathon_total_count"
+    t.string   "image_url"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "source_url"
+    t.string   "source_name"
+  end
+
   create_table "hackathons", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.string   "country"
-    t.string   "city"
+    t.string   "city_string"
     t.string   "url"
     t.datetime "date_start"
     t.datetime "date_end"
@@ -63,8 +75,10 @@ ActiveRecord::Schema.define(version: 20150903102705) do
     t.boolean  "highlighted",          default: false
     t.integer  "days_mask"
     t.string   "twitter_hashtag"
+    t.integer  "city_id"
   end
 
+  add_index "hackathons", ["city_id"], name: "index_hackathons_on_city_id", using: :btree
   add_index "hackathons", ["slug"], name: "index_hackathons_on_slug", using: :btree
 
   create_table "interests", force: :cascade do |t|
@@ -142,4 +156,5 @@ ActiveRecord::Schema.define(version: 20150903102705) do
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["password_reset_token"], name: "index_users_on_password_reset_token", using: :btree
 
+  add_foreign_key "hackathons", "cities"
 end
