@@ -1,8 +1,8 @@
 class City < ActiveRecord::Base
   has_many :hackathons
 
-  geocoded_by :ip_address
-  after_validation :geocode
+  #geocoded_by :ip_address
+  #after_validation :geocode
   
   def hackathon_in_city(city)
     Hackathon.where('city_id = ? AND date_start >= ?', city, Time.now).order(:date_start)
@@ -13,6 +13,6 @@ class City < ActiveRecord::Base
   end
 
   def to_param
-    name.downcase
+    name.parameterize.downcase
   end
 end

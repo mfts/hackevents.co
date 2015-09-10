@@ -46,6 +46,8 @@
         <% end %>
       <% end %>
     </div>
+
+
     <div class="favorite-by-people">
       <% if hackathon.users.present? %>
         <% (hackathon.users.last(8)).each do |user| %>
@@ -103,4 +105,5 @@
     <% end %>
 
   </div>
+
 </div>
