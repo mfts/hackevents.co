@@ -43,22 +43,14 @@ class Hackathon < ActiveRecord::Base
     end.uniq
   end
 
-  def hackathon_in_city(city)
-    Hackathon.where('city = ? AND date_start >= ?', city, Time.now).count
-  end
-
   def top_cities
     hackathons = Hackathon.where("date_start >= ?", Time.now).group_by { |h| h.city }
-  end
-
-  def location
-    Geokit::Geocoders::IpGeocoder.geocode(source_ip)
   end
   
   # It returns the articles whose titles contain one or more words that form the query
   def self.search(query)
     # where(:title, query) -> This would return an exact match of the query
 
-    where("title like :q or country like :q or city like :q ", q: "%#{query}%")
+    where("title like :q or country like :q or city_string like :q ", q: "%#{query}%")
   end
 end
