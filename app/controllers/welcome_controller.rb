@@ -7,5 +7,6 @@ class WelcomeController < ApplicationController
     @featured = @hackathons.where('date_start >= ? AND highlighted = ?', Time.zone.now, true)
     @count = Hackathon.where('date_start >= ?', Time.now).count
     @result = request.location
+    @cities = City.order(hackathon_count: :desc)
   end
 end

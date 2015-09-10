@@ -36,9 +36,13 @@
     <p>See where people are hacking, around the world</p><br>
   </div>
   <div class="row" style="color:white;">
-    <div class="berlin-image" style="background-color:lightgrey;height:200px;line-height:200px;"><span>Berlin</span></div><br>
-    <div class="munich-image" style="background-color:lightgrey;height:200px;line-height:200px;"><span>Munich</span></div><br>
-    <div class="london-image" style="background-color:lightgrey;height:200px;line-height:200px;"><span>London</span></div>
+    <% @cities.first(3).each do |city| %>
+      <%= link_to city_path(city) do %>
+        <div class="city-image" style="background-image:url('<%= city.image_url %>');background-color:lightgrey;height:200px;line-height:200px;">
+          <span><%= city.name %></span>
+        </div><br>
+      <% end %>
+    <% end %>
   </div>
   <div style="margin-top:20px;">
     <%= link_to "See all cities", root_path, class: "btn btn-primary btn-lg" %>
