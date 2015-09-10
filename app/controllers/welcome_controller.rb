@@ -8,5 +8,6 @@ class WelcomeController < ApplicationController
     @count = Hackathon.where('date_start >= ?', Time.now).count
     @result = request.location
     @cities = City.order(hackathon_count: :desc)
+    @city_count = City.count
   end
 end
