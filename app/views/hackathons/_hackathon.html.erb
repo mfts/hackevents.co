@@ -82,7 +82,7 @@
     </h2>
 
     <p class="location-and-date">
-      <span class="city"><%= hackathon.city %></span>, <span class="country"><%= hackathon.country %></span>
+      <span class="city"><%= hackathon.city ? hackathon.city : hackathon.city_string %></span>, <span class="country"><%= hackathon.country %></span>
       <br />
       <span class="info-date">
         
