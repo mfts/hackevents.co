@@ -37,6 +37,9 @@ class ApplicationController < ActionController::Base
     end
     
     @q
+    if params[:q].present?
+      flash.now[:warning] = "WE ARE UPGRADING OUR SEARCH, PLEASE BEAR WITH US :) | Add a '_string' after 'city_string' in the URL to fix the search in the meantime."
+    end
   end
   
   def sidebar_visible?
