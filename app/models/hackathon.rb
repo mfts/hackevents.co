@@ -14,9 +14,6 @@ class Hackathon < ActiveRecord::Base
   belongs_to :city
   
   before_save :update_days_mask
-
-  #geocoded_by :ip_address
-  #after_validation :geocode
   
   scope :with_days, lambda { |days| where("(days_mask & ?) > 0", days.map { |d| 2**DAYS.index(d) }.sum) }
   
