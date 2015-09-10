@@ -13,6 +13,6 @@ class City < ActiveRecord::Base
   end
 
   def to_param
-    name.downcase
+    name.parameterize.downcase
   end
 end
