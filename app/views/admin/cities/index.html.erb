@@ -1,0 +1,13 @@
+<h1>
+  Cities
+</h1>
+
+<hr />
+
+<% @cities.each do |city| %>
+  <div>
+    <p>
+      <%= link_to city.name, edit_admin_city_path(city) %>
+    </p>
+  </div>
+<% end %>

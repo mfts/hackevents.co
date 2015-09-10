@@ -1,4 +1,10 @@
-FactoryGirl.define do  factory :affiliation do
+FactoryGirl.define do  factory :city do
+    name "MyString"
+hackathon_count 1
+hackathon_total_count 1
+image_url "MyString"
+  end
+  factory :affiliation do
     
   end
   factory :interest do

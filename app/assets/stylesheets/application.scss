@@ -26,6 +26,8 @@ $link-color:                    #F57C00;
 @import "hackathon";
 @import "sidebar";
 @import "main";
+@import "alternative";
+@import "cities";
 
 .avatar-image-line {
   background-image: image-url("line.png");
@@ -278,10 +280,10 @@ ul.page-header-other-info-links {
   background-color: #fff;
 }
 
-.hackathon-highlighted {
-  background-color: #fcf5e2;
-  padding: 25px 0px;
-}
+//.hackathon-highlighted {
+//  background-color: #fcf5e2;
+//  padding: 25px 0px;
+//}
 
 .people {
   list-style: none;
