@@ -5,6 +5,12 @@ namespace :hackathons do
       city.save
     end
   end
+  task :generate_current_count => :environment do
+    City.all.each do |city|
+      city.hackathon_count = city.hackathons.where('date_start >= ?', Time.zone.now).count
+      city.save
+    end
+  end
   task :migrate_to_city_id => :environment do
     puts Hackathon.count
     Hackathon.all.each_with_index do |hackathon, index|
