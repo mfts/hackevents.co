@@ -73,8 +73,12 @@
 
   <div class="image">
     <%= link_to nice_hackathon_path(hackathon) do %>
-      <% category_name = hackathon.categories.first ? hackathon.categories.sample.name : "Unknown"  %>
-      <%= image_tag "categories/#{category_name.parameterize}.png" %>
+      <% unless hackathon.image_url.present? %>
+        <% category_name = hackathon.categories.first ? hackathon.categories.sample.name : "Unknown"  %>
+        <%= image_tag "categories/#{category_name.parameterize}.png" %>
+      <% else %>
+        <%= image_tag(hackathon.image_url) %>
+      <% end %>
     <% end %>
   </div>
 
