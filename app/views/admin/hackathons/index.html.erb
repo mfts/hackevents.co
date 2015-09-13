@@ -21,7 +21,7 @@
     </p>
   </div>
   <div style="display:inline-block;">
-    <%= link_to "Share on Twitter", "https://twitter.com/intent/tweet?text=Join%20me%20at%20#{ hackathon.title }%20%23hackathon%20in%20#{ hackathon.city_string },%20#{ hackathon.country }%20#{ nice_hackathon_url(hackathon) }%20on%20%40Hackevents", class: "btn btn-twitter", :id => "twitter-share", target: "_blank" %>
+    <%= link_to "Share on Twitter", "https://twitter.com/intent/tweet?text=HACKATHON%20%7C%20#{ hackathon.country.capitalize }%20%7C%20#{ hackathon.city_string.capitalize }%20%7C%20#{ hackathon.title }%20#{ hackathon.date_start.strftime("on %d %^b %Y") }%20#{ nice_hackathon_url(hackathon) }%20on%20%40Hackevents", class: "btn btn-twitter", :id => "twitter-share", target: "_blank" %>
   </div></br>
 <% end %>
 
