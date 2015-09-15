@@ -1,4 +1,4 @@
-<header class="city-header-image" style="background-image:url('<%= @city.image_url %>');height:250px;line-height:250px;">
+<header class="city-header-image" style="background-image:url('<%= @city.image_url ? @city.image_url : "http://images.hackevents.de/cities/default.png" %>');height:250px;line-height:250px;">
   <span><%= @city.name %></span>
 </header>
 

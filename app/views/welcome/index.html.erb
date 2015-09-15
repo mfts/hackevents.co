@@ -43,7 +43,7 @@
   <div class="row" style="color:white;">
     <% @cities.first(3).each do |city| %>
       <%= link_to city_path(city) do %>
-        <div class="city-image" style="background-image:url('<%= city.image_url %>');background-color:lightgrey;height:200px;line-height:200px;">
+        <div class="city-image" style="background-image:url('<%= city.image_url ? city.image_url : "http://images.hackevents.de/cities/default.png" %>');background-color:lightgrey;height:200px;line-height:200px;">
           <span><%= city.name %></span>
         </div><br>
       <% end %>

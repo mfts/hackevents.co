@@ -19,4 +19,12 @@ namespace :hackathons do
       puts index
     end
   end
+  task :migrate_all_to_city_id => :environment do
+    puts Hackathon.count
+    Hackathon.all.each_with_index do |hackathon, index|
+      hackathon.city = City.where(name:hackathon.city_string).first_or_create
+      hackathon.save
+      puts index
+    end
+  end
 end
