@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150909144350) do
-
+ActiveRecord::Schema.define(version: 20150915154824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150909144350) do
     t.datetime "updated_at",            null: false
     t.string   "source_url"
     t.string   "source_name"
+    t.string   "teleport_id"
   end
 
   create_table "hackathons", force: :cascade do |t|
