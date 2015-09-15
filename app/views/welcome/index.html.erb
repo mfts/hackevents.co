@@ -1,12 +1,13 @@
-<header class="header-image" style="background-color:antiquewhite;height:400px;">
+<header class="header-image" style="background-color:lightgrey;height:400px;">
   <div class="container" style="color:white;text-align:center;padding-top:50px;">
     <h1>FIND YOUR BEST HACKATHON</h1>
     <h3>Choose from <text style="color:#F57C00;"><%= @count %></text> hackathons in <text style="color:#F57C00;"><%= @city_count %></text> cities</h3>
     <div style="margin-top:80px;">
       <% city = City.find_by(name:@result.city) %>
       <% if city %>
+      <%# city_path( city ) %>
         <h4>Pick your city to get started</h4><br>
-        <%= link_to "Go to #{ @result.city }", city_path( city ), class: "btn btn-primary btn-lg", :style => "margin-right:20px;" %>
+        <%= link_to "Go to #{ @result.city }", hackathons_path , class: "btn btn-primary btn-lg", :style => "margin-right:20px;" %>
       <% else %>
         <%= link_to "See all hackathons", hackathons_path, class: "btn btn-primary btn-lg", :style => "margin-right:20px;" %>
       <% end %>
