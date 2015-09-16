@@ -34,3 +34,17 @@
     }
   }
 }
+
+.share-city {
+  margin-top: 25px;
+}
+
+@media (max-width: 768px) {
+  .share-city {
+    float: none;
+    text-align: center;
+    margin: 15px auto;
+    padding: 0;
+  } 
+}
+

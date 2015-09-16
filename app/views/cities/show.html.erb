@@ -5,6 +5,14 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="col-xs-6 share-city">
+    <span>
+      <%= link_to "Share on Twitter", "https://twitter.com/intent/tweet?text=Here%20are%" .html_safe, class: "btn btn-twitter", target: "_blank" %>
+    </span>
+  </div>
+</div>
+
 <div class="container hackathons" style="margin-top:30px;">
   <% @city.hackathon_in_city(@city).each do |hackathon| %>
 
