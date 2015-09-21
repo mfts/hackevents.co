@@ -9,11 +9,14 @@ module Admin
     end
 
     def edit
-      @city = City.find(params[:id])
+      id = City.find_by_name!(name)
+      @city = City.find(id)
     end
 
     def update
-      @city = City.find(params[:id])
+      name = params[:id].gsub("-"," ").split.map(&:capitalize).join(' ')
+      id = City.find_by_name!(name)
+      @city = City.find(id)
       if @city.update(city_params)
         redirect_to admin_cities_path
       else
