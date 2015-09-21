@@ -46,4 +46,20 @@ namespace :hackathons do
       end
     end
   end
+  task :update_cities_with_source => :environment do
+    source = "http://images.hackevents.de/city_source.json"
+    resp = Net::HTTP.get_response(URI.parse(source))
+    data = resp.body
+    result = JSON.parse(data)
+    result.each do |source|
+      puts source['City']
+      if City.find_by(name: source['City'])
+        city = City.find_by(name: source['City'])
+        puts "√"
+        city.source_url = source['URL']
+        city.source_name = source['Name']
+        city.save
+      end
+    end
+  end
 end
