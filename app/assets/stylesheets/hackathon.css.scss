@@ -64,7 +64,12 @@
       }
       .image {
         width:            160px;
+        height:           120px;
         float:            left;
+      }
+      .image-real {
+        background-size: cover;
+        background-position: center;
       }
       .info {
         margin: 0 0 0 444px;

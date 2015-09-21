@@ -47,7 +47,8 @@ module Admin
           date_start: row[5], 
           date_end: row[6],
           venue: row[7].force_encoding(Encoding::UTF_8),
-          address: row[8].force_encoding(Encoding::UTF_8)
+          address: row[8].force_encoding(Encoding::UTF_8),
+          image_url: row[9].force_encoding(Encoding::UTF_8)
           )
         ques.save
       end
@@ -67,6 +68,7 @@ module Admin
           "date_end",
           "venue",
           "address",
+          "image_url",
           "challenge",
           "sponsors",
           "awards",
@@ -86,6 +88,7 @@ module Admin
             hackathon.date_end,
             hackathon.venue,
             hackathon.address,
+            hackathon.image_url,
             hackathon.challenge,
             hackathon.sponsors,
             hackathon.awards,

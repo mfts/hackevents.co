@@ -1,6 +1,17 @@
-<header class="city-header-image" style="background-image:url('<%= @city.image_url %>');height:250px;line-height:250px;">
+<div class="city-header-image" style="background-image:url('<%= @city.image_url ? @city.image_url : "http://images.hackevents.de/cities/default.png" %>');height:250px;line-height:250px;">
   <span><%= @city.name %></span>
-</header>
+  <div class="city-header-footer city-header-source">
+    <i><%= link_to @city.source_name, @city.source_url, :style => "color:white" %></i>
+  </div>
+</div>
+
+<div class="container">
+  <div class="col-xs-6 share-city">
+    <span>
+      <%= link_to "Share on Twitter", "https://twitter.com/intent/tweet?text=%F0%9F%93%A2%F0%9F%92%AA%20#{ @city.hackathon_count }%20upcoming%20%23hackathon%20in%20#{ @city.name }%20#{ request.url }%20on%20%40Hackevents!%20%F0%9F%94%A5" .html_safe, class: "btn btn-twitter", target: "_blank" %>
+    </span>
+  </div>
+</div>
 
 <div class="container hackathons" style="margin-top:30px;">
   <% @city.hackathon_in_city(@city).each do |hackathon| %>
