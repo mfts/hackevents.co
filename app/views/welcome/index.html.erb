@@ -55,12 +55,3 @@
   </div>
 </div>
 </div>
-
-<% unless City.find_by(name:@result.city) %>
-  <script type="text/javascript">
-    analytics.page('Index Page', {
-      country: '<%= @result.country %>',
-      city: '<%= @result.city %>'
-    });
-  </script>
-<% end %>
