@@ -3,7 +3,12 @@ module Admin
     before_action :set_hackathon, only: [:edit, :update, :destroy]
     
     def index
-      @hackathons = Hackathon.where("date_start >= ?", Time.zone.now).order(:date_start)
+      @search = Hackathon.solr_search do
+        fulltext params[:search]
+        with(:date_start).greater_than(Time.zone.now)
+      end
+      @hackathons = @search.results
+      #@hackathons = Hackathon.where("date_start >= ?", Time.zone.now).order(:date_start)
     end
     
     def new
