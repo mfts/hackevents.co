@@ -45,6 +45,8 @@ gem 'metamagic'
 gem 'font-awesome-rails'
 
 gem 'geocoder'
+gem 'sunspot_rails'
+gem 'progress_bar'
 
 
 group :development, :test do
@@ -58,6 +60,7 @@ group :development, :test do
   # gem 'spring', '~> 1.3.5'
   gem 'rspec-rails', '~> 2.0'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'sunspot_solr'
 end
 
 group :test do
