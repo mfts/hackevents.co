@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'company/home'
+
   #get "/login" => "user_sessions#new", as: :login_email
   delete "/logout" => "twitter_accounts#destroy", as: :logout
 
