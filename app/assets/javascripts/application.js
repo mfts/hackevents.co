@@ -17,6 +17,12 @@
 //= require underscore
 //= require gmaps/google
 //= require turbolinks
+//= require algolia/v3/algoliasearch.min
+//= require jquery.textcomplete
+//= require typeahead.bundle
+//= require handlebars
+//= require nprogress
+//= require algolia
 
 $(function() {
   $(".table-calendar p.event").hover(
@@ -49,3 +55,18 @@ $(function() {
     event.preventDefault();
   });
 });
+
+
+$(document).on('page:fetch', function() {
+  NProgress.start();
+});
+
+$(document).on('page:change', function() {
+  NProgress.done();
+});
+
+$(document).on('page:restore', function() {
+  NProgress.remove();
+});
+
+NProgress.configure({ showSpinner: false });
