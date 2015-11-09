@@ -1,66 +1,315 @@
-<header class="header-image" style="background-color:lightgrey;height:400px;">
-  <div class="container" style="color:white;text-align:center;padding-top:50px;">
-    <h1>FIND YOUR BEST HACKATHON</h1>
-    <h3>Choose from <text style="color:#F57C00;"><%= @count %></text> hackathons in <text style="color:#F57C00;"><%= @city_count %></text> cities</h3>
-    <div style="margin-top:80px;">
-      <%# city = City.find_by(name:@result.city) %>
-      <%# if city %>
-      <%# city_path( city ) %>
-        <!-- <h4>Pick your city to get started</h4><br> -->
-        <%#= link_to "Go to #{ @result.city }", city_path(city) , class: "btn btn-primary btn-lg", :style => "margin-right:20px;" %>
-      <%# else %>
-        <%= link_to "See all hackathons", hackathons_path, class: "btn btn-primary btn-lg", :style => "margin-right:20px;" %>
-      <%# end %>
-      <%= link_to "Explore other cities", "#explore-cities", class: "btn btn-default btn-lg" %>
+<!-- begin:search -->
+<div id="header" class="heading" style="background-image: url('http://images.hackevents.de/header-background.png');">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="quick-search">   
+          <div class="row">
+            <form role="form">
+             <h1 class="col-md-12">Find your best hackathon
+              <br>
+              <small>Choose from <%= @count %> hackathons in <%= @city_count %> cities</small></h1>
+              <!-- break -->
+              <div class="col-md-9 col-sm-12 col-xs-12">
+                <input class="typeahead input-lg" type="text" placeholder="Search for hackathons by name, city, ..." id="hackathon-search" spellcheck="false" />
+              </div>
+              <div class="col-md-3 col-sm-12"><input type="submit" name="submit" value="Search" class="btn btn-lg btn-warning btn-block">
+              </div>
+            </form>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+      </div>  
     </div>
   </div>
-</header>
-
-<div id="featured-hackathons" class="container" style="margin-top:30px;">
-  <div style="text-align:center;">
-    <h2>FEATURED HACKATHONS</h2>
-    <p>Don't miss the best events of the season</p><br>
-  </div>
-  <div class="hackathons">
-    <% @featured.first(3).each do |hackathon| %>
-
-      <%= render partial: '/hackathons/hackathon', locals: { hackathon: hackathon, membership_hackathon_ids: @membership_hackathon_ids } %>
-
-    <% end %>
-  </div>
-  <div style="text-align:center;">
-    <%= link_to "See all hackathons", hackathons_path, class: "btn btn-primary btn-lg" %>
-  </div>
 </div>
+<!-- end:search -->
+
+<!-- begin:upcoming 30 days -->
+<div id="days">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Upcoming hackathons in the next 30 days<small>Find events from 18. November to 18. December 2015</small></h2>
+      </div>
+    </div>
+    <div class="row">
+      <!-- GERMANY --> 
+      <div class="col-md-3 col-xs-12">
+        <div class="days-container">
+          <div class="days-content">
+            <h3>Hackathons in Germany
+              <br>
+              <small>from 18. - 18. December 2015</small></h3> 
+              <hr> 
+              <ul>
+                <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
+                <li><a href="#">RadioHack</a></li>
+                <li><a href="#">Campus Hackathon München</a></li>
+                <li><a href="#">Lufthansa Travelhack</a></li>
+                <li><a href="#">Lufthansa Travelhack</a></li>
+              </ul> 
+              <hr>
+              <a href="/hackathon/germany" class="btn btn-default btn col-lg-12 col-xs-12 days-more">See more in Germany</a> 
+            </div>
+          </div>
+        </div>
+        <!-- break -->
+
+        <!-- USA --> 
+        <div class="col-md-3 col-xs-12">
+          <div class="days-container">
+            <div class="days-content">
+              <h3>Hackathons in USA
+                <br>
+                <small>from 18. - 28. November 2015</small></h3>  
+                <hr>
+                <ul>
+                  <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
+                  <li><a href="#">RadioHack</a></li>
+                  <li><a href="#">Campus Hackathon München</a></li>
+                  <li><a href="#">Lufthansa Travelhack</a></li>
+                  <li><a href="#">Lufthansa Travelhack</a></li>
+                </ul> 
+                <hr>
+                <a href="/hackathon/usa" class="btn btn-default col-lg-12 col-xs-12 days-more">See more in USA</a> 
+              </div>
+            </div>
+          </div>
+          <!-- break -->
+
+          <!-- EUROPE --> 
+          <div class="col-md-3 col-xs-12">
+            <div class="days-container">
+              <div class="days-content">
+                <h3>Hackathons in Europe
+                  <br>
+                  <small>from 18. - 28. November 2015</small></h3>  
+                  <hr>
+                  <ul>
+                    <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
+                    <li><a href="#">RadioHack</a></li>
+                    <li><a href="#">Campus Hackathon München</a></li>
+                    <li><a href="#">Lufthansa Travelhack</a></li>
+                    <li><a href="#">Lufthansa Travelhack</a></li>
+                  </ul> 
+                  <hr>
+                  <a href="/hackathons" class="btn btn-default col-lg-12 col-xs-12 days-more">See more in Europe</a> 
+                </div>
+              </div>
+            </div>
+            <!-- break -->
+            <!-- Worldwide --> 
+            <div class="col-md-3 col-xs-12">
+              <div class="days-container">
+                <div class="days-content">
+                  <h3>Worldwide hackathons<br><small>
+                    from 18. - 28. November 2015</small></h3> 
+                    <hr>
+                    <ul>
+                      <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
+                      <li><a href="#">RadioHack</a></li>
+                      <li><a href="#">Campus Hackathon München</a></li>
+                      <li><a href="#">Lufthansa Travelhack</a></li>
+                      <li><a href="#">Lufthansa Travelhack</a></li>
+                    </ul> 
+                    <hr>
+                    <a href="/hackathons" class="btn btn-default col-lg-12 col-xs-12 days-more">See more worldwide</a> 
+                  </div>
+                </div>
+              </div>
+              <!-- break -->
+            </div>
+            <p class="days-all">Feel free to go through our database of hackathons, by just clicking the following button.</p>
+            <%= link_to "See all hackathons", hackathons_path, class: "btn btn-primary btn-lg col-lg-2 col-lg-offset-5 col-xs-12" %>
+          </div>
+        </div>
+        <!-- end:upcoming 30days -->
+
+        <!-- begin:top10cities -->
+        <div id="startcities">
+          <div class="container">
+            <!-- begin:latest -->
+            <div class="row">
+              <div class="col-md-12">
+                <div class="startcities-title">
+                  <h2>Best hackathon cities in the world<br>
+                    <small>Ranked by number of upcoming hackathons these are the best hackathon cities</small></h2>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <!-- CITIES --> 
+                <% @cities.first(8).each do |city| %>
+                  <%= link_to city_path(city) do %>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                      <div class="startcities-container">
+                        <div class="startcities-image" style="background-image:url('<%= city.image_url ? city.image_url : "http://images.hackevents.de/cities/default.png" %>');background-color:lightgrey;height:100px;line-height:100px;">
+                        </div>
+                        <div class="startcities-features">
+                          <span><i class="fa fa-calendar"></i> <%= city.hackathon_count %> upcoming hackathons</span>
+                        </div>
+                        <div class="startcities-content">
+                          <h3><%= city.name %></h3>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                <% end %>
+                <!-- break -->
+                <!-- button all cities -->
+                <p class="days-all">At the moment there are upcoming hackathons in <%= @city_count %> different cities.</p>
+                <%= link_to "See all hackathons", hackathons_path, class: "btn btn-primary btn-lg col-lg-2 col-lg-offset-5 col-xs-12" %>
+              </div>
+              <!-- end:all cities -->
+            </div>
+          </div>
+          <!-- end:cities -->
+
+
+          <!-- begin:subscribe -->
+          <div id="subscribe">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-xs-12">
+                  <h3>Get a rundown of the best hackathons, each monday</h3>
+                </div>
+                <div class="col-md-6 col-md-offset-3 col-xs-12">
+                  <div class="input-group">
+                    <input type="text" class="form-control input-lg" placeholder="Enter your mail">
+                    <span class="input-group-btn">
+                      <button class="btn btn-warning btn-lg" type="submit"><i class="fa fa-envelope"></i> Subscribe</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end:subscribe -->
 
 
 
-<div style="background-color:#f2f2f2;">
-<div id="explore-cities" class="container" style="padding-top:30px;padding-bottom:30px;margin-top:100px;text-align:center;">
-  <div>
-    <h2>EXPLORE THE WORLD</h2>
-    <p>See where people are hacking, around the world</p><br>
-  </div>
-  <div class="row" style="color:white;">
-    <% @cities.first(3).each do |city| %>
-      <%= link_to city_path(city) do %>
-        <div class="city-image" style="background-image:url('<%= city.image_url ? city.image_url : "http://images.hackevents.de/cities/default.png" %>');background-color:lightgrey;height:200px;line-height:200px;">
-          <span><%= city.name %></span>
-        </div><br>
-      <% end %>
-    <% end %>
-  </div>
-  <div style="margin-top:20px;">
-    <%= link_to "See all hackathons", hackathons_path, class: "btn btn-primary btn-lg" %>
-  </div>
-</div>
-</div>
+          <!-- begin: featured -->
+          <div id="top">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                  <h2>Find your best hackathon</h2>
+                </div>
+              </div>
+              <div class="row">    
+                <!-- NEWS --> 
+                <div class="col-md-4 col-xs-12">
+                  <div class="top-container">
+                    <div class="top-content">
+                      <h3>Top 10 Latest News</h3>  
+                      <hr>
+                      <ul>
+                        <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
+                        <li><a href="#">RadioHack</a></li>
+                        <li><a href="#">Campus Hackathon München</a></li>
+                        <li><a href="#">Lufthansa Travelhack</a></li>
+                        <li><a href="#">Lufthansa Travelhack</a></li>
+                        <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
+                        <li><a href="#">RadioHack</a></li>
+                        <li><a href="#">Campus Hackathon München</a></li>
+                        <li><a href="#">Lufthansa Travelhack</a></li>
+                        <li><a href="#">Lufthansa Travelhack</a></li>
+                      </ul>  
+                    </div>
+                  </div>
+                </div>
+                <!-- break -->
 
-<% unless City.find_by(name:@result.city) %>
-  <script type="text/javascript">
-    analytics.page('Index Page', {
-      country: '<%= @result.country %>',
-      city: '<%= @result.city %>'
-    });
-  </script>
-<% end %>
+                <!-- FEATURED --> 
+                <div class="col-md-4 col-xs-12">
+                  <div class="top-featured-container">
+                    <div class="top-content">
+                      <h3>Top 10 Featured Hackathons</h3>  
+                      <hr>
+                      <ul>
+                        <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
+                        <li><a href="#">RadioHack</a></li>
+                        <li><a href="#">Campus Hackathon München</a></li>
+                        <li><a href="#">Lufthansa Travelhack</a></li>
+                        <li><a href="#">Lufthansa Travelhack</a></li>
+                        <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
+                        <li><a href="#">RadioHack</a></li>
+                        <li><a href="#">Campus Hackathon München</a></li>
+                        <li><a href="#">Lufthansa Travelhack</a></li>
+                        <li><a href="#">Lufthansa Travelhack</a></li>
+                      </ul> 
+                    </div>
+                  </div>
+                </div>
+
+                <!-- LATEST --> 
+                <div class="col-md-4 col-xs-12">
+                  <div class="top-container">
+                    <div class="top-content">
+                      <h3>Top 10 Latest Hackathons</h3> 
+                      <hr> 
+                      <ul>
+                        <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
+                        <li><a href="#">RadioHack</a></li>
+                        <li><a href="#">Campus Hackathon München</a></li>
+                        <li><a href="#">Lufthansa Travelhack</a></li>
+                        <li><a href="#">Lufthansa Travelhack</a></li>
+                        <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
+                        <li><a href="#">RadioHack</a></li>
+                        <li><a href="#">Campus Hackathon München</a></li>
+                        <li><a href="#">Lufthansa Travelhack</a></li>
+                        <li><a href="#">Lufthansa Travelhack</a></li>
+                      </ul> 
+                    </div>
+                  </div>
+                </div>
+                <!-- break -->
+              </div>
+              <div>
+                <h3>About Hackevents</h3>
+                <p>The search engine Hackevents finds the best hackathon for you in Germany, USA, Europe and worldwide.</p>
+                <p>To offer you maximum choice with minimum search time, we are crawling the entire web for hackathons. So far our software has crawled more than 17 gigabyte and we listed more than 1000 hackathons on Hackevents since 2014. Moreover we provide a hackathon recommendation tool for you to find the most relevant hackathon for you. <a href="#">Join our community</a> and have a try.</p>
+                <p>In the future we will improve Hackevents to offer you an even better service.</p>
+                <p>Hackathons by region: <a href="#">Germany</a> - <a href="#">United States</a> - <a href="#">Europe</a> - <a href="#">Worldwide</a></p>
+              </div>
+            </div>
+          </div>
+          <!-- end:upcoming featured -->
+
+          <!-- begin: Click to Action -->
+          <div id="subscribe">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-10 col-md-offset-1 col-xs-12">
+                  <h3>Sign up now and persoalize your hackathon search<br>
+                    <small>Hackevents built a hackathon recomenndation engine to provide you with even better and more relevant events</small></h3>
+                  </div>
+                  <div class="col-md-6 col-md-offset-3 col-xs-12">
+                    <a href"#" class="btn btn-default btn-lg col-xs-6">Find out more</a>
+                    <% unless current_user %>
+                      <%= link_to "Join the community", '/auth/twitter', method: 'get', class: "btn btn-primary btn-lg col-xs-6" %>
+                    <% else %>
+                      <a href"#" class="btn btn-primary btn-lg col-xs-6">Coming soon...</a>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- end: Click to Action -->
+
+
+
+
+
+
+
+
+
+

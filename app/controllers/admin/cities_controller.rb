@@ -1,5 +1,7 @@
 module Admin
   class CitiesController < BaseController
+    before_action :set_city, only: [:edit, :update]
+
     def index
       @cities = City.order(:name)
     end
@@ -9,14 +11,11 @@ module Admin
     end
 
     def edit
-      id = City.find_by_name!(name)
-      @city = City.find(id)
     end
 
     def update
-      name = params[:id].gsub("-"," ").split.map(&:capitalize).join(' ')
-      id = City.find_by_name!(name)
-      @city = City.find(id)
+      # name = params[:id].gsub("-"," ").split.map(&:capitalize).join(' ')
+      # @city = City.find_by_name!(name)
       if @city.update(city_params)
         redirect_to admin_cities_path
       else
@@ -26,6 +25,10 @@ module Admin
 
     private
     
+    def set_city
+      @city = City.find(params[:id])
+    end
+
     def city_params
       params[:city].permit(:name, :image_url, :source_url, :source_name)
     end
