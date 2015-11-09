@@ -1,6 +1,7 @@
 class Hackathon < ActiveRecord::Base
   extend FriendlyId
   friendly_id :uniqueslug, use: :slugged
+  include AlgoliaSearch
 
   has_many :memberships
   has_many :users, :through => :memberships, dependent: :destroy
@@ -19,8 +20,29 @@ class Hackathon < ActiveRecord::Base
   
   DAYS = %w(Monday Tuesday Wednesday Thursday Friday Saturday Sunday)
   
+  algoliasearch per_environment: :true do
+    attribute :title, :city_string
+    attribute :city_string_slug do
+      self.city_string.parameterize.downcase
+    end
+    attribute :country_slug do
+      self.country.parameterize.downcase
+    end
+    attribute :nice_slug do
+      self.nice_slug
+    end
+    attribute :date_start_unix do
+      self.date_start.to_i
+    end
+    attributesToIndex ['title','city_string']
+  end
+
   def uniqueslug
     "#{country} #{city} #{title}"
+  end
+
+  def nice_slug
+    "#{id}-#{title}".parameterize.downcase
   end
   
   # FIXME: check if needed

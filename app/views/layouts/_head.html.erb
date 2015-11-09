@@ -9,18 +9,9 @@
 <div class="row">
   <div id="head-actions">
     <div class="col-sm-9" id="head-search-bar">
-      <% if @q.present? %>
-        <%= search_form_for @q do |f| %>
-          <div class="input-group">
-            <%= f.text_field :title_or_country_or_city_string_cont, :placeholder => "Search for hackathons, cities, and countries", :class => "form-control" %>
-            <span class="input-group-btn">
-              <%= f.submit "Search", class: "btn btn-primary" %>
-            </span>
-          </div>
-        <% end %>
-      <% end %>
+      <input class="typeahead" type="text" placeholder="Search for hackathons by name, city, ..." id="hackathon-search" spellcheck="false" />
     </div>
-    <div class="col-sm-3" style="text-align: right;">
+    <div class="col-sm-3" style="/*text-align: right;*/">
       <% if current_user %>
         <div id="profile-button" class="btn-group">
           <a class="profile-button-inner img-circle" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-image: url('<%= current_user.twitter_account.profile_image %>')">

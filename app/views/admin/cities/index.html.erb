@@ -7,11 +7,11 @@
 <% @cities.each do |city| %>
   <div>
     <p>
-      <% if City.find_by_name!(city.name) %>
+      <%# if City.find_by_name!(city.name) %>
         <%= link_to city.name, edit_admin_city_path(city) %>
-      <% else %>
-        <% city.name %>
-      <% end %>
+      <%# else %>
+        <%#= city.name %>
+      <%# end %>
     </p>
   </div>
 <% end %>

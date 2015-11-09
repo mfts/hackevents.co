@@ -1,0 +1,59 @@
+$(document).on("ready page:load", function() {
+  client = algoliasearch("<%= Rails.application.secrets[:algoliasearch_application_id] %>", "<%= Rails.application.secrets[:algoliasearch_api_key_search] %>"), 
+  hackathon_index = client.initIndex("Hackathon_<%= Rails.env %>").ttAdapter({hitsPerPage: 10, numericFilters: 'date_start_unix >= <%= Time.now.to_i %>'}),
+  city_index = client.initIndex("City_<%= Rails.env %>").ttAdapter({hitsPerPage: 5, numericFilters: 'hackathon_count > 0'}),
+  $('#hackathon-search').typeahead(
+    { 
+      hint: false,
+      highlight: true,
+      classNames: {
+        open: 'dropdown-menu',
+        menu: 'dropdown-menu-typeahead',
+        highlight: 'tt-highlight',
+        cursor: 'cursor',
+        suggestion: 'suggestion'
+      }
+    },
+    {
+      source: hackathon_index,
+      displayKey: 'title',
+      name: 'hackathons',
+      templates: {
+        header: '<div class="tt-header">Hackathons</div>',
+        suggestion: function(hit) {
+          // render the hit
+          return '<div class="hit">' +
+            '<div class="name">' +
+              hit._highlightResult.title.value + ' ' +
+              '(' + hit._highlightResult.city_string.value + ')' +
+            '</div>' +
+          '</div>';
+        }
+      }
+    },
+    {
+      source: city_index,
+      displayKey: 'name',
+      name: 'cities',
+      templates: {
+        header: '<div class="tt-header">Cities</div>',
+        suggestion: function(hit) {
+          // render the hit
+          return '<div class="hit">' +
+            '<div class="name">' +
+              hit._highlightResult.name.value +
+            '</div>' +
+          '</div>';
+        }
+      }
+    }
+  )
+  .bind('typeahead:select', function(event, suggestion, dataset) {
+    if(dataset == "hackathons") {
+      Turbolinks.visit("/hackathon/" + suggestion.country_slug + "/" + suggestion.city_string_slug + "/" + suggestion.nice_slug);
+    }
+    if(dataset == "cities") {
+      Turbolinks.visit("/cities/" + suggestion.slug_name);
+    }
+  });
+});
