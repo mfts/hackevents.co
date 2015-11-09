@@ -12,6 +12,7 @@
  *
  *= require_self
  *= require font-awesome
+ *= require sweetalert
  */
 
 $body-bg:                       #FFFFFF;
@@ -28,6 +29,7 @@ $link-color:                    #F57C00;
 @import "main";
 @import "alternative";
 @import "cities";
+@import "footer";
 
 .avatar-image-line {
   background-image: image-url("line.png");

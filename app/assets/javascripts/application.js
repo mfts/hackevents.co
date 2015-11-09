@@ -23,6 +23,7 @@
 //= require handlebars
 //= require nprogress
 //= require algolia
+//= require sweetalert.min
 
 $(function() {
   $(".table-calendar p.event").hover(
@@ -38,7 +39,7 @@ $(function() {
 });
 
 $(function() {
-  $('span.category-bar-item[data-toggle="tooltip"], .sponsors a[data-toggle="tooltip"]').tooltip()
+  $('span.category-bar-item[data-toggle="tooltip"], .sponsors a[data-toggle="tooltip"], ul.social-links li a[data-toggle="tooltip"]').tooltip()
 });
 
 $(function() {
@@ -70,3 +71,24 @@ $(document).on('page:restore', function() {
 });
 
 NProgress.configure({ showSpinner: false });
+
+
+$(function() {
+  $("[data-behavior='add-hackathon']").on("click", function(event){
+    event.preventDefault()
+
+    swal({   
+      title: "Found a hackathon we have not listed yet?",   
+      text: "Submit it through our Typeform! Thank you :)",   
+      type: "info",   
+      showCancelButton: true,   
+      confirmButtonColor: "#DD6B55",
+      confirmButtonText: "Yes, add it!",   
+      closeOnConfirm: false
+    }, 
+      function(){   
+        url = "https://hackevents.typeform.com/to/WGEBKK";
+        $(open(url, '_blank'));
+    });
+  });
+});

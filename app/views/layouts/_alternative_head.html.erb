@@ -1,52 +1,69 @@
-<div id="logo">
-  <%= link_to root_path do %>
-    <span>
-      Hackevents
-    </span>
-  <% end %>
-</div>
-
-<div class="row">
-  <div id="head-actions">
-    <div class="col-sm-9" id="head-search-bar">
-      <% if @q.present? %>
-        <%= search_form_for @q do |f| %>
-          <div class="input-group">
-            <%= f.text_field :title_or_country_or_city_string_cont, :placeholder => "Search for hackathons, cities, and countries", :class => "form-control" %>
-            <span class="input-group-btn">
-              <%= f.submit "Search", class: "btn btn-primary" %>
-            </span>
-          </div>
-        <% end %>
-      <% end %>
+<!-- begin:navbar -->
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to image_tag("he_logo.png"), root_path, class: "navbar-brand" %>
     </div>
-    <div class="col-sm-3" style="text-align: right;">
-      <% if current_user %>
-        <div id="profile-button" class="btn-group">
-          <a class="profile-button-inner img-circle" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-image: url('<%= current_user.twitter_account.profile_image %>')">
-            Profile
-          </a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            <li><%= link_to "Profile", profile_path %></li>
-            <li><%= link_to "Settings", settings_profile_path %></li>
-            <% if current_user.admin? %>
-              <li><%= link_to "Admin", admin_root_path %></li>
-            <% else %>
-              <li>
-                <%= link_to "Add", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { confirm: "Found a hackathon we have not listed yet? Submit it through our Typeform! Thank you :)" }, :target => "_blank" %>
-              </li>
-            <% end %>
-            <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+     
+      <ul class="nav navbar-nav navbar-right navbar-collapse">
+        <li class="search">
+          <input class="typeahead" type="text" placeholder="Search for hackathons by name, city, ..." id="hackathon-search" spellcheck="false" />
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Find Hackathons <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="search.html">in Germany</a></li>
+            <li><a href="category.html">in USA</a></li>
+            <li><a href="search_list.html">in Europe</a></li>
+            <li><a href="category_list.html">Worldwide</a></li>
           </ul>
-        </div>
-      <% else %>
-        <div id="profile-button" class="btn-group" style="text-decoration:none;">
-          <%= link_to '/auth/twitter', method: 'get', class: "btn btn-primary btn-unhidden" do %>
-            <span class="fa fa-twitter" aria-hidden="true"></span>
-            Login
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Hackathon News</a></li>
+            <li><a href="#">Jobs</a></li>
+            <hr>
+            <li><a href="#">For Organizers</a></li>
+            <li><a href="#">For Partners</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </li>
+        <li>
+          <% if current_user %>
+            <div id="profile-button" class="signup btn-group">
+              <a class="profile-button-inner img-circle" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-image: url('<%= current_user.twitter_account.profile_image %>')">
+                Profile
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <li><%= link_to "Profile", profile_path %></li>
+                <li><%= link_to "Settings", settings_profile_path %></li>
+                <% if current_user.admin? %>
+                  <li><%= link_to "Admin", admin_root_path %></li>
+                <% else %>
+                  <li>
+                    <%= link_to "Add", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { confirm: "Found a hackathon we have not listed yet? Submit it through our Typeform! Thank you :)" }, :target => "_blank" %>
+                  </li>
+                <% end %>
+                <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+              </ul>
+            </div>
+          <% else %>
+            <div id="profile-button" class="signup btn-group" style="text-decoration:none;">
+              <%= link_to "Join the community", '/auth/twitter', method: 'get', class: "btn btn-lg btn-primary btn-unhidden" %>
+            </div>
           <% end %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container -->
+</nav>
+<!-- end:navbar -->
