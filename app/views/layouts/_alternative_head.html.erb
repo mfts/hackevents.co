@@ -14,27 +14,28 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
      
       <ul class="nav navbar-nav navbar-right navbar-collapse">
-        <li class="search">
+        <!-- <li class="search">
           <input class="typeahead" type="text" placeholder="Search for hackathons by name, city, ..." id="hackathon-search" spellcheck="false" />
-        </li>
+        </li> -->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Find Hackathons <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="search.html">in Germany</a></li>
-            <li><a href="category.html">in USA</a></li>
-            <li><a href="search_list.html">in Europe</a></li>
-            <li><a href="category_list.html">Worldwide</a></li>
+            <li><a href="/hackathon/germany">in Germany</a></li>
+            <li><a href="/hackathon/usa">in USA</a></li>
+            <li><a href="/hackathons/">in Europe</a></li>
+            <li><a href="/hackathons/">Worldwide</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="#">Hackathon News</a></li>
-            <li><a href="#">Jobs</a></li>
+            <li><%= link_to "Add your hackathon", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { behavior: 'add-hackathon' } %></li>
+            <!-- <li><a href="#">Jobs</a></li> -->
             <hr>
-            <li><a href="#">For Organizers</a></li>
-            <li><a href="#">For Partners</a></li>
-            <li><a href="#">Contact Us</a></li>
+            <li><a href="#learn-more" class="scroltop">For Organizers</a></li>
+            <li><a href="#learn-more" class="scroltop">For Partners</a></li>
+            <li><a href="#learn-more" class="scroltop">Contact Us</a></li>
           </ul>
         </li>
         <li>
@@ -63,7 +64,6 @@
           <% end %>
         </li>
       </ul>
-    </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
 </nav>
 <!-- end:navbar -->

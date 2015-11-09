@@ -30,6 +30,11 @@ $link-color:                    #F57C00;
 @import "alternative";
 @import "cities";
 @import "footer";
+@import "welcome";
+
+body{
+  font-family: 'Roboto', sans-serif;
+}
 
 .avatar-image-line {
   background-image: image-url("line.png");
