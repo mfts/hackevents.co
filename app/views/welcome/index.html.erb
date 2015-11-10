@@ -178,21 +178,28 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-xs-12">
-                  <h3>Get a rundown of the best hackathons, each monday</h3>
+                  <h3>Get a rundown of the best hackathons, each Tuesday</h3>
                 </div>
-                <div class="col-md-6 col-md-offset-3 col-xs-12">
-                  <div class="input-group">
-                    <input type="text" class="form-control input-lg" placeholder="Enter your mail">
-                    <span class="input-group-btn">
-                      <button class="btn btn-warning btn-lg" type="submit"><i class="fa fa-envelope"></i> Subscribe</button>
-                    </span>
+                <form action="//hackevents.us11.list-manage.com/subscribe/post-json?u=12d2135049d488583f81df765&amp;id=829cf456f5&amp;c=?" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                  <div class="col-md-6 col-md-offset-3 col-xs-12">
+                    <div class="input-group">
+                      <input type="email" class="form-control input-lg" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter your email address" required>
+                      <% if current_user %>
+                        <input type="hidden" id="mce-UID" name="UID" value="<%= current_user.id %>">
+                        <input type="hidden" id="mce-FNAME" name="FNAME" value="<%= current_user.first_name %>">
+                        <input type="hidden" id="mce-LNAME" name="LNAME" value="<%= current_user.last_name %>">
+                      <% end %>
+                      <div style="position: absolute; left: -5000px;"><input type="text" name="b_12d2135049d488583f81df765_829cf456f5" tabindex="-1" value=""></div>
+                      <span class="input-group-btn">
+                        <input class="btn btn-primary btn-lg" id="mc-embedded-subscribe" type="submit"><i class="fa fa-envelope"></i> Subscribe</button>
+                      </span>
+                    </div>
                   </div>
-                </div>
+                </form>
               </div>
             </div>
           </div>
           <!-- end:subscribe -->
-
 
 
           <!-- begin: featured -->
@@ -286,18 +293,20 @@
             <div class="container">
               <div class="row">
                 <div class="col-md-10 col-md-offset-1 col-xs-12">
-                  <h3>Sign up now and persoalize your hackathon search<br>
-                    <small>Hackevents built a hackathon recomenndation engine to provide you with even better and more relevant events</small></h3>
-                  </div>
-                  <div class="col-md-6 col-md-offset-3 col-xs-12">
-                    <a href"#" class="btn btn-default btn-lg col-xs-6">Find out more</a>
-                    <% unless current_user %>
-                      <%= link_to "Join the community", '/auth/twitter', method: 'get', class: "btn btn-primary btn-lg col-xs-6" %>
-                    <% else %>
-                      <a href"#" class="btn btn-primary btn-lg col-xs-6">Coming soon...</a>
-                    <% end %>
-                  </div>
+                  <h3>Sign up now and personalize your hackathon search
+                    <br>
+                    <small>Hackevents built a hackathon recomenndation engine to provide you with even better and more relevant events</small>
+                  </h3>
+                </div>
+                <div class="col-md-6 col-md-offset-3 col-xs-12">
+                  <a href"#" class="btn btn-default btn-lg col-xs-6">Find out more</a>
+                  <% unless current_user %>
+                    <%= link_to "Join the community", '/auth/twitter', method: 'get', class: "btn btn-primary btn-lg col-xs-6" %>
+                  <% else %>
+                    <a href"#" class="btn btn-primary btn-lg col-xs-6">Coming soon...</a>
+                  <% end %>
                 </div>
               </div>
             </div>
-            <!-- end: Click to Action -->
+          </div>
+
