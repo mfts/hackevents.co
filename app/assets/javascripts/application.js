@@ -92,3 +92,41 @@ $(function() {
     });
   });
 });
+
+
+$(function() {
+  var $form = $('#mc-embedded-subscribe-form');
+ 
+  $('#mc-embedded-subscribe').on('click', function(event) {
+    if(event) event.preventDefault();
+    register($form);
+  });
+});
+
+function register($form) {
+  $.ajax({
+    type: $form.attr('method'),
+    url: $form.attr('action'),
+    data: $form.serialize(),
+    cache       : false,
+    dataType    : 'json',
+    contentType: "application/json; charset=utf-8",
+    error       : function(err) { swal("Oops...", "Something went wrong!", "error"); },
+    success     : function(data) {
+      
+      if (data.result != "success") {
+        var message = data.msg.substring(4);
+        swal("Oops...", message, "error");
+      } 
+ 
+      else {
+        var message = data.msg;
+        swal({
+          title: "Success!",   
+          text: '<span style="success">'+message+'</span>',   
+          html: true,
+          type: 'success' });
+      }
+    }
+  });
+}
