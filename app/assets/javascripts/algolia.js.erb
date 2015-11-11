@@ -35,7 +35,9 @@ $(document).on("ready page:load", function() {
       source: city_index,
       displayKey: 'name',
       name: 'cities',
+
       templates: {
+        footer: '<div class="pull-right" style="margin-top:10px;">Powered by <img style="width:5em;" src="<%= image_url("algolia.jpg") %>"/></div>',
         header: '<div class="tt-header">Cities</div>',
         suggestion: function(hit) {
           // render the hit
