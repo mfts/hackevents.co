@@ -12,4 +12,7 @@ class PagesController < ApplicationController
     @team = User.where(team: true)
     @supporters = User.where(support: true)
   end
+
+  def jobs
+  end
 end
