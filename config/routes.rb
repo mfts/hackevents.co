@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'imprint', to: 'pages#imprint', as: 'imprint'
   get 'about', to: 'pages#aboutpage', as: 'about'
+  get 'jobs', to: 'pages#jobs', as: 'jobs'
   get 'hackathon/:country/:city_string/:name', to: 'hackathons#show', as: :hackathon_by_id
   get 'hackathon/:country', to: 'hackathons#index', as: :hackathons_by_country
   get 'hackathon/:country/:city_string', to: 'hackathons#index', as: :hackathons_by_city_string

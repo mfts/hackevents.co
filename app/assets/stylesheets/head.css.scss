@@ -17,7 +17,13 @@
 .twitter-typeahead .tt-dropdown-menu .tt-suggestion em { font-weight: bold; font-style: normal; }
 
 .dropdown-menu-typeahead .suggestion { cursor: pointer; margin-left: 15px; margin-right: 20px; }
-.dropdown-menu-typeahead .suggestion:hover { background-color: $brand-primary; }
+.dropdown-menu-typeahead {
+  .suggestion {
+    &:hover, &.cursor { 
+    background-color: $brand-primary; 
+    }
+  }
+}
 .dropdown-menu-typeahead .tt-header { font-weight: bold; margin-left: 5px; }
 
 

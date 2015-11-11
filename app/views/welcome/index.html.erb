@@ -17,7 +17,7 @@
               <div class="col-md-9 col-sm-12 col-xs-12">
                 <input class="typeahead input-lg" type="text" placeholder="Search for hackathons by name, city, ..." id="hackathon-search" spellcheck="false" />
               </div>
-              <div class="col-md-3 col-sm-12"><input type="submit" name="submit" value="Search" class="btn btn-lg btn-warning btn-block">
+              <div class="col-md-3 col-sm-12"><input type="submit" name="submit" value="Search" class="btn btn-lg btn-primary btn-block">
               </div>
             </form>
           </div>
@@ -191,7 +191,7 @@
                       <% end %>
                       <div style="position: absolute; left: -5000px;"><input type="text" name="b_12d2135049d488583f81df765_829cf456f5" tabindex="-1" value=""></div>
                       <span class="input-group-btn">
-                        <input class="btn btn-primary btn-lg" id="mc-embedded-subscribe" type="submit"><i class="fa fa-envelope"></i> Subscribe</button>
+                        <input class="btn btn-primary btn-lg" id="mc-embedded-subscribe" type="submit"><i class="fa fa-envelope"></i> Subscribe</input>
                       </span>
                     </div>
                   </div>
@@ -299,11 +299,11 @@
                   </h3>
                 </div>
                 <div class="col-md-6 col-md-offset-3 col-xs-12">
-                  <a href"#" class="btn btn-default btn-lg col-xs-6">Find out more</a>
                   <% unless current_user %>
+                    <a href"#" class="btn btn-default btn-lg col-xs-6">Find out more</a>
                     <%= link_to "Join the community", '/auth/twitter', method: 'get', class: "btn btn-primary btn-lg col-xs-6" %>
                   <% else %>
-                    <a href"#" class="btn btn-primary btn-lg col-xs-6">Coming soon...</a>
+                    <a href"#" class="btn btn-default btn-lg col-lg-6 col-lg-offset-3 col-xs-12">Find out more</a>
                   <% end %>
                 </div>
               </div>

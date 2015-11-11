@@ -5,7 +5,7 @@
 
 <div id="main">
   <div id="head">
-    <%= render :partial => "layouts/head" %>
+    <%= render :partial => "layouts/alternative_head", locals: { page: "regular" } %>
   </div>
   <%= render :partial => "layouts/flash_messages" %>
   <%= yield %>
