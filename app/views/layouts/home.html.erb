@@ -14,7 +14,9 @@
     <% twitter site: '@Hackevents', creator: '@Hackevents' %>
     <%= metamagic %>
     
-    <script src="//load.sumome.com/" data-sumo-site-id="6b080b6a452361d2647c4592284de0107abb0dcee97007e30fe3f3e525c3dd5f" async="async"></script>
+    <% if Rails.env.production? %>
+      <script src="//load.sumome.com/" data-sumo-site-id="6b080b6a452361d2647c4592284de0107abb0dcee97007e30fe3f3e525c3dd5f" async="async"></script>
+    <% end %>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -22,10 +24,11 @@
   </head>
   <body class="sidebar-hidden<%#= sidebar_visible? ? "sidebar-visible" : "sidebar-hidden" %>">
     
-    <%= render partial: "layouts/home_main" %>
+    <%= render partial: "layouts/home_main", locals: { page: "home" } %>
     
     <% if Rails.env.production? %>
     <%= render partial: "layouts/scripts" %>
     <% end %>
   </body>
+  <%= render :partial => "layouts/footer" %>
 </html>

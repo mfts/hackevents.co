@@ -24,7 +24,6 @@ class TwitterAccountsController < ApplicationController
         cookies.signed[:user_id] = { value: @user.id, expires: 1.year.from_now }
         redirect_to root_path
       end
-    
     end
   end
 

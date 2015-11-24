@@ -1,0 +1,19 @@
+<div class="city-header-image" style="background-image:url('http://images.hackevents.de/cities/default.png');height:250px;line-height:250px;">
+  <span>EUROPE</span>
+</div>
+
+<div class="container">
+  <div class="col-xs-6 share-city">
+    <span>
+      <%= link_to "Share on Twitter", "https://twitter.com/intent/tweet?text=%F0%9F%93%A2%F0%9F%92%AA%20#{ @hackathons.count }%20upcoming%20%23hackathon%20in%20Europe%20#{ request.url }%20on%20%40Hackevents!%20%F0%9F%94%A5" .html_safe, class: "btn btn-twitter", target: "_blank" %>
+    </span>
+  </div>
+</div>
+
+<div class="container hackathons" style="margin-top:30px;">
+  <% @hackathons.each do |hackathon| %>
+
+    <%= render partial: 'hackathons/hackathon', locals: { hackathon: hackathon, membership_hackathon_ids: @membership_hackathon_ids } %>
+
+  <% end %>
+</div>

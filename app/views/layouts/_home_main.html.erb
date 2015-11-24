@@ -1,8 +1,6 @@
 <div id="main-cover" style="padding:0;">
   <div id="head" class="head-cover" style="margin-bottom:0;">
-    <%= render :partial => "layouts/alternative_head", locals: { page: "home" } %>
+    <%= render :partial => "layouts/alternative_head", locals: { page: page } %>
   </div>
   <%= yield %>
-
 </div>
-<%= render :partial => "layouts/footer" %>
