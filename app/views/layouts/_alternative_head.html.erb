@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
      
       <ul class="nav navbar-nav navbar-right navbar-collapse collapse">
-        <% if page == "regular" %>
+        <% unless page == "home" %>
           <li class="search">
             <input class="typeahead" type="text" placeholder="Search for hackathons by name, city, ..." id="hackathon-search" spellcheck="false" />
           </li>
@@ -24,7 +24,7 @@
           <ul class="dropdown-menu">
             <li><a href="/hackathon/germany">in Germany</a></li>
             <li><a href="/hackathon/usa">in USA</a></li>
-            <li><a href="/hackathons/">in Europe</a></li>
+            <li><a href="/hackathons/europe">in Europe</a></li>
             <li><a href="/hackathons/">Worldwide</a></li>
           </ul>
         </li>

@@ -44,6 +44,7 @@ gem 'font-awesome-rails'
 
 gem 'geocoder'
 gem 'algoliasearch-rails'
+gem 'countries'
 
 
 group :development, :test do
