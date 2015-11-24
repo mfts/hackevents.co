@@ -15,4 +15,11 @@ class PagesController < ApplicationController
 
   def jobs
   end
+
+  def europe
+    @hackathons = Hackathon.find_in_region("Europe").order(:date_start)
+    respond_to do |format|
+      format.html {render :layout => 'layouts/city'}
+    end
+  end
 end

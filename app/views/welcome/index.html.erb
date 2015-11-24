@@ -36,7 +36,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12">
-        <h2>Upcoming hackathons in the next 30 days<small>Find events from 18. November to 18. December 2015</small></h2>
+        <h2>Upcoming hackathons in the next 30 days<small>Find events from <%= Time.zone.now.strftime('%d. %B') %> to <%= (Time.zone.now + 30.days).strftime('%d. %B %Y') %></small></h2>
       </div>
     </div>
     <div class="row">
@@ -46,14 +46,12 @@
           <div class="days-content">
             <h3>Hackathons in Germany
               <br>
-              <small>from 18. - 18. December 2015</small></h3> 
+              <small>from <%= Time.zone.now.strftime('%d. %b') %> – <%= (Time.zone.now + 30.days).strftime('%d. %b %Y') %></small></h3> 
               <hr> 
               <ul>
-                <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
-                <li><a href="#">RadioHack</a></li>
-                <li><a href="#">Campus Hackathon München</a></li>
-                <li><a href="#">Lufthansa Travelhack</a></li>
-                <li><a href="#">Lufthansa Travelhack</a></li>
+                <% @germany.limit(6).each do |hackathon| %>
+                  <li><%= link_to hackathon.title, nice_hackathon_path(hackathon) %></li>
+                <% end %>
               </ul> 
               <hr>
               <a href="/hackathon/germany" class="btn btn-default btn col-lg-12 col-xs-12 days-more">See more in Germany</a> 
@@ -68,14 +66,12 @@
             <div class="days-content">
               <h3>Hackathons in USA
                 <br>
-                <small>from 18. - 28. November 2015</small></h3>  
+                <small>from <%= Time.zone.now.strftime('%d. %b') %> – <%= (Time.zone.now + 30.days).strftime('%d. %b %Y') %></small></h3>  
                 <hr>
                 <ul>
-                  <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
-                  <li><a href="#">RadioHack</a></li>
-                  <li><a href="#">Campus Hackathon München</a></li>
-                  <li><a href="#">Lufthansa Travelhack</a></li>
-                  <li><a href="#">Lufthansa Travelhack</a></li>
+                  <% @usa.limit(6).each do |hackathon| %>
+                    <li><%= link_to hackathon.title, nice_hackathon_path(hackathon) %></li>
+                  <% end %>
                 </ul> 
                 <hr>
                 <a href="/hackathon/usa" class="btn btn-default col-lg-12 col-xs-12 days-more">See more in USA</a> 
@@ -90,40 +86,39 @@
               <div class="days-content">
                 <h3>Hackathons in Europe
                   <br>
-                  <small>from 18. - 28. November 2015</small></h3>  
-                  <hr>
-                  <ul>
-                    <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
-                    <li><a href="#">RadioHack</a></li>
-                    <li><a href="#">Campus Hackathon München</a></li>
-                    <li><a href="#">Lufthansa Travelhack</a></li>
-                    <li><a href="#">Lufthansa Travelhack</a></li>
-                  </ul> 
-                  <hr>
-                  <a href="/hackathons" class="btn btn-default col-lg-12 col-xs-12 days-more">See more in Europe</a> 
-                </div>
+                  <small>from <%= Time.zone.now.strftime('%d. %b') %> – <%= (Time.zone.now + 30.days).strftime('%d. %b %Y') %></small>
+                </h3>  
+                <hr>
+                <ul>
+                  <% @europe.limit(6).each do |hackathon| %>
+                    <li><%= link_to hackathon.title, nice_hackathon_path(hackathon) %></li>
+                  <% end %>
+                </ul>
+                <hr>
+                <a href="/hackathons/europe" class="btn btn-default col-lg-12 col-xs-12 days-more">See more in Europe</a> 
               </div>
             </div>
-            <!-- break -->
-            <!-- Worldwide --> 
-            <div class="col-md-3 col-xs-12">
-              <div class="days-container">
-                <div class="days-content">
-                  <h3>Worldwide hackathons<br><small>
-                    from 18. - 28. November 2015</small></h3> 
-                    <hr>
-                    <ul>
-                      <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
-                      <li><a href="#">RadioHack</a></li>
-                      <li><a href="#">Campus Hackathon München</a></li>
-                      <li><a href="#">Lufthansa Travelhack</a></li>
-                      <li><a href="#">Lufthansa Travelhack</a></li>
-                    </ul> 
-                    <hr>
-                    <a href="/hackathons" class="btn btn-default col-lg-12 col-xs-12 days-more">See more worldwide</a> 
-                  </div>
-                </div>
+          </div>
+          <!-- break -->
+          <!-- Worldwide --> 
+          <div class="col-md-3 col-xs-12">
+            <div class="days-container">
+              <div class="days-content">
+                <h3>Worldwide hackathons
+                  <br>
+                  <small>from <%= Time.zone.now.strftime('%d. %B') %> – <%= (Time.zone.now + 30.days).strftime('%d. %B %Y') %></small>
+                </h3> 
+                <hr>
+                <ul>
+                  <% @worldwide.limit(6).each do |hackathon| %>
+                    <li><%= link_to hackathon.title, nice_hackathon_path(hackathon) %></li>
+                  <% end %>
+                </ul> 
+                <hr>
+                <a href="/hackathons" class="btn btn-default col-lg-12 col-xs-12 days-more">See more worldwide</a> 
               </div>
+            </div>
+          </div>
               <!-- break -->
             </div>
             <p class="days-all">Feel free to go through our database of hackathons, by just clicking the following button.</p>
@@ -239,16 +234,9 @@
                       <h3>Top 10 Featured Hackathons</h3>  
                       <hr>
                       <ul>
-                        <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
-                        <li><a href="#">RadioHack</a></li>
-                        <li><a href="#">Campus Hackathon München</a></li>
-                        <li><a href="#">Lufthansa Travelhack</a></li>
-                        <li><a href="#">Lufthansa Travelhack</a></li>
-                        <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
-                        <li><a href="#">RadioHack</a></li>
-                        <li><a href="#">Campus Hackathon München</a></li>
-                        <li><a href="#">Lufthansa Travelhack</a></li>
-                        <li><a href="#">Lufthansa Travelhack</a></li>
+                        <% @featured.limit(10).each do |hackathon| %>
+                          <li><%= link_to hackathon.title, nice_hackathon_path(hackathon) %></li>
+                        <% end %>
                       </ul> 
                     </div>
                   </div>
@@ -261,16 +249,9 @@
                       <h3>Top 10 Latest Hackathons</h3> 
                       <hr> 
                       <ul>
-                        <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
-                        <li><a href="#">RadioHack</a></li>
-                        <li><a href="#">Campus Hackathon München</a></li>
-                        <li><a href="#">Lufthansa Travelhack</a></li>
-                        <li><a href="#">Lufthansa Travelhack</a></li>
-                        <li><a href="#">Hypovereinsbank Appathon 2015</a></li>
-                        <li><a href="#">RadioHack</a></li>
-                        <li><a href="#">Campus Hackathon München</a></li>
-                        <li><a href="#">Lufthansa Travelhack</a></li>
-                        <li><a href="#">Lufthansa Travelhack</a></li>
+                        <% @latest.each do |hackathon| %>
+                          <li><%= link_to hackathon.title, nice_hackathon_path(hackathon) %></li>
+                        <% end %>
                       </ul> 
                     </div>
                   </div>
@@ -282,7 +263,7 @@
                 <p>The search engine Hackevents finds the best hackathon for you in Germany, USA, Europe and worldwide.</p>
                 <p>To offer you maximum choice with minimum search time, we are crawling the entire web for hackathons. So far our software has crawled more than 17 gigabyte and we listed more than 1000 hackathons on Hackevents since 2014. Moreover we provide a hackathon recommendation tool for you to find the most relevant hackathon for you. <a href="#">Join our community</a> and have a try.</p>
                 <p>In the future we will improve Hackevents to offer you an even better service.</p>
-                <p>Hackathons by region: <a href="#">Germany</a> - <a href="#">United States</a> - <a href="#">Europe</a> - <a href="#">Worldwide</a></p>
+                <p>Hackathons by region: <a href="/hackathon/germany">Germany</a> - <a href="/hackathon/usa">United States</a> - <a href="/hackathons/europe">Europe</a> - <a href="/hackathons">Worldwide</a></p>
               </div>
             </div>
           </div>

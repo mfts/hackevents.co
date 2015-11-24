@@ -21,10 +21,11 @@
   </head>
   <body class="sidebar-hidden<%#= sidebar_visible? ? "sidebar-visible" : "sidebar-hidden" %>">
     
-    <%= render partial: "layouts/default_main" %>
+    <%= render partial: "layouts/default_main", locals: { page: "home" } %>
     
     <% if Rails.env.production? %>
     <%= render partial: "layouts/scripts" %>
     <% end %>
   </body>
+  <%= render :partial => "layouts/footer" %>
 </html>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'hackathon/:country/:city_string/:name', to: 'hackathons#show', as: :hackathon_by_id
   get 'hackathon/:country', to: 'hackathons#index', as: :hackathons_by_country
   get 'hackathon/:country/:city_string', to: 'hackathons#index', as: :hackathons_by_city_string
+  get 'hackathons/europe', to: 'pages#europe', as: :hackathons_in_europe
   
   get '@:username', to: 'users#show', as: :user
   
