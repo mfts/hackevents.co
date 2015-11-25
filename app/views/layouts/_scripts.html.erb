@@ -18,36 +18,62 @@ analytics.identify('<%= current_user.id %>', {
   email_confirmed: '<%= current_user.email_confirmed %>',
   user_id: '<%= current_user.id %>'
 });
-analytics.track('Logged In');
 </script>
 <% end %>
 
 <% if @hackathon.present? %>
 <script type="text/javascript">
   var link = document.getElementById('twitter-share');
-  analytics.trackLink(link, 'Shared on Twitter', {
+  analytics.trackLink(link, 'Hackathon Shared', {
     hackathon_name: '<%= @hackathon.title %>',
     hackathon_id: '<%= @hackathon.id %>',
     hackathon_country: '<%= @hackathon.country %>',
-    hackathon_city: '<%= @hackathon.city %>',
-    hackathon_favs: '<%= @hackathon.users.count %>'
+    hackathon_city: '<%= @hackathon.city || @hackathon.city_string %>',
+    hackathon_favs: '<%= @hackathon.users.count %>',
+    logged_in: '<%= logged_in? ? "yes" : "no" %>',
+    admin: '<%= logged_in? && current_user.admin? ? "yes" : "no" %>'
   });
 </script>
 
 <script type="text/javascript">
   var link = document.getElementById('view-website');
-  analytics.trackLink(link, 'Clicked on Website Link', {
+  analytics.trackLink(link, 'Hackathon URL Visited', {
     hackathon_name: '<%= @hackathon.title %>',
     hackathon_id: '<%= @hackathon.id %>',
     hackathon_country: '<%= @hackathon.country %>',
-    hackathon_city: '<%= @hackathon.city %>',
-    hackathon_favs: '<%= @hackathon.users.count %>'
+    hackathon_city: '<%= @hackathon.city || @hackathon.city_string %>',
+    hackathon_favs: '<%= @hackathon.users.count %>',
+    logged_in: '<%= logged_in? ? "yes" : "no" %>',
+    admin: '<%= logged_in? && current_user.admin? ? "yes" : "no" %>'
+  });
+</script>
+<% end %>
+
+<% if @city.present? %>
+<script type="text/javascript">
+  var link = document.getElementById('twitter-city-share');
+  analytics.trackLink(link, 'City Shared', {
+    city_name: '<%= @city.name %>',
+    city_id: '<%= @city.id %>',
+    city_hackathon_current_count: '<%= @city.hackathon_count %>',
+    city_hackathon_total_count: '<%= @city.hackathon_total_count %>',
+    logged_in: '<%= logged_in? ? "yes" : "no" %>',
+    admin: '<%= logged_in? && current_user.admin? ? "yes" : "no" %>'
   });
 </script>
 <% end %>
 
 <script type="text/javascript">
-  var link = document.getElementById('about-page');
-  analytics.trackLink(link, 'Clicked on About Page');
+  var link = document.getElementById('twitter-registration');
+  analytics.trackLink(link, 'Account Created', {
+    referrer_url: '<%= request.referrer %>',
+    referrer_utm_source: '<%= params[:utm_source] %>',
+    referrer_utm_campaign: '<%= params[:utm_campaign] %>',
+    referrer_utm_medium: '<%= params[:utm_medium] %>'
+  });
 </script>
 
+<script type="text/javascript">
+  var link = document.getElementById('about-page');
+  analytics.trackLink(link, 'About Page Clicked');
+</script>
