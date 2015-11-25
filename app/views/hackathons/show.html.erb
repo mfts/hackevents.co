@@ -15,35 +15,30 @@
 <% if @hackathon.categories.present? %>
   <% twitter image: image_url("categories/#{@hackathon.categories.first.name.parameterize}.png") %>
 <% end %>
-<%
-twitter card: 'summary_large_image',
-        title: @hackathon.title
-%>
+<% twitter card: 'summary_large_image', title: @hackathon.title %>
 
 
 <div class="page-header">
   <div>
-  <h1>
-  <%= @hackathon.title %>
-  <small>
-    <% if @hackathon.city %>
-      <%= link_to @hackathon.city, city_path(@hackathon.city) %>,
-    <% else %>
-    <%= link_to @hackathon.city_string, hackathons_by_city_string_path(country: @hackathon.country.parameterize, city_string: @hackathon.city_string.parameterize) %>,
-    <% end %>
-    <%= link_to @hackathon.country, hackathons_by_country_path(country: @hackathon.country.parameterize) %>
-  </small>
-
-</h1>
-<p class="categories-list">
-  <% @hackathon.categories.each do |c| %>
-    <span class="categories-list-item" style="background-color: #<%= c.primary_hex_color %>;">
-      <%= c.name %>
-    </span>
-  <% end %>
-</p>
-</div>
-
+    <h1>
+      <%= @hackathon.title %>
+      <small>
+        <% if @hackathon.city %>
+          <%= link_to @hackathon.city, city_path(@hackathon.city) %>,
+        <% else %>
+          <%= link_to @hackathon.city_string, hackathons_by_city_string_path(country: @hackathon.country.parameterize, city_string: @hackathon.city_string.parameterize) %>,
+        <% end %>
+        <%= link_to @hackathon.country, hackathons_by_country_path(country: @hackathon.country.parameterize) %>
+      </small>
+    </h1>
+    <p class="categories-list">
+      <% @hackathon.categories.each do |c| %>
+      <span class="categories-list-item" style="background-color: #<%= c.primary_hex_color %>;">
+        <%= c.name %>
+      </span>
+      <% end %>
+    </p>
+  </div>
 </div>
 
 
@@ -57,7 +52,7 @@ twitter card: 'summary_large_image',
   </strong>
 </p>
 
-<p>
+<div class="row">
   <% if logged_in? %>
     <% if current_user.following_hackathon?(@hackathon) %>
       <%= link_to unfollow_hackathon_path(@hackathon), class: "btn btn-primary", method: "post" do %>
@@ -71,52 +66,74 @@ twitter card: 'summary_large_image',
   <% end %>
   <%= link_to "Visit Website", "#{@hackathon.url}?ref=hackevents", class: "btn btn-primary", :id => "view-website", target: "_blank" %>
   <%= link_to "Invite your friends", "https://twitter.com/intent/tweet?text=Join%20me%20at%20#{ @hackathon.title }%20%23hackathon%20in%20#{ @hackathon.city_string },%20#{ @hackathon.country}%20#{ request.url }%20on%20%40Hackevents", class: "btn btn-twitter", :id => "twitter-share", target: "_blank" %>
-</p>
+  <%= link_to "Edit Hackathon", render_edit_hackathon_path(@hackathon), :remote => true, class: "btn btn-default" %>
+</div>
 
 <hr />
+<div class="row">
+  <h3>Description/Wiki</h3>
+  <div id="edit-hackathon">
+    <% unless @hackathon.description.present? %>
+      <p>You know more about this hackathon?
+        <%= link_to "Edit Hackathon", render_edit_hackathon_path(@hackathon), :remote => true, class: "btn btn-default" %>
+      </p>
+    <% else %>
+      <%= markdown(@hackathon.description) %>
+    <% end %>
+  </div>
+  <hr />
+</div>
 
 
 <% if @hackathon.users.present? %>
-<h3>Favorites</h3>
-  <div class="posts">
+  <div class="row">
+    <h3>Contributors</h3>
+    <div class="posts">
       <ul class="people">
         <% @hackathon.users.each do |u| %>
-          <li class="people-person col-md-4">
-            <%= render partial: "users/user", locals: { u: u } %>
-          </li>
+        <li class="people-person col-md-4">
+          <%= render partial: "users/user", locals: { u: u } %>
+        </li>
         <% end %>
       </ul>
     </div>
-  <hr />
+    <hr />
+  </div>
 <% end %>
 
+
 <% if @hackathon.sponsors.present? %>
-<h3>Partners</h3>
-  <ul class="sponsors">
-    <% @hackathon.sponsors.each do |s| %>
+  <div class="row">
+    <h3>Partners</h3>
+    <ul class="sponsors">
+      <% @hackathon.sponsors.each do |s| %>
       <span>
         <%= link_to image_tag( s.twitter_image_url, class: "img-rounded", size: "120x120"), "http://www.twitter.com/#{s.twitter_handle}", :target => "_blank", :data => { :toggle => "tooltip", :placement => "top" }, :title => s.twitter_name %>
       </span>
-    <% end %>
-  </ul>
-  <hr />
+      <% end %>
+    </ul>
+    <hr />
+  </div>
 <% end %>
 
 
-<!-- <div id="map" style='width: 100%; height: 300px;'></div> -->
-<div class="hackathon-location">
-  <div class="hackathon-location-address">
-    <h3>Location</h3>
-    <address>
-      <strong><%= @hackathon.venue %></strong><br />
-      <%= @hackathon.address %>
-    </address>
-    <p>
-      <%= link_to "<i class='glyphicon glyphicon-map-marker'></i>&nbsp; Get Directions" .html_safe, "https://maps.google.com?daddr=#{ @hackathon.address }", class: "btn btn-default", target: "_blank" %>
-    </p>
-  </div>
-  <div class="hackathon-location-map">
-    <%= image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{ @hackathon.address }&zoom=15&size=600x300&maptype=roadmap&markers=color:color=0xF57C00%7C#{ @hackathon.address }") %>
+
+<div class="row">
+  <!-- <div id="map" style='width: 100%; height: 300px;'></div> -->
+  <div class="hackathon-location">
+    <div class="hackathon-location-address">
+      <h3>Location</h3>
+      <address>
+        <strong><%= @hackathon.venue %></strong><br />
+        <%= @hackathon.address %>
+      </address>
+      <p>
+        <%= link_to "<i class='glyphicon glyphicon-map-marker'></i>&nbsp; Get Directions" .html_safe, "https://maps.google.com?daddr=#{ @hackathon.address }", class: "btn btn-default", target: "_blank" %>
+      </p>
+    </div>
+    <div class="hackathon-location-map">
+      <%= image_tag("https://maps.googleapis.com/maps/api/staticmap?center=#{ @hackathon.address }&zoom=15&size=600x300&maptype=roadmap&markers=color:color=0xF57C00%7C#{ @hackathon.address }") %>
+    </div>
   </div>
 </div>
 
@@ -124,47 +141,47 @@ twitter card: 'summary_large_image',
 <hr />
 
 <% if logged_in? %>
-  <p>
-    <%= mail_to 'michael@hackevents.co', 'Report Hackathon', subject: "Error with #{@hackathon.title}" %>
-    <br />
-    Send us an email at <%= mail_to 'michael@hackevents.co', 'Report Hackathon', subject: "Error with #{@hackathon.title}" %> if there is wrong information about this hackathon.
-  </p>
+<p>
+  <%= mail_to 'michael@hackevents.co', 'Report Hackathon', subject: "Error with #{@hackathon.title}" %>
+  <br />
+  Send us an email at <%= mail_to 'michael@hackevents.co', 'Report Hackathon', subject: "Error with #{@hackathon.title}" %> if there is wrong information about this hackathon.
+</p>
 <% else %>
-  <p>
-    Please <%= link_to "log in", root_path, notice: "Please continue to login with Twitter." %> to report an error in the hackathon.
-  </p>
+<p>
+  Please <%= link_to "log in", root_path, notice: "Please continue to login with Twitter." %> to report an error in the hackathon.
+</p>
 <% end %>
 
 
 
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3.exp&sensor=false"></script>
 <script class="hide-on-med-and-down" type="text/javascript">
-  var geocoder;
-  var map;
-  var address;
+var geocoder;
+var map;
+var address;
 
-  function initialize() {
-    var latlng     = new google.maps.LatLng(48.152015087280915, 11.576017141342163);
-    var mapOptions = {
-      zoom:   12,
-      center: latlng
-    }
-    map       = new google.maps.Map(document.getElementById('map'), mapOptions);
-    geocoder  = new google.maps.Geocoder();
-    address   = "<%= @hackathon.address %>";
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-        var marker = new google.maps.Marker({
-            map: map,
-            position: results[0].geometry.location
-        });
-      } else {
-        alert('Geocode was not successful for the following reason: ' + status);
-      }
-    });
+function initialize() {
+  var latlng     = new google.maps.LatLng(48.152015087280915, 11.576017141342163);
+  var mapOptions = {
+    zoom:   12,
+    center: latlng
   }
-  google.maps.event.addDomListener(window, 'load', initialize);
+  map       = new google.maps.Map(document.getElementById('map'), mapOptions);
+  geocoder  = new google.maps.Geocoder();
+  address   = "<%= @hackathon.address %>";
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location
+      });
+    } else {
+      alert('Geocode was not successful for the following reason: ' + status);
+    }
+  });
+}
+google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 

@@ -1,6 +1,6 @@
 class HackathonsController < ApplicationController
-  before_action :set_hackathon, only: [:show, :follow, :unfollow]
-  before_action :require_user,  only: [:follow, :unfollow]
+  before_action :set_hackathon, only: [:show, :render_edit, :update, :follow, :unfollow]
+  before_action :require_user,  only: [:update, :render_edit, :follow, :unfollow]
 
   layout "layouts/application"
   
@@ -19,14 +19,43 @@ class HackathonsController < ApplicationController
   def show
   end
 
+  def render_edit
+    @editing = "on"
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def update
+    @editing = "off"
+    unless current_user.following_hackathon?(@hackathon)
+      current_user.follow_hackathon(@hackathon)
+    end
+    respond_to do |format|
+      if @hackathon.update(hackathon_params)
+        format.html { redirect_to @hackathon, notice: 'The hackathon has successfully been updated.' }
+        format.json { render :show, status: :ok, location: @hackathon }
+      else
+        format.html { render :edit, error: 'Something is wrong.' }
+        format.json { render json: @hackathon.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def follow
     current_user.follow_hackathon(@hackathon)
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
 
   def unfollow
     current_user.unfollow_hackathon(@hackathon)
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
   
   def show_sidebar
@@ -47,6 +76,10 @@ class HackathonsController < ApplicationController
     else
       @hackathon = Hackathon.find(params[:id] || params[:name].to_i)
     end
+  end
+
+  def hackathon_params
+    params.require(:hackathon).permit(:description)
   end
 end
 

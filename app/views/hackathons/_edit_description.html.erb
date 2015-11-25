@@ -1,0 +1,26 @@
+<% if @editing == "on" %>
+  <%= form_for(hackathon) do |f| %>
+    <div class="form-group col-md-12">
+      <div class="col-md-7">
+        <%= f.text_area :description, rows: 15, class: "form-control input" %>
+      </div>
+      <div class="col-md-4">
+        <div class="panel">
+          <p>We've got <%= link_to "Markdown", "http://daringfireball.net/projects/markdown/syntax", target: "_blank" %>. Here are a few hints:</p>
+          <pre style="padding: 0 !important;">
+            ### Header 3
+            **bold**
+            _italics_
+
+            > Block quote
+            - This is a &lt;li&gt; item
+
+            [link](http://foo.bar)
+            ![Alt text](/path/to/img.jpg)
+          </pre>
+        </div>
+      </div>
+    </div>
+    <div style="margin-left:30px;"><%= f.submit "Save Changes", class: "btn btn-primary" %></div>
+  <% end %>
+<% end %>
