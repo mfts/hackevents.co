@@ -61,7 +61,7 @@
             </div>
           <% else %>
             <div id="profile-button" class="signup btn-group" style="text-decoration:none;">
-              <%= link_to "Join the community", '/auth/twitter', method: 'get', class: "btn btn-lg btn-primary btn-unhidden" %>
+              <%= link_to "Join the community", '/auth/twitter', method: 'get', :id => "twitter-registration", class: "btn btn-lg btn-primary btn-unhidden" %>
             </div>
           <% end %>
         </li>
