@@ -71,6 +71,9 @@ twitter card: 'summary_large_image',
   <% end %>
   <%= link_to "Visit Website", "#{@hackathon.url}?ref=hackevents", class: "btn btn-primary", :id => "view-website", target: "_blank" %>
   <%= link_to "Invite your friends", "https://twitter.com/intent/tweet?text=Join%20me%20at%20#{ @hackathon.title }%20%23hackathon%20in%20#{ @hackathon.city_string },%20#{ @hackathon.country}%20#{ request.url }%20on%20%40Hackevents", class: "btn btn-twitter", :id => "twitter-share", target: "_blank" %>
+  <% if logged_in? && current_user.organizing_hackathon?(@hackathon) %>
+    <%= link_to "Edit Hackathon", edit_hackathon_path(@hackathon), class: "btn btn-default" %>
+  <% end %>
 </p>
 
 <hr />

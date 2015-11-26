@@ -1,6 +1,8 @@
 class HackathonsController < ApplicationController
-  before_action :set_hackathon, only: [:show, :follow, :unfollow]
+  include ApplicationHelper
+  before_action :set_hackathon, only: [:show, :edit, :update, :follow, :unfollow]
   before_action :require_user,  only: [:follow, :unfollow]
+  before_action :require_organizer && :require_this_organizer, only: [:edit, :update]
 
   layout "layouts/application"
   
@@ -17,6 +19,21 @@ class HackathonsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @hackathon.update(hackathon_params)
+        format.html { redirect_to nice_hackathon_path(@hackathon), notice: 'Your hackathon has successfully been updated.' }
+        format.json { render :show, status: :ok, location: @hackathon }
+      else
+        format.html { render :edit, error: 'Something is wrong. Please check for errors.' }
+        format.json { render json: @hackathon.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def follow
@@ -41,13 +58,24 @@ class HackathonsController < ApplicationController
   
   private
 
-  def set_hackathon
-    if params[:id].present?
-      @hackathon = Hackathon.friendly.find(params[:id])
+  def require_this_organizer
+    if current_user.organizing_hackathon?(@hackathon)
+      true
     else
-      @hackathon = Hackathon.find(params[:id] || params[:name].to_i)
+      flash[:notice] = "Contact us if you are the organizer of this hackathon."
     end
   end
+
+  def set_hackathon
+    # if params[:id].present?
+    #   @hackathon = Hackathon.friendly.find(params[:id])
+    # else
+    #   @hackathon = Hackathon.find(params[:id] || params[:name].to_i)
+    # end
+    @hackathon = Hackathon.find(params[:id] || params[:name].to_i)
+  end
+
+  def hackathon_params
+    params.require(:hackathon).permit(:title, :description, :country, :city_string, :city_id, :url, :date_start, :date_end, :venue, :address, :challenge, :sponsors, :awards, :schedule, :application, :application_deadline, :twitter, :longitude, :latitude, :image_url, { category_ids: [] }, { sponsor_ids: [] })
+  end
 end
-
-

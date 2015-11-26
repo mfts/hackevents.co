@@ -1,4 +1,8 @@
-FactoryGirl.define do  factory :city do
+FactoryGirl.define do  factory :organization do
+    organizer_id 1
+organized_hackathon_id 1
+  end
+  factory :city do
     name "MyString"
 hackathon_count 1
 hackathon_total_count 1

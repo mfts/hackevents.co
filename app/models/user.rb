@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :hackathons, :through => :memberships
 
+  has_many :organizations, foreign_key: "organizer_id"
+  has_many :organized_hackathons, :through => :organizations, foreign_key: "organized_hackathon_id", dependent: :destroy
+
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -129,6 +132,14 @@ class User < ActiveRecord::Base
 
   def affiliated?(sponsor)
     Affiliation.exists?(['user_id = ? AND sponsor_id = ?', self.id, sponsor.id])
+  end
+
+  ###########################################
+  ## Organizing Hackathon
+  ###########################################
+  # Returns true if the current user is organizing the hackathon.
+  def organizing_hackathon?(hackathon)
+    Organization.exists?(['organizer_id = ? AND organized_hackathon_id = ?', self.id, hackathon.id])
   end
 
 

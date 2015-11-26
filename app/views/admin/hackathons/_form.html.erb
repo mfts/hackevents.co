@@ -22,6 +22,11 @@
   <%= f.text_field :title, class: "form-control" %>
 </div>
 
+<div class="form-group">
+  <label>Organizers</label>
+  <%= select_tag "hackathon[organizer_ids][]", options_from_collection_for_select(@organizers, "id", "first_name", @selected_organizers.collect{ |o| o.id }), :multiple => true, class: "form-control input" %>
+</div>
+
 <div class="row">
   <div class="col-md-9">
     

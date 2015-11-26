@@ -74,5 +74,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_organizer
+    if current_user && current_user.organizer?
+      true
+    else
+      redirect_to root_path, notice: "You must log in as organizer."
+    end
+  end
 end
 
