@@ -24,6 +24,8 @@
 //= require nprogress
 //= require algolia
 //= require sweetalert.min
+//= require moment
+//= require bootstrap-datetimepicker
 
 $(function() {
   $(".table-calendar p.event").hover(

@@ -58,7 +58,7 @@ GEM
     bootstrap-sass (3.3.5)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
-    bootstrap3-datetimepicker-rails (4.0.0)
+    bootstrap3-datetimepicker-rails (4.17.37)
       momentjs-rails (>= 2.8.1)
     buftok (0.2.0)
     builder (3.2.2)
@@ -290,7 +290,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.1.2)
   bootstrap-kaminari-views
   bootstrap-sass (~> 3.3.5)
-  bootstrap3-datetimepicker-rails (~> 4.0.0)
+  bootstrap3-datetimepicker-rails (~> 4.17.37)
   capybara (~> 2.1.0)
   coffee-rails (~> 4.1.0)
   countries
@@ -306,7 +306,7 @@ DEPENDENCIES
   kaminari
   mailgun-ruby (~> 1.0.3)
   metamagic
-  momentjs-rails (>= 2.8.1)
+  momentjs-rails (>= 2.9.0)
   omniauth
   omniauth-twitter
   passenger
