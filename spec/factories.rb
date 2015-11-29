@@ -1,4 +1,7 @@
-FactoryGirl.define do  factory :organization do
+FactoryGirl.define do  factory :create_event do
+    
+  end
+  factory :organization do
     organizer_id 1
 organized_hackathon_id 1
   end

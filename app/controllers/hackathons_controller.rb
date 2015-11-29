@@ -25,6 +25,7 @@ class HackathonsController < ApplicationController
   end
 
   def update
+    @hackathon.events.build
     respond_to do |format|
       if @hackathon.update(hackathon_params)
         format.html { redirect_to nice_hackathon_path(@hackathon), notice: 'Your hackathon has successfully been updated.' }
@@ -76,6 +77,6 @@ class HackathonsController < ApplicationController
   end
 
   def hackathon_params
-    params.require(:hackathon).permit(:title, :description, :country, :city_string, :city_id, :url, :date_start, :date_end, :venue, :address, :challenge, :sponsors, :awards, :schedule, :application, :application_deadline, :twitter, :longitude, :latitude, :image_url, { category_ids: [] }, { sponsor_ids: [] })
+    params.require(:hackathon).permit(:title, :description, :country, :city_string, :city_id, :url, :date_start, :date_end, :venue, :address, :challenge, :sponsors, :awards, :schedule, :application, :application_deadline, :twitter_hashtag, :longitude, :latitude, :image_url, { :events_attributes => [:id, :name, :description, :datetime, :_destroy] }, { category_ids: [] }, { sponsor_ids: [] })
   end
 end

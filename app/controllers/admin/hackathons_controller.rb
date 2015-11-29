@@ -105,7 +105,8 @@ module Admin
     private
 
     def set_hackathon
-      @hackathon = Hackathon.friendly.find(params[:id])
+      #@hackathon = Hackathon.friendly.find(params[:id])
+      @hackathon = Hackathon.find(params[:id] || params[:name].to_i)
     end
 
     def hackathon_params

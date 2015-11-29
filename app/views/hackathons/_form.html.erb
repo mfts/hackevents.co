@@ -57,7 +57,7 @@
     <div class="row">
       <div class='col-md-6'>
         <div class="form-group">
-          <div style="padding-bottom:5px;">Currently: <text style="color:lightgrey;"><%= @hackathon.date_start.strftime("%A, %B %d %Y, %I:%M %p") %></text></div>
+          <div style="padding-bottom:5px;">Currently: <text style="color:lightgrey;"><%#= @hackathon.date_start.strftime("%A, %B %d %Y, %I:%M %p") %></text></div>
             <div class='input-group date' id='datetimepicker6'>
                 <%= f.datetime_field :date_start, class: "form-control", :id => "datetime_start" %>
                 <span class="input-group-addon">
@@ -68,7 +68,7 @@
       </div>
       <div class='col-md-6'>
           <div class="form-group">
-            <div style="padding-bottom:5px;">Currently: <text style="color:lightgrey;"><%= @hackathon.date_end.strftime("%A, %B %d %Y, %I:%M %p") %></text></div>
+            <div style="padding-bottom:5px;">Currently: <text style="color:lightgrey;"><%#= @hackathon.date_end.strftime("%A, %B %d %Y, %I:%M %p") %></text></div>
               <div class='input-group date' id='datetimepicker7'>
                   <%= f.datetime_field :date_end, class: "form-control", :id => "datetime_end" %>
                   <span class="input-group-addon">
@@ -124,6 +124,21 @@
       <%= f.label :schedule %>
       <%= f.text_area :schedule, class: "form-control" %>
     </div>
+
+    <%= f.fields_for :events do |u| %>
+      <div class="form-group">
+        <%= u.datetime_select :datetime %>
+        <%= u.text_field :name %>
+        <%= u.text_area :description %>
+
+        <% if u.object.persisted? %>
+          <%= u.check_box :_destroy %>
+          <%= u.label :_destroy, "Destroy" %>
+        <% end %>
+        <%#= Event.where(datetime: datetime, name: name, description: description).first_or_create %>
+      </div>
+    <% end %>
+    
 
     <div class="form-group">
       <%= f.label :twitter_hashtag, "Hashtag for sharing on Twitter" %>

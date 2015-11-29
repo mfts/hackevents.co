@@ -1,4 +1,4 @@
-<%= form_for @hackathon do |f| %>
+<%= form_for(@hackathon) do |f| %>
   <% if @hackathon.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@hackathon.errors.count, "error") %> prohibited this hackathon from being saved:</h2>

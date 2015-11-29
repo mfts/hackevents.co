@@ -15,9 +15,15 @@ class Hackathon < ActiveRecord::Base
   has_many :sponsorships
   has_many :sponsors, :through => :sponsorships, dependent: :destroy
 
+  has_many :events
+
+  accepts_nested_attributes_for :events, 
+            :allow_destroy => true,
+            :reject_if => :all_blank
+
   belongs_to :city
   
-  before_save :update_days_mask, :migrate_to_city_id_and_count
+  #before_save :update_days_mask, :migrate_to_city_id_and_count
   
   scope :with_days, lambda { |days| where("(days_mask & ?) > 0", days.map { |d| 2**DAYS.index(d) }.sum) }
   
