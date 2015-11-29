@@ -39,6 +39,11 @@ body{
   font-family: 'Helvetica Neue', sans-serif;
 }
 
+.row {
+  margin-left:0;
+  margin-right:0;
+}
+
 .avatar-image-line {
   background-image: image-url("line.png");
   background-repeat: repeat-x;

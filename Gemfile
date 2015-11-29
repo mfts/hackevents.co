@@ -44,6 +44,7 @@ gem 'font-awesome-rails'
 gem 'geocoder'
 gem 'algoliasearch-rails'
 gem 'countries'
+gem 'tinymce-rails'
 
 
 group :development, :test do

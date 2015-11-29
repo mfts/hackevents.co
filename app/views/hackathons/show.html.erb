@@ -77,6 +77,20 @@ twitter card: 'summary_large_image',
 </p>
 
 <hr />
+<div class="row">
+  <h3>Description</h3>
+  <div id="edit-hackathon">
+    <% unless @hackathon.description.present? %>
+      <p>You know more about this hackathon?
+        <%= link_to "Edit Hackathon", edit_hackathon_path(@hackathon), :remote => true, class: "btn btn-default" %>
+      </p>
+    <% else %>
+      <%= @hackathon.description.html_safe %>
+    <% end %>
+  </div>
+  <hr />
+</div>
+
 
 
 <% if @hackathon.users.present? %>
