@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:update]
+  before_action :set_event, only: [:update, :destroy]
 
   def create
     @event = Event.new(event_params)
@@ -19,6 +19,11 @@ class EventsController < ApplicationController
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def destroy
+    @event.destroy
+    redirect_to :back, notice: 'Event was successfully destroyed.'
   end
 
 

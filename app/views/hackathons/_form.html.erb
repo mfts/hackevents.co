@@ -57,29 +57,76 @@
     <div class="row">
       <div class='col-md-6'>
         <div class="form-group">
-          <div style="padding-bottom:5px;">Currently: <text style="color:lightgrey;"><%#= @hackathon.date_start.strftime("%A, %B %d %Y, %I:%M %p") %></text></div>
-            <div class='input-group date' id='datetimepicker6'>
-                <%= f.datetime_field :date_start, class: "form-control", :id => "datetime_start" %>
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-            </div>
+          <%= f.label :date_start, "Start of your hackathon" %><br>
+          <%= f.datetime_select :date_start, start_year: 2015, :default => { hour: 9, minute: 00 }, class: "form-control" %>
         </div>
       </div>
       <div class='col-md-6'>
-          <div class="form-group">
-            <div style="padding-bottom:5px;">Currently: <text style="color:lightgrey;"><%#= @hackathon.date_end.strftime("%A, %B %d %Y, %I:%M %p") %></text></div>
-              <div class='input-group date' id='datetimepicker7'>
-                  <%= f.datetime_field :date_end, class: "form-control", :id => "datetime_end" %>
-                  <span class="input-group-addon">
-                      <span class="glyphicon glyphicon-calendar"></span>
-                  </span>
-              </div>
-          </div>
+        <div class="form-group">
+          <%= f.label :date_end, "End of your hackathon" %><br>
+          <%= f.datetime_select :date_end, start_year: 2015, :default => { hour: 17, minute: 00 }, class: "form-control" %>
+        </div>
       </div>
     </div>
-  
+
+    <hr>
+      <h3>Main Information</h3>
+    <hr>
+
+    <div class="row">
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, rows: 15, class: "form-control tinymce" %>
+      </div>
+    </div>
     
+    <!-- <%#= add_child_button "New Event", :events, "events" %>
+    <%#= new_fields_template f, :events %>
+    <div class="row" id="events">
+      <%#= f.fields_for :events do |u| %>
+        <div>
+          <%#= render partial: "event_fields", locals: { u: u } %>
+        </div>
+      <%# end %>
+    </div> -->
+    <br>
+    <div class="row">
+      <div class="form-group col-md-8" style="padding-left:0px;">
+        <%= f.label :schedule %>
+        <%= f.text_area :schedule, rows: 13, placeholder: "### Saturday\n- 10:00 AM    Hacking Begins\n- 12:00 PM    Lunch\n- 15:00 PM    Workshop A\n- 16:00 PM    Workshop B\n- 17:00 PM    Workshop C\n- 19:00 PM    Dinner\n\n### Sunday\n- 08:00 AM    Breakfast\n- 12:00 PM    Hacking Stops\n- 13:00 PM    Presentations\n- 15:00 PM    Award Ceremony".html_safe, value: "### Saturday\n- 10:00 AM    Hacking Begins\n- 12:00 PM    Lunch\n- 15:00 PM    Workshop A\n- 16:00 PM    Workshop B\n- 17:00 PM    Workshop C\n- 19:00 PM    Dinner\n\n### Sunday\n- 08:00 AM    Breakfast\n- 12:00 PM    Hacking Stops\n- 13:00 PM    Presentations\n- 15:00 PM    Award Ceremony".html_safe, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <div class="panel" style="margin-top:25px;">
+          <p>We've got <%= link_to "Markdown", "http://daringfireball.net/projects/markdown/syntax", target: "_blank" %>. Here are a few hints:</p>
+          <pre style="padding: 0 !important;">
+      ### Header 3
+      **bold**
+      _italics_
+
+      > Block quote
+      - This is a &lt;li&gt; item
+
+      [link](http://foo.bar)
+      ![Alt text](/path/to/img.jpg)
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+      <h3>Other Information</h3>
+    <hr>
+
+    <div class="form-group">
+      <%= f.label :twitter_hashtag, "Hashtag for sharing on Twitter" %>
+      <%= f.text_field :twitter_hashtag, class: "form-control", placeholder: "Please enter without the '#'" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :image_url, "Link to your hackathon logo/image" %>
+      <%= f.text_field :image_url, class: "form-control" %>
+    </div>
+
     <div class="form-group">
       <label>Categories</label>
       <%= hidden_field_tag "hackathon[category_ids][]", nil %>
@@ -99,55 +146,6 @@
           <% end %>
         </div>
       <% end %>
-    </div>
-
-    <div class="row">
-      <div class="form-group">
-        <%= f.label :description %>
-        <%= f.text_area :description, rows: 15, class: "form-control tinymce" %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="form-group">
-        <%= f.label :challenge %>
-        <%= f.text_area :challenge, class: "form-control tinymce" %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :awards %>
-      <%= f.text_area :awards, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :schedule %>
-      <%= f.text_area :schedule, class: "form-control" %>
-    </div>
-
-    <%= f.fields_for :events do |u| %>
-      <div class="form-group">
-        <%= u.datetime_select :datetime %>
-        <%= u.text_field :name %>
-        <%= u.text_area :description %>
-
-        <% if u.object.persisted? %>
-          <%= u.check_box :_destroy %>
-          <%= u.label :_destroy, "Destroy" %>
-        <% end %>
-        <%#= Event.where(datetime: datetime, name: name, description: description).first_or_create %>
-      </div>
-    <% end %>
-    
-
-    <div class="form-group">
-      <%= f.label :twitter_hashtag, "Hashtag for sharing on Twitter" %>
-      <%= f.text_field :twitter_hashtag, class: "form-control", placeholder: "Please enter without the '#'" %>
-    </div>
-    
-    <div class="form-group">
-      <%= f.label :image_url, "Link to your hackathon logo/image" %>
-      <%= f.text_field :image_url, class: "form-control" %>
     </div>
     
     <hr />
@@ -171,21 +169,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-$(function () {
-    $('#datetimepicker6').datetimepicker({
-        format: "dddd, MMMM DD YYYY, h:mm A"
-    });
-    $('#datetimepicker7').datetimepicker({
-        useCurrent: false, //Important! See issue #1075
-        format: "dddd, MMMM DD YYYY, h:mm A"
-    });
-    $("#datetimepicker6").on("dp.change", function (e) {
-        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
-    });
-    $("#datetimepicker7").on("dp.change", function (e) {
-        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-    });
-});
-</script>

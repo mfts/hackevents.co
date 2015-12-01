@@ -278,3 +278,328 @@
 .bootstrap-datetimepicker-widget {
   border: 3px solid $brand-primary;
   }
+
+/* 
+  ==================
+  [2. Hackathon Header]
+  ==================
+*/
+#hackathon-header {
+  width: 100%;
+  padding: 40px 0;
+}
+
+#hackathon-header h2{
+  display: block;
+  margin-bottom: 60px;
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#hackathon-header h2 small{
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+#hackathon-header p {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.hackathon-logo {
+  max-width: 250px;
+}
+
+
+
+
+/* 
+  ==================
+  [3. Description]
+  ==================
+*/
+#description {
+  width: 100%;
+  padding: 40px 0;
+}
+
+#description h2{
+  display: block;
+  margin-bottom: 60px;
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 600;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+#description h2 small{
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#description p {
+  font-size: 14px;
+  font-weight: 300;
+  text-align: left;
+}
+
+
+/* 
+  ==================
+  [4. Prizes]
+  ==================
+*/
+#prizes {
+  width: 100%;
+  padding: 40px 0;
+}
+
+#prizes h2{
+  display: block;
+  margin-bottom: 60px;
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#prizes h2 small{
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.prize-container{
+  display: block;
+  margin-bottom: 20px;
+}
+
+.prize-container:hover > .prize-icon a{
+  -webkit-box-shadow: 0 0 0 5px #fc6e51;
+     -moz-box-shadow: 0 0 0 5px #fc6e51;
+    -ms-box-shadow: 0 0 0 5px #fc6e51;
+     -o-box-shadow: 0 0 0 5px #fc6e51;
+      box-shadow: 0 0 0 5px #fc6e51;
+}
+
+.prize-icon{
+  display: block;
+  margin-bottom: 20px;
+}
+
+.prize-icon a{
+  position: relative;
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fc6e51;
+  border: 8px solid #fff;
+  -webkit-border-radius: 100%;
+     -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+     -o-border-radius: 100%;
+      border-radius: 100%;
+}
+
+.prize-icon a > i{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 45px;
+  height: 45px;
+  margin-left: -22px;
+  margin-top: -22px;
+  font-size: 45px;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.prize-content{
+  text-align: center;
+}
+
+.prize-content h3{
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.api-prize {
+  text-align: center;
+}
+
+.api-prize h3 {
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+
+
+/* 
+  ==================
+  [5. Schedule]
+  ==================
+*/
+#schedule {
+  width: 100%;
+  padding: 40px 0;
+}
+
+#schedule h2{
+  display: block;
+  margin-bottom: 60px;
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 600;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+#schedule h2 small{
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#schedule p {
+  font-size: 14px;
+  font-weight: 300;
+  text-align: left;
+}
+
+
+/* 
+  ==================
+  [6. Sponsors]
+  ==================
+*/
+#sponsors{
+  position: relative;
+  width: 100%;
+  padding: 60px 0;
+  background: #f4f4f4;
+}
+
+.heading-title{
+  display: block;
+  text-align: center;
+  margin-bottom: 60px;
+  margin-top: 20px;
+}
+
+.heading-title h2{
+  position: relative;
+  display: inline;
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+
+.sponsor-image{
+  position: relative;
+  overflow: hidden;
+}
+
+.sponsor-image img{
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+/* 
+  ==================
+  [x. Favorites]
+  ==================
+*/
+#hackathon-favorites{
+  position: relative;
+  width: 100%;
+  padding: 60px 0;
+}
+
+
+/* 
+  ==================
+  [7. Register CTA]
+  ==================
+*/
+#register{
+  width: 100%;
+  padding: 60px 0 55px;
+  background-color: #4A4A4A;
+  -webkit-background-size: cover !important;
+     -moz-background-size: cover !important;
+    -ms-background-size: cover !important;
+     -o-background-size: cover !important;
+      background-size: cover !important;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+#register h3{
+  margin-top: 5px;
+  font-size: 24px;
+  line-height: 38px;
+  color:  #fff;
+  font-weight: 100;
+}
+
+
+/* 
+  ==================
+  [8. Map]
+  ==================
+*/
+
+#staticMap {
+  width: 100%;
+  height: 100%;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+#map {
+  position: relative;
+  #over_map { 
+    position: absolute; 
+    top: 10px; 
+    left: 150px; 
+    z-index: 99; 
+  }
+}
+
+
+#jsMap {
+  width: 100%;
+  height: 400px;
+}
+
+.map_image {
+    position: relative;
+    width:100%;
+}

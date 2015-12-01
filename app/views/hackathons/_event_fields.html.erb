@@ -1,0 +1,15 @@
+<div class="form-group">
+  <%= u.label :time_start %>
+  <%= u.text_field :time_start, placeholder: "10:00 AM", class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= u.label :name %>
+  <%= u.text_field :name, placeholder: "Hacking Begins", class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= u.label :description %>
+  <%= u.text_area :description, class: "form-control" %>
+</div>
+
+<%= u.hidden_field :_destroy, :class => 'removable' %>
+<%= remove_child_button "Remove" %>

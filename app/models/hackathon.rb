@@ -19,7 +19,7 @@ class Hackathon < ActiveRecord::Base
 
   accepts_nested_attributes_for :events, 
             :allow_destroy => true,
-            :reject_if => :all_blank
+            :reject_if => lambda { |a| a[:name].blank? }
 
   belongs_to :city
   

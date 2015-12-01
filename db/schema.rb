@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151129141146) do
+ActiveRecord::Schema.define(version: 20151130160416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20151129141146) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.datetime "datetime"
+    t.string   "time_start"
     t.string   "name"
     t.text     "description"
     t.integer  "hackathon_id"
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 20151129141146) do
     t.string   "country"
     t.string   "city_string"
     t.string   "url"
-    t.datetime "date_start"
-    t.datetime "date_end"
+    t.datetime   "date_start"
+    t.datetime   "date_end"
     t.string   "venue"
     t.string   "address"
     t.text     "challenge"

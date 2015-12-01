@@ -45,6 +45,7 @@ gem 'geocoder'
 gem 'algoliasearch-rails'
 gem 'countries'
 gem 'tinymce-rails'
+gem 'redcarpet'
 
 
 group :development, :test do

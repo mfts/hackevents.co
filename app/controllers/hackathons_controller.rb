@@ -1,4 +1,5 @@
 class HackathonsController < ApplicationController
+  helper :hackathons
   include ApplicationHelper
   before_action :set_hackathon, only: [:show, :edit, :update, :follow, :unfollow]
   before_action :require_user,  only: [:follow, :unfollow]
@@ -19,13 +20,16 @@ class HackathonsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html {render :layout => 'layouts/city'}
+    end
   end
 
   def edit
   end
 
   def update
-    @hackathon.events.build
+    #@hackathon.events.build
     respond_to do |format|
       if @hackathon.update(hackathon_params)
         format.html { redirect_to nice_hackathon_path(@hackathon), notice: 'Your hackathon has successfully been updated.' }
@@ -63,7 +67,7 @@ class HackathonsController < ApplicationController
     if current_user.organizing_hackathon?(@hackathon)
       true
     else
-      flash[:notice] = "Contact us if you are the organizer of this hackathon."
+      redirect_to nice_hackathon_path(@hackathon), :notice => "Contact us if you are the organizer of this hackathon."
     end
   end
 
@@ -77,6 +81,6 @@ class HackathonsController < ApplicationController
   end
 
   def hackathon_params
-    params.require(:hackathon).permit(:title, :description, :country, :city_string, :city_id, :url, :date_start, :date_end, :venue, :address, :challenge, :sponsors, :awards, :schedule, :application, :application_deadline, :twitter_hashtag, :longitude, :latitude, :image_url, { :events_attributes => [:id, :name, :description, :datetime, :_destroy] }, { category_ids: [] }, { sponsor_ids: [] })
+    params.require(:hackathon).permit(:title, :description, :country, :city_string, :city_id, :url, :date_start, :date_end, :venue, :address, :challenge, :sponsors, :awards, :schedule, :application, :application_deadline, :twitter_hashtag, :longitude, :latitude, :image_url, { :events_attributes => [:name, :description, :time_start, :_destroy] }, { category_ids: [] }, { sponsor_ids: [] })
   end
 end

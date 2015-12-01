@@ -658,7 +658,9 @@ ul.page-header-other-info-links {
   }
   .hackathon-location-map {
     display: inline-block;
-    margin-left: 100px;
+    //margin-left: 100px;
+    width: 100%;
+    max-width: 100%
   }
 }
 
