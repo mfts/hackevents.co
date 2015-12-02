@@ -25,7 +25,7 @@ module Admin
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :twitter_name, :email, :password, :password_confirmation, :location, :radius, :team, :support, { category_ids: [] }, { sponsor_ids: [] })
+      params.require(:user).permit(:first_name, :last_name, :twitter_name, :email, :password, :password_confirmation, :location, :radius, :team, :support, :organizer, { category_ids: [] }, { sponsor_ids: [] })
     end
   end
 end
