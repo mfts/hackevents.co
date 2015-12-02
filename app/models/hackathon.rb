@@ -23,7 +23,7 @@ class Hackathon < ActiveRecord::Base
 
   belongs_to :city
   
-  #before_save :update_days_mask, :migrate_to_city_id_and_count
+  before_save :update_days_mask, :migrate_to_city_id_and_count
   
   scope :with_days, lambda { |days| where("(days_mask & ?) > 0", days.map { |d| 2**DAYS.index(d) }.sum) }
   
