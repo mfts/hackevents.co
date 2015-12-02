@@ -24,9 +24,8 @@
 
 <div class="form-group">
   <label>Organizers</label>
-  <% unless @hackathon.new_record? %>
+  <% unless @hackathon.new_record? || @organizers.present? %>
     <%= select_tag "hackathon[organizer_ids][]", options_from_collection_for_select(@organizers, "id", "first_name", @selected_organizers.collect{ |o| o.id }), :multiple => true, class: "form-control input" %>
-
   <% end %>
 </div>
 
