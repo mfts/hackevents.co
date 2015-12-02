@@ -22,7 +22,7 @@ module Admin
     
     def edit
       @organizers = User.where(organizer: true)
-      @selected_organizers = @hackathon.organizers 
+      @selected_organizers = @hackathon.organizers
     end
 
     def update
