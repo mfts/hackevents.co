@@ -1,6 +1,6 @@
 class Hackathon < ActiveRecord::Base
-  extend FriendlyId
-  friendly_id :uniqueslug, use: :slugged
+  # extend FriendlyId
+  # friendly_id :uniqueslug, use: :slugged
   include AlgoliaSearch
 
   has_many :memberships
@@ -9,12 +9,21 @@ class Hackathon < ActiveRecord::Base
   has_many :categorizations
   has_many :categories, :through => :categorizations, dependent: :destroy
 
+  has_many :organizations, foreign_key: "organized_hackathon_id"
+  has_many :organizers, :through => :organizations, foreign_key: "organizer_id", dependent: :destroy
+
   has_many :sponsorships
   has_many :sponsors, :through => :sponsorships, dependent: :destroy
 
+  has_many :events
+
+  accepts_nested_attributes_for :events, 
+            :allow_destroy => true,
+            :reject_if => lambda { |a| a[:name].blank? }
+
   belongs_to :city
   
-  before_save :update_days_mask
+  #before_save :update_days_mask, :migrate_to_city_id_and_count
   
   scope :with_days, lambda { |days| where("(days_mask & ?) > 0", days.map { |d| 2**DAYS.index(d) }.sum) }
   
@@ -38,7 +47,7 @@ class Hackathon < ActiveRecord::Base
   end
 
   def uniqueslug
-    "#{country} #{city} #{title}"
+    "#{country} #{city_string} #{title}"
   end
 
   def nice_slug
@@ -60,6 +69,10 @@ class Hackathon < ActiveRecord::Base
     ((date_start.to_date)..(date_start.to_date)).to_a.map do |t|
       t.strftime("%A")
     end.uniq
+  end
+
+  def migrate_to_city_id_and_count
+    self.city = City.where(name:self.city_string).first_or_create
   end
 
   def top_cities

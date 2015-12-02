@@ -11,25 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150915154824) do
+ActiveRecord::Schema.define(version: 20151202163724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "active_admin_comments", force: :cascade do |t|
-    t.string   "namespace"
-    t.text     "body"
-    t.string   "resource_id",   null: false
-    t.string   "resource_type", null: false
-    t.integer  "author_id"
-    t.string   "author_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "affiliations", force: :cascade do |t|
     t.integer  "user_id"
@@ -64,6 +49,17 @@ ActiveRecord::Schema.define(version: 20150915154824) do
     t.string   "teleport_id"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string   "time_start"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "hackathon_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "events", ["hackathon_id"], name: "index_events_on_hackathon_id", using: :btree
+
   create_table "hackathons", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -91,6 +87,7 @@ ActiveRecord::Schema.define(version: 20150915154824) do
     t.integer  "days_mask"
     t.string   "twitter_hashtag"
     t.integer  "city_id"
+    t.string   "typeform"
   end
 
   add_index "hackathons", ["city_id"], name: "index_hackathons_on_city_id", using: :btree
@@ -109,6 +106,16 @@ ActiveRecord::Schema.define(version: 20150915154824) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
+
+  create_table "organizations", force: :cascade do |t|
+    t.integer  "organizer_id"
+    t.integer  "organized_hackathon_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "organizations", ["organized_hackathon_id"], name: "index_organizations_on_organized_hackathon_id", using: :btree
+  add_index "organizations", ["organizer_id"], name: "index_organizations_on_organizer_id", using: :btree
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
@@ -166,10 +173,14 @@ ActiveRecord::Schema.define(version: 20150915154824) do
     t.string   "location"
     t.boolean  "team",                 default: false
     t.boolean  "support",              default: false
+    t.boolean  "organizer",            default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["password_reset_token"], name: "index_users_on_password_reset_token", using: :btree
 
+  add_foreign_key "events", "hackathons"
   add_foreign_key "hackathons", "cities"
+  add_foreign_key "organizations", "hackathons", column: "organized_hackathon_id"
+  add_foreign_key "organizations", "users", column: "organizer_id"
 end

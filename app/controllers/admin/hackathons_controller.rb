@@ -21,6 +21,8 @@ module Admin
     end
     
     def edit
+      @organizers = User.where(organizer: true)
+      @selected_organizers = @hackathon.organizers 
     end
 
     def update
@@ -103,11 +105,12 @@ module Admin
     private
 
     def set_hackathon
-      @hackathon = Hackathon.friendly.find(params[:id])
+      #@hackathon = Hackathon.friendly.find(params[:id])
+      @hackathon = Hackathon.find(params[:id] || params[:name].to_i)
     end
 
     def hackathon_params
-      params.require(:hackathon).permit(:title, :description, :country, :city_string, :city_id, :url, :date_start, :date_end, :venue, :address, :challenge, :sponsors, :awards, :schedule, :application, :application_deadline, :twitter, :longitude, :latitude, :image_url, :highlighted, :days_mask, { category_ids: [] }, { sponsor_ids: [] })
+      params.require(:hackathon).permit(:title, :description, :country, :city_string, :city_id, :url, :typeform, :date_start, :date_end, :venue, :address, :challenge, :sponsors, :awards, :schedule, :application, :application_deadline, :twitter, :longitude, :latitude, :image_url, :highlighted, :days_mask, { organizer_ids: [] }, { category_ids: [] }, { sponsor_ids: [] })
     end
   end
 end

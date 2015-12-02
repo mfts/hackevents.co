@@ -58,7 +58,7 @@ GEM
     bootstrap-sass (3.3.5)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
-    bootstrap3-datetimepicker-rails (4.0.0)
+    bootstrap3-datetimepicker-rails (4.17.37)
       momentjs-rails (>= 2.8.1)
     buftok (0.2.0)
     builder (3.2.2)
@@ -100,7 +100,6 @@ GEM
     geocoder (1.2.9)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
-    gmaps4rails (2.1.2)
     google-analytics-rails (0.0.6)
     hashie (3.4.2)
     hike (1.2.3)
@@ -204,6 +203,7 @@ GEM
       i18n
       polyamorous (~> 1.2)
     rdoc (4.2.0)
+    redcarpet (3.3.3)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
@@ -251,6 +251,8 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
+    tinymce-rails (4.3.0)
+      railties (>= 3.1.1)
     turbolinks (2.5.3)
       coffee-rails
     twitter (5.14.0)
@@ -290,7 +292,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.1.2)
   bootstrap-kaminari-views
   bootstrap-sass (~> 3.3.5)
-  bootstrap3-datetimepicker-rails (~> 4.0.0)
+  bootstrap3-datetimepicker-rails (~> 4.17.37)
   capybara (~> 2.1.0)
   coffee-rails (~> 4.1.0)
   countries
@@ -298,7 +300,6 @@ DEPENDENCIES
   font-awesome-rails
   friendly_id
   geocoder
-  gmaps4rails
   google-analytics-rails
   jbuilder (~> 2.0)
   jquery-rails
@@ -306,7 +307,7 @@ DEPENDENCIES
   kaminari
   mailgun-ruby (~> 1.0.3)
   metamagic
-  momentjs-rails (>= 2.8.1)
+  momentjs-rails (>= 2.9.0)
   omniauth
   omniauth-twitter
   passenger
@@ -314,11 +315,13 @@ DEPENDENCIES
   rails (= 4.2.1)
   rails_12factor
   ransack
+  redcarpet
   rspec-rails (~> 2.0)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   shoulda-matchers (~> 2.8.0)
   simple_form
+  tinymce-rails
   turbolinks
   twitter
   twitter-text

@@ -1,0 +1,13 @@
+toolbar:
+  - formatselect | bold italic | bullist numlist | image | link unlink | code
+plugins:
+  - image
+  - link
+  - code
+block_formats:
+  - "Paragraph=p"
+  - "Heading=h3"
+  - "Sub-Heading=h4"
+  - "Preformatted=pre"
+menubar: false
+elementpath: false
