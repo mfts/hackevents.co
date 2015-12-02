@@ -1,0 +1,14 @@
+<%= form_for(setup_hackathon(@hackathon)) do |f| %>
+  <% if @hackathon.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@hackathon.errors.count, "error") %> prohibited this hackathon from being saved:</h2>
+
+      <ul>
+      <% @hackathon.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= render partial: 'form', locals: { f: f } %>
+<% end %>

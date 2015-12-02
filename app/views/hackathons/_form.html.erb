@@ -1,0 +1,171 @@
+
+<%= tinymce %>
+
+<%= f.submit nil, class: "btn btn-default" %>
+<% unless @hackathon.new_record? %>
+  <%= link_to "View Hackathon", nice_hackathon_path(@hackathon), class: "btn btn-primary" %>
+<% end %>
+
+<hr />
+
+
+<div class="row">
+  <div class="col-md-9">
+
+    <hr>
+      <h3>Essential Information</h3>
+    <hr>
+
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control", placeholder: "" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :url, "Website" %>
+      <%= f.text_field :url, class: "form-control", placeholder: "Enter your hackathon's registration website" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :city_string, "City" %>
+      <%= f.text_field :city_string, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :country %>
+      <%= f.text_field :country, class: "form-control" %>
+    </div>
+
+    <hr>
+      <h3>Location Information</h3>
+    <hr>
+
+    <div class="form-group">
+      <%= f.label :venue %>
+      <%= f.text_field :venue, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address %>
+      <%= f.text_field :address, class: "form-control" %>
+    </div>
+
+    <hr>
+      <h3>Date and Time</h3>
+    <hr>
+
+    <div class="row">
+      <div class='col-md-6'>
+        <div class="form-group">
+          <%= f.label :date_start, "Start of your hackathon" %><br>
+          <%= f.datetime_select :date_start, start_year: 2015, :default => { hour: 9, minute: 00 }, class: "form-control" %>
+        </div>
+      </div>
+      <div class='col-md-6'>
+        <div class="form-group">
+          <%= f.label :date_end, "End of your hackathon" %><br>
+          <%= f.datetime_select :date_end, start_year: 2015, :default => { hour: 17, minute: 00 }, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+      <h3>Main Information</h3>
+    <hr>
+
+    <div class="row">
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, rows: 15, class: "form-control tinymce" %>
+      </div>
+    </div>
+    
+    <!-- <%#= add_child_button "New Event", :events, "events" %>
+    <%#= new_fields_template f, :events %>
+    <div class="row" id="events">
+      <%#= f.fields_for :events do |u| %>
+        <div>
+          <%#= render partial: "event_fields", locals: { u: u } %>
+        </div>
+      <%# end %>
+    </div> -->
+    <br>
+    <div class="row">
+      <div class="form-group col-md-8" style="padding-left:0px;">
+        <%= f.label :schedule %>
+        <%= f.text_area :schedule, rows: 13, placeholder: "### Saturday\n- 10:00 AM    Hacking Begins\n- 12:00 PM    Lunch\n- 15:00 PM    Workshop A\n- 16:00 PM    Workshop B\n- 17:00 PM    Workshop C\n- 19:00 PM    Dinner\n\n### Sunday\n- 08:00 AM    Breakfast\n- 12:00 PM    Hacking Stops\n- 13:00 PM    Presentations\n- 15:00 PM    Award Ceremony".html_safe, value: "### Saturday\n- 10:00 AM    Hacking Begins\n- 12:00 PM    Lunch\n- 15:00 PM    Workshop A\n- 16:00 PM    Workshop B\n- 17:00 PM    Workshop C\n- 19:00 PM    Dinner\n\n### Sunday\n- 08:00 AM    Breakfast\n- 12:00 PM    Hacking Stops\n- 13:00 PM    Presentations\n- 15:00 PM    Award Ceremony".html_safe, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <div class="panel" style="margin-top:25px;">
+          <p>We've got <%= link_to "Markdown", "http://daringfireball.net/projects/markdown/syntax", target: "_blank" %>. Here are a few hints:</p>
+          <pre style="padding: 0 !important;">
+      ### Header 3
+      **bold**
+      _italics_
+
+      > Block quote
+      - This is a &lt;li&gt; item
+
+      [link](http://foo.bar)
+      ![Alt text](/path/to/img.jpg)
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+      <h3>Other Information</h3>
+    <hr>
+
+    <div class="form-group">
+      <%= f.label :twitter_hashtag, "Hashtag for sharing on Twitter" %>
+      <%= f.text_field :twitter_hashtag, class: "form-control", placeholder: "Please enter without the '#'" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :image_url, "Link to your hackathon logo/image" %>
+      <%= f.text_field :image_url, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <label>Categories</label>
+      <%= hidden_field_tag "hackathon[category_ids][]", nil %>
+      <% Category.order(:name).in_groups_of(3, false).each do |grouped_categories| %>
+        <div class="row">
+          <% grouped_categories.each do |category| %>
+            <div class="col-md-4">
+              <div class="checkbox">
+                <span style="background-color: #<%= category.primary_hex_color %>; width: 30px; height: 10px; border-radius: 3px; display: inline-block;">
+                </span>
+                <label style="color:black;">
+                  <%= check_box_tag "hackathon[category_ids][]", category.id, @hackathon.category_ids.include?(category.id) %>
+                  <%= category.name %>
+                </label>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    
+    <hr />
+    
+    <%= f.submit nil, class: "btn btn-default" %>
+    
+  </div>
+  
+  <div class="col-md-3">
+    <div class="form-group">
+      <label>Sponsors</label>
+      <%= hidden_field_tag "hackathon[sponsor_ids][]", nil %>
+      <% Sponsor.all.order(:twitter_handle).each do |sponsor| %>
+        <div class="checkbox">
+          <label style="color:black;">
+            <%= check_box_tag "hackathon[sponsor_ids][]", sponsor.id, @hackathon.sponsor_ids.include?(sponsor.id) %>
+            <%= sponsor.name %>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

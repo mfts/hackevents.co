@@ -1,0 +1,38 @@
+<div class='col-md-6'>
+  <div class="form-group">
+    <div class='input-group date' id='datetimepicker6'>
+      <%= f.datetime_select :date_start, class: "form-control", :id => "datetime_start" %>
+      <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
+  </div>
+</div>
+<div class='col-md-6'>
+    <div class="form-group">
+      <div class='input-group date' id='datetimepicker7'>
+        <%= f.datetime_select :date_end, class: "form-control", :id => "datetime_end" %>
+        <span class="input-group-addon">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+      </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    $('#datetimepicker6').datetimepicker({
+        format: "dddd, MMMM DD YYYY, h:mm A"
+    });
+    $('#datetimepicker7').datetimepicker({
+        useCurrent: false, //Important! See issue #1075
+        format: "dddd, MMMM DD YYYY, h:mm A"
+    });
+    $("#datetimepicker6").on("dp.change", function (e) {
+        $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+    });
+    $("#datetimepicker7").on("dp.change", function (e) {
+        $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+    });
+});
+</script>

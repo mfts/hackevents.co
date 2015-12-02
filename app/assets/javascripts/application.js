@@ -11,12 +11,11 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sprockets
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require underscore
-//= require gmaps/google
 //= require turbolinks
+//= require bootstrap-sprockets
 //= require algolia/v3/algoliasearch.min
 //= require jquery.textcomplete
 //= require typeahead.bundle
@@ -24,6 +23,9 @@
 //= require nprogress
 //= require algolia
 //= require sweetalert.min
+//= require moment
+//= require bootstrap-datetimepicker
+//= require tinymce
 
 $(function() {
   $(".table-calendar p.event").hover(
@@ -39,7 +41,7 @@ $(function() {
 });
 
 $(function() {
-  $('span.category-bar-item[data-toggle="tooltip"], .sponsors a[data-toggle="tooltip"], ul.social-links li a[data-toggle="tooltip"]').tooltip()
+  $('span.category-bar-item[data-toggle="tooltip"], .sponsors a[data-toggle="tooltip"], .sponsor-image a[data-toggle="tooltip"], ul.social-links li a[data-toggle="tooltip"]').tooltip()
 });
 
 $(function() {
@@ -130,3 +132,21 @@ function register($form) {
     }
   });
 }
+
+$(function() {
+  $('.add_child').click(function() {
+    var association = $(this).attr('data-association');
+    var target = $(this).attr('target');
+    var regexp = new RegExp('new_' + association, 'g');
+    var new_id = new Date().getTime();
+    var Dest = (target == '') ? $(this).parent() : $('#'+target);
+    Dest.append(window[association+'_fields'].replace(regexp, new_id));
+    return false;
+  });
+});
+
+$(document).delegate('.remove_child','click', function() {
+  $(this).parent().children('.removable')[0].value = 1;
+  $(this).parent().hide();
+  return false;
+});

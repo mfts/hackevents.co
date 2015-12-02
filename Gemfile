@@ -11,7 +11,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'gmaps4rails'
+#gem 'gmaps4rails'
 gem 'friendly_id'
 gem 'jquery-turbolinks'
 
@@ -26,9 +26,8 @@ gem 'google-analytics-rails'
 
 gem 'passenger'
 
-#datetimepicker from Bootstrap
-gem 'momentjs-rails', '>= 2.8.1'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 
@@ -45,6 +44,8 @@ gem 'font-awesome-rails'
 gem 'geocoder'
 gem 'algoliasearch-rails'
 gem 'countries'
+gem 'tinymce-rails'
+gem 'redcarpet'
 
 
 group :development, :test do
