@@ -55,23 +55,23 @@ twitter card: 'summary_large_image',
       <%# end %>
       <% if logged_in? %>
         <% if current_user.following_hackathon?(@hackathon) %>
-          <%= link_to unfollow_hackathon_path(@hackathon), class: "btn btn-primary", method: "post" do %>
+          <%= link_to unfollow_hackathon_path(@hackathon), class: "btn btn-lg btn-primary", method: "post" do %>
             <span class="glyphicon glyphicon-heart glyphicon-heart" aria-hidden="true"></span>
           <% end %>
         <% else %>
-          <%= link_to follow_hackathon_path(@hackathon), class: "btn btn-default", method: "post" do %>
+          <%= link_to follow_hackathon_path(@hackathon), class: "btn btn-lg btn-default", method: "post" do %>
             <span class="glyphicon glyphicon-heart glyphicon-heart-empty" aria-hidden="true"></span>
           <% end %>
         <% end %>
       <% end %>
       <% if @hackathon.typeform.present? %>
-        <a class="typeform-share btn btn-primary" id="register-typeform" href="<%= @hackathon.typeform %>" data-mode="2" target="_blank">REGISTER HERE</a>
-        <%= link_to "MORE INFO", "#{@hackathon.url}?ref=hackevents", class: "btn btn-default", :id => "view-website", target: "_blank" %>
+        <a class="typeform-share btn btn-lg btn-primary" id="register-typeform" href="<%= @hackathon.typeform %>" data-mode="2" target="_blank">REGISTER HERE</a>
+        <%= link_to "MORE INFO", "#{@hackathon.url}?ref=hackevents", class: "btn btn-lg btn-default", :id => "view-website", target: "_blank" %>
       <% else %>
-        <%= link_to "REGISTER HERE", "#{@hackathon.url}?ref=hackevents", class: "btn btn-primary", :id => "view-website", target: "_blank" %>
+        <%= link_to "REGISTER HERE", "#{@hackathon.url}?ref=hackevents", class: "btn btn-lg btn-primary", :id => "view-website", target: "_blank" %>
       <% end %>
       <% if logged_in? && current_user.organizing_hackathon?(@hackathon) %>
-        <%= link_to "EDIT", edit_hackathon_path(@hackathon), class: "btn btn-default btn-margin", :style => ["background-color:green;color:#fff"] %>
+        <%= link_to "EDIT", edit_hackathon_path(@hackathon), class: "btn btn-lg btn-default btn-margin", :style => ["background-color:green;color:#fff"] %>
       <% end %>
       </center>
     </div>
@@ -206,17 +206,15 @@ twitter card: 'summary_large_image',
           </div>
         </div>
       </div>
-      <% @hackathon.users.each do |s| %>
-        <div class="posts">
-          <ul class="people">
-            <% @hackathon.users.each do |u| %>
-              <li class="people-person col-md-4">
-                <%= render partial: "users/user", locals: { u: u } %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
+      <div class="posts">
+        <ul class="people">
+          <% @hackathon.users.each do |u| %>
+            <li class="people-person col-md-4">
+              <%= render partial: "users/user", locals: { u: u } %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 <% end %>
