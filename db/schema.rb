@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130160416) do
+ActiveRecord::Schema.define(version: 20151202163724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,8 +66,8 @@ ActiveRecord::Schema.define(version: 20151130160416) do
     t.string   "country"
     t.string   "city_string"
     t.string   "url"
-    t.datetime   "date_start"
-    t.datetime   "date_end"
+    t.datetime "date_start"
+    t.datetime "date_end"
     t.string   "venue"
     t.string   "address"
     t.text     "challenge"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20151130160416) do
     t.integer  "days_mask"
     t.string   "twitter_hashtag"
     t.integer  "city_id"
+    t.string   "typeform"
   end
 
   add_index "hackathons", ["city_id"], name: "index_hackathons_on_city_id", using: :btree
