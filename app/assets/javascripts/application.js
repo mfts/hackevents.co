@@ -42,7 +42,7 @@ $(function() {
 });
 
 $(function() {
-  $('span.category-bar-item[data-toggle="tooltip"], .sponsors a[data-toggle="tooltip"], ul.social-links li a[data-toggle="tooltip"]').tooltip()
+  $('span.category-bar-item[data-toggle="tooltip"], .sponsors a[data-toggle="tooltip"], .sponsor-image a[data-toggle="tooltip"], ul.social-links li a[data-toggle="tooltip"]').tooltip()
 });
 
 $(function() {

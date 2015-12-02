@@ -291,11 +291,12 @@
 
 #hackathon-header h2{
   display: block;
-  margin-bottom: 60px;
-  font-size: 32px;
-  line-height: 32px;
+  //margin-bottom: 60px;
+  font-size: 40px;
+  line-height: 40px;
   font-weight: 600;
   text-align: center;
+  color: $brand-primary;
 }
 
 #hackathon-header h2 small{
@@ -313,6 +314,58 @@
 
 .hackathon-logo {
   max-width: 250px;
+}
+
+.banner-date-location {
+  max-width: 500px;
+  width: 500px;
+  height: auto;
+  background-image: image-url("banner-hackathon-date-location.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  h3 {
+    display: block;
+    margin-bottom: 60px;
+    padding-bottom: 10px;
+    padding-top : 10px;
+    font-size: 32px;
+    line-height: 32px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    a {
+      color: #fff;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .banner-date-location {
+    width: auto;
+    height: auto;
+    background-image: image-url("banner-hackathon-date-location.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    h3 {
+      display: block;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      padding-top : 20px;
+      font-size: 20px;
+      line-height: 24px;
+      font-weight: 600;
+      text-align: center;
+      color: #fff;
+      a {
+        color: #fff;
+      }
+    }
+  }
+  .btn-margin {
+    margin-top: 5px;
+  }
 }
 
 
@@ -334,7 +387,7 @@
   font-size: 28px;
   line-height: 32px;
   font-weight: 600;
-  text-align: left;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -468,7 +521,7 @@
   font-size: 28px;
   line-height: 32px;
   font-weight: 600;
-  text-align: left;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -483,7 +536,6 @@
 #schedule p {
   font-size: 14px;
   font-weight: 300;
-  text-align: left;
 }
 
 
@@ -502,7 +554,7 @@
 .heading-title{
   display: block;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   margin-top: 20px;
 }
 
@@ -523,7 +575,7 @@
 
 .sponsor-image img{
   max-width: 100%;
-  width: 100%;
+  //width: 100%;
   height: auto;
   margin-bottom: 30px;
 }
@@ -548,7 +600,7 @@
 #register{
   width: 100%;
   padding: 60px 0 55px;
-  background-color: #4A4A4A;
+  background-color: #f0f0f0;
   -webkit-background-size: cover !important;
      -moz-background-size: cover !important;
     -ms-background-size: cover !important;
@@ -562,8 +614,19 @@
   margin-top: 5px;
   font-size: 24px;
   line-height: 38px;
-  color:  #fff;
-  font-weight: 100;
+  color:  #000;
+  font-weight: 300;
+}
+
+@media (max-width: 767px) {
+  #register h3{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    line-height: 25px;
+    color:  #000;
+    text-align: center;
+  }
 }
 
 
@@ -588,8 +651,11 @@
   #over_map { 
     position: absolute; 
     top: 10px; 
-    left: 150px; 
+    left: 10px; 
     z-index: 99; 
+    background-color:#F57C00;
+    color:#fff;
+    padding:5px;
   }
 }
 

@@ -34,17 +34,25 @@ twitter card: 'summary_large_image',
             <%= image_tag "categories/#{category_name.parameterize}.png" %>
           <% end %>
         </center>
-        <h2><%= @hackathon.title %><small><br><%= l(@hackathon.date_start, format: "%A, %e %b") %> - <%= l(@hackathon.date_end, format: "%A, %e %b %Y") %> | 
+        <h2><%= @hackathon.title %></h2>
+        <center>
+        <div class="banner-date-location">
+        <h3><%= l(@hackathon.date_start, format: "%B %e") %> - <%= l(@hackathon.date_end, format: "%e %Y") %>
+        <br> 
           <% if @hackathon.city %>
             <%= link_to @hackathon.city, city_path(@hackathon.city) %>,
           <% else %>
           <%= link_to @hackathon.city_string, hackathons_by_city_string_path(country: @hackathon.country.parameterize, city_string: @hackathon.city_string.parameterize) %>,
           <% end %>
           <%= link_to @hackathon.country, hackathons_by_country_path(country: @hackathon.country.parameterize) %>
-        </small></h2>
+        </h3>
+        </div>
+        </center>
+
       </div>
     </div>
-    <div class="col-md-offset-4">
+    <div>
+      <center>
       <%#= link_to "#{@hackathon.url}?ref=hackevents", class: "col-lg-2 col-lg-offset-5 col-xs-12 btn btn-lg btn-primary", id: "view-website" do %>
        <!--  <i class="fa fa-arrow-right"></i> REGISTER NOW -->
       <%# end %>
@@ -59,50 +67,35 @@ twitter card: 'summary_large_image',
           <% end %>
         <% end %>
       <% end %>
-      <%= link_to "REGISTER NOW", "#{@hackathon.url}?ref=hackevents", class: "btn btn-primary", :id => "view-website", target: "_blank" %>
-      <%= link_to "INVITE YOUR FRIENDS", "https://twitter.com/intent/tweet?text=Join%20me%20at%20#{ @hackathon.title }%20%23hackathon%20in%20#{ @hackathon.city_string },%20#{ @hackathon.country}%20#{ request.url }%20on%20%40Hackevents", class: "btn btn-twitter", :id => "twitter-share", target: "_blank" %>
+      <a class="typeform-share btn btn-primary" href="https://launchevents.typeform.com/to/meGqPZ" data-mode="2" target="_blank">REGISTER HERE!</a>
+      <%= link_to "MORE INFO", "#{@hackathon.url}?ref=hackevents", class: "btn btn-default", :id => "view-website", target: "_blank" %>
       <% if logged_in? && current_user.organizing_hackathon?(@hackathon) %>
-        <%= link_to "EDIT", edit_hackathon_path(@hackathon), class: "btn btn-default" %>
+        <%= link_to "EDIT", edit_hackathon_path(@hackathon), class: "btn btn-default btn-margin", :style => ["background-color:green;color:#fff"] %>
       <% end %>
-    </div>   
+      </center>
+    </div>
   </div>  
 </div>
 <!-- end:hackathon header -->
 
-<div class="row">
-  <div class="col-md-6">
-    <% if @hackathon.description.present? %>
-      <!-- begin:description -->
-      <div id="description">
-        <div class="">
-          <div class="row">
-            <div class="col-md-12">
-              <h2>Description</h2>
-            </div>
-          </div>
-          <p><%= @hackathon.description.html_safe %></p>      
-        </div>  
-      </div>
-      <!-- end:description -->
-    <% end %>
-  </div>
-  <div class="col-md-6">
-    <% if @hackathon.schedule.present? %>
-      <!-- begin:schedule -->
-      <div id="schedule">
-        <div class="">
-          <div class="row">
-            <div class="col-md-12">
-              <h2>Schedule</h2>
-            </div>
-          </div>
-          <p><%= markdown(@hackathon.schedule) %></p>
+<% if @hackathon.description.present? %>
+  <!-- begin:description -->
+  <div id="description">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Description</h2>
         </div>
       </div>
-      <!-- end:schedule -->
-    <% end %>
+      <center>
+        <div class="col-md-6" style="float:none;">
+          <p><%= @hackathon.description.html_safe %></p>      
+        </div>
+      </center>
+    </div>  
   </div>
-</div>
+  <!-- end:description -->
+<% end %>
 
 
 <!-- begin:prizes -->
@@ -158,6 +151,25 @@ twitter card: 'summary_large_image',
 </div>
 <!-- end:prizes -->
 
+<% if @hackathon.schedule.present? %>
+  <!-- begin:schedule -->
+  <div id="schedule">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Schedule</h2>
+        </div>
+      </div>
+      <center>
+        <div class="col-md-6" style="float:none;text-align:left;">
+          <p><%= markdown(@hackathon.schedule) %></p>
+        </div>
+      </center>
+    </div>
+  </div>
+  <!-- end:schedule -->
+<% end %>
+
 <% if @hackathon.sponsors.present? %>
   <!-- begin:sponsors -->
   <div id="sponsors">
@@ -169,15 +181,15 @@ twitter card: 'summary_large_image',
           </div>
         </div>
       </div>
+      <center>
       <% @hackathon.sponsors.each do |s| %>
-        <div>
-          <div class="col-md-3 col-sm-6 col-xs-6">
-            <div class="sponsor-image">
-              <%= link_to image_tag( s.twitter_image_url, class: "img-rounded"), "http://www.twitter.com/#{s.twitter_handle}", :target => "_blank", :data => { :toggle => "tooltip", :placement => "bottom" }, :title => s.twitter_name %>
-            </div>
+        <div class="col-md-2 col-sm-3 col-xs-6">
+          <div class="sponsor-image">
+            <%= link_to image_tag( s.twitter_image_url, class: "img-rounded", size: "120x120"), "http://www.twitter.com/#{s.twitter_handle}", :target => "_blank", :data => { :toggle => "tooltip", :placement => "bottom" }, :title => s.twitter_name %>
           </div>
         </div>
       <% end %>
+      </center>
     </div>
   </div>
   <!-- end:sponsors -->
@@ -214,19 +226,39 @@ twitter card: 'summary_large_image',
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-2 col-sm-8 col-xs-12">
-        <h3>Join <%= @hackathon.title %> now</h3>
+        <h3>Invite your friends to <%= @hackathon.title %></h3>
       </div>
-      <%= link_to "#{@hackathon.url}?ref=hackevents", class: "col-md-3 col-sm-4 col-xs-12 btn btn-primary btn-lg" do %>
-        <i class="fa fa-arrow-right"></i> REGISTER
-      <% end %>
+      <%= link_to "SHARE NOW", "https://twitter.com/intent/tweet?text=Join%20me%20at%20#{ @hackathon.title }%20%23hackathon%20in%20#{ @hackathon.city_string },%20#{ @hackathon.country}%20#{ request.url }%20on%20%40Hackevents", class: "col-md-3 col-sm-4 col-xs-12 btn btn-twitter btn-lg", :id => "twitter-share", target: "_blank" %>
     </div>
   </div>
 </div>
 </div>
 <!-- end:subscribe -->
 
+
+<div class="hidden-sm hidden-md hidden-lg">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="heading-title">
+          <h2>Location</h2>
+        </div>
+      </div>
+    </div>
+    <center>
+      <address>
+        <strong><%= @hackathon.venue %></strong><br />
+        <%= @hackathon.address %>
+      </address>
+      <p>
+        <%= link_to "<i class='glyphicon glyphicon-map-marker'></i>&nbsp; Get Directions" .html_safe, "https://maps.google.com?daddr=#{ @hackathon.address }", class: "btn btn-default", :style => ["margin-bottom:10px"], target: "_blank" %>
+      </p>
+    </center>
+  </div>
+</div>
+
 <div id="map">
-  <div id="over_map" class="panel" style="background-color:#F57C00;color:#fff;padding:5px;">
+  <div id="over_map" class="panel hidden-xs">
     <h3>Location</h3>
     <address>
       <strong><%= @hackathon.venue %></strong><br />
@@ -253,7 +285,7 @@ twitter card: 'summary_large_image',
     }
     removeStaticMap();
 </script>
-<script class="hide-on-med-and-down" type="text/javascript">
+<script type="text/javascript">
   var geocoder;
   var map;
   var address;
@@ -288,3 +320,4 @@ twitter card: 'summary_large_image',
   });
 </script>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}id=id+'_';if(!gi.call(d,id)){qs=ce.call(d,'link');qs.rel='stylesheet';qs.id=id;qs.href=b+'share-button.css';s=gt.call(d,'head')[0];s.appendChild(qs,s)}})()</script>
