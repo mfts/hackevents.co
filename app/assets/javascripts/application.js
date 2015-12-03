@@ -84,7 +84,7 @@ $(function() {
       text: "Submit it through our Typeform! Thank you :)",   
       type: "info",   
       showCancelButton: true,   
-      confirmButtonColor: "#DD6B55",
+      confirmButtonColor: "#F57C00",
       confirmButtonText: "Yes, add it!",   
       closeOnConfirm: false
     }, 
@@ -95,6 +95,34 @@ $(function() {
   });
 });
 
+$(function() {
+  $("[data-behavior='add-organizer']").on("click", function(event){
+    event.preventDefault();
+
+    swal({   
+      title: "Who is organizing this hackathon?",   
+      type: "input",   
+      showCancelButton: true,   
+      closeOnConfirm: false,
+      confirmButtonText: "Suggest",
+      confirmButtonColor: "#F57C00",
+      inputPlaceholder: "Enter Twitter @username"
+    }, 
+    function(inputValue){   
+      if (inputValue === false) 
+        return false;      
+      if (inputValue === "") {     
+        swal.showInputError("You haven't suggested anyone yet!");     
+        return false   
+      }      
+      swal({title:"Thank you :)", text: "We will verify the person and immediately notify you after a successful match.", type: "success"}); 
+      $("p#suggested-by-user").text($("[data-behavior='add-organizer']").data('userValue'));
+      $("p#suggested-for-hackathon").text($("[data-behavior='add-organizer']").data('hackathonValue'));
+      $("p#suggested-organizer").text(inputValue);
+      window.location.assign(location.origin+"/hackathons/"+$("[data-behavior='add-organizer']").data('hackathonValue')+"/send_suggestion?input="+inputValue);
+    });
+  });
+});
 
 $(function() {
   var $form = $('#mc-embedded-subscribe-form');
@@ -132,6 +160,7 @@ function register($form) {
     }
   });
 }
+
 
 $(function() {
   $('.add_child').click(function() {

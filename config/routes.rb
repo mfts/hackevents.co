@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     member do
       post :follow
       post :unfollow
+      get  :send_suggestion
     end
   end
   root to: 'welcome#index'
