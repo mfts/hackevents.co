@@ -116,9 +116,6 @@ $(function() {
         return false   
       }      
       swal({title:"Thank you :)", text: "We will verify the person and immediately notify you after a successful match.", type: "success"}); 
-      $("p#suggested-by-user").text($("[data-behavior='add-organizer']").data('userValue'));
-      $("p#suggested-for-hackathon").text($("[data-behavior='add-organizer']").data('hackathonValue'));
-      $("p#suggested-organizer").text(inputValue);
       window.location.assign(location.origin+"/hackathons/"+$("[data-behavior='add-organizer']").data('hackathonValue')+"/send_suggestion?input="+inputValue);
     });
   });
