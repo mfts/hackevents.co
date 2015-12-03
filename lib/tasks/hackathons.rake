@@ -73,7 +73,7 @@ namespace :hackathons do
         doc = Nokogiri::HTML(resp.body)
         img = doc.xpath('//body/div/div/div/div/div/div/div/div/div/a/img/@src')
         user.twitter_account.profile_image = img.to_s.gsub('_400x400','')
-        user.save
+        user.twitter_account.save
       else
         puts "404 caught"
       end
