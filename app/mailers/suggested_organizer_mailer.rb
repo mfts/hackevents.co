@@ -5,7 +5,7 @@ class SuggestedOrganizerMailer < ApplicationMailer
     @user = user
     @hackathon = hackathon
     @input = input
-    mail(:to => "<michael@hackevents.co>, <dev@hackevents.co>", 
+    mail(:to => "<michael@hackevents.co>, <dev@hackevents.co>, <marcftone@gmail.com>", 
          :subject => "New Suggested Organizer")
   end
 end
