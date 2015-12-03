@@ -1,8 +1,8 @@
 class HackathonsController < ApplicationController
   helper :hackathons
   include ApplicationHelper
-  before_action :set_hackathon, only: [:show, :edit, :update, :follow, :unfollow]
-  before_action :require_user,  only: [:follow, :unfollow]
+  before_action :set_hackathon, only: [:show, :edit, :update, :follow, :unfollow, :send_suggestion]
+  before_action :require_user,  only: [:follow, :unfollow, :send_suggestion]
   before_action :require_organizer && :require_this_organizer, only: [:edit, :update]
 
   layout "layouts/application"
@@ -25,11 +25,16 @@ class HackathonsController < ApplicationController
     end
   end
 
+  def send_suggestion
+    input = params[:input]
+    SuggestedOrganizerMailer.suggestions(current_user,@hackathon,input).deliver
+    redirect_to nice_hackathon_path(@hackathon)
+  end
+
   def edit
   end
 
   def update
-    #@hackathon.events.build
     respond_to do |format|
       if @hackathon.update(hackathon_params)
         format.html { redirect_to nice_hackathon_path(@hackathon), notice: 'Your hackathon has successfully been updated.' }
