@@ -282,7 +282,8 @@ twitter card: 'summary_large_image',
     var mapOptions = {
       zoom:   15,
       center: latlng,
-      scrollwheel: false
+      scrollwheel: false,
+      draggable: false
     };
     map       = new google.maps.Map(document.getElementById('jsMap'), mapOptions);
     geocoder  = new google.maps.Geocoder();
