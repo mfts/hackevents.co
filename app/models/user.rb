@@ -162,6 +162,10 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
   
   
   def to_param

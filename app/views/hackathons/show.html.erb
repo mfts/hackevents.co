@@ -33,17 +33,22 @@ twitter card: 'summary_large_image',
         </center>
         <h2><%= @hackathon.title %></h2>
         <center>
-        <div class="banner-date-location">
-        <h3><%= l(@hackathon.date_start, format: "%B %e") %> - <%= l(@hackathon.date_end, format: "%e %Y") %>
-        <br> 
-          <% if @hackathon.city %>
-            <%= link_to @hackathon.city, city_path(@hackathon.city) %>,
+          <div class="banner-date-location">
+            <h3><%= l(@hackathon.date_start, format: "%B %e") %> - <%= l(@hackathon.date_end, format: "%e, %Y") %>
+            <br> 
+              <% if @hackathon.city %>
+                <%= link_to @hackathon.city, city_path(@hackathon.city) %>,
+              <% else %>
+              <%= link_to @hackathon.city_string, hackathons_by_city_string_path(country: @hackathon.country.parameterize, city_string: @hackathon.city_string.parameterize) %>,
+              <% end %>
+              <%= link_to @hackathon.country, hackathons_by_country_path(country: @hackathon.country.parameterize) %>
+            </h3>
+          </div>
+          <% if logged_in? %>
+            <p><%= link_to "Suggest an organizer", "javascript:void[0]", data: { behavior: 'add-organizer', user_value: "#{current_user.id}", hackathon_value: "#{@hackathon.id}" }, id: "suggest-organizer" %> of this hackathon now.</p>
           <% else %>
-          <%= link_to @hackathon.city_string, hackathons_by_city_string_path(country: @hackathon.country.parameterize, city_string: @hackathon.city_string.parameterize) %>,
+            <p>Log in to suggest an organizer of this hackathon.</p>
           <% end %>
-          <%= link_to @hackathon.country, hackathons_by_country_path(country: @hackathon.country.parameterize) %>
-        </h3>
-        </div>
         </center>
 
       </div>
@@ -66,7 +71,7 @@ twitter card: 'summary_large_image',
       <% end %>
       <% if @hackathon.typeform.present? %>
         <a class="typeform-share btn btn-lg btn-primary" id="register-typeform" href="<%= @hackathon.typeform %>" data-mode="2" target="_blank">REGISTER HERE</a>
-        <%= link_to "MORE INFO", "#{@hackathon.url}?ref=hackevents", class: "btn btn-lg btn-default", :id => "view-website", target: "_blank" %>
+        <%= link_to "MORE INFO", "#{@hackathon.url}?ref=hackevents", class: "btn btn-lg btn-default btn-margin", :id => "view-website", target: "_blank" %>
       <% else %>
         <%= link_to "REGISTER HERE", "#{@hackathon.url}?ref=hackevents", class: "btn btn-lg btn-primary", :id => "view-website", target: "_blank" %>
       <% end %>
@@ -187,6 +192,7 @@ twitter card: 'summary_large_image',
         <div class="col-md-2 col-sm-3 col-xs-6">
           <div class="sponsor-image">
             <%= link_to image_tag( s.twitter_image_url, class: "img-rounded", size: "120x120"), "http://www.twitter.com/#{s.twitter_handle}", :target => "_blank", :data => { :toggle => "tooltip", :placement => "bottom" }, :title => s.twitter_name %>
+            <label class="hidden-md hidden-lg" style="display:block;margin-bottom:20px;margin-top:-20px;"><%= s.twitter_name %></label>
           </div>
         </div>
       <% end %>
