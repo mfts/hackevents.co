@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'json'
 require 'net/http'
+require 'nokogiri'
+require 'open-uri'
 
 namespace :hackathons do  
   task :generate_count => :environment do
@@ -60,6 +62,27 @@ namespace :hackathons do
         city.source_name = source['Name']
         city.save
       end
+    end
+  end
+  task :update_twitter_profile_image => :environment do
+    base_url = "https://twitter.com/"
+    User.all.each do |user|
+      url = base_url + user.twitter_account.username
+      doc = Nokogiri::HTML(open(url))
+      img = doc.xpath('//body/div/div/div/div/div/div/div/div/div/a/img/@src')
+      user.twitter_account.profile_image = img.to_s.gsub('_400x400','')
+      puts user.twitter_account.profile_image
+      user.save
+    end
+  end
+  task :update_twitter_sponsor_image => :environment do
+    base_url = "https://twitter.com/"
+    Sponsor.all.each_with_index do |sponsor, index|
+      url = base_url + sponsor.twitter_handle
+      doc = Nokogiri::HTML(open(url))
+      img = doc.xpath('//body/div/div/div/div/div/div/div/div/div/a/img/@src')
+      sponsor.twitter_image_url = img.to_s.gsub('_400x400','')
+      sponsor.save
     end
   end
 end
