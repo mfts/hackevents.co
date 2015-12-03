@@ -69,8 +69,6 @@ analytics.identify('<%= current_user.id %>', {
     hackathon_country: '<%= @hackathon.country %>',
     hackathon_city: '<%= @hackathon.city || @hackathon.city_string %>',
     hackathon_favs: '<%= @hackathon.users.count %>',
-    suggesting_user_name: '<%= current_user.twitter_account.username %>',
-    suggesting_user_id: '<%= current_user.id %>',
     logged_in: '<%= logged_in? ? "yes" : "no" %>',
     admin: '<%= logged_in? && current_user.admin? ? "yes" : "no" %>'
   });
