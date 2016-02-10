@@ -351,3 +351,27 @@
 #subscribe h3 small {
   color: #f4f4f4;
 }
+
+/* 
+  ==================
+  [7. Button]
+  ==================
+*/
+
+.centered-button {
+  float:none;
+  margin:0 auto;
+  width: 41.6666667%
+}
+
+@media only screen and (max-width:768px) {
+  .centered-button {
+    width: 100%
+  }
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  .centered-button {
+    width: 41.6666666667%
+  }
+}

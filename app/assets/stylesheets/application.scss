@@ -13,6 +13,9 @@
  *= require_self
  *= require font-awesome
  *= require sweetalert
+ *= require toolkit
+ *= require minimal
+
  */
 
 $body-bg:                       #FFFFFF;
@@ -36,7 +39,14 @@ $link-color:                    #F57C00;
 @import "nprogress";
 
 body{
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  a {
+    color: inherit;
+    &:hover {
+      color: $brand-primary;
+      text-decoration: none;
+    }
+  }
 }
 
 .row {

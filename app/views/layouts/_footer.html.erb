@@ -1,83 +1,41 @@
-<div id="footer">
+<div class="block app-block-footer">
   <div class="container">
-    <div class="row" id="learn-more">
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="widget">
-          <h3>Hackevents
-          <br><small>The leading hackathon search</small></h3>
-          <address>
-            Visit us in our office:<br>
-            Nordendstraße 2<br>
-            80333 Munich<br>
-            Germany<br>
-            <br>
-            <%= mail_to "dev@hackevents.co", "dev@hackevents.co", target: "_blank" %>
-          </address>
-        </div>
-      </div>
-      <!-- break -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="widget">
-          <h3>For Hackers</h3>
-          <ul class="list-unstyled">
-            <!-- <li><a href="#">Hackathon News</a></li> -->
-            <li><a href="/hackathon/germany">Hackathons in Germany</a></li>
-            <li><a href="/hackathon/usa">Hackathons in USA</a></li>
-            <li><a href="/hackathons/europe">Hackathons in Europe</a></li>
-            <li><a href="/hackathons">Hackathons Worldwide</a></li>
-            <li><a href="#subscribe">Get our newsletter</a></li>
-          </ul>
-        </div>
-      </div>
-      <!-- break -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="widget">
-          <h3>For Organizers</h3>
-          <ul class="list-unstyled">
-            <li><%= link_to "Add your hackathon", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { behavior: 'add-hackathon' } %></li>
-            <!-- <li><a href="#">Hackathon Marketing</a></li>
-            <li><a href="#">Hackathon Mentoring</a></li> -->
-          </ul>
-        </div>
-      </div>
-      <!-- break -->
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <div class="widget">
-          <h3>For Partners</h3>
-          <ul class="list-unstyled">
-            <li><%= link_to "About Hackevents", about_path %></li>
-            <!-- <li><a href="#">Company Portal</a></li> -->
-            <li><%= link_to "Oktoberhackfest", "http://www.oktoberhackfest.com", target: "_blank" %></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <!-- break -->
-    <!-- begin:copyright -->
     <div class="row">
-      <div class="col-md-12 copyright">
-        <p>Copyright &copy; 2015 Hackevents. All Rights Reserved.</p>
-        <%= link_to "Imprint & Data Privacy", imprint_path %>
-        <a href="#main-cover" class="btn btn-primary scroltop"><i class="fa fa-angle-up"></i></a>
-        <ul class="list-inline social-links">
-          <li>
-            <%= link_to "http://www.twitter.com/Hackevents", class: "icon-twitter", :data => { "placement": "bottom", "original-title": "Twitter", "toggle": "tooltip" } do %>
-              <i class="fa fa-twitter"></i>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to "http://www.facebook.com/hackevents", class: "icon-facebook", :data => { "placement": "bottom", "original-title": "Facebook", "toggle": "tooltip" } do %>
-              <i class="fa fa-facebook"></i>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to "http://angel.co/hackevents", class: "icon-angellist", :data => { "placement": "bottom", "original-title": "AngelList", "toggle": "tooltip" } do %>
-              <i class="fa fa-angellist"></i>
-            <% end %>
-          </li>
+      <div class="col-sm-2 m-b">
+        <ul class="list-unstyled list-spaced">
+          <li><h6 class="text-uppercase">For US Hackers</h6></li>
+          <li><a href="/hackathon/usa">Hackathons in USA</a></li>
+          <li><a href="/cities/san-francisco">Hackathons in San Francisco</a></li>
+          <li><a href="/cities/new-york">Hackathons in New York</a></li>
+          <li><a href="/cities/chicago">Hackathons in Chicago</a></li>
         </ul>
       </div>
+       <div class="col-sm-2 m-b">
+        <ul class="list-unstyled list-spaced">
+          <li><h6 class="text-uppercase">For EU Hackers</h6></li>
+          <li><a href="/hackathons/europe">Hackathons in Europe</a></li>
+          <li><a href="/cities/london">Hackathons in London</a></li>
+          <li><a href="/cities/berlin">Hackathons in Berlin</a></li>
+          <li><a href="/cities/barcelona">Hackathons in Barcelona</a></li>
+          <li><a href="/cities/stockholm">Hackathons in Stockholm</a></li>
+        </ul>
+      </div>
+      <div class="col-sm-2 m-b">
+        <ul class="list-unstyled list-spaced">
+          <li><h6 class="text-uppercase">For Organizers</h6></li>
+          <li><%= link_to "About Hackevents", about_path %></li>
+          <li><%= link_to "Add your hackathon", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { behavior: 'add-hackathon' } %></li>
+        </ul>
+      </div>
+  
+       <div class="col-sm-6">
+        <h6 class="text-uppercase">About</h6>
+        <p>Hackevents is a product of <a style="color:#D96134;" href="http://www.buildmethisapp.com/?ref=hackevents" target="_blank">Build Me This App</a>. 
+        <br>Made with <span class="fa fa-heart"></span> in Berlin and Munich.</p>
+        <br>
+        <p>Follow <a style="color:#D96134;" href="http://www.twitter.com/hackevents" target="_blank"><span class="fa fa-twitter"></span>  Hackevents</a> on Twitter.
+      </div>
     </div>
-    <!-- end:copyright -->
   </div>
 </div>
+

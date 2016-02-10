@@ -27,6 +27,7 @@
 //= require bootstrap-datetimepicker
 //= require tinymce
 
+
 $(function() {
   $(".table-calendar p.event").hover(
     function() {
