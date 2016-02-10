@@ -1,294 +1,44 @@
-<!-- begin:search -->
-<div id="header" class="heading" style="background-image: url('http://images.hackevents.de/header-background.png');">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-10 col-md-offset-1">
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="quick-search">   
-          <div class="row">
-            <form role="form">
-             <h1 class="col-md-12">Find your best hackathon
-              <br>
-              <small>Choose from <%= @count %> hackathons in <%= @city_count %> cities</small></h1>
-              <!-- break -->
-              <div class="col-md-8 col-sm-12 col-xs-12">
-                <input class="typeahead input-lg" type="text" placeholder="Search for hackathons by name, city, ..." id="hackathon-search" spellcheck="false" />
-              </div>
-              <div class="col-md-4 col-sm-12 col-xs-12">
-                <%= link_to "See all hackathons", hackathons_path, class: "btn btn-primary btn-lg btn-block" %>
-              </div>
-            </form>
-          </div>
-        </div>
-        <br>
-        <br>
-        <br>
-      </div>  
+<div class="block app-block-intro">
+  <div class="container text-center">
+    <h1 class="block-title m-b-sm text-uppercase app-myphone-brand"><span class="text-primary">Hack</span>events</h1>
+    <p class="lead m-b-lg">is the world's leading search engine for hackathons.</p>
+
+    <p class="lead ">Choose from <%= @count %> <strong>upcoming</strong> hackathons in <%= @city_count %> cities</p>
+    <input class="typeahead input-lg form-control m-b" type="text" placeholder="Search for hackathons by name, city, ..." id="hackathon-search" spellcheck="false" />
+    <div class="centered-button">
+      <%= link_to "See all upcoming hackathons", hackathons_path, class: "btn btn-primary-outline btn-lg btn-block m-b" %>
     </div>
   </div>
 </div>
-<!-- end:search -->
 
-<!-- begin:upcoming 30 days -->
-<div id="days">
+<div class="block block-bordered-lg block-overflow-hidden p-b-0 app-block-design">
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2>Upcoming hackathons in the next 30 days<small>Find events from <%= Time.zone.now.strftime('%d. %B') %> to <%= (Time.zone.now + 30.days).strftime('%d. %B %Y') %></small></h2>
+    <div class="row pos-r">
+      <div class="col-sm-7 text-xs-center text-sm-left hackathons">
+        <h2 class="block-title">Featured Hackathons in 2016 by Hackevents</h2> 
+        <p class="lead">
+        Hackathons are open and everyone should have the ability to host an event. But there are some events, that
+        are outstanding in terms of love, quality and effort. Find our curated list of the best hackathons of the 
+        season.
+        </p>
+        <% @featured.limit(10).each do |hackathon| %>
+          <%= render partial: "hackathons/hackathon", locals: { hackathon: hackathon} %>
+        <% end %>
       </div>
     </div>
-    <div class="row">
-      <!-- GERMANY --> 
-      <div class="col-md-3 col-xs-12">
-        <div class="days-container">
-          <div class="days-content">
-            <h3>Hackathons in Germany
-              <br>
-              <small>from <%= Time.zone.now.strftime('%d. %b') %> – <%= (Time.zone.now + 30.days).strftime('%d. %b %Y') %></small></h3> 
-              <hr> 
-              <ul>
-                <% @germany.limit(6).each do |hackathon| %>
-                  <li><%= link_to hackathon.title, nice_hackathon_path(hackathon) %></li>
-                <% end %>
-              </ul> 
-              <hr>
-              <a href="/hackathon/germany" class="btn btn-default btn col-lg-12 col-xs-12 days-more">See more in Germany</a> 
-            </div>
-          </div>
-        </div>
-        <!-- break -->
-
-        <!-- USA --> 
-        <div class="col-md-3 col-xs-12">
-          <div class="days-container">
-            <div class="days-content">
-              <h3>Hackathons in USA
-                <br>
-                <small>from <%= Time.zone.now.strftime('%d. %b') %> – <%= (Time.zone.now + 30.days).strftime('%d. %b %Y') %></small></h3>  
-                <hr>
-                <ul>
-                  <% @usa.limit(6).each do |hackathon| %>
-                    <li><%= link_to hackathon.title, nice_hackathon_path(hackathon) %></li>
-                  <% end %>
-                </ul> 
-                <hr>
-                <a href="/hackathon/usa" class="btn btn-default col-lg-12 col-xs-12 days-more">See more in USA</a> 
-              </div>
-            </div>
-          </div>
-          <!-- break -->
-
-          <!-- EUROPE --> 
-          <div class="col-md-3 col-xs-12">
-            <div class="days-container">
-              <div class="days-content">
-                <h3>Hackathons in Europe
-                  <br>
-                  <small>from <%= Time.zone.now.strftime('%d. %b') %> – <%= (Time.zone.now + 30.days).strftime('%d. %b %Y') %></small>
-                </h3>  
-                <hr>
-                <ul>
-                  <% @europe.limit(6).each do |hackathon| %>
-                    <li><%= link_to hackathon.title, nice_hackathon_path(hackathon) %></li>
-                  <% end %>
-                </ul>
-                <hr>
-                <a href="/hackathons/europe" class="btn btn-default col-lg-12 col-xs-12 days-more">See more in Europe</a> 
-              </div>
-            </div>
-          </div>
-          <!-- break -->
-          <!-- Worldwide --> 
-          <div class="col-md-3 col-xs-12">
-            <div class="days-container">
-              <div class="days-content">
-                <h3>Worldwide hackathons
-                  <br>
-                  <small>from <%= Time.zone.now.strftime('%d. %B') %> – <%= (Time.zone.now + 30.days).strftime('%d. %B %Y') %></small>
-                </h3> 
-                <hr>
-                <ul>
-                  <% @worldwide.limit(6).each do |hackathon| %>
-                    <li><%= link_to hackathon.title, nice_hackathon_path(hackathon) %></li>
-                  <% end %>
-                </ul> 
-                <hr>
-                <a href="/hackathons" class="btn btn-default col-lg-12 col-xs-12 days-more">See more worldwide</a> 
-              </div>
-            </div>
-          </div>
-              <!-- break -->
-            </div>
-            <p class="days-all">Feel free to go through our database of hackathons, by just clicking the following button.</p>
-            <%= link_to "See all hackathons", hackathons_path, class: "btn btn-primary btn-lg col-lg-2 col-lg-offset-5 col-xs-12" %>
-          </div>
-        </div>
-        <!-- end:upcoming 30days -->
-
-        <!-- begin:top10cities -->
-        <div id="startcities">
-          <div class="container">
-            <!-- begin:latest -->
-            <div class="row">
-              <div class="col-md-12">
-                <div class="startcities-title">
-                  <h2>Best hackathon cities in the world<br>
-                    <small>Ranked by number of upcoming hackathons these are the best hackathon cities</small></h2>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <!-- CITIES --> 
-                <% @cities.first(8).each do |city| %>
-                  <%= link_to city_path(city) do %>
-                    <div class="col-md-3 col-sm-6 col-xs-12">
-                      <div class="startcities-container">
-                        <div class="startcities-image" style="background-image:url('<%= city.image_url ? city.image_url : "http://images.hackevents.de/cities/default.png" %>');background-color:lightgrey;height:100px;line-height:100px;">
-                        </div>
-                        <div class="startcities-features">
-                          <span><i class="fa fa-calendar"></i> <%= city.hackathon_count %> upcoming hackathons</span>
-                        </div>
-                        <div class="startcities-content">
-                          <h3><%= city.name %></h3>
-                        </div>
-                      </div>
-                    </div>
-                  <% end %>
-                <% end %>
-                <!-- break -->
-                <!-- button all cities -->
-                <p class="days-all">At the moment there are upcoming hackathons in <%= @city_count %> different cities.</p>
-                <%= link_to "See all hackathons", hackathons_path, class: "btn btn-primary btn-lg col-lg-2 col-lg-offset-5 col-xs-12" %>
-              </div>
-              <!-- end:all cities -->
-            </div>
-          </div>
-          <!-- end:cities -->
+  </div>
+ 
+</div>
 
 
-          <!-- begin:subscribe -->
-          <div id="subscribe">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-10 col-md-offset-1 col-xs-12">
-                  <h3>Get a rundown of the best hackathons, each Tuesday</h3>
-                </div>
-                <form action="//hackevents.us11.list-manage.com/subscribe/post-json?u=12d2135049d488583f81df765&amp;id=829cf456f5&amp;c=?" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                  <div class="col-md-6 col-md-offset-3 col-xs-12">
-                    <div class="input-group">
-                      <input type="email" class="form-control input-lg" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="Enter your email address" required>
-                      <% if current_user %>
-                        <input type="hidden" id="mce-UID" name="UID" value="<%= current_user.id %>">
-                        <input type="hidden" id="mce-FNAME" name="FNAME" value="<%= current_user.first_name %>">
-                        <input type="hidden" id="mce-LNAME" name="LNAME" value="<%= current_user.last_name %>">
-                      <% end %>
-                      <div style="position: absolute; left: -5000px;"><input type="text" name="b_12d2135049d488583f81df765_829cf456f5" tabindex="-1" value=""></div>
-                      <span class="input-group-btn">
-                        <input class="btn btn-primary btn-lg" id="mc-embedded-subscribe" type="submit"><i class="fa fa-envelope"></i> Subscribe</input>
-                      </span>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <!-- end:subscribe -->
 
+<div class="block block-bordered-lg text-center">
+  <div class="container-fluid">
+    <p class="lead m-b-md">
+      Find your best next hackathon with Hackevents!
+    </p>
 
-          <!-- begin: featured -->
-          <div id="top">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-12">
-                  <h2>Find your best hackathon</h2>
-                </div>
-              </div>
-              <div class="row">    
-                <!-- NEWS --> 
-                <div class="col-md-4 col-xs-12">
-                  <div class="top-container">
-                    <div class="top-content">
-                      <h3>Top 10 Latest News</h3>  
-                      <hr>
-                      <ul>
-                        <li><a href="https://medium.com/payworks-blog/the-10-types-of-people-you-meet-at-a-hackathon-cc31d3eb9a0">The 10 Types of People at a Hackathon</a></li>
-                        <li><a href="http://carlcheo.com/startcoding">Which Progr. Language should I learn first?</a></li>
-                        <li><a href="https://medium.com/@melissasteffan/3-tips-for-surviving-your-first-hackathon-b24201aaeb48">3 Tips for Surviving your first Hackathon</a></li>
-                        <li><a href="http://www.techrepublic.com/article/how-to-organize-a-hackathon-6-key-tips/">How to organize a Hackathon</a></li>
-                        <li><a href="http://thenextweb.com/insider/2015/07/25/how-hackathons-improve-productivity/">How Hackathons improve Productivity</a></li>
-                        <li><a href="http://www.inc.com/robin-camarote/what-your-business-can-learn-from-hackathons.html">What Your Business Can Learn From Hackathons</a></li>
-                        <li><a href="http://www.storybench.org/how-to-design-a-journalism-hackathon/">How to Design a Journalism Hackathon</a></li>
-                        <li><a href="http://techcrunch.com/2015/07/28/which-programming-languages-get-used-most-at-hackathons/">Most Used Programming Languages at Hackathons</a></li>
-                      </ul>  
-                    </div>
-                  </div>
-                </div>
-                <!-- break -->
-
-                <!-- FEATURED --> 
-                <div class="col-md-4 col-xs-12">
-                  <div class="top-featured-container">
-                    <div class="top-content">
-                      <h3>Top 10 Featured Hackathons</h3>  
-                      <hr>
-                      <ul>
-                        <% @featured.limit(10).each do |hackathon| %>
-                          <li><%= link_to hackathon.title, nice_hackathon_path(hackathon) %></li>
-                        <% end %>
-                      </ul> 
-                    </div>
-                  </div>
-                </div>
-
-                <!-- LATEST --> 
-                <div class="col-md-4 col-xs-12">
-                  <div class="top-container">
-                    <div class="top-content">
-                      <h3>Top 10 Latest Hackathons</h3> 
-                      <hr> 
-                      <ul>
-                        <% @latest.each do |hackathon| %>
-                          <li><%= link_to hackathon.title, nice_hackathon_path(hackathon) %></li>
-                        <% end %>
-                      </ul> 
-                    </div>
-                  </div>
-                </div>
-                <!-- break -->
-              </div>
-              <div>
-                <h3>About Hackevents</h3>
-                <p>The search engine Hackevents finds the best hackathon for you in Germany, USA, Europe and worldwide.</p>
-                <p>To offer you maximum choice with minimum search time, we are crawling the entire web for hackathons. So far our software has crawled more than 17 gigabyte and we listed more than 1000 hackathons on Hackevents since 2014. Moreover we provide a hackathon recommendation tool for you to find the most relevant hackathon for you. <a href="#">Join our community</a> and have a try.</p>
-                <p>In the future we will improve Hackevents to offer you an even better service.</p>
-                <p>Hackathons by region: <a href="/hackathon/germany">Germany</a> - <a href="/hackathon/usa">United States</a> - <a href="/hackathons/europe">Europe</a> - <a href="/hackathons">Worldwide</a></p>
-              </div>
-            </div>
-          </div>
-          <!-- end:upcoming featured -->
-
-          <!-- begin: Click to Action -->
-          <div id="subscribe">
-            <div class="container">
-              <div class="row">
-                <div class="col-md-10 col-md-offset-1 col-xs-12">
-                  <h3>Sign up now and personalize your hackathon search
-                    <br>
-                    <small>Hackevents built a hackathon recomenndation engine to provide you with even better and more relevant events</small>
-                  </h3>
-                </div>
-                <div class="col-md-6 col-md-offset-3 col-xs-12">
-                  <% unless current_user %>
-                    <a href"#" class="btn btn-default btn-lg col-xs-6">Find out more</a>
-                    <%= link_to "Join the community", '/auth/twitter', method: 'get', class: "btn btn-primary btn-lg col-xs-6" %>
-                  <% else %>
-                    <a href"#" class="btn btn-default btn-lg col-lg-6 col-lg-offset-3 col-xs-12">Find out more</a>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-
+    <p>Choose from <%= @count %> <strong>upcoming</strong> hackathons in <%= @city_count %> cities</p>
+    <%= link_to "See all upcoming hackathons", hackathons_path, class: "btn btn-lg btn-pill btn-primary m-b" %>
+  </div>
+</div>
