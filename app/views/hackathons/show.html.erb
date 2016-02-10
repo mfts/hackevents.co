@@ -18,6 +18,25 @@ twitter card: 'summary_large_image',
         title: @hackathon.title
 %>
 
+<!-- begin:subscribe -->
+<div class="alert alert-dismissable" id="bmta-banner">
+  <div class="container">
+    <div class="row" id="bmta-initial-view">
+      <div class="col-md-6 col-md-offset-2 col-sm-8 col-xs-12">
+        <h3>Are you looking for a developer?</h3>
+      </div>
+      <%= link_to "HIRE YOUR TEAM HERE", "http://buildmethisapp.com?ref=hackevents", class: "col-md-3 col-sm-4 col-xs-12 btn btn-twitter btn-lg", id: "hire-developer", target: "_blank", title: "Hire a team on Build Me This App" %>
+    </div>
+    <div class="row" style="display:none;" id="bmta-visited-thank-you">
+      <div class="col-md-12 col-sm-12 col-xs-12" style="text-align:center;">
+        <button type="button" class="close" style="color:#fff;opacity:0.5;" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <h3>Thank you for visiting <b>Build Me This App</b></h3>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- end:subscribe -->
 <!-- begin:hackathon header -->
 <div id="hackathon-header">
   <div class="container">
@@ -28,7 +47,7 @@ twitter card: 'summary_large_image',
             <%= image_tag(@hackathon.image_url, class: "hackathon-logo") %>
           <% else %>
             <% category_name = @hackathon.categories.first ? @hackathon.categories.sample.name : "Unknown"  %>
-            <%= image_tag "categories/#{category_name.parameterize}.png" %>
+            <%= image_tag "categories/#{category_name.parameterize}.png", class: "hackathon-logo-static" %>
           <% end %>
         </center>
         <h2><%= @hackathon.title %></h2>
@@ -236,7 +255,6 @@ twitter card: 'summary_large_image',
       <%= link_to "SHARE NOW", "https://twitter.com/intent/tweet?text=Join%20me%20at%20#{ @hackathon.title }%20%23hackathon%20in%20#{ @hackathon.city_string },%20#{ @hackathon.country}%20#{ request.url }%20on%20%40Hackevents", class: "col-md-3 col-sm-4 col-xs-12 btn btn-twitter btn-lg", :id => "twitter-share", target: "_blank" %>
     </div>
   </div>
-</div>
 </div>
 <!-- end:subscribe -->
 

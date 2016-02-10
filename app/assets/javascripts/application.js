@@ -176,3 +176,12 @@ $(document).delegate('.remove_child','click', function() {
   $(this).parent().hide();
   return false;
 });
+
+$(function(){
+  $("#hire-developer").on('click', function(){
+    $("#bmta-visited-thank-you").show();
+    $("#bmta-initial-view").hide();
+  });
+});
+
+
