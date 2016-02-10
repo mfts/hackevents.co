@@ -316,6 +316,10 @@
   max-width: 250px;
 }
 
+.hackathon-logo-static {
+  max-width: 100%;
+}
+
 .banner-date-location {
   max-width: 500px;
   width: 500px;
@@ -590,6 +594,48 @@
   width: 100%;
   padding: 60px 0;
 }
+
+/* 
+  ==================
+  [7. BMTA Buildmethisapp CTA]
+  ==================
+*/
+#bmta-banner{
+  width: 100%;
+  padding: 15px 0 10px;
+  background-color: #000080;
+  -webkit-background-size: cover !important;
+     -moz-background-size: cover !important;
+    -ms-background-size: cover !important;
+     -o-background-size: cover !important;
+      background-size: cover !important;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  .btn-twitter {
+    background-color: #c8a2c8;
+    color: #000;
+  }
+}
+
+#bmta-banner h3{
+  margin-top: 5px;
+  font-size: 24px;
+  line-height: 38px;
+  color:  #fff;
+  font-weight: 300;
+}
+
+@media (max-width: 767px) {
+  #bmta-banner h3{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    line-height: 25px;
+    color:  #fff;
+    text-align: center;
+  }
+}
+
 
 
 /* 
