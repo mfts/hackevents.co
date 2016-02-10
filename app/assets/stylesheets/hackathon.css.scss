@@ -612,8 +612,11 @@
   background-position: center bottom;
   background-repeat: no-repeat;
   .btn-twitter {
-    background-color: #c8a2c8;
+    background-color: #fff;
     color: #000;
+    &:hover {
+      background-color: $brand-primary;
+    }
   }
 }
 
