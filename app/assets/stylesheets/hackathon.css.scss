@@ -603,7 +603,7 @@
 #bmta-banner{
   width: 100%;
   padding: 15px 0 10px;
-  background-color: #000080;
+  background-color: #4a4a4a;
   -webkit-background-size: cover !important;
      -moz-background-size: cover !important;
     -ms-background-size: cover !important;
@@ -612,11 +612,8 @@
   background-position: center bottom;
   background-repeat: no-repeat;
   .btn-twitter {
-    background-color: #fff;
-    color: #000;
-    &:hover {
-      background-color: $brand-primary;
-    }
+    background-color: #f5f8fa;
+    color: #de7950;
   }
 }
 
