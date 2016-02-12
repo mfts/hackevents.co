@@ -12,6 +12,15 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <% twitter site: '@Hackevents', creator: '@Hackevents' %>
+    <% meta og image: 'http://images.hackevents.de/hackathon-logos/he_fb_sharing.jpg' %>
+    <% meta og url: "http://www.hackevents.co",
+          type: "product",
+          title: "Find all hackathons in one place.",
+          description: "Hackevents is the world's leading search engine for hackathons."
+    %>
+    <% meta description: "The world's leading search engine for hackathons.",
+            author: "Hackevents"
+    %>
     <%= metamagic %>
     
     <% if Rails.env.production? %>
