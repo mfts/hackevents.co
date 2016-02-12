@@ -1,6 +1,7 @@
 $(document).on("ready page:load", function() {
+  console.log("<%= Time.zone.now.to_i %>");
   client = algoliasearch("<%= Rails.application.secrets[:algoliasearch_application_id] %>", "<%= Rails.application.secrets[:algoliasearch_api_key_search] %>"), 
-  hackathon_index = client.initIndex("Hackathon_<%= Rails.env %>").ttAdapter({hitsPerPage: 10, numericFilters: 'date_start_unix >= <%= Time.now.to_i %>'}),
+  hackathon_index = client.initIndex("Hackathon_<%= Rails.env %>").ttAdapter({hitsPerPage: 10, numericFilters: "date_start_unix >= <%= Time.now.to_i %>"}),
   city_index = client.initIndex("City_<%= Rails.env %>").ttAdapter({hitsPerPage: 5, numericFilters: 'hackathon_count > 0'}),
   $('#hackathon-search').typeahead(
     { 
