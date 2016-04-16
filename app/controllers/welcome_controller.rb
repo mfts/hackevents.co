@@ -3,7 +3,6 @@ class WelcomeController < ApplicationController
   layout "layouts/home"
 
   def index
-    @result = request.location
     @hackathons = Hackathon.where('date_start >= ?', Time.zone.now).order(:date_start)
     @featured = Hackathon.where('date_start >= ? AND highlighted = ?', Time.zone.now, true).order(:date_start)
     @count = Hackathon.where('date_start >= ?', Time.now).count
