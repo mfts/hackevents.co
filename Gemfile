@@ -41,7 +41,6 @@ gem 'metamagic'
 
 gem 'font-awesome-rails'
 
-gem 'geocoder'
 gem 'algoliasearch-rails'
 gem 'countries'
 gem 'tinymce-rails'

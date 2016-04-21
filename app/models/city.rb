@@ -2,9 +2,6 @@ class City < ActiveRecord::Base
   include AlgoliaSearch
   has_many :hackathons
 
-  # geocoded_by :ip_address
-  # after_validation :geocode
-
   algoliasearch per_environment: :true do
     attribute :name, :hackathon_count
     attribute :slug_name do
