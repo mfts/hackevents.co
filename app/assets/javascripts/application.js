@@ -90,7 +90,7 @@ $(function() {
       closeOnConfirm: false
     }, 
       function(){   
-        url = "https://hackevents.typeform.com/to/WGEBKK";
+        url = "https://tellhackerbay.typeform.com/to/yx3OeS";
         $(open(url, '_blank'));
     });
   });

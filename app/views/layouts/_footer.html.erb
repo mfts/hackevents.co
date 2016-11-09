@@ -24,16 +24,17 @@
         <ul class="list-unstyled list-spaced">
           <li><h6 class="text-uppercase">For Organizers</h6></li>
           <li><%= link_to "About Hackevents", about_path %></li>
-          <li><%= link_to "Add your hackathon", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { behavior: 'add-hackathon' }, id: 'suggest-hackathon' %></li>
+          <!-- <li><%#= link_to "Add your hackathon", "https://hackevents.typeform.com/to/WGEBKK", class: "add-button", data: { behavior: 'add-hackathon' }, id: 'suggest-hackathon' %></li> -->
+          <li><%= link_to "Add your hackathon", "https://tellhackerbay.typeform.com/to/yx3OeS", class: "add-button typeform-share", data: { mode: '2' }, target: "_blank", id: "suggest-hackathon" %></li>
         </ul>
       </div>
   
        <div class="col-sm-6">
         <h6 class="text-uppercase">About</h6>
-        <p>Hackevents is a product of <a style="color:#D96134;" href="http://www.buildmethisapp.com/?ref=hackevents" target="_blank">Build Me This App</a>. 
-        <br>Made with <span class="fa fa-heart"></span> in Berlin and Munich.</p>
+        <p>Hackevents is a product of <a style="color:#D96134;" href="https://hackerbay.com/?ref=hackevents" target="_blank">Hackerbay</a>. 
+        <br>Made with <span class="fa fa-heart"></span> in San Francisco.</p>
         <br>
-        <p>Follow <a style="color:#D96134;" href="http://www.twitter.com/hackevents" target="_blank"><span class="fa fa-twitter"></span>  Hackevents</a> on Twitter.
+        <p>Follow <a style="color:#D96134;" href="http://www.twitter.com/Hackerbay" target="_blank"><span class="fa fa-twitter"></span>  Hackerbay</a> on Twitter.
         <br><%= link_to "Imprint", imprint_path %>
         <br>
         <br>Powered by
@@ -43,3 +44,4 @@
   </div>
 </div>
 
+<script>(function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}id=id+'_';if(!gi.call(d,id)){qs=ce.call(d,'link');qs.rel='stylesheet';qs.id=id;qs.href=b+'share-button.css';s=gt.call(d,'head')[0];s.appendChild(qs,s)}})()</script>
