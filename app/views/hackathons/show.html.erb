@@ -1,22 +1,27 @@
-<% title @hackathon.title %>
+<head>
+  <% title @hackathon.title %>
 
-<% if @hackathon.users.present? %>
-  <% @names = [] %>
-  <% @hackathon.users.first(10).each do |u| %>
-    <% name = "#{u.first_name} (@#{u.twitter_account.username})" %>
-    <% @names << name %>
+  <% if @hackathon.users.present? %>
+    <% @names = [] %>
+    <% @hackathon.users.first(10).each do |u| %>
+      <% name = "#{u.first_name} (@#{u.twitter_account.username})" %>
+      <% @names << name %>
+    <% end %>
+    <meta name="twitter:description" content='<%= "Join #{@names.join(", ")} on #{l(@hackathon.date_start, format: "%e %b")} – #{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city_string}, #{@hackathon.country}.".html_safe %>' />
+
+  <% else %>
+    <meta name="twitter:description" content='<%= "Mark the date! #{l(@hackathon.date_start, format: "%e %b")} – #{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city_string}, #{@hackathon.country}.".html_safe %>' />
   <% end %>
-  <% twitter description: "Join #{@names.join(", ")} on #{l(@hackathon.date_start, format: "%e %b")} – #{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city_string}, #{@hackathon.country}.".html_safe %>
-<% else %>
-  <% twitter description: "Mark the date! #{l(@hackathon.date_start, format: "%e %b")} – #{l(@hackathon.date_end, format: "%e %b %Y")} in #{@hackathon.city_string}, #{@hackathon.country}" %>
-<% end %>
-<% if @hackathon.categories.present? %>
-  <% twitter image: image_url("categories/#{@hackathon.categories.first.name.parameterize}.png") %>
-<% end %>
-<%
-twitter card: 'summary_large_image',
-        title: @hackathon.title
-%>
+
+  <% if @hackathon.image_url.present? %>
+    <meta name="twitter:image" content='<%= @hackathon.image_url %>' />
+  <% elsif @hackathon.categories.present? %>
+    <meta name="twitter:image" content='<%= image_url("categories/#{@hackathon.categories.first.name.parameterize}.png") %>' />
+  <% end %>
+
+  <meta name="twitter:title" content="<%= @hackathon.title %>" />
+  <meta name="twitter:card" content="summary_large_image" />
+</head>
 
 <!-- begin:subscribe -->
 <div class="alert alert-dismissable" id="bmta-banner">
