@@ -17,6 +17,8 @@
     <meta name="twitter:image" content='<%= @hackathon.image_url %>' />
   <% elsif @hackathon.categories.present? %>
     <meta name="twitter:image" content='<%= image_url("categories/#{@hackathon.categories.first.name.parameterize}.png") %>' />
+  <% else %>
+    <meta name="twitter:image" content="http://images.hackevents.de/hackathon-logos/hackevents-meta-min.png" />
   <% end %>
 
   <meta name="twitter:title" content="<%= @hackathon.title %>" />
