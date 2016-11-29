@@ -6,26 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <%#= analytics_init if Rails.env.production? %>
     <%= favicon_link_tag 'favicon.ico' %>
-
-    <meta name="author" content="Hackerbay" />
-    <meta name="robots" content="index, follow" />
-    <meta name="description" content="Hackevents is the world's leading search engine for hackathons." />
-    <meta name="keywords" content="hackathon,hacker,developer,designer,hacker network,developer network" />
-
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://hackevents.co" />
-    <meta property="og:title" content="Find all hackathons in one place" />
-    <meta property="og:description" content="Hackevents is the world's leading search engine for hackathons." />
-    <meta property="og:image" content="http://images.hackevents.de/hackathon-logos/he_fb_sharing.jpg" />
-    <meta property="og:site_name" content="Hackevents" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:description" content="Hackevents is the world's leading search engine for hackathons." />
-    <meta name="twitter:title" content="Find all hackathons in one place" />
-    <meta name="twitter:site" content="@Hackevents" />
-    <meta name="twitter:image" content="http://images.hackevents.de/hackathon-logos/hackevents-meta-min.png" />
-    <meta name="twitter:creator" content="@Hackevents" />
+    <%= render partial: "layouts/meta" %>
     
     <title><%= yield(:title).present? ? yield(:title) : "Hackevents – All Hackathons in One Place" %></title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
