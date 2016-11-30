@@ -97,6 +97,27 @@ $(function() {
 });
 
 $(function() {
+  $("[data-behavior='refer-hackerbay']").on("click", function(event){
+    event.preventDefault()
+
+    swal({   
+      title: "Get a free mockup of your idea",   
+      text: "powered by <a href='https://hackerbay.com'>Hackerbay</a>",   
+      imageUrl: "https://d4z6dx8qrln4r.cloudfront.net/image-d8d0aaf20739f8c592f08243d8dd36af-default.png",
+      html: true,
+      showCancelButton: true,   
+      confirmButtonColor: "#F57C00",
+      confirmButtonText: "Yes, please!",   
+      closeOnConfirm: false
+    }, 
+      function(){   
+        url = "https://hackerbay.com/start?ref=hackevents";
+        $(open(url, '_blank'));
+    });
+  });
+});
+
+$(function() {
   $("[data-behavior='add-organizer']").on("click", function(event){
     event.preventDefault();
 
