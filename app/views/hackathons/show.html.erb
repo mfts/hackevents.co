@@ -23,6 +23,10 @@
 
   <meta name="twitter:title" content="<%= @hackathon.title %>" />
   <meta name="twitter:card" content="summary_large_image" />
+
+  <% if Rails.env.production? %>
+    <script src="//load.sumome.com/" data-sumo-site-id="c529f5137fbf3faff59771957448ae0161bb00362cd0a77d8b17f38016c650cc" async="async"></script>
+  <% end %>
 </head>
 
 <!-- begin:subscribe -->
