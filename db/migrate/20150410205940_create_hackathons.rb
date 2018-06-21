@@ -1,4 +1,4 @@
-class CreateHackathons < ActiveRecord::Migration
+class CreateHackathons < ActiveRecord::Migration[4.2]
   def change
     create_table :hackathons do |t|
       t.string :title

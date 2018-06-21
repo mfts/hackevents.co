@@ -1,4 +1,4 @@
-class Sponsor < ActiveRecord::Base
+class Sponsor < ApplicationRecord
   has_many :sponsorships
   has_many :hackathons, :through => :sponsorships
 
