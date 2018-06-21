@@ -1,4 +1,4 @@
-class TwitterAccount < ActiveRecord::Base
+class TwitterAccount < ApplicationRecord
   belongs_to :user
 
   #after_save :get_twitter_following, :get_twitter_followers

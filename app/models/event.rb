@@ -1,3 +1,3 @@
-class Event < ActiveRecord::Base
-  belongs_to :hackathon
+class Event < ApplicationRecord
+  belongs_to :hackathon, optional: true
 end

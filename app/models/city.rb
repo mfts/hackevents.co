@@ -1,4 +1,4 @@
-class City < ActiveRecord::Base
+class City < ApplicationRecord
   include AlgoliaSearch
   has_many :hackathons
 

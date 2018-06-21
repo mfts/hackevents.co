@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   before_create :generate_registration_confirmation_token
   
   has_secure_password validations: false

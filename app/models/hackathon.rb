@@ -1,4 +1,4 @@
-class Hackathon < ActiveRecord::Base
+class Hackathon < ApplicationRecord
   # extend FriendlyId
   # friendly_id :uniqueslug, use: :slugged
   include AlgoliaSearch
@@ -21,7 +21,7 @@ class Hackathon < ActiveRecord::Base
             :allow_destroy => true,
             :reject_if => lambda { |a| a[:name].blank? }
 
-  belongs_to :city
+  belongs_to :city, optional: true
   
   before_save :update_days_mask, :migrate_to_city_id_and_count
   
