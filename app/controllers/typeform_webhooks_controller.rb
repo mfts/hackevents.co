@@ -25,7 +25,9 @@ class TypeformWebhooksController < ActionController::Base
     )
 
     if @hackathon.save
+      TypeformHackathonMailer.submission_success(email,@hackathon).deliver
     else
+      TypeformHackathonMailer.submission_error(email,title,url).deliver
     end
   end
 
