@@ -72,5 +72,6 @@ Rails.application.routes.draw do
   get '/auth/failure', to: 'twitter_accounts#error', as: 'failure'
   #delete '/signout', to: 'twitter_accounts#destroy', as: 'signout'
 
-
+  # Webhook Endpoint for Typeform
+  resources :typeform_webhooks
 end

@@ -1,0 +1,5 @@
+<p><%= @email %> has submitted a new hackathon</p>
+<br>
+<p><strong>Hackathon:</strong></p>
+<p><%= @hackathon.title %> on <%= @hackathon.date_start %></p>
+<p><%= link_to hackathon_url(@hackathon), hackathon_url(@hackathon) %><p>
