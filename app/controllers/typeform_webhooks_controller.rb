@@ -3,15 +3,16 @@ class TypeformWebhooksController < ActionController::Base
 
   def create
     tf = params[:form_response][:answers]
-    title       = tf[0]["text"]             if tf[0][:field][:id] == "36088916"
-    url         = tf[1]["url"]              if tf[1][:field][:id] == "36089418"
-    date_start  = tf[2]["date"]             if tf[2][:field][:id] == "dGjmNmVn98tY"
-    date_end    = tf[3]["date"]             if tf[3][:field][:id] == "D62aQf5toFOA"
-    country     = tf[6]["choice"]["label"]  if tf[6][:field][:id] == "36089547"
-    city_string = tf[8]["text"]             if tf[8][:field][:id] == "36089130"
-    address     = tf[9]["text"]             if tf[9][:field][:id] == "36089283"
-    image_url   = tf[10]["file_url"]        if tf[10][:field][:id] == "36092704"
-    email       = tf[12]["email"]           if tf[12][:field][:id] == "36098474"
+    title       = tf[tf.index(tf.find {|x| x[:field][:id] == "36088916"})]["text"]
+    url         = tf[tf.index(tf.find {|x| x[:field][:id] == "36089418"})]["url"]
+    date_start  = tf[tf.index(tf.find {|x| x[:field][:id] == "dGjmNmVn98tY"})]["date"]
+    date_end    = tf[tf.index(tf.find {|x| x[:field][:id] == "D62aQf5toFOA"})]["date"]
+    country     = tf[tf.index(tf.find {|x| x[:field][:id] == "36089547"})]["choice"]["label"]
+    city_string = tf[tf.index(tf.find {|x| x[:field][:id] == "36089130"})]["text"]
+    address     = tf[tf.index(tf.find {|x| x[:field][:id] == "36089283"})]["text"]
+    image_url   = tf[tf.index(tf.find {|x| x[:field][:id] == "36092704"})]["file_url"]
+    email       = tf[tf.index(tf.find {|x| x[:field][:id] == "36098474"})]["email"]
+
 
     @hackathon = Hackathon.new(
       title: title,
